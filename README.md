@@ -7,5 +7,5 @@ EQUIPO:
 Jorge Sánchez Sánchez
 Guillermo Manso Cantalapiedra
 Miriam Romero Recio
-Alejandro Aguayo Hernandez
+Alejandro Aguayo Hernández
 Ignacio Lledó Milanca
