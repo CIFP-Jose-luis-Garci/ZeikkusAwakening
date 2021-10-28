@@ -4,8 +4,8 @@ El rey Zeikku, del país de Hellgart, es afectado por una maldición que su herm
 
 EQUIPO:
 
-Jorge Sánchez Sánchez
-Guillermo Manso Cantalapiedra
-Miriam Romero Recio
-Alejandro Aguayo Hernández
-Ignacio Lledó Milanca
+Jorge Sánchez Sánchez (Programador de Efectos/UI, Concept Art)<br>
+Guillermo Manso Cantalapiedra (Diseño de Niveles)<br>
+Miriam Romero Recio (Artista 3D)<br>
+Alejandro Aguayo Hernandez (Sonido y banda sonora)<br>
+Ignacio Lledó Milanca (Programador Gameplay/IA)<br>
