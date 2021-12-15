@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController cc;
     public Animator controller;
-
     public Transform cam;
     public float speed = 6f;
     public float turnSmoothTime = 0.3f;
@@ -31,39 +30,29 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
-        
-        
+
         if (Input.GetButtonDown("Fire1"))
             controller.SetBool("sAttack1", true);
 
-        if (direction.magnitude >= 0.1f)
+        controller.SetFloat("speed", direction.magnitude);
+        if (direction.magnitude >= 0.01f)
         {
             if (direction.magnitude >= 0.6f)
             {
-                controller.SetBool("running", true); 
-                controller.SetBool("walking", false);
-                speed = 5f;
+                speed = 7f;
             }
             else
             {
-                controller.SetBool("walking", true); 
-                controller.SetBool("running", false);
                 speed = 2f;
             }
+            
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity,
                 turnSmoothTime);
             transform.rotation = Quaternion.Euler(0, angle, 0);
-            
-            Debug.Log(transform.eulerAngles.y + "   " + targetAngle);
 
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             cc.Move(moveDirection.normalized * speed * Time.deltaTime);
-        }
-        else
-        {
-            controller.SetBool("walking", false);
-            controller.SetBool("running", false);
         }
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, floorMask);
