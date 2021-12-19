@@ -22,4 +22,9 @@ public class PlayerManager : MonoBehaviour
     {
         playerLocomotion.HandleAllMovement();
     }
+
+    private void LateUpdate()
+    {
+        //cameraManager.HandleAllCameraMovement();
+    }
 }

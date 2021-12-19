@@ -27,11 +27,13 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
+        Debug.Log(rb.velocity);
         moveDirection = cameraObject.forward * inputManager.verticalInput;
         moveDirection += cameraObject.right * inputManager.horizontalInput;
         moveDirection.Normalize();
-        moveDirection.y = 0;
+        Debug.Log(moveDirection);
         moveDirection *= movementSpeed;
+        moveDirection.y = rb.velocity.y;
         
         Vector3 movementVelocity = moveDirection;
         rb.velocity = movementVelocity;
