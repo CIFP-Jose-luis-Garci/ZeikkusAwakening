@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AnimatorManager : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
     private int horizontal;
     private int vertical;
 
@@ -49,5 +49,12 @@ public class AnimatorManager : MonoBehaviour
         
         animator.SetFloat(horizontal, horizontalMovement, 01f, Time.deltaTime);
         animator.SetFloat(vertical, verticalMovement, 0.1f, Time.deltaTime);
+    }
+
+    public void PlayTargetAnimation(string targetAniamtion, bool isInteracting)
+    {
+        animator.SetBool("isInteracting", isInteracting);
+        animator.CrossFade(targetAniamtion, 0.2f);
+        
     }
 }

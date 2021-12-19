@@ -19,7 +19,8 @@ public class InputManager : MonoBehaviour
     public float verticalInput;
     public float horizontalInput;
 
-    public bool b_Input;
+    public bool bInput;
+    public bool jumpInput;
 
     private void Awake()
     {
@@ -34,8 +35,10 @@ public class InputManager : MonoBehaviour
             playerControls = new PlayerControls();
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
-            playerControls.PlayerActions.B.performed += i => b_Input = true;
-            playerControls.PlayerActions.B.canceled += i => b_Input = false;
+            playerControls.PlayerActions.B.performed += i => bInput = true;
+            playerControls.PlayerActions.B.canceled += i => bInput = false;
+            playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
+            playerControls.PlayerActions.Jump.canceled += i => jumpInput = false;
 
         }
         playerControls.Enable();
@@ -49,6 +52,7 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandleMovementInput();
+        HandleJumpingInput();
     }
     
     private void HandleMovementInput()
@@ -61,10 +65,19 @@ public class InputManager : MonoBehaviour
         
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
 
-        if (b_Input) // if wants to walk
+        if (bInput) // if wants to walk
         {
             moveAmount = Mathf.Clamp(moveAmount, 0, 0.5f); // limit speed and blend tree transform
         }
         animatorManager.UpdateAnimatorValues(0, moveAmount);
+    }
+
+    private void HandleJumpingInput()
+    {
+        if (jumpInput)
+        {
+            jumpInput = false;
+            playerLocomotion.HandleJumping();
+        }
     }
 }
