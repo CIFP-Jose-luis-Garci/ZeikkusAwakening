@@ -6,6 +6,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private PlayerControls playerControls;
+    private PlayerLocomotion playerLocomotion;
     private AnimatorManager animatorManager;
 
     public Vector2 movementInput;
@@ -14,13 +15,16 @@ public class InputManager : MonoBehaviour
     public float cameraInputX;
     public float cameraInputY;
     
-    private float moveAmount;
+    public float moveAmount;
     public float verticalInput;
     public float horizontalInput;
+
+    public bool b_Input;
 
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
+        playerLocomotion = GetComponent<PlayerLocomotion>();
     }
 
     private void OnEnable()
@@ -30,6 +34,9 @@ public class InputManager : MonoBehaviour
             playerControls = new PlayerControls();
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+            playerControls.PlayerActions.B.performed += i => b_Input = true;
+            playerControls.PlayerActions.B.canceled += i => b_Input = false;
+
         }
         playerControls.Enable();
     }
@@ -53,6 +60,11 @@ public class InputManager : MonoBehaviour
         cameraInputY = cameraInput.y;
         
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
+
+        if (b_Input) // if wants to walk
+        {
+            moveAmount = Mathf.Clamp(moveAmount, 0, 0.5f); // limit speed and blend tree transform
+        }
         animatorManager.UpdateAnimatorValues(0, moveAmount);
     }
 }

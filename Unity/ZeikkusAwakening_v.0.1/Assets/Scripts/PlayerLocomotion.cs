@@ -9,7 +9,8 @@ public class PlayerLocomotion : MonoBehaviour
     private Vector3 moveDirection;
     private Transform cameraObject;
     private Rigidbody rb;
-    public float movementSpeed = 7;
+
+    public float runningSpeed = 7;
     public float rotationSpeed = 15;
     
     private void Awake()
@@ -27,12 +28,11 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
-        Debug.Log(rb.velocity);
         moveDirection = cameraObject.forward * inputManager.verticalInput;
         moveDirection += cameraObject.right * inputManager.horizontalInput;
         moveDirection.Normalize();
-        Debug.Log(moveDirection);
-        moveDirection *= movementSpeed;
+        
+        moveDirection *= runningSpeed * inputManager.moveAmount;
         moveDirection.y = rb.velocity.y;
         
         Vector3 movementVelocity = moveDirection;

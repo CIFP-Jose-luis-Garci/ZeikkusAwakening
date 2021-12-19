@@ -1,5 +1,5 @@
 {
-    "name": "Player Controls",
+    "name": "PlayerControls",
     "maps": [
         {
             "name": "Player Movement",
@@ -198,6 +198,44 @@
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Player Actions",
+            "id": "fab21fec-a62f-4fb4-b608-dde2d9452b12",
+            "actions": [
+                {
+                    "name": "B",
+                    "type": "Button",
+                    "id": "c2a1e068-7655-4c1f-a8bf-1f5fe8461ff9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a483611c-9e73-4624-a7d9-55995cd19e6c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cbd65dd8-e4dd-4524-b797-575a3751615b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
