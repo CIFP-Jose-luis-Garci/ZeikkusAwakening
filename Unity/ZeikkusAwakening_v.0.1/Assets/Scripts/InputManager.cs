@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     private PlayerControls playerControls;
     private PlayerLocomotion playerLocomotion;
     private AnimatorManager animatorManager;
+    private GameManager gameManager;
 
     public Vector2 movementInput;
     public Vector2 cameraInput;
@@ -20,12 +21,13 @@ public class InputManager : MonoBehaviour
     public float horizontalInput;
 
     public bool bInput;
-    public bool jumpInput;
+    public bool aInput;
 
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnEnable()
@@ -37,8 +39,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
             playerControls.PlayerActions.B.performed += i => bInput = true;
             playerControls.PlayerActions.B.canceled += i => bInput = false;
-            playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
-            playerControls.PlayerActions.Jump.canceled += i => jumpInput = false;
+            playerControls.PlayerActions.A.performed += i => aInput = true;
+            playerControls.PlayerActions.A.canceled += i => aInput = false;
 
         }
         playerControls.Enable();
@@ -52,7 +54,8 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandleMovementInput();
-        HandleJumpingInput();
+        if (gameManager.inWorld) HandleJumpingInput();
+        if (!gameManager.inWorld) HandleAttackInput();
     }
     
     private void HandleMovementInput()
@@ -74,10 +77,19 @@ public class InputManager : MonoBehaviour
 
     private void HandleJumpingInput()
     {
-        if (jumpInput)
+        if (aInput)
         {
-            jumpInput = false;
+            aInput = false;
             playerLocomotion.HandleJumping();
+        }
+    }
+
+    private void HandleAttackInput()
+    {
+        if (bInput)
+        {
+            bInput = false;
+            playerLocomotion.HandleAttack();
         }
     }
 }

@@ -9,12 +9,16 @@ public class PlayerManager : MonoBehaviour
     private Animator animator;
     private InputManager inputManager;
     private PlayerLocomotion playerLocomotion;
-
+    
+    private GameManager gameManager;
     public bool isInteracting;
+    public bool isUsingRootMotion;
+    
     private void Awake()
     {
         animator = GetComponent<Animator>();
         inputManager = GetComponent<InputManager>();
+        gameManager = FindObjectOfType<GameManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
     }
 
@@ -31,7 +35,11 @@ public class PlayerManager : MonoBehaviour
     private void LateUpdate()
     {
         isInteracting = animator.GetBool("isInteracting");
-        playerLocomotion.isJumping = animator.GetBool("isJumping");
-        animator.SetBool("isGrounded", playerLocomotion.isGrounded);
+        isUsingRootMotion = animator.GetBool("isUsingRootMotion");
+        if (gameManager.inWorld)
+        {
+            playerLocomotion.isJumping = animator.GetBool("isJumping");
+            animator.SetBool("isGrounded", playerLocomotion.isGrounded);
+        }
     }
 }

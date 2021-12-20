@@ -5,11 +5,12 @@ using UnityEngine;
 public class ResetBool : StateMachineBehaviour
 {
     public string isInteractingBool;
-
     public bool interactingStatus;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool(isInteractingBool, interactingStatus);
+        animator.applyRootMotion = false;
     }
 }

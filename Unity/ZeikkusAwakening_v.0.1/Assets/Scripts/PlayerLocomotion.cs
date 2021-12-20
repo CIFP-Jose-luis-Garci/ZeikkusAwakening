@@ -8,16 +8,14 @@ public class PlayerLocomotion : MonoBehaviour
     private PlayerManager playerManager;
     private InputManager inputManager;
     private AnimatorManager animatorManager;
+    private GameManager gameManager;
     
     private Vector3 moveDirection;
     private Transform cameraObject;
-    private Rigidbody rb;
+    public Rigidbody rb;
     
     [Header("Falling and Landing")]
     public bool isGrounded;
-    public float inAirTimer;
-    public float leapingVelocity;
-    public float fallingVelocity;
     public LayerMask groundLayer;
     public float raycastHeightOffset = 0.5f;
 
@@ -28,18 +26,29 @@ public class PlayerLocomotion : MonoBehaviour
     public float runningSpeed = 7;
     public float rotationSpeed = 15;
     
+    [Header("Attacking")]
+    public int puntosDeTurno = 4;
+    public string[] animaciones;
+    
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager>();
         inputManager = GetComponent<InputManager>();
         animatorManager = GetComponent<AnimatorManager>();
         rb = GetComponent<Rigidbody>();
+        gameManager = FindObjectOfType<GameManager>();
         cameraObject = Camera.main.transform;
+        
+        animaciones = new string[puntosDeTurno];
+        animaciones[0] = "final_slash";
+        animaciones[1] = "hard_slash";
+        animaciones[2] = "second_slash";
+        animaciones[3] = "basic_slash";
     }
 
     public void HandleAllMovement()
     {
-        HandleFallingAndLanding();
+        if (gameManager.inWorld) HandleFallingAndLanding();
         if (playerManager.isInteracting) return;
         HandleMovement();
         HandleRotation();
@@ -79,34 +88,20 @@ public class PlayerLocomotion : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 raycastOrigin = transform.position;
-
         raycastOrigin.y += raycastHeightOffset;
         if (!isGrounded && !isJumping)
-        {
             if (!playerManager.isInteracting)
-            {
                 animatorManager.PlayTargetAnimation("Falling", true);
-            }
-
-            inAirTimer += Time.deltaTime;
-            rb.AddForce(transform.forward * leapingVelocity);
-            rb.AddForce(-Vector3.up * fallingVelocity * inAirTimer);
-        }
 
         if (Physics.SphereCast(raycastOrigin, 0.2f, -Vector3.up, out hit, 0.6f, groundLayer))
         {
             if (!isGrounded)
-            {
                 animatorManager.PlayTargetAnimation("Land", true);
-            }
-
-            inAirTimer = 0;
+            
             isGrounded = true;
         }
         else
-        {
             isGrounded = false;
-        }
     }
 
     public void HandleJumping()
@@ -114,8 +109,25 @@ public class PlayerLocomotion : MonoBehaviour
         if (isGrounded)
         {
             animatorManager.animator.SetBool("isJumping", true);
-            animatorManager.PlayTargetAnimation("Jump", false);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+
+    public void HandleAttack()
+    {
+        if (playerManager.isInteracting) return;
+        if (puntosDeTurno > 0)
+        {
+            puntosDeTurno--;
+            animatorManager.PlayTargetAnimation(animaciones[puntosDeTurno], true, true);
+            if (puntosDeTurno == 0)
+                StartCoroutine(ReloadTurnPoints());
+        }
+    }
+
+    private IEnumerator ReloadTurnPoints()
+    {
+        yield return new WaitForSeconds(1f);
+        puntosDeTurno = 4;
     }
 }
