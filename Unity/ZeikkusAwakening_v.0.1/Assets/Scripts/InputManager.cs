@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
 
     public bool bInput;
     public bool aInput;
+    public bool lTrigger;
 
     private void Awake()
     {
@@ -41,6 +42,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.B.canceled += i => bInput = false;
             playerControls.PlayerActions.A.performed += i => aInput = true;
             playerControls.PlayerActions.A.canceled += i => aInput = false;
+            playerControls.PlayerActions.LTrigger.performed += i => lTrigger = true;
+            playerControls.PlayerActions.LTrigger.canceled += i => lTrigger = false;
 
         }
         playerControls.Enable();
@@ -56,6 +59,7 @@ public class InputManager : MonoBehaviour
         HandleMovementInput();
         if (gameManager.inWorld) HandleJumpingInput();
         if (!gameManager.inWorld) HandleAttackInput();
+        if (!gameManager.inWorld) HandleCameraTargetingInput();
     }
     
     private void HandleMovementInput()
@@ -90,6 +94,15 @@ public class InputManager : MonoBehaviour
         {
             bInput = false;
             playerLocomotion.HandleAttack();
+        }
+    }
+
+    private void HandleCameraTargetingInput()
+    {
+        if (lTrigger)
+        {
+            lTrigger = false;
+            playerLocomotion.HandleCameraChange();
         }
     }
 }

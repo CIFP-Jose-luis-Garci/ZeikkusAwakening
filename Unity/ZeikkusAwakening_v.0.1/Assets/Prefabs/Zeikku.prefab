@@ -1133,7 +1133,7 @@ MonoBehaviour:
   verticalInput: 0
   horizontalInput: 0
   bInput: 0
-  jumpInput: 0
+  aInput: 0
 --- !u!114 &5234201012602325531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,6 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7f9463de53b9a4384bab3177236df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   isGrounded: 1
   groundLayer:
     serializedVersion: 2
@@ -1155,6 +1156,8 @@ MonoBehaviour:
   jumpForce: 60
   runningSpeed: 5
   rotationSpeed: 15
+  puntosDeTurno: 4
+  animaciones: []
 --- !u!114 &5234201012602325530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,6 +1171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteracting: 0
+  isUsingRootMotion: 0
 --- !u!114 &5234201012602325525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,10 +1475,10 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dd203c4a5fec4644aa366f9d684f7c3b, type: 2}
-  - {fileID: 2100000, guid: dd23652e0eb4a4f44b489624b58045c3, type: 2}
-  - {fileID: 2100000, guid: dd23652e0eb4a4f44b489624b58045c3, type: 2}
-  - {fileID: 2100000, guid: dd23652e0eb4a4f44b489624b58045c3, type: 2}
+  - {fileID: 2100000, guid: 84e7aedf1aaaf5e44a6ab5f9e641f294, type: 2}
+  - {fileID: 2100000, guid: e683197e272c70440918a0735bd3db2e, type: 2}
+  - {fileID: 2100000, guid: 08435b82662e1c24d8de4003bb25fb9f, type: 2}
+  - {fileID: 2100000, guid: e70729fbdb783b44e947554b52723af8, type: 2}
   - {fileID: 2100000, guid: dd23652e0eb4a4f44b489624b58045c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

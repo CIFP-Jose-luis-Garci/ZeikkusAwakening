@@ -29,6 +29,11 @@ public class PlayerLocomotion : MonoBehaviour
     [Header("Attacking")]
     public int puntosDeTurno = 4;
     public string[] animaciones;
+
+    [Header("Z targeting")] 
+    public bool isZTargeting;
+    public LayerMask enemyLayer;
+    private Transform enemyObject;
     
     private void Awake()
     {
@@ -56,8 +61,16 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
-        moveDirection = cameraObject.forward * inputManager.verticalInput;
-        moveDirection += cameraObject.right * inputManager.horizontalInput;
+        if (isZTargeting)
+        {
+            moveDirection = (enemyObject.forward * -1) * inputManager.verticalInput;
+            moveDirection += (enemyObject.right * -1) * inputManager.horizontalInput;
+        }
+        else
+        {
+            moveDirection = cameraObject.forward * inputManager.verticalInput;
+            moveDirection += cameraObject.right * inputManager.horizontalInput;
+        }
         moveDirection.Normalize();
         
         moveDirection *= runningSpeed * inputManager.moveAmount;
@@ -70,8 +83,17 @@ public class PlayerLocomotion : MonoBehaviour
     private void HandleRotation()
     {
         Vector3 targetDirection = Vector3.zero;
-        targetDirection = cameraObject.forward * inputManager.verticalInput;
-        targetDirection += cameraObject.right * inputManager.horizontalInput;
+        if (isZTargeting)
+        {
+            
+            targetDirection = (enemyObject.forward* -1) * inputManager.verticalInput;
+            targetDirection += (enemyObject.right * -1) * inputManager.horizontalInput;
+        }
+        else
+        {
+            targetDirection = cameraObject.forward * inputManager.verticalInput;
+            targetDirection += cameraObject.right * inputManager.horizontalInput;
+        }
         targetDirection.Normalize();
         targetDirection.y = 0;
 
@@ -119,6 +141,14 @@ public class PlayerLocomotion : MonoBehaviour
         if (puntosDeTurno > 0)
         {
             puntosDeTurno--;
+            if (isZTargeting)
+            {
+                transform.LookAt(enemyObject);
+                Quaternion rotation = transform.rotation;
+                rotation.z = 0;
+                rotation.x = 0;
+                transform.rotation = rotation;
+            }
             animatorManager.PlayTargetAnimation(animaciones[puntosDeTurno], true, true);
             if (puntosDeTurno == 0)
                 StartCoroutine(ReloadTurnPoints());
@@ -129,5 +159,19 @@ public class PlayerLocomotion : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         puntosDeTurno = 4;
+    }
+
+    public void HandleCameraChange()
+    {
+        isZTargeting = !isZTargeting;
+        RaycastHit hit;
+        if (isZTargeting)
+            if (Physics.SphereCast(transform.position, 2f, transform.forward, out hit,15, enemyLayer))
+            {
+                if (hit.collider != null)
+                {
+                    enemyObject = hit.collider.gameObject.transform;
+                }
+            }
     }
 }
