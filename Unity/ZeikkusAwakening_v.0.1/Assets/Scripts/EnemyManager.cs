@@ -5,15 +5,20 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public Transform player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject sprite;
 
     // Update is called once per frame
     void Update()
     {
         transform.LookAt(player);
+        Quaternion rotation = transform.rotation;
+        rotation.z = 0;
+        rotation.x = 0;
+        transform.rotation = rotation;
+    }
+
+    public void ImTarget(bool set)
+    {
+        sprite.SetActive(set);
     }
 }

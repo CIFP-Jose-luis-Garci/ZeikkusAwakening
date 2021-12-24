@@ -29,11 +29,13 @@ public class PlayerLocomotion : MonoBehaviour
     [Header("Attacking")]
     public int puntosDeTurno = 4;
     public string[] animaciones;
+    private Coroutine coroutine;
 
     [Header("Z targeting")] 
     public bool isZTargeting;
     public LayerMask enemyLayer;
     private Transform enemyObject;
+    private EnemyManager enemy;
     
     private void Awake()
     {
@@ -149,29 +151,44 @@ public class PlayerLocomotion : MonoBehaviour
                 rotation.x = 0;
                 transform.rotation = rotation;
             }
+
             animatorManager.PlayTargetAnimation(animaciones[puntosDeTurno], true, true);
-            if (puntosDeTurno == 0)
-                StartCoroutine(ReloadTurnPoints());
+            if (coroutine != null) StopCoroutine(coroutine);
+            coroutine = StartCoroutine(ReloadTurnPoints(animatorManager.GetAnimationLength() * 2));
         }
     }
 
-    private IEnumerator ReloadTurnPoints()
+    private IEnumerator ReloadTurnPoints(int waitTime)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(waitTime);
         puntosDeTurno = 4;
+        coroutine = null;
     }
 
     public void HandleCameraChange()
     {
         isZTargeting = !isZTargeting;
-        RaycastHit hit;
         if (isZTargeting)
-            if (Physics.SphereCast(transform.position, 2f, transform.forward, out hit,15, enemyLayer))
+        {
+            RaycastHit hit;
+            if (Physics.SphereCast(transform.position, 0.1f, Vector3.forward, out hit,15, enemyLayer))
             {
                 if (hit.collider != null)
                 {
-                    enemyObject = hit.collider.gameObject.transform;
+                    enemy = hit.collider.gameObject.GetComponent<EnemyManager>();
+                    enemyObject = enemy.transform;
+                    enemy.ImTarget(true);
                 }
             }
+            else
+            {
+                isZTargeting = false;
+            }
+            
+        }
+        else
+        {
+            enemy.ImTarget(false);
+        }
     }
 }

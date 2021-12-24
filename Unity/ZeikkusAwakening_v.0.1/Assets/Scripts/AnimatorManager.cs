@@ -60,4 +60,9 @@ public class AnimatorManager : MonoBehaviour
         
     }
 
+    public int GetAnimationLength()
+    {
+        return animator.GetCurrentAnimatorClipInfo(1).Length;
+    }
+
 }
