@@ -811,6 +811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7888827100349094816}
+  - component: {fileID: 6246120566568160129}
   m_Layer: 5
   m_Name: Selecciones
   m_TagString: Untagged
@@ -841,3 +842,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6246120566568160129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888827100349094751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c5691d365e7da40a4594d9c7197e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newFile: {fileID: 7888827099996038561}
+  continuee: {fileID: 7888827098697135730}
+  options: {fileID: 7888827099441710522}
+  exit: {fileID: 7888827098521463811}
+  opciones: {fileID: 8277551100940423111, guid: c5924395ebe15b249a63af5c5a2e8890, type: 3}
