@@ -20,6 +20,7 @@ public class SelectionController : MonoBehaviour
         options.onClick.AddListener(() =>
         {
             Instantiate(opciones, GameObject.FindGameObjectWithTag("UI").transform);
+            Destroy(GameObject.FindGameObjectWithTag("GameLogo"));
             Destroy(gameObject);
         });
         exit.onClick.AddListener(() => Application.Quit(0));

@@ -293,7 +293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8277551100074432779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -372,7 +372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8277551100087844022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -626,6 +626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8277551100940423108}
+  - component: {fileID: 5258714922529342625}
   m_Layer: 5
   m_Name: Opciones
   m_TagString: Untagged
@@ -656,6 +657,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5258714922529342625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277551100940423111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e40f6e9a5ef15478cebd4b8f1e6803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmSlider: {fileID: 8277551101851845544}
+  sfxSlider: {fileID: 8277551101130498398}
+  exit: {fileID: 8016174291535765928}
+  mixer: {fileID: 24100000, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
+  selecciones: {fileID: 7888827100349094751, guid: abc67be8e3b02874d9d55accb4f2bf9e, type: 3}
+  gameLogo: {fileID: 1949910728550062179, guid: 33af51af7bf17984da00080238d22ccd, type: 3}
 --- !u!1 &8277551100984120125
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,10 +873,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 8277551101418586160}
   m_HandleRect: {fileID: 8277551101891265713}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: -100
+  m_MaxValue: 0
   m_WholeNumbers: 1
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1402,10 +1421,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 8277551100658328293}
   m_HandleRect: {fileID: 8277551101334723478}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: -100
+  m_MaxValue: 0
   m_WholeNumbers: 1
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
