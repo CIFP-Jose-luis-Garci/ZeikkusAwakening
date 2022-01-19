@@ -236,6 +236,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "R Bump",
+                    "type": "Button",
+                    "id": "890d853c-0019-4b40-88ed-890d840a3f2e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -324,6 +332,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "L Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e50bf313-130f-4997-ab68-0408a29ecd21",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Bump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

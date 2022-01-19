@@ -36,6 +36,9 @@ public class PlayerLocomotion : MonoBehaviour
     public LayerMask enemyLayer;
     private Transform enemyObject;
     private EnemyManager enemy;
+
+    [Header("Battle")]
+    public bool invincible;
     
     private void Awake()
     {
@@ -106,6 +109,22 @@ public class PlayerLocomotion : MonoBehaviour
         Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         transform.rotation = playerRotation;
+    }
+
+    public void HandleEvade()
+    {
+        if (!invincible)
+        {
+            animatorManager.PlayTargetAnimation("evade", true, true);
+            invincible = true;
+            StartCoroutine(Invincible(1));
+        }
+    }
+
+    IEnumerator Invincible(float time)
+    {
+        yield return new WaitForSeconds(time);
+        invincible = false;
     }
 
     private void HandleFallingAndLanding()

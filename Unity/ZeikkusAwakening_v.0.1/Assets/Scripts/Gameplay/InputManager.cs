@@ -23,6 +23,7 @@ public class InputManager : MonoBehaviour
     public bool bInput;
     public bool aInput;
     public bool lTrigger;
+    public bool rBump;
 
     private void Awake()
     {
@@ -44,6 +45,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.A.canceled += i => aInput = false;
             playerControls.PlayerActions.LTrigger.performed += i => lTrigger = true;
             playerControls.PlayerActions.LTrigger.canceled += i => lTrigger = false;
+            playerControls.PlayerActions.RBump.performed += i => rBump = true;
+            playerControls.PlayerActions.RBump.canceled += i => rBump = false;
 
         }
         playerControls.Enable();
@@ -60,6 +63,7 @@ public class InputManager : MonoBehaviour
         if (gameManager.inWorld) HandleJumpingInput();
         if (!gameManager.inWorld) HandleAttackInput();
         if (!gameManager.inWorld) HandleCameraTargetingInput();
+        HandleRightBump();
     }
     
     private void HandleMovementInput()
@@ -94,6 +98,15 @@ public class InputManager : MonoBehaviour
         {
             bInput = false;
             playerLocomotion.HandleAttack();
+        }
+    }
+
+    private void HandleRightBump()
+    {
+        if (rBump && !gameManager.inWorld)
+        {
+            rBump = false;
+            playerLocomotion.HandleEvade();
         }
     }
 
