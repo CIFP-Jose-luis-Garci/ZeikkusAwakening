@@ -478,8 +478,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -7.826
       objectReference: {fileID: 0}
+    - target: {fileID: 8084304209312634838, guid: 3b6ead1dd46ce924d931c78b2db5eebd, type: 3}
+      propertyPath: m_Name
+      value: p1_puerta
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b6ead1dd46ce924d931c78b2db5eebd, type: 3}
+--- !u!1 &112447126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3515492331170804393, guid: 3b6ead1dd46ce924d931c78b2db5eebd, type: 3}
+  m_PrefabInstance: {fileID: 112447124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &112447128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112447126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc3329c9bd225240bec97874776de47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testBool: 0
 --- !u!1001 &142263810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -554,6 +576,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4202659361239371299, guid: 103af076e56b54241870f2ca843b007b, type: 3}
   m_PrefabInstance: {fileID: 142263810}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &255790542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8084304209312634838, guid: 3b6ead1dd46ce924d931c78b2db5eebd, type: 3}
+  m_PrefabInstance: {fileID: 112447124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &255790544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255790542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58864a601ca81c498e2fefd14d77ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasKey: 0
+  player: {fileID: 0}
 --- !u!1001 &426210402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1777,6 +1818,14 @@ PrefabInstance:
     - target: {fileID: 4927773376940549154, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_Name
       value: Zeikku
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927773376940549154, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234201012602325528, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 5704133746653626008, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_RootOrder
