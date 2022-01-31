@@ -1134,6 +1134,8 @@ MonoBehaviour:
   horizontalInput: 0
   bInput: 0
   aInput: 0
+  lTrigger: 0
+  rBump: 0
 --- !u!114 &5234201012602325531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,6 +1160,11 @@ MonoBehaviour:
   rotationSpeed: 15
   puntosDeTurno: 4
   animaciones: []
+  isZTargeting: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  invincible: 0
 --- !u!114 &5234201012602325530
 MonoBehaviour:
   m_ObjectHideFlags: 0
