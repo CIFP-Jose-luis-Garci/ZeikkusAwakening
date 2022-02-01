@@ -22,6 +22,8 @@ public class InputManager : MonoBehaviour
 
     public bool bInput;
     public bool aInput;
+    public bool yInput;
+    public bool xInput;
     public bool lTrigger;
     public bool rBump;
 
@@ -43,6 +45,10 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.B.canceled += i => bInput = false;
             playerControls.PlayerActions.A.performed += i => aInput = true;
             playerControls.PlayerActions.A.canceled += i => aInput = false;
+            playerControls.PlayerActions.Y.performed += i => yInput = true;
+            playerControls.PlayerActions.Y.canceled += i => yInput = false;
+            playerControls.PlayerActions.X.performed += i => xInput = true;
+            playerControls.PlayerActions.X.canceled += i => xInput = false;
             playerControls.PlayerActions.LTrigger.performed += i => lTrigger = true;
             playerControls.PlayerActions.LTrigger.canceled += i => lTrigger = false;
             playerControls.PlayerActions.RBump.performed += i => rBump = true;
@@ -60,7 +66,7 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandleMovementInput();
-        if (gameManager.inWorld) HandleJumpingInput();
+        HandleAInput();
         if (!gameManager.inWorld) HandleAttackInput();
         if (!gameManager.inWorld) HandleCameraTargetingInput();
         HandleRightBump();
@@ -83,12 +89,31 @@ public class InputManager : MonoBehaviour
         animatorManager.UpdateAnimatorValues(0, moveAmount);
     }
 
-    private void HandleJumpingInput()
+    private void HandleAInput()
     {
         if (aInput)
         {
             aInput = false;
-            playerLocomotion.HandleJumping();
+            if (gameManager.inWorld) playerLocomotion.HandleJumping();
+            else playerLocomotion.HandleMagic(0);
+        }
+    }
+    private void HandleYInput()
+    {
+        if (yInput)
+        {
+            yInput = false;
+            if (gameManager.inWorld) playerLocomotion.HandleJumping();
+            else playerLocomotion.HandleMagic(1);
+        }
+    }
+    private void HandleXInput()
+    {
+        if (xInput)
+        {
+            xInput = false;
+            if (gameManager.inWorld) playerLocomotion.HandleJumping();
+            else playerLocomotion.HandleMagic(2);
         }
     }
 

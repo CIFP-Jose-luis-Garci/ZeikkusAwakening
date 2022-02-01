@@ -39,6 +39,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     [Header("Battle")]
     public bool invincible;
+    public Magic[] magicSlots;
     
     private void Awake()
     {
@@ -175,6 +176,11 @@ public class PlayerLocomotion : MonoBehaviour
             if (coroutine != null) StopCoroutine(coroutine);
             coroutine = StartCoroutine(ReloadTurnPoints(animatorManager.GetAnimationLength() * 2));
         }
+    }
+
+    public void HandleMagic(int slot)
+    {
+        animatorManager.PlayTargetAnimation("magic", true, true);
     }
 
     private IEnumerator ReloadTurnPoints(int waitTime)

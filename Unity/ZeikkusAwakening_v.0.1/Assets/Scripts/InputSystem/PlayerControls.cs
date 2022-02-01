@@ -243,6 +243,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Y"",
+                    ""type"": ""Button"",
+                    ""id"": ""689e5e20-8ac3-4777-8ce0-e6e83761e201"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""X"",
+                    ""type"": ""Button"",
+                    ""id"": ""63c17f0b-6757-445b-8586-9344e10d88f1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""L Trigger"",
                     ""type"": ""Button"",
                     ""id"": ""ad9dee02-df15-45c2-a5a9-e47762df15a3"",
@@ -358,6 +374,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""R Bump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33381269-454f-4b81-86b2-fa11467afb15"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f981cb3-7213-472c-8255-1800ccb6df12"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -373,6 +411,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_PlayerActions_B = m_PlayerActions.FindAction("B", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_A = m_PlayerActions.FindAction("A", throwIfNotFound: true);
+        m_PlayerActions_Y = m_PlayerActions.FindAction("Y", throwIfNotFound: true);
+        m_PlayerActions_X = m_PlayerActions.FindAction("X", throwIfNotFound: true);
         m_PlayerActions_LTrigger = m_PlayerActions.FindAction("L Trigger", throwIfNotFound: true);
         m_PlayerActions_RBump = m_PlayerActions.FindAction("R Bump", throwIfNotFound: true);
     }
@@ -468,6 +508,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerActions_B;
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_A;
+    private readonly InputAction m_PlayerActions_Y;
+    private readonly InputAction m_PlayerActions_X;
     private readonly InputAction m_PlayerActions_LTrigger;
     private readonly InputAction m_PlayerActions_RBump;
     public struct PlayerActionsActions
@@ -477,6 +519,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @B => m_Wrapper.m_PlayerActions_B;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @A => m_Wrapper.m_PlayerActions_A;
+        public InputAction @Y => m_Wrapper.m_PlayerActions_Y;
+        public InputAction @X => m_Wrapper.m_PlayerActions_X;
         public InputAction @LTrigger => m_Wrapper.m_PlayerActions_LTrigger;
         public InputAction @RBump => m_Wrapper.m_PlayerActions_RBump;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
@@ -497,6 +541,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @A.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnA;
                 @A.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnA;
                 @A.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnA;
+                @Y.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnY;
+                @Y.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnY;
+                @Y.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnY;
+                @X.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnX;
+                @X.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnX;
+                @X.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnX;
                 @LTrigger.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
                 @LTrigger.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
                 @LTrigger.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
@@ -516,6 +566,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @A.started += instance.OnA;
                 @A.performed += instance.OnA;
                 @A.canceled += instance.OnA;
+                @Y.started += instance.OnY;
+                @Y.performed += instance.OnY;
+                @Y.canceled += instance.OnY;
+                @X.started += instance.OnX;
+                @X.performed += instance.OnX;
+                @X.canceled += instance.OnX;
                 @LTrigger.started += instance.OnLTrigger;
                 @LTrigger.performed += instance.OnLTrigger;
                 @LTrigger.canceled += instance.OnLTrigger;
@@ -536,6 +592,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnB(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnA(InputAction.CallbackContext context);
+        void OnY(InputAction.CallbackContext context);
+        void OnX(InputAction.CallbackContext context);
         void OnLTrigger(InputAction.CallbackContext context);
         void OnRBump(InputAction.CallbackContext context);
     }

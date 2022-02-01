@@ -230,6 +230,22 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Y",
+                    "type": "Button",
+                    "id": "689e5e20-8ac3-4777-8ce0-e6e83761e201",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "X",
+                    "type": "Button",
+                    "id": "63c17f0b-6757-445b-8586-9344e10d88f1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "L Trigger",
                     "type": "Button",
                     "id": "ad9dee02-df15-45c2-a5a9-e47762df15a3",
@@ -343,6 +359,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "R Bump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33381269-454f-4b81-86b2-fa11467afb15",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f981cb3-7213-472c-8255-1800ccb6df12",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "X",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
