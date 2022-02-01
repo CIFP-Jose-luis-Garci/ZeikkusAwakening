@@ -9,7 +9,9 @@ public class Magic : MonoBehaviour
     {
         Vector3 pos = transform.position;
         pos.y += 1;
-        pos.z -= 0.8f;
+        Vector3 xzPos = (-0.8f * transform.forward);
+        pos.z -= xzPos.z;
+        pos.x -= xzPos.x;
         Instantiate(magics[selected], pos, transform.rotation);
     }
 }

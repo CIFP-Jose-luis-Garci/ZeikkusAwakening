@@ -61,7 +61,11 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleAllMovement()
     {
         if (gameManager.inWorld) HandleFallingAndLanding();
-        if (playerManager.isInteracting) return;
+        if (playerManager.isInteracting)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
         HandleMovement();
         HandleRotation();
     }

@@ -38,9 +38,7 @@ public class MeteorManager : MonoBehaviour
     {
             meteorExplosion.SetActive(true);
             meteorExplosion.transform.parent = null;
-            fire.transform.parent = null;
-            smoke.transform.parent = null;
-            smoke.Destroy(smoke);
+            meteorExplosion.GetComponent<DestroyAfter>().Destruir();
             Destroy(gameObject);
     }
 }
