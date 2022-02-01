@@ -68,7 +68,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (isZTargeting)
+        if (isZTargeting && enemyObject)
         {
             moveDirection = (enemyObject.forward * -1) * inputManager.verticalInput;
             moveDirection += (enemyObject.right * -1) * inputManager.horizontalInput;
@@ -90,7 +90,7 @@ public class PlayerLocomotion : MonoBehaviour
     private void HandleRotation()
     {
         Vector3 targetDirection = Vector3.zero;
-        if (isZTargeting)
+        if (isZTargeting && enemyObject)
         {
             
             targetDirection = (enemyObject.forward* -1) * inputManager.verticalInput;
@@ -196,8 +196,11 @@ public class PlayerLocomotion : MonoBehaviour
         if (isZTargeting)
         {
             InBetweenObjectManager ibom = lookInBetween.gameObject.GetComponent<InBetweenObjectManager>();
-            enemyObject = ibom.enemy;
-            ibom.enemy.gameObject.GetComponent<EnemyManager>().ImTarget(true);
+            if (ibom.enemy)
+            {
+                enemyObject = ibom.enemy;
+                ibom.enemy.gameObject.GetComponent<EnemyManager>().ImTarget(true);
+            }
             cameraManager.ChangeTarget(lookInBetween);
             
         }
@@ -205,7 +208,7 @@ public class PlayerLocomotion : MonoBehaviour
         {
             InBetweenObjectManager ibom = lookInBetween.gameObject.GetComponent<InBetweenObjectManager>();
             cameraManager.ChangeTarget(transform);
-            ibom.enemy.gameObject.GetComponent<EnemyManager>().ImTarget(false);
+            if (ibom.enemy) ibom.enemy.gameObject.GetComponent<EnemyManager>().ImTarget(false);
         }
         this.isZTargeting = isZTargeting;
     }

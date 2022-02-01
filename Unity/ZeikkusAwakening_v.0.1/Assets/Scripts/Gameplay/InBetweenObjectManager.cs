@@ -8,7 +8,7 @@ public class InBetweenObjectManager : MonoBehaviour
     CinemachineFreeLook cmfl;
     Transform player;
     public Transform enemy;
-    public static float distance;
+    public float distance;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +18,11 @@ public class InBetweenObjectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(player.position, enemy.position);
-        transform.position = enemy.position + (player.position - enemy.position) / 2;
+        if (enemy)
+        {
+            distance = Vector3.Distance(player.position, enemy.position);
+            transform.position = enemy.position + (player.position - enemy.position) / 2;
+        }
     }
 
     IEnumerator CheckNearestEnemy()

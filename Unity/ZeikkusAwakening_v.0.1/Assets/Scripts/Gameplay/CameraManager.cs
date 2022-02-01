@@ -10,9 +10,11 @@ public class CameraManager : MonoBehaviour
     private CinemachineFreeLook cmfl;
     private InputManager inputManager;
     private float originalRadius;
+    private InBetweenObjectManager ibom;
     private void Awake()
     {
         cmfl = GetComponent<CinemachineFreeLook>();
+        ibom = FindObjectOfType<InBetweenObjectManager>();
         Transform player = FindObjectOfType<PlayerManager>().transform;
         cmfl.m_Follow = player;
         cmfl.m_LookAt = player;
@@ -20,13 +22,14 @@ public class CameraManager : MonoBehaviour
         originalRadius = cmfl.m_Orbits[1].m_Radius;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (inputManager.lTrigger)
         {
-            if (cmfl.m_Follow.gameObject.GetComponent<InBetweenObjectManager>().enemy.gameObject.CompareTag("Enemigo"))
+            if (!ibom.enemy) return;
+            if (ibom.enemy.gameObject.CompareTag("Enemigo"))
             {
-                cmfl.m_Orbits[1].m_Radius = InBetweenObjectManager.distance;
+                cmfl.m_Orbits[1].m_Radius = ibom.distance;
             } else
             {
                 cmfl.m_Orbits[1].m_Radius = originalRadius;
