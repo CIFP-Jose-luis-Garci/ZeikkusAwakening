@@ -35,7 +35,6 @@ public class PlayerLocomotion : MonoBehaviour
     public bool isZTargeting;
     public LayerMask enemyLayer;
     private Transform enemyObject;
-    private EnemyManager enemy;
 
     [Header("Battle")]
     public bool invincible;
@@ -192,31 +191,22 @@ public class PlayerLocomotion : MonoBehaviour
         coroutine = null;
     }
 
-    public void HandleCameraChange()
+    public void HandleCameraChange(bool isZTargeting = false)
     {
-        isZTargeting = !isZTargeting;
         if (isZTargeting)
         {
-            RaycastHit hit;
-            if (Physics.SphereCast(transform.position, 0.1f, Vector3.forward, out hit,15, enemyLayer))
-            {
-                if (hit.collider != null)
-                {
-                    enemy = hit.collider.gameObject.GetComponent<EnemyManager>();
-                    enemyObject = enemy.transform;
-                    enemy.ImTarget(true);
-                    cameraManager.ChangeTarget(lookInBetween);
-                }
-            }
-            else
-            {
-                isZTargeting = false;
-            }
+            InBetweenObjectManager ibom = lookInBetween.gameObject.GetComponent<InBetweenObjectManager>();
+            enemyObject = ibom.enemy;
+            ibom.enemy.gameObject.GetComponent<EnemyManager>().ImTarget(true);
+            cameraManager.ChangeTarget(lookInBetween);
             
         }
         else
         {
-            enemy.ImTarget(false);
+            InBetweenObjectManager ibom = lookInBetween.gameObject.GetComponent<InBetweenObjectManager>();
+            cameraManager.ChangeTarget(transform);
+            ibom.enemy.gameObject.GetComponent<EnemyManager>().ImTarget(false);
         }
+        this.isZTargeting = isZTargeting;
     }
 }

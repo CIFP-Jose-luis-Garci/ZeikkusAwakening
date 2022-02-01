@@ -142,10 +142,6 @@ public class InputManager : MonoBehaviour
 
     private void HandleCameraTargetingInput()
     {
-        if (lTrigger)
-        {
-            lTrigger = false;
-            playerLocomotion.HandleCameraChange();
-        }
+        playerLocomotion.HandleCameraChange(lTrigger);
     }
 }
