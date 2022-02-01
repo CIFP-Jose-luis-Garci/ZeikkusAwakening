@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class InBetweenObjectManager : MonoBehaviour
 {
+    CinemachineFreeLook cmfl;
     Transform player;
     public Transform enemy;
+    public static float distance;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +18,7 @@ public class InBetweenObjectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        distance = Vector3.Distance(player.position, enemy.position);
         transform.position = enemy.position + (player.position - enemy.position) / 2;
     }
 
