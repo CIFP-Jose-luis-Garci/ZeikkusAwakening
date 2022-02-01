@@ -38,7 +38,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     [Header("Battle")]
     public bool invincible;
-    public Magic[] magicSlots;
+    public int[] magicSlots;
     public Transform lookInBetween;
     public CameraManager cameraManager;
     
@@ -182,6 +182,7 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleMagic(int slot)
     {
         animatorManager.PlayTargetAnimation("magic", true);
+        GetComponent<Magic>().MagicAttackLookupTable(magicSlots[slot]);
     }
 
     private IEnumerator ReloadTurnPoints(int waitTime)
