@@ -40,6 +40,7 @@ public class PlayerLocomotion : MonoBehaviour
     [Header("Battle")]
     public bool invincible;
     public Magic[] magicSlots;
+    public Transform lookInBetween;
     
     private void Awake()
     {
@@ -180,7 +181,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleMagic(int slot)
     {
-        animatorManager.PlayTargetAnimation("magic", true, true);
+        animatorManager.PlayTargetAnimation("magic", true);
     }
 
     private IEnumerator ReloadTurnPoints(int waitTime)
@@ -203,6 +204,7 @@ public class PlayerLocomotion : MonoBehaviour
                     enemy = hit.collider.gameObject.GetComponent<EnemyManager>();
                     enemyObject = enemy.transform;
                     enemy.ImTarget(true);
+                    cameraObject.GetComponent<CameraManager>().ChangeTarget(lookInBetween);
                 }
             }
             else

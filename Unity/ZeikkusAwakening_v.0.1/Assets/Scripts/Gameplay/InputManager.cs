@@ -66,10 +66,17 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandleMovementInput();
-        HandleAInput();
-        if (!gameManager.inWorld) HandleAttackInput();
+        HandleMainButtonsInput();
         if (!gameManager.inWorld) HandleCameraTargetingInput();
         HandleRightBump();
+    }
+
+    private void HandleMainButtonsInput()
+    {
+        HandleAInput();
+        HandleBInput();
+        HandleXInput();
+        HandleYInput();
     }
     
     private void HandleMovementInput()
@@ -103,8 +110,7 @@ public class InputManager : MonoBehaviour
         if (yInput)
         {
             yInput = false;
-            if (gameManager.inWorld) playerLocomotion.HandleJumping();
-            else playerLocomotion.HandleMagic(1);
+            if (!gameManager.inWorld) playerLocomotion.HandleMagic(1);
         }
     }
     private void HandleXInput()
@@ -112,17 +118,16 @@ public class InputManager : MonoBehaviour
         if (xInput)
         {
             xInput = false;
-            if (gameManager.inWorld) playerLocomotion.HandleJumping();
-            else playerLocomotion.HandleMagic(2);
+            if (!gameManager.inWorld) playerLocomotion.HandleMagic(2);
         }
     }
 
-    private void HandleAttackInput()
+    private void HandleBInput()
     {
         if (bInput)
         {
             bInput = false;
-            playerLocomotion.HandleAttack();
+            if (!gameManager.inWorld) playerLocomotion.HandleAttack();
         }
     }
 
