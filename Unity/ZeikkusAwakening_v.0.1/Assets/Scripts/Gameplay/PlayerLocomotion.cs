@@ -41,6 +41,7 @@ public class PlayerLocomotion : MonoBehaviour
     public bool invincible;
     public Magic[] magicSlots;
     public Transform lookInBetween;
+    public CameraManager cameraManager;
     
     private void Awake()
     {
@@ -204,7 +205,7 @@ public class PlayerLocomotion : MonoBehaviour
                     enemy = hit.collider.gameObject.GetComponent<EnemyManager>();
                     enemyObject = enemy.transform;
                     enemy.ImTarget(true);
-                    cameraObject.GetComponent<CameraManager>().ChangeTarget(lookInBetween);
+                    cameraManager.ChangeTarget(lookInBetween);
                 }
             }
             else
