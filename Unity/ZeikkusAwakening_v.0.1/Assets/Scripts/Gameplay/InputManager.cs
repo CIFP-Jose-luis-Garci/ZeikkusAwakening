@@ -27,6 +27,7 @@ public class InputManager : MonoBehaviour
     public bool lTrigger;
     public bool rBump;
 
+    public bool inDialogue;
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
@@ -65,8 +66,15 @@ public class InputManager : MonoBehaviour
 
     public void HandleAllInputs()
     {
-        HandleMovementInput();
-        HandleMainButtonsInput();
+        if (!inDialogue)
+        {
+            HandleMovementInput();
+            HandleMainButtonsInput();
+        }
+        else
+        {
+            HandleBInput();
+        }
         if (!gameManager.inWorld) HandleCameraTargetingInput();
         HandleRightBump();
     }

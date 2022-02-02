@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5425452553393431998}
   - component: {fileID: 5530892201900900630}
   - component: {fileID: 2841788046295548226}
+  - component: {fileID: 3103275887420127158}
   m_Layer: 0
   m_Name: Cofre
   m_TagString: Untagged
@@ -59,6 +60,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d548c047dfaf98340933590847c69cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  containedItem: {fileID: 0}
+  openChest: {fileID: 0}
+  dialogue: {fileID: 3048510913814029288, guid: 85ee008fd81629d4a9721350ce78939e, type: 3}
+--- !u!65 &3103275887420127158
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611902581490335492}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15728997, y: 0.112804584, z: 0.14493562}
+  m_Center: {x: -0.004571885, y: 0.055850685, z: 0.011591345}
 --- !u!1 &4979732935610525446
 GameObject:
   m_ObjectHideFlags: 0

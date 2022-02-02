@@ -8,6 +8,7 @@ public class CofreManager : MonoBehaviour
 {
     public Item containedItem;
     public Image openChest;
+    public GameObject dialogue;
     private InputManager inputManager;
 
     private void Start()
@@ -32,6 +33,11 @@ public class CofreManager : MonoBehaviour
             {
                 openChest.CrossFadeAlpha(0, 0.5f, false);
                 FindObjectOfType<PlayerBagManager>().AddItem(containedItem);
+                GameObject currentDialogue = Instantiate(dialogue, FindObjectOfType<Canvas>().transform);
+                ItemDialogueBoxController idbc = currentDialogue.GetComponent<ItemDialogueBoxController>();
+                idbc.description.text = containedItem.description;
+                idbc.name.text = containedItem.name;
+                idbc.item.sprite = containedItem.itemSprite;
                 containedItem = null;
             }
             
