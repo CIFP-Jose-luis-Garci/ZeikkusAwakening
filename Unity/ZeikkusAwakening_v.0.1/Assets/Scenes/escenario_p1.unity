@@ -1011,6 +1011,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zeikku_battle
       objectReference: {fileID: 0}
+    - target: {fileID: 5933897830930740816, guid: 3d3ea2a8d91360d43b02e85bc1758b8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6418368408473447658, guid: 3d3ea2a8d91360d43b02e85bc1758b8a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2021,13 +2025,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4927773376672683731, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4927773376940549154, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_Name
       value: Zeikku
       objectReference: {fileID: 0}
     - target: {fileID: 4927773376940549154, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5704133746653626008, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_RootOrder
@@ -2557,6 +2565,10 @@ PrefabInstance:
     - target: {fileID: 2381670979209470000, guid: 7ce8c0cdb09b4d441965dd09e9e9b573, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258461700018357762, guid: 7ce8c0cdb09b4d441965dd09e9e9b573, type: 3}
+      propertyPath: inWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ce8c0cdb09b4d441965dd09e9e9b573, type: 3}
