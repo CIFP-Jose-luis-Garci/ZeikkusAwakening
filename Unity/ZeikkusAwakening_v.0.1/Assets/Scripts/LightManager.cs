@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class LightManager : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     private Light[] lights;
     private GameObject[] antorchas;
 
     private void Awake()
     {
+        player = FindObjectOfType<PlayerManager>().gameObject;
         lights = GetComponentsInChildren<Light>();
         antorchas = new GameObject[lights.Length];
         for (int i = 0; i < lights.Length; i++)

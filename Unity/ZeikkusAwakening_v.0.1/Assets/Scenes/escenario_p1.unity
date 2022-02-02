@@ -1448,7 +1448,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7951966, g: 0.28924885, b: 0.9433962, a: 1}
   m_Intensity: 0.7
   m_Range: 10
   m_SpotAngle: 30
@@ -2037,6 +2037,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5234201012602325529, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5704133746653626008, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2411,7 +2415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d09551e31bb07c47986e28ed4f63a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 248963128}
 --- !u!1001 &1834582119
 PrefabInstance:
   m_ObjectHideFlags: 0
