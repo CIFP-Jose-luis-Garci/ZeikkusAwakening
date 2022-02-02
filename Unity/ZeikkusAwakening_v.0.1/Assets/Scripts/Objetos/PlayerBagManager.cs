@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBagManager : MonoBehaviour
 {
-    private ArrayList bag;
+    public ArrayList bag;
     // Start is called before the first frame update
     void Start()
     {
