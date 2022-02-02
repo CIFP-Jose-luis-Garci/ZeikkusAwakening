@@ -37,8 +37,13 @@ public class MeteorManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
             meteorExplosion.SetActive(true);
+            foreach (DestroyAfter i in GetComponentsInChildren<DestroyAfter>())
+            {
+                i.Destruir();
+            }
             meteorExplosion.transform.parent = null;
-            meteorExplosion.GetComponent<DestroyAfter>().Destruir();
+            fire.transform.parent = null;
+            smoke.transform.parent = null;
             Destroy(gameObject);
     }
 }

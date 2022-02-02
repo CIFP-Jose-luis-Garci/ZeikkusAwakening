@@ -11,10 +11,12 @@ public class CameraManager : MonoBehaviour
     private InputManager inputManager;
     private float originalRadius;
     private InBetweenObjectManager ibom;
+    private GameManager gameManager;
     private void Awake()
     {
         cmfl = GetComponent<CinemachineFreeLook>();
         ibom = FindObjectOfType<InBetweenObjectManager>();
+        gameManager = FindObjectOfType<GameManager>();
         Transform player = FindObjectOfType<PlayerManager>().transform;
         cmfl.m_Follow = player;
         cmfl.m_LookAt = player;
@@ -24,7 +26,7 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (inputManager.lTrigger)
+        if (inputManager.lTrigger && !gameManager.inWorld)
         {
             if (!ibom.enemy) return;
             if (ibom.enemy.gameObject.CompareTag("Enemigo"))

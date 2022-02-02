@@ -61,11 +61,7 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleAllMovement()
     {
         if (gameManager.inWorld) HandleFallingAndLanding();
-        if (playerManager.isInteracting)
-        {
-            rb.velocity = Vector3.zero;
-            return;
-        }
+        if (playerManager.isInteracting) return;
         HandleMovement();
         HandleRotation();
     }
@@ -185,6 +181,8 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleMagic(int slot)
     {
+        if (playerManager.isInteracting) return;
+        rb.velocity = Vector3.zero;
         animatorManager.PlayTargetAnimation("magic", true);
         GetComponent<Magic>().MagicAttackLookupTable(magicSlots[slot]);
     }

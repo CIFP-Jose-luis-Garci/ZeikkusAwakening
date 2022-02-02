@@ -92,6 +92,7 @@ public class InputManager : MonoBehaviour
         if (bInput) // if wants to walk
         {
             moveAmount = Mathf.Clamp(moveAmount, 0, 0.5f); // limit speed and blend tree transform
+            Debug.Log(moveAmount);
         }
         animatorManager.UpdateAnimatorValues(0, moveAmount);
     }
