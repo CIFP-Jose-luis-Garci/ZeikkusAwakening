@@ -28,7 +28,11 @@ public class CameraManager : MonoBehaviour
     {
         if (inputManager.lTrigger && !gameManager.inWorld)
         {
-            if (!ibom.enemy) return;
+            if (!ibom.enemy)
+            {
+                cmfl.m_Orbits[1].m_Radius = originalRadius;
+                return;
+            }
             if (ibom.enemy.gameObject.CompareTag("Enemigo"))
             {
                 cmfl.m_Orbits[1].m_Radius = ibom.distance;
