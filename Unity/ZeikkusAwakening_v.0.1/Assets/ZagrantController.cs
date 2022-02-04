@@ -41,6 +41,7 @@ public class ZagrantController : MonoBehaviour
                 if (enemyStats.hp < 0)
                 {
                     Destroy(other.gameObject);
+
                 }
             }
         }

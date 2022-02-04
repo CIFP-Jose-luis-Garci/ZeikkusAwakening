@@ -8,4 +8,6 @@ public class Stats : MonoBehaviour
     public int mp;
     public int strength;
     public int defense;
+    public int magicPower;
+    public int resistence;
 }
