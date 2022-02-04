@@ -9,9 +9,11 @@ public class InBetweenObjectManager : MonoBehaviour
     Transform player;
     public Transform enemy;
     public float distance;
+    public InputManager inputManager;
     // Start is called before the first frame update
     void Start()
     {
+        inputManager = FindObjectOfType<InputManager>();
         StartCoroutine(CheckNearestEnemy());
     }
 
@@ -29,20 +31,23 @@ public class InBetweenObjectManager : MonoBehaviour
     {
         while (true)
         {
-            Transform tMin = null;
-            float minDist = Mathf.Infinity;
-            Vector3 currentPos = transform.position;
-            foreach (GameObject t in GameObject.FindGameObjectsWithTag("Enemigo"))
+            if (!inputManager.lTrigger)
             {
-                float dist = Vector3.Distance(t.transform.position, currentPos);
-                if (dist < minDist)
+                Transform tMin = null;
+                float minDist = Mathf.Infinity;
+                Vector3 currentPos = transform.position;
+                foreach (GameObject t in GameObject.FindGameObjectsWithTag("Enemigo"))
                 {
-                    tMin = t.transform;
-                    minDist = dist;
+                    float dist = Vector3.Distance(t.transform.position, currentPos);
+                    if (dist < minDist)
+                    {
+                        tMin = t.transform;
+                        minDist = dist;
+                    }
                 }
+                enemy = tMin;
+                player = GameObject.FindGameObjectWithTag("Player").transform;
             }
-            enemy = tMin;
-            player = GameObject.FindGameObjectWithTag("Player").transform;
             yield return new WaitForSeconds(1f);
         }
     }

@@ -46,9 +46,4 @@ public class ZagrantController : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        
-    }
 }
