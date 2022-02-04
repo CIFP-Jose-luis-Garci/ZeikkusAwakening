@@ -12,5 +12,6 @@ public class ResetBool : StateMachineBehaviour
     {
         animator.SetBool(isInteractingBool, interactingStatus);
         animator.applyRootMotion = false;
+        animator.SetBool("isAttacking", false);
     }
 }
