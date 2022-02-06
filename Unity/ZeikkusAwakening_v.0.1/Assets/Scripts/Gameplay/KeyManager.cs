@@ -11,14 +11,23 @@ public class KeyManager : MonoBehaviour
     {
         doorManager = GameObject.Find("p1_puerta").GetComponent<DoorManager>();
     }
+
     void Start()
     {
         
     }
-
     void Update()
     {
-        if( testGetKey || doorManager.playerContact(2f) ) { doorManager.hasKey = true ; print("llave conseguida") ; }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            doorManager.hasKey = true;
+            print("llave conseguida");
+        }
     }
 
 }

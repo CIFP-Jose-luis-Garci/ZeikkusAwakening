@@ -9,10 +9,6 @@ public class DoorManager : MonoBehaviour
     private bool doorOpen;
     public Transform player;
     
-    void Awake()
-    {
-        
-    }
     void Start()
     {
         hasKey = false;
@@ -21,42 +17,27 @@ public class DoorManager : MonoBehaviour
 
     void Update()
     {
-        keyCheck();
+
     }
 
-    //si el jugador tiene la llave, ejecuta liftDoor. si no, detecta si el jugador se acerca con la llave
-    void keyCheck()
+    private void OnTriggerEnter(Collider other)
     {
-        if(doorOpen)
-        {
-            liftDoor();
-        }
-        else if( hasKey || playerContact(5f) ) //de momento usa || en vez de && para testeo, cambiar después
+        if( hasKey && other.gameObject.tag == "Player" && !doorOpen)
         {
             doorOpen = true;
+            StartCoroutine("liftDoor");
         }
     }
 
-    //levanta la puerta una vez por ejecución hasta un límite
-    void liftDoor()
+    IEnumerator liftDoor()
     {
-        if(transform.position.y < 2.3f)
+        while(transform.position.y < 2.3f)
         {
             transform.position += Vector3.up * 0.1f ;
-            print("habrir puerta");
+            //print("habrir puerta");
+            yield return null ;
         }
-    }
-
-    //función que se usa para detectar el contacto con el jugador en el DoorManager y el KeyManager, no probada
-    public bool playerContact(float detectRange)
-    {
-        if(Vector3.Distance(player.position, transform.position) <= detectRange )
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        print("abierto");
+        StopCoroutine("liftDoor");
     }
 }
