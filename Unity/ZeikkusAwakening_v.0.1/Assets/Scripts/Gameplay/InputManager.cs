@@ -26,8 +26,10 @@ public class InputManager : MonoBehaviour
     public bool xInput;
     public bool lTrigger;
     public bool rBump;
+    public bool lBump;
 
     public bool inDialogue;
+    public bool inPause;
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
@@ -54,6 +56,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.LTrigger.canceled += i => lTrigger = false;
             playerControls.PlayerActions.RBump.performed += i => rBump = true;
             playerControls.PlayerActions.RBump.canceled += i => rBump = false;
+            playerControls.PlayerActions.LBump.performed += i => lBump = true;
+            playerControls.PlayerActions.LBump.canceled += i => lBump = false;
 
         }
         playerControls.Enable();
@@ -68,12 +72,16 @@ public class InputManager : MonoBehaviour
     {
         if (!inDialogue)
         {
-            HandleMovementInput();
-            HandleMainButtonsInput();
+            HandleBInput();
+        }
+        else if (inDialogue)
+        {
+            HandleLeftBump();
         }
         else
         {
-            HandleBInput();
+            HandleMovementInput();
+            HandleMainButtonsInput();
         }
         if (!gameManager.inWorld) HandleCameraTargetingInput();
         HandleRightBump();
@@ -148,6 +156,15 @@ public class InputManager : MonoBehaviour
         {
             rBump = false;
             playerLocomotion.HandleEvade();
+        }
+    }
+
+    private void HandleLeftBump()
+    {
+        if (lBump && gameManager.inWorld)
+        {
+            lBump = false;
+            
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,23 +10,29 @@ public class ListaItemsManager : MonoBehaviour
     public Text paginas;
     private PlayerBagManager bag;
     private Item[] currentItems;
-    
-    void OnEnable()
+    private int currentPage;
+    private InputManager inputManager;
+    private void Start()
     {
         bag = FindObjectOfType<PlayerBagManager>();
+        currentPage = 1;
+        inputManager = FindObjectOfType<InputManager>();
+    }
+
+    void OnEnable()
+    {
         GetItems();
+        SetPages();
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void GetItems()
     {
         currentItems = bag.GetBagContents();
-        if (currentItems.Length < 10)
-            paginas.text = "1/1";
-        else
-        {
-            float count = Mathf.Floor((float) currentItems.Length / 10) + 1;
-            paginas.text = "1/" + count;
-        }
         for (int i = 0; i < currentItems.Length; i++)
         {
             if (i > 9) break;
@@ -34,5 +41,16 @@ public class ListaItemsManager : MonoBehaviour
             itemName.text = name;
         }
         items[0].GetComponent<Button>().Select();
+    }
+
+    private void SetPages()
+    {
+        if (currentItems.Length < 10)
+            paginas.text = "1/1";
+        else
+        {
+            float count = Mathf.Floor((float) currentItems.Length / 10) + 1;
+            paginas.text = currentPage + "/" + count;
+        }
     }
 }

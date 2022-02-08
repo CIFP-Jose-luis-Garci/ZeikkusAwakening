@@ -260,6 +260,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "L Bump",
+                    "type": "Button",
+                    "id": "ff92b1e9-41b1-40e3-8ac6-361d9e4c8bdb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -381,6 +389,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67b05fec-124b-4ce7-8ed5-7e2cb3eaa9d7",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Bump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
