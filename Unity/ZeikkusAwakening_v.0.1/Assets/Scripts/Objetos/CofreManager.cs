@@ -23,7 +23,6 @@ public class CofreManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Hola!");
             openChest.CrossFadeAlpha(1, 0.5f, false);
         }
     }
