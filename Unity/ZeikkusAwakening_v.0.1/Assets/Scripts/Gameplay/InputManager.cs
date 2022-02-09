@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour
     public bool aInput;
     public bool yInput;
     public bool xInput;
+    public bool start;
     public bool lTrigger;
     public bool rBump;
     public bool lBump;
@@ -52,6 +53,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.Y.canceled += i => yInput = false;
             playerControls.PlayerActions.X.performed += i => xInput = true;
             playerControls.PlayerActions.X.canceled += i => xInput = false;
+            playerControls.PlayerActions.Start.performed += i => start = true;
+            playerControls.PlayerActions.Start.canceled += i => start = false;
             playerControls.PlayerActions.LTrigger.performed += i => lTrigger = true;
             playerControls.PlayerActions.LTrigger.canceled += i => lTrigger = false;
             playerControls.PlayerActions.RBump.performed += i => rBump = true;
@@ -76,6 +79,7 @@ public class InputManager : MonoBehaviour
         HandleBInput();
         HandleXInput();
         HandleYInput();
+        HandleStartInput();
         HandleLeftBump();
         HandleRightBump();
     }
@@ -141,6 +145,13 @@ public class InputManager : MonoBehaviour
                 bInput = false;
                 playerLocomotion.HandleAttack();
             }
+        }
+    }
+    private void HandleStartInput()
+    {
+        if (start)
+        {
+            start = false;
         }
     }
 

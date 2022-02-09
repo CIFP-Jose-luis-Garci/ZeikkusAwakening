@@ -259,6 +259,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc8adb33-b1d1-470c-b569-92de388cb18e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""L Trigger"",
                     ""type"": ""Button"",
                     ""id"": ""ad9dee02-df15-45c2-a5a9-e47762df15a3"",
@@ -415,6 +423,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""L Bump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49ca2ada-bf88-41c1-b115-8c892f1efe00"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -432,6 +451,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_PlayerActions_A = m_PlayerActions.FindAction("A", throwIfNotFound: true);
         m_PlayerActions_Y = m_PlayerActions.FindAction("Y", throwIfNotFound: true);
         m_PlayerActions_X = m_PlayerActions.FindAction("X", throwIfNotFound: true);
+        m_PlayerActions_Start = m_PlayerActions.FindAction("Start", throwIfNotFound: true);
         m_PlayerActions_LTrigger = m_PlayerActions.FindAction("L Trigger", throwIfNotFound: true);
         m_PlayerActions_RBump = m_PlayerActions.FindAction("R Bump", throwIfNotFound: true);
         m_PlayerActions_LBump = m_PlayerActions.FindAction("L Bump", throwIfNotFound: true);
@@ -530,6 +550,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerActions_A;
     private readonly InputAction m_PlayerActions_Y;
     private readonly InputAction m_PlayerActions_X;
+    private readonly InputAction m_PlayerActions_Start;
     private readonly InputAction m_PlayerActions_LTrigger;
     private readonly InputAction m_PlayerActions_RBump;
     private readonly InputAction m_PlayerActions_LBump;
@@ -542,6 +563,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @A => m_Wrapper.m_PlayerActions_A;
         public InputAction @Y => m_Wrapper.m_PlayerActions_Y;
         public InputAction @X => m_Wrapper.m_PlayerActions_X;
+        public InputAction @Start => m_Wrapper.m_PlayerActions_Start;
         public InputAction @LTrigger => m_Wrapper.m_PlayerActions_LTrigger;
         public InputAction @RBump => m_Wrapper.m_PlayerActions_RBump;
         public InputAction @LBump => m_Wrapper.m_PlayerActions_LBump;
@@ -569,6 +591,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @X.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnX;
                 @X.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnX;
                 @X.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnX;
+                @Start.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStart;
                 @LTrigger.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
                 @LTrigger.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
                 @LTrigger.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
@@ -597,6 +622,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @X.started += instance.OnX;
                 @X.performed += instance.OnX;
                 @X.canceled += instance.OnX;
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
                 @LTrigger.started += instance.OnLTrigger;
                 @LTrigger.performed += instance.OnLTrigger;
                 @LTrigger.canceled += instance.OnLTrigger;
@@ -622,6 +650,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnA(InputAction.CallbackContext context);
         void OnY(InputAction.CallbackContext context);
         void OnX(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
         void OnLTrigger(InputAction.CallbackContext context);
         void OnRBump(InputAction.CallbackContext context);
         void OnLBump(InputAction.CallbackContext context);

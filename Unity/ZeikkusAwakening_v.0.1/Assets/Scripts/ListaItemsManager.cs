@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class ListaItemsManager : MonoBehaviour
 {
+    public GameObject pantallaInventario;
+    public GameObject pantallaPausa;
+
     public GameObject[] items;
     public Text paginas;
     private PlayerBagManager bag;
@@ -44,6 +47,16 @@ public class ListaItemsManager : MonoBehaviour
     {
         ChangePage();
         ChangeCategory();
+        GoBack();
+    }
+
+    private void GoBack()
+    {
+        if (inputManager.bInput)
+        {
+            pantallaInventario.SetActive(false);
+            pantallaPausa.SetActive(true);
+        }
     }
 
     private void ChangeCategory()

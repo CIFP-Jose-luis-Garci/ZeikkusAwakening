@@ -246,6 +246,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "fc8adb33-b1d1-470c-b569-92de388cb18e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "L Trigger",
                     "type": "Button",
                     "id": "ad9dee02-df15-45c2-a5a9-e47762df15a3",
@@ -400,6 +408,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "L Bump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49ca2ada-bf88-41c1-b115-8c892f1efe00",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
