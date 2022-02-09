@@ -82,9 +82,12 @@ public class InputManager : MonoBehaviour
     
     private void HandleMovementInput()
     {
-        if (inDialogue || inPause) return;
+
         verticalInput = movementInput.y;
         horizontalInput = movementInput.x;
+
+        if (inPause) return;
+        if (inDialogue) return;
 
         cameraInputX = cameraInput.x;
         cameraInputY = cameraInput.y;
@@ -96,6 +99,7 @@ public class InputManager : MonoBehaviour
             moveAmount = Mathf.Clamp(moveAmount, 0, 0.5f); // limit speed and blend tree transform
         }
         animatorManager.UpdateAnimatorValues(0, moveAmount);
+
     }
 
     private void HandleAInput()

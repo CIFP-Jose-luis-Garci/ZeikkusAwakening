@@ -10,11 +10,17 @@ public class ListaItemsManager : MonoBehaviour
     public Text paginas;
     private PlayerBagManager bag;
     private Item[] currentItems;
+    private InputManager inputManager;
+
     private int currentPage;
     private int maxPages;
-    private InputManager inputManager;
-    public int nextPage;
-    public int startPoint;
+    private int nextPage;
+    private int startPoint;
+
+    public Image[] categories;
+    public Image selectedCategory;
+    private int currentCategory;
+    private bool categoryChanged;
     private void Awake()
     {
         bag = FindObjectOfType<PlayerBagManager>();
@@ -37,6 +43,36 @@ public class ListaItemsManager : MonoBehaviour
     private void Update()
     {
         ChangePage();
+        ChangeCategory();
+    }
+
+    private void ChangeCategory()
+    {
+        float x = inputManager.horizontalInput;
+        if (x != 0)
+        {
+            if (categoryChanged) return;
+            if (x > 0)
+            {
+                currentCategory++;
+                if (currentCategory >= categories.Length)
+                {
+                    currentCategory = 0;
+                }
+            }
+            else if (x < 0)
+            {
+                currentCategory--;
+                if (currentCategory < 0)
+                {
+                    currentCategory = categories.Length - 1;
+                }
+            }
+            selectedCategory.rectTransform.position = categories[currentCategory].rectTransform.position;
+            categoryChanged = true;
+        }
+        else
+            categoryChanged = false;
     }
 
     private void ChangePage()

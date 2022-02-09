@@ -325,7 +325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3140780281933443802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1452,6 +1452,15 @@ MonoBehaviour:
   - {fileID: 7898381392084355094}
   - {fileID: 5873336267716986457}
   paginas: {fileID: 7057750966461214006}
+  categories:
+  - {fileID: 1235640339869403260}
+  - {fileID: 6934106566719003629}
+  - {fileID: 8690721955581819261}
+  - {fileID: 8616402020820097966}
+  - {fileID: 8411393214286681553}
+  - {fileID: 1891119237748763608}
+  - {fileID: 3906478282412465568}
+  selectedCategory: {fileID: 6296820327117169694}
 --- !u!1 &1074479384860208478
 GameObject:
   m_ObjectHideFlags: 0
