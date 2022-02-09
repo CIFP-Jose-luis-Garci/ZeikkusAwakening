@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PantallaPausaManager : MonoBehaviour
 {
     private InputManager inputManager;
+    private GameManager gameManager;
     private Stats zeikkuStats;
     public GameObject pantallaInventario, pantallaEstado;
     public Button inventario, estado;
@@ -15,6 +16,7 @@ public class PantallaPausaManager : MonoBehaviour
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnEnable()
@@ -22,6 +24,9 @@ public class PantallaPausaManager : MonoBehaviour
         inputManager.inPause = true;
         inventario.Select();
         zeikkuStats = inputManager.gameObject.GetComponent<Stats>();
+        zeikkuVida.text = zeikkuStats.hp + "/" + zeikkuStats.maxHP;
+        zeikkuMagia.text = zeikkuStats.mp + "/" + zeikkuStats.maxMP;
+        maru.text = gameManager.maru + "";
     }
 
     private void OnDisable()
@@ -31,8 +36,6 @@ public class PantallaPausaManager : MonoBehaviour
 
     private void Start()
     {
-        zeikkuVida.text = zeikkuStats.hp + "/" + zeikkuStats.maxHP;
-        zeikkuMagia.text = zeikkuStats.mp + "/" + zeikkuStats.maxMP;
         inventario.onClick.AddListener(() =>
         {
             gameObject.SetActive(false);

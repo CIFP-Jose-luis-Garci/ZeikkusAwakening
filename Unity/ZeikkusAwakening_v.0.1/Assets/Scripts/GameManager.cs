@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public bool inWorld;
     public GameObject pause;
     private InputManager inputManager;
+    public int maru;
 
     private void Update()
     {
