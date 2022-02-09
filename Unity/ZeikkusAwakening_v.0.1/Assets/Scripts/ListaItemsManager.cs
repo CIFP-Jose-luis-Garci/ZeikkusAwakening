@@ -20,7 +20,7 @@ public class ListaItemsManager : MonoBehaviour
     public Image[] categories;
     public Image selectedCategory;
     private int currentCategory;
-    private bool categoryChanged;
+    private bool pageChanged;
     private void Awake()
     {
         bag = FindObjectOfType<PlayerBagManager>();
@@ -48,51 +48,55 @@ public class ListaItemsManager : MonoBehaviour
 
     private void ChangeCategory()
     {
-        float x = inputManager.horizontalInput;
-        if (x != 0)
-        {
-            if (categoryChanged) return;
-            if (x > 0)
-            {
-                currentCategory++;
-                if (currentCategory >= categories.Length)
-                {
-                    currentCategory = 0;
-                }
-            }
-            else if (x < 0)
-            {
-                currentCategory--;
-                if (currentCategory < 0)
-                {
-                    currentCategory = categories.Length - 1;
-                }
-            }
-            selectedCategory.rectTransform.position = categories[currentCategory].rectTransform.position;
-            categoryChanged = true;
-            ReloadList();
-        }
-        else
-            categoryChanged = false;
-    }
 
-    private void ChangePage()
-    {
         if (inputManager.rBump)
         {
-            currentPage++;
-            if (currentPage > maxPages)
-                currentPage = 1;
+            currentCategory++;
+            if (currentCategory >= categories.Length)
+            {
+                currentCategory = 0;
+            }
+            selectedCategory.rectTransform.position = categories[currentCategory].rectTransform.position;
             ReloadList();
             inputManager.rBump = false;
         }
         else if (inputManager.lBump)
         {
-            currentPage--;
-            if (currentPage < 1)
-                currentPage = maxPages;
+            currentCategory--;
+            if (currentCategory < 0)
+            {
+                currentCategory = categories.Length - 1;
+            }
+            selectedCategory.rectTransform.position = categories[currentCategory].rectTransform.position;
             ReloadList();
             inputManager.lBump = false;
+        }
+    }
+
+    private void ChangePage()
+    {
+        float x = inputManager.horizontalInput;
+        if (x != 0)
+        {
+            if (pageChanged) return;
+            if (x > 0)
+            {
+                currentPage++;
+                if (currentPage > maxPages)
+                    currentPage = 1;
+                ReloadList();
+            }
+            else if (x < 0)
+            {
+                currentPage--;
+                if (currentPage < 1)
+                    currentPage = maxPages;
+                ReloadList();
+            }
+            pageChanged = true;
+        } else
+        {
+            pageChanged = false;
         }
 
     }
