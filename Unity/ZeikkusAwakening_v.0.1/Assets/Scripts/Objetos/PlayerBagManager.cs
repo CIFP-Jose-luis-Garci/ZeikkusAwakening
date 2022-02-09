@@ -23,10 +23,24 @@ public class PlayerBagManager : MonoBehaviour
         return bag[slot] as Item;
     }
 
-    public Item[] GetBagContents()
+    public Item[] GetBagContents(int category)
     {
         object[] objects = bag.ToArray();
         Item[] items = Array.ConvertAll(objects, new Converter<object, Item>(ObjectToItem));
+        if (category != 0)
+        {
+            ArrayList filteredList = new ArrayList();
+            foreach (Item item in items)
+            {
+                if (item.type == category)
+                {
+                    filteredList.Add(item);
+                }
+            }
+            Debug.Log("holas " + filteredList.Count + " " + category);
+            Item[] filteredItems = Array.ConvertAll(filteredList.ToArray(), new Converter<object, Item>(ObjectToItem));
+            return filteredItems;
+        }
         return items;
     }
 

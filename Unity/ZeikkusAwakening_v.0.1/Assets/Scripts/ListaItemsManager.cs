@@ -70,6 +70,7 @@ public class ListaItemsManager : MonoBehaviour
             }
             selectedCategory.rectTransform.position = categories[currentCategory].rectTransform.position;
             categoryChanged = true;
+            ReloadList();
         }
         else
             categoryChanged = false;
@@ -116,12 +117,11 @@ public class ListaItemsManager : MonoBehaviour
         nextPage = currentPage;
         nextPage *= 10;
         startPoint = nextPage - 10;
-        currentItems = bag.GetBagContents();
+        currentItems = bag.GetBagContents(currentCategory);
         for (int i = startPoint; i < nextPage; i++)
         {
             if (i >= currentItems.Length) break;
             string name = currentItems[i].name;
-            Debug.Log(i - startPoint);
             Text itemName = items[i - startPoint].GetComponentInChildren<Text>();
             itemName.text = name;
         }
