@@ -11,8 +11,11 @@ public class ListaItemsManager : MonoBehaviour
     private PlayerBagManager bag;
     private Item[] currentItems;
     private int currentPage;
+    private int maxPages;
     private InputManager inputManager;
-    private void Start()
+    public int nextPage;
+    public int startPoint;
+    private void Awake()
     {
         bag = FindObjectOfType<PlayerBagManager>();
         currentPage = 1;
@@ -21,23 +24,69 @@ public class ListaItemsManager : MonoBehaviour
 
     void OnEnable()
     {
-        GetItems();
-        SetPages();
+        inputManager.inPause = true;
+        ReloadList();
+    }
+
+    private void OnDisable()
+    {
+
+        inputManager.inPause = false;
     }
 
     private void Update()
     {
-        
+        ChangePage();
+    }
+
+    private void ChangePage()
+    {
+        if (inputManager.rBump)
+        {
+            currentPage++;
+            if (currentPage > maxPages)
+                currentPage = 1;
+            ReloadList();
+            inputManager.rBump = false;
+        }
+        else if (inputManager.lBump)
+        {
+            currentPage--;
+            if (currentPage < 1)
+                currentPage = maxPages;
+            ReloadList();
+            inputManager.lBump = false;
+        }
+
+    }
+
+    private void ReloadList()
+    {
+        ClearList();
+        GetItems();
+        SetPages();
+    }
+
+    private void ClearList()
+    {
+        foreach (GameObject item in items)
+        {
+            item.GetComponentInChildren<Text>().text = "";
+        }
     }
 
     private void GetItems()
     {
+        nextPage = currentPage;
+        nextPage *= 10;
+        startPoint = nextPage - 10;
         currentItems = bag.GetBagContents();
-        for (int i = 0; i < currentItems.Length; i++)
+        for (int i = startPoint; i < nextPage; i++)
         {
-            if (i > 9) break;
+            if (i >= currentItems.Length) break;
             string name = currentItems[i].name;
-            Text itemName = items[i].GetComponentInChildren<Text>();
+            Debug.Log(i - startPoint);
+            Text itemName = items[i - startPoint].GetComponentInChildren<Text>();
             itemName.text = name;
         }
         items[0].GetComponent<Button>().Select();
@@ -46,11 +95,15 @@ public class ListaItemsManager : MonoBehaviour
     private void SetPages()
     {
         if (currentItems.Length < 10)
+        {
             paginas.text = "1/1";
+            maxPages = 1;
+        }
         else
         {
-            float count = Mathf.Floor((float) currentItems.Length / 10) + 1;
+            int count = Mathf.FloorToInt((float) currentItems.Length / 10) + 1;
             paginas.text = currentPage + "/" + count;
+            maxPages = count;
         }
     }
 }

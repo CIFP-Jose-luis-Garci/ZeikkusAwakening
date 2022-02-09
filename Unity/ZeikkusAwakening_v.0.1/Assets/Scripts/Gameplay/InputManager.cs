@@ -70,33 +70,19 @@ public class InputManager : MonoBehaviour
 
     public void HandleAllInputs()
     {
-        if (!inDialogue)
-        {
-            HandleBInput();
-        }
-        else if (inDialogue)
-        {
-            HandleLeftBump();
-        }
-        else
-        {
-            HandleMovementInput();
-            HandleMainButtonsInput();
-        }
-        if (!gameManager.inWorld) HandleCameraTargetingInput();
-        HandleRightBump();
-    }
-
-    private void HandleMainButtonsInput()
-    {
+        HandleMovementInput();
+        HandleCameraTargetingInput();
         HandleAInput();
         HandleBInput();
         HandleXInput();
         HandleYInput();
+        HandleLeftBump();
+        HandleRightBump();
     }
     
     private void HandleMovementInput()
     {
+        if (inDialogue || inPause) return;
         verticalInput = movementInput.y;
         horizontalInput = movementInput.x;
 
@@ -117,6 +103,7 @@ public class InputManager : MonoBehaviour
         if (aInput)
         {
             aInput = false;
+            if (inDialogue || inPause) return;
             if (gameManager.inWorld) playerLocomotion.HandleJumping();
             else playerLocomotion.HandleMagic(0);
         }
@@ -126,6 +113,7 @@ public class InputManager : MonoBehaviour
         if (yInput)
         {
             yInput = false;
+            if (inDialogue || inPause) return;
             if (!gameManager.inWorld) playerLocomotion.HandleMagic(1);
         }
     }
@@ -134,6 +122,7 @@ public class InputManager : MonoBehaviour
         if (xInput)
         {
             xInput = false;
+            if (inDialogue || inPause) return;
             if (!gameManager.inWorld) playerLocomotion.HandleMagic(2);
         }
     }
@@ -142,6 +131,7 @@ public class InputManager : MonoBehaviour
     {
         if (bInput)
         {
+            if (inDialogue || inPause) return;
             if (!gameManager.inWorld)
             {
                 bInput = false;
@@ -152,24 +142,29 @@ public class InputManager : MonoBehaviour
 
     private void HandleRightBump()
     {
-        if (rBump && !gameManager.inWorld)
+        if (rBump)
         {
-            rBump = false;
-            playerLocomotion.HandleEvade();
+            if (inDialogue || inPause) return;
+            if (!gameManager.inWorld)
+            {
+                rBump = false;
+                playerLocomotion.HandleEvade();
+            }
         }
     }
 
     private void HandleLeftBump()
     {
-        if (lBump && gameManager.inWorld)
+        if (lBump)
         {
-            lBump = false;
-            
+            if (inDialogue || inPause) return;
         }
     }
 
     private void HandleCameraTargetingInput()
     {
+        if (inDialogue || inPause) return;
+        if (gameManager.inWorld) return;
         playerLocomotion.HandleCameraChange(lTrigger);
     }
 }
