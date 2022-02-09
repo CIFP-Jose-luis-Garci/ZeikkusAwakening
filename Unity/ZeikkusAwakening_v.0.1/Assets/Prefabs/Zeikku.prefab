@@ -1041,6 +1041,7 @@ GameObject:
   - component: {fileID: 5234201012602325531}
   - component: {fileID: 5234201012602325530}
   - component: {fileID: 5234201012602325525}
+  - component: {fileID: 2079246369808946005}
   m_Layer: 0
   m_Name: Zeikku
   m_TagString: Player
@@ -1134,8 +1135,14 @@ MonoBehaviour:
   horizontalInput: 0
   bInput: 0
   aInput: 0
+  yInput: 0
+  xInput: 0
+  start: 0
   lTrigger: 0
   rBump: 0
+  lBump: 0
+  inDialogue: 0
+  inPause: 0
 --- !u!114 &5234201012602325531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,6 +1172,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   invincible: 0
+  magicSlots: 
+  lookInBetween: {fileID: 0}
+  cameraManager: {fileID: 0}
 --- !u!114 &5234201012602325530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,6 +1202,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+--- !u!114 &2079246369808946005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927773376940549154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea751bdf030c4a43a9e67b2e959a259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 150
+  mp: 100
+  strength: 15
+  defense: 10
+  magicPower: 13
+  resistence: 10
 --- !u!1 &5024616143354908394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2742,13 +2770,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 143c2d62d9c6d77498af67b2304c4420, type: 3}
---- !u!1 &1723831935001135650 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6867943338352927136, guid: 143c2d62d9c6d77498af67b2304c4420, type: 3}
-  m_PrefabInstance: {fileID: 5234201013392436098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5704133745846750313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 143c2d62d9c6d77498af67b2304c4420, type: 3}
+  m_PrefabInstance: {fileID: 5234201013392436098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1723831935001135650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6867943338352927136, guid: 143c2d62d9c6d77498af67b2304c4420, type: 3}
   m_PrefabInstance: {fileID: 5234201013392436098}
   m_PrefabAsset: {fileID: 0}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,17 @@ using UnityEngine;
 public class Stats : MonoBehaviour
 {
     public int hp;
+    public int maxHP;
     public int mp;
+    public int maxMP;
     public int strength;
     public int defense;
     public int magicPower;
     public int resistence;
+
+    private void Start()
+    {
+        maxHP = hp;
+        maxMP = mp;
+    }
 }

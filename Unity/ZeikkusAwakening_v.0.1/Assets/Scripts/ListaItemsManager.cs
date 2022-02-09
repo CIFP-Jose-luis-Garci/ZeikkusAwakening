@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class ListaItemsManager : MonoBehaviour
 {
-    public GameObject pantallaInventario;
     public GameObject pantallaPausa;
 
     public GameObject[] items;
@@ -39,12 +38,12 @@ public class ListaItemsManager : MonoBehaviour
     void OnEnable()
     {
         inputManager.inPause = true;
+        Debug.Log("hola");
         ReloadList();
     }
 
     private void OnDisable()
     {
-
         inputManager.inPause = false;
     }
 
@@ -59,6 +58,7 @@ public class ListaItemsManager : MonoBehaviour
     private void ChangeItemInfo()
     {
         ItemSlotManager currentObject = EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlotManager>();
+        if (currentObject == null) return;
         Item current = currentObject.item;
         if (current == null) return;
 
@@ -72,7 +72,7 @@ public class ListaItemsManager : MonoBehaviour
     {
         if (inputManager.bInput)
         {
-            pantallaInventario.SetActive(false);
+            gameObject.SetActive(false);
             pantallaPausa.SetActive(true);
         }
     }
@@ -87,7 +87,7 @@ public class ListaItemsManager : MonoBehaviour
             {
                 currentCategory = 0;
             }
-            MChangeCategory();
+            _ChangeCategory();
         inputManager.rBump = false;
         }
         else if (inputManager.lBump)
@@ -97,12 +97,12 @@ public class ListaItemsManager : MonoBehaviour
             {
                 currentCategory = categories.Length - 1;
             }
-            MChangeCategory();
+            _ChangeCategory();
             inputManager.lBump = false;
         }
     }
 
-    private void MChangeCategory()
+    private void _ChangeCategory()
     {
         selectedCategory.rectTransform.position = categories[currentCategory].rectTransform.position;
         ReloadList();
