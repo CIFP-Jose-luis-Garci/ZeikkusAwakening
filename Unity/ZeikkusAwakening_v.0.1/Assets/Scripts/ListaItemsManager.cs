@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ListaItemsManager : MonoBehaviour
@@ -22,8 +23,12 @@ public class ListaItemsManager : MonoBehaviour
 
     public Image[] categories;
     public Image selectedCategory;
+    public Text categoryText;
     private int currentCategory;
     private bool pageChanged;
+
+    public Text itemName, itemCategory, itemDescription;
+    public Image itemSprite;
     private void Awake()
     {
         bag = FindObjectOfType<PlayerBagManager>();
@@ -47,7 +52,20 @@ public class ListaItemsManager : MonoBehaviour
     {
         ChangePage();
         ChangeCategory();
+        ChangeItemInfo();
         GoBack();
+    }
+
+    private void ChangeItemInfo()
+    {
+        ItemSlotManager currentObject = EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlotManager>();
+        Item current = currentObject.item;
+        if (current == null) return;
+
+        itemName.text = current.name;
+        itemCategory.text = current.category;
+        itemDescription.text = current.description;
+        itemSprite.sprite = current.itemSprite;
     }
 
     private void GoBack()
@@ -69,9 +87,8 @@ public class ListaItemsManager : MonoBehaviour
             {
                 currentCategory = 0;
             }
-            selectedCategory.rectTransform.position = categories[currentCategory].rectTransform.position;
-            ReloadList();
-            inputManager.rBump = false;
+            MChangeCategory();
+        inputManager.rBump = false;
         }
         else if (inputManager.lBump)
         {
@@ -80,10 +97,43 @@ public class ListaItemsManager : MonoBehaviour
             {
                 currentCategory = categories.Length - 1;
             }
-            selectedCategory.rectTransform.position = categories[currentCategory].rectTransform.position;
-            ReloadList();
+            MChangeCategory();
             inputManager.lBump = false;
         }
+    }
+
+    private void MChangeCategory()
+    {
+        selectedCategory.rectTransform.position = categories[currentCategory].rectTransform.position;
+        ReloadList();
+        string category = "";
+        switch (currentCategory)
+        {
+            case 0:
+                category = "Todo";
+                break;
+            case 1:
+                category = "Armas";
+                break;
+            case 2:
+                category = "Armaduras";
+                break;
+            case 3:
+                category = "Pantalones";
+                break;
+            case 4:
+                category = "Pociones";
+                break;
+            case 5:
+                category = "Llaves";
+                break;
+            case 6:
+                category = "Tesoros";
+                break;
+            default:
+                break;
+        }
+        categoryText.text = "Inventario: " + category;
     }
 
     private void ChangePage()
@@ -139,6 +189,7 @@ public class ListaItemsManager : MonoBehaviour
         {
             if (i >= currentItems.Length) break;
             string name = currentItems[i].name;
+            items[i - startPoint].GetComponent<ItemSlotManager>().item = currentItems[i];
             Text itemName = items[i - startPoint].GetComponentInChildren<Text>();
             itemName.text = name;
         }
