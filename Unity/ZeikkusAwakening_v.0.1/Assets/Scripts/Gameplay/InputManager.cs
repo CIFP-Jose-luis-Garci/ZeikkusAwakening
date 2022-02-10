@@ -204,9 +204,7 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                gameManager.inWorld = true;
-                zagrantController.gameObject.SetActive(false);
-                animatorManager.animator.runtimeAnimatorController = inWorldController;
+                StartCoroutine(Win());
             }
         }
     }
@@ -218,7 +216,16 @@ public class InputManager : MonoBehaviour
         animatorManager.animator.SetTrigger("toBattle");
         yield return new WaitForSeconds(1f);
         zagrantController.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
         animatorManager.animator.runtimeAnimatorController = inBattleController;
+    }
+
+    private IEnumerator Win()
+    {
+        gameManager.inWorld = true;
+        animatorManager.PlayTargetAnimation("win", true);
+        yield return new WaitForSeconds(1f);
+        zagrantController.gameObject.SetActive(false);
+        animatorManager.animator.runtimeAnimatorController = inWorldController;
     }
 }
