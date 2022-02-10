@@ -12,7 +12,9 @@ public class Stats : MonoBehaviour
     public int strength;
     public int defense;
     public int magicPower;
-    public int resistence;
+    public int resistance;
+    public int experience;
+    public int nextLevelExperience;
 
     private void Start()
     {

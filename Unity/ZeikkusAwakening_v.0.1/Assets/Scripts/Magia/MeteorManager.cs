@@ -47,7 +47,7 @@ public class MeteorManager : MonoBehaviour
             resultado += 1;
             resultado *= zeikkuStats.magicPower;
             resultado *= animatorManager.animator.GetFloat("damage");
-            resultado /= (25 * enemyStats.resistence);
+            resultado /= (25 * enemyStats.resistance);
             resultado += 2;
             float random = Random.Range(85, 100);
             resultado *= random;

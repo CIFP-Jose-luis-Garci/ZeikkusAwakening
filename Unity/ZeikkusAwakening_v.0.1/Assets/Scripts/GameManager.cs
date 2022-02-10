@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public bool inWorld;
     public GameObject pause;
-    private InputManager inputManager;
     public int maru;
+    public GameObject[] personajes;
+
+    private InputManager inputManager;
 
     private void Update()
     {
