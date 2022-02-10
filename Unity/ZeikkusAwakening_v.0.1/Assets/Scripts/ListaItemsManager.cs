@@ -88,7 +88,7 @@ public class ListaItemsManager : MonoBehaviour
                 currentCategory = 0;
             }
             _ChangeCategory();
-        inputManager.rBump = false;
+            inputManager.rBump = false;
         }
         else if (inputManager.lBump)
         {

@@ -35,6 +35,7 @@ public class InputManager : MonoBehaviour
     public bool inPause;
 
     public RuntimeAnimatorController inBattleController;
+    public RuntimeAnimatorController inWorldController;
 
 
     private void Awake()
@@ -199,10 +200,25 @@ public class InputManager : MonoBehaviour
             rTrigger = false;
             if (gameManager.inWorld)
             {
-                gameManager.inWorld = false;
-                zagrantController.gameObject.SetActive(true);
-                animatorManager.animator.runtimeAnimatorController = inBattleController;
+                StartCoroutine(DrawSword());
+            }
+            else
+            {
+                gameManager.inWorld = true;
+                zagrantController.gameObject.SetActive(false);
+                animatorManager.animator.runtimeAnimatorController = inWorldController;
             }
         }
+    }
+
+    private IEnumerator DrawSword()
+    {
+        gameManager.inWorld = false;
+        animatorManager.animator.SetBool("isInteracting", true);
+        animatorManager.animator.SetTrigger("toBattle");
+        yield return new WaitForSeconds(1f);
+        zagrantController.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.2f);
+        animatorManager.animator.runtimeAnimatorController = inBattleController;
     }
 }
