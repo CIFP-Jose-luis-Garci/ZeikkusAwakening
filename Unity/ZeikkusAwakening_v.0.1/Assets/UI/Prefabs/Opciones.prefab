@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 8836340115940066303}
   - component: {fileID: 4488828285954209299}
   - component: {fileID: 8016174291535765928}
+  - component: {fileID: 5953797554064267923}
   m_Layer: 5
   m_Name: Salir
   m_TagString: Untagged
@@ -200,6 +201,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5953797554064267923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6411069268038587356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
 --- !u!1 &8277551100048440978
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8277551101130498401}
   - component: {fileID: 8277551101130498398}
+  - component: {fileID: 3444811581972994493}
   m_Layer: 5
   m_Name: VolSonidoSlider
   m_TagString: Untagged
@@ -880,6 +895,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3444811581972994493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277551101130498400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
 --- !u!1 &8277551101197395519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8277551101851845547}
   - component: {fileID: 8277551101851845544}
+  - component: {fileID: 8513063525362266145}
   m_Layer: 5
   m_Name: VolMusicaSlider
   m_TagString: Untagged
@@ -1428,6 +1457,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8513063525362266145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277551101851845546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
 --- !u!1 &8277551101891265712
 GameObject:
   m_ObjectHideFlags: 0

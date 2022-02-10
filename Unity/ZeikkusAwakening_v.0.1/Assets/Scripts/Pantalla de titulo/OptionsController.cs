@@ -19,7 +19,8 @@ public class OptionsController : MonoBehaviour
         exit.onClick.AddListener(() =>
         {
             Transform uiTransform = GameObject.FindGameObjectWithTag("UI").transform;
-            Instantiate(selecciones, uiTransform);
+            GameObject seleccionesInstanciadas = Instantiate(selecciones, uiTransform);
+            seleccionesInstanciadas.GetComponentInChildren<Button>().Select();
             Instantiate(gameLogo, uiTransform);
             Destroy(gameObject);
         });

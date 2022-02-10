@@ -12,7 +12,8 @@ public class PressAnyButtonController : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(() =>
         {
-            Instantiate(selecciones, GameObject.FindGameObjectWithTag("UI").transform);
+            GameObject seleccionesInstanciadas = Instantiate(selecciones, GameObject.FindGameObjectWithTag("UI").transform);
+            seleccionesInstanciadas.GetComponentInChildren<Button>().Select();
             Destroy(gameObject);
         });
     }

@@ -19,7 +19,8 @@ public class SelectionController : MonoBehaviour
         continuee.interactable = false;
         options.onClick.AddListener(() =>
         {
-            Instantiate(opciones, GameObject.FindGameObjectWithTag("UI").transform);
+            GameObject opcionesInstanciadas = Instantiate(opciones, GameObject.FindGameObjectWithTag("UI").transform);
+            opcionesInstanciadas.GetComponentInChildren<Slider>().Select();
             Destroy(GameObject.FindGameObjectWithTag("GameLogo"));
             Destroy(gameObject);
         });

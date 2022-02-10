@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class TitleScreenManager : MonoBehaviour
@@ -11,6 +13,8 @@ public class TitleScreenManager : MonoBehaviour
     private InputManager iMgr;
     private bool titlepressActive;
     private bool titlepressVisible = false;
+    private AudioSource musicaTitulo;
+    private GameObject current;
 
     private void Start()
     {
@@ -20,11 +24,8 @@ public class TitleScreenManager : MonoBehaviour
         titlelogo.CrossFadeAlpha(0, 0, true);
         titlepress.CrossFadeAlpha(0, 0, true);
         StartCoroutine(AnimateTitleScreen());
-    }
-
-    private void OnGUI()
-    {
-        
+        musicaTitulo = GetComponent<AudioSource>();
+        current = EventSystem.current.currentSelectedGameObject;
     }
 
     IEnumerator AnimateTitleScreen()
@@ -35,6 +36,7 @@ public class TitleScreenManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         logo.CrossFadeAlpha(0, 1, true);
         yield return new WaitForSeconds(1f);
+        musicaTitulo.Play();
         logobg.CrossFadeAlpha(0, 1, true);
         yield return new WaitForSeconds(1f);
         titlebg.CrossFadeAlpha(1, 1, true);
@@ -46,7 +48,7 @@ public class TitleScreenManager : MonoBehaviour
         titlepressVisible = true;
         StartCoroutine(AnimatePressStart());
     }
-    
+
     IEnumerator AnimatePressStart()
     {
         while (true)
