@@ -13,7 +13,7 @@ public class MeteorManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animatorManager = GameObject.FindObjectOfType<AnimatorManager>();
+        animatorManager = FindObjectOfType<AnimatorManager>();
         mpCost = 10;
         damage = 30;
         fire.SetActive(false);
@@ -38,6 +38,7 @@ public class MeteorManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer == 3) Animate();
         if (other.gameObject.CompareTag("Enemigo"))
         {
 
@@ -57,19 +58,21 @@ public class MeteorManager : MonoBehaviour
             if (enemyStats.hp < 0)
             {
                 Destroy(other.gameObject);
-
             }
-
-            // animacion
-            meteorExplosion.SetActive(true);
-            foreach (DestroyAfter i in GetComponentsInChildren<DestroyAfter>())
-            {
-                i.Destruir();
-            }
-            meteorExplosion.transform.parent = null;
-            fire.transform.parent = null;
-            smoke.transform.parent = null;
-            Destroy(gameObject);
+            Animate();
         }
+    }
+    
+    private void Animate(){
+        meteorExplosion.SetActive(true);
+        foreach (DestroyAfter i in GetComponentsInChildren<DestroyAfter>())
+        {
+            i.Destruir();
+        }
+        meteorExplosion.transform.parent = null;
+        fire.transform.parent = null;
+        smoke.transform.parent = null;
+        Destroy(gameObject);
+        
     }
 }

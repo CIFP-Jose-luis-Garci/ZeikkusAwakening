@@ -27,12 +27,12 @@ public class ItemDialogueBoxController : MonoBehaviour
         }
         inputManager = FindObjectOfType<InputManager>();
         inputManager.inDialogue = true;
-        inputManager.bInput = false;
+        inputManager.xInput = false;
     }
 
     private void Update()
     {
-        if (inputManager.bInput)
+        if (inputManager.xInput)
         {
             foreach (Graphic child in children)
             {

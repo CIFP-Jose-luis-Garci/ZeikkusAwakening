@@ -30,7 +30,7 @@ public class CofreManager : MonoBehaviour
     private void OnTriggerStay(Collider collisionInfo)
     {
         if (collisionInfo.gameObject.CompareTag("Player"))
-            if (containedItem != null && inputManager.bInput)
+            if (containedItem != null && inputManager.xInput)
             {
                 animator.enabled = true;
             }

@@ -41,12 +41,19 @@ public class PlayerLocomotion : MonoBehaviour
     public int[] magicSlots;
     public Transform lookInBetween;
     public CameraManager cameraManager;
+
+    [Header("Sounds")] 
+    public AudioClip[] shouts;
+    public AudioClip[] swords;
+    public AudioSource shoutSource;
+    public AudioSource swordSource;
     
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager>();
         inputManager = GetComponent<InputManager>();
         animatorManager = GetComponent<AnimatorManager>();
+        shoutSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
         cameraObject = Camera.main.transform;
@@ -174,6 +181,10 @@ public class PlayerLocomotion : MonoBehaviour
             }
 
             animatorManager.PlayTargetAnimation(animaciones[puntosDeTurno], true, true);
+            shoutSource.clip = shouts[puntosDeTurno];
+            shoutSource.Play();
+            swordSource.clip = swords[puntosDeTurno];
+            swordSource.Play();
             if (coroutine != null) StopCoroutine(coroutine);
             coroutine = StartCoroutine(ReloadTurnPoints(animatorManager.GetAnimationLength() * 2));
         }

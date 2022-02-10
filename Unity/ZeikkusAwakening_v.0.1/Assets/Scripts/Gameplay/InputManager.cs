@@ -139,9 +139,12 @@ public class InputManager : MonoBehaviour
     {
         if (xInput)
         {
-            xInput = false;
             if (inDialogue || inPause) return;
-            if (!gameManager.inWorld) playerLocomotion.HandleMagic(2);
+            if (!gameManager.inWorld)
+            {
+                xInput = false;
+                playerLocomotion.HandleMagic(2);
+            }
         }
     }
 
