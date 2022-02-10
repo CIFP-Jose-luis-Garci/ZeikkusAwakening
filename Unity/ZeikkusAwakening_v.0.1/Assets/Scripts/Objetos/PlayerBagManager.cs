@@ -37,7 +37,6 @@ public class PlayerBagManager : MonoBehaviour
                     filteredList.Add(item);
                 }
             }
-            Debug.Log("holas " + filteredList.Count + " " + category);
             Item[] filteredItems = Array.ConvertAll(filteredList.ToArray(), new Converter<object, Item>(ObjectToItem));
             return filteredItems;
         }

@@ -20,11 +20,12 @@ public class InBetweenObjectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemy)
+        if (enemy && inputManager.lTrigger)
         {
             distance = Vector3.Distance(player.position, enemy.position);
             transform.position = enemy.position + (player.position - enemy.position) / 2;
         }
+        
     }
 
     IEnumerator CheckNearestEnemy()
@@ -33,6 +34,7 @@ public class InBetweenObjectManager : MonoBehaviour
         {
             if (!inputManager.lTrigger)
             {
+                transform.position = transform.parent.position;
                 Transform tMin = null;
                 float minDist = Mathf.Infinity;
                 Vector3 currentPos = transform.position;
@@ -48,7 +50,7 @@ public class InBetweenObjectManager : MonoBehaviour
                 enemy = tMin;
                 player = GameObject.FindGameObjectWithTag("Player").transform;
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

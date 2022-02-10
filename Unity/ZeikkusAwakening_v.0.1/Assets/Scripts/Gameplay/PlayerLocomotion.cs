@@ -41,6 +41,7 @@ public class PlayerLocomotion : MonoBehaviour
     public int[] magicSlots;
     public Transform lookInBetween;
     public CameraManager cameraManager;
+    private Vector3 directionWhileZtargetting;
 
     [Header("Sounds")] 
     public AudioClip[] shouts;
@@ -69,6 +70,7 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (gameManager.inWorld) HandleFallingAndLanding();
         if (playerManager.isInteracting) return;
+        directionWhileZtargetting = (lookInBetween.position - transform.position).normalized;
         HandleMovement();
         HandleRotation();
     }
@@ -77,8 +79,8 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (isZTargeting && enemyObject)
         {
-            moveDirection = (enemyObject.forward * -1) * inputManager.verticalInput;
-            moveDirection += (enemyObject.right * -1) * inputManager.horizontalInput;
+            moveDirection = directionWhileZtargetting * inputManager.verticalInput;
+            moveDirection += directionWhileZtargetting * inputManager.horizontalInput;
         }
         else
         {
@@ -100,8 +102,8 @@ public class PlayerLocomotion : MonoBehaviour
         if (isZTargeting && enemyObject)
         {
             
-            targetDirection = (enemyObject.forward* -1) * inputManager.verticalInput;
-            targetDirection += (enemyObject.right * -1) * inputManager.horizontalInput;
+            targetDirection = directionWhileZtargetting * inputManager.verticalInput;
+            targetDirection += directionWhileZtargetting * inputManager.horizontalInput;
         }
         else
         {

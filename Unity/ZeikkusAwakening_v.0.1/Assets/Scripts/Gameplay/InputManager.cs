@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -9,7 +10,9 @@ public class InputManager : MonoBehaviour
     private PlayerLocomotion playerLocomotion;
     private AnimatorManager animatorManager;
     private GameManager gameManager;
+    private CinemachineFreeLook freeLook;
     public ZagrantController zagrantController;
+    
 
     public Vector2 movementInput;
     public Vector2 cameraInput;
@@ -43,6 +46,7 @@ public class InputManager : MonoBehaviour
         animatorManager = GetComponent<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
         gameManager = FindObjectOfType<GameManager>();
+        freeLook = FindObjectOfType<CinemachineFreeLook>();
     }
 
     private void OnEnable()
@@ -133,6 +137,7 @@ public class InputManager : MonoBehaviour
             yInput = false;
             if (inDialogue || inPause) return;
             if (!gameManager.inWorld) playerLocomotion.HandleMagic(1);
+            else playerLocomotion.HandleMagic(0);
         }
     }
     private void HandleXInput()
@@ -187,6 +192,7 @@ public class InputManager : MonoBehaviour
         {
             if (inDialogue || inPause) return;
         }
+        if (gameManager.inWorld) freeLook.m_RecenterToTargetHeading.m_enabled = lBump;
     }
 
     private void HandleLeftTrigger()

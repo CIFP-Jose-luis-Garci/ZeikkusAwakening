@@ -24,7 +24,7 @@ public class CameraManager : MonoBehaviour
         originalRadius = cmfl.m_Orbits[1].m_Radius;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if (inputManager.lTrigger && !gameManager.inWorld)
         {
@@ -35,7 +35,7 @@ public class CameraManager : MonoBehaviour
             }
             if (ibom.enemy.gameObject.CompareTag("Enemigo"))
             {
-                cmfl.m_Orbits[1].m_Radius = ibom.distance;
+                cmfl.m_Orbits[1].m_Radius = Mathf.Clamp(ibom.distance, 4, Int32.MaxValue);
             } else
             {
                 cmfl.m_Orbits[1].m_Radius = originalRadius;
