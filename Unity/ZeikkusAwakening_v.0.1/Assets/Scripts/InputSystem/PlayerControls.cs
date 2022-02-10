@@ -275,6 +275,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""R Trigger"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c3e0dea-9fb5-4847-8df9-d37a8c5ec7cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""R Bump"",
                     ""type"": ""Button"",
                     ""id"": ""890d853c-0019-4b40-88ed-890d840a3f2e"",
@@ -434,6 +442,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1874fba2-18e0-4322-9c8f-3d2a85613c1f"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""R Trigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f74685c2-4bcf-43eb-b189-4b74ba5ca355"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""R Trigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -453,6 +483,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_PlayerActions_X = m_PlayerActions.FindAction("X", throwIfNotFound: true);
         m_PlayerActions_Start = m_PlayerActions.FindAction("Start", throwIfNotFound: true);
         m_PlayerActions_LTrigger = m_PlayerActions.FindAction("L Trigger", throwIfNotFound: true);
+        m_PlayerActions_RTrigger = m_PlayerActions.FindAction("R Trigger", throwIfNotFound: true);
         m_PlayerActions_RBump = m_PlayerActions.FindAction("R Bump", throwIfNotFound: true);
         m_PlayerActions_LBump = m_PlayerActions.FindAction("L Bump", throwIfNotFound: true);
     }
@@ -552,6 +583,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerActions_X;
     private readonly InputAction m_PlayerActions_Start;
     private readonly InputAction m_PlayerActions_LTrigger;
+    private readonly InputAction m_PlayerActions_RTrigger;
     private readonly InputAction m_PlayerActions_RBump;
     private readonly InputAction m_PlayerActions_LBump;
     public struct PlayerActionsActions
@@ -565,6 +597,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @X => m_Wrapper.m_PlayerActions_X;
         public InputAction @Start => m_Wrapper.m_PlayerActions_Start;
         public InputAction @LTrigger => m_Wrapper.m_PlayerActions_LTrigger;
+        public InputAction @RTrigger => m_Wrapper.m_PlayerActions_RTrigger;
         public InputAction @RBump => m_Wrapper.m_PlayerActions_RBump;
         public InputAction @LBump => m_Wrapper.m_PlayerActions_LBump;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
@@ -597,6 +630,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @LTrigger.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
                 @LTrigger.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
                 @LTrigger.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
+                @RTrigger.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRTrigger;
+                @RTrigger.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRTrigger;
+                @RTrigger.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRTrigger;
                 @RBump.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRBump;
                 @RBump.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRBump;
                 @RBump.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRBump;
@@ -628,6 +664,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @LTrigger.started += instance.OnLTrigger;
                 @LTrigger.performed += instance.OnLTrigger;
                 @LTrigger.canceled += instance.OnLTrigger;
+                @RTrigger.started += instance.OnRTrigger;
+                @RTrigger.performed += instance.OnRTrigger;
+                @RTrigger.canceled += instance.OnRTrigger;
                 @RBump.started += instance.OnRBump;
                 @RBump.performed += instance.OnRBump;
                 @RBump.canceled += instance.OnRBump;
@@ -652,6 +691,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnX(InputAction.CallbackContext context);
         void OnStart(InputAction.CallbackContext context);
         void OnLTrigger(InputAction.CallbackContext context);
+        void OnRTrigger(InputAction.CallbackContext context);
         void OnRBump(InputAction.CallbackContext context);
         void OnLBump(InputAction.CallbackContext context);
     }

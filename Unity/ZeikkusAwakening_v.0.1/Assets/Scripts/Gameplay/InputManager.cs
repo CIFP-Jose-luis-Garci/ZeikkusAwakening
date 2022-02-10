@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     private PlayerLocomotion playerLocomotion;
     private AnimatorManager animatorManager;
     private GameManager gameManager;
+    public ZagrantController zagrantController;
 
     public Vector2 movementInput;
     public Vector2 cameraInput;
@@ -26,11 +27,16 @@ public class InputManager : MonoBehaviour
     public bool xInput;
     public bool start;
     public bool lTrigger;
+    public bool rTrigger;
     public bool rBump;
     public bool lBump;
 
     public bool inDialogue;
     public bool inPause;
+
+    public RuntimeAnimatorController inBattleController;
+
+
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
@@ -57,6 +63,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.Start.canceled += i => start = false;
             playerControls.PlayerActions.LTrigger.performed += i => lTrigger = true;
             playerControls.PlayerActions.LTrigger.canceled += i => lTrigger = false;
+            playerControls.PlayerActions.RTrigger.performed += i => rTrigger = true;
+            playerControls.PlayerActions.RTrigger.canceled += i => rTrigger = false;
             playerControls.PlayerActions.RBump.performed += i => rBump = true;
             playerControls.PlayerActions.RBump.canceled += i => rBump = false;
             playerControls.PlayerActions.LBump.performed += i => lBump = true;
@@ -74,7 +82,8 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandleMovementInput();
-        HandleCameraTargetingInput();
+        HandleLeftTrigger();
+        HandleRightTrigger();
         HandleAInput();
         HandleBInput();
         HandleXInput();
@@ -176,10 +185,24 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void HandleCameraTargetingInput()
+    private void HandleLeftTrigger()
     {
         if (inDialogue || inPause) return;
         if (gameManager.inWorld) return;
         playerLocomotion.HandleCameraChange(lTrigger);
+    }
+
+    private void HandleRightTrigger()
+    {
+        if (rTrigger)
+        {
+            rTrigger = false;
+            if (gameManager.inWorld)
+            {
+                gameManager.inWorld = false;
+                zagrantController.gameObject.SetActive(true);
+                animatorManager.animator.runtimeAnimatorController = inBattleController;
+            }
+        }
     }
 }

@@ -247,6 +247,52 @@ Transform:
   m_Father: {fileID: 1342066922728230064}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1691626171847273843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3335101239391897373}
+  - component: {fileID: 3276681383249689161}
+  m_Layer: 0
+  m_Name: InBewteen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3335101239391897373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691626171847273843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5704133746653626008}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3276681383249689161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691626171847273843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36d86e53a1ca52469feec2224d801eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  distance: 0
+  inputManager: {fileID: 0}
 --- !u!215 &5234201011639302338
 ReflectionProbe:
   m_ObjectHideFlags: 0
@@ -1025,6 +1071,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.001052171, y: 0.2796157, z: -0.0022069812}
     m_Extent: {x: 0.60000515, y: 0.20733827, z: 0.12282054}
   m_DirtyAABB: 0
+--- !u!114 &2067915419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927773376672683731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cdf756007d2a4418d113ba658fb3b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
 --- !u!1 &4927773376940549154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,6 +1101,7 @@ GameObject:
   - component: {fileID: 5234201012602325530}
   - component: {fileID: 5234201012602325525}
   - component: {fileID: 2079246369808946005}
+  - component: {fileID: 5358106998226234440}
   m_Layer: 0
   m_Name: Zeikku
   m_TagString: Player
@@ -1062,6 +1122,7 @@ Transform:
   m_Children:
   - {fileID: 250360614471671308}
   - {fileID: 1124584005913852856}
+  - {fileID: 3335101239391897373}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1110,7 +1171,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_Height: 1.685
   m_Direction: 1
   m_Center: {x: 0, y: 0.84, z: 0}
@@ -1126,6 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af56f9c70760f54eaa75aecb0ec7504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zagrantController: {fileID: 2067915419}
   movementInput: {x: 0, y: 0}
   cameraInput: {x: 0, y: 0}
   cameraInputX: 0
@@ -1139,10 +1201,12 @@ MonoBehaviour:
   xInput: 0
   start: 0
   lTrigger: 0
+  rTrigger: 0
   rBump: 0
   lBump: 0
   inDialogue: 0
   inPause: 0
+  inBattleController: {fileID: 9100000, guid: dd6409fb5c3808146905a4953f77dae1, type: 2}
 --- !u!114 &5234201012602325531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1172,8 +1236,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   invincible: 0
-  magicSlots: 
-  lookInBetween: {fileID: 0}
+  magicSlots: 000000000000000000000000
+  lookInBetween: {fileID: 3335101239391897373}
   cameraManager: {fileID: 0}
 --- !u!114 &5234201012602325530
 MonoBehaviour:
@@ -1214,12 +1278,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea751bdf030c4a43a9e67b2e959a259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Zeikku
+  title: El rey destronado
+  sprite: {fileID: 21300000, guid: aec7115013eaec9479845dd8f09cf5d5, type: 3}
+  level: 1
   hp: 150
+  maxHP: 0
   mp: 100
+  maxMP: 0
   strength: 15
   defense: 10
   magicPower: 13
-  resistence: 10
+  resistance: 0
+  experience: 0
+  nextLevelExperience: 1000
+  turnPoints: 4
+--- !u!114 &5358106998226234440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927773376940549154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71d1b0fcd54e1a45bb1751b7e1c0b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magics:
+  - {fileID: 8755966844123130295, guid: 945ec140f401a3540866ba26c162e337, type: 3}
 --- !u!1 &5024616143354908394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,6 +2843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZagrantLowPoly
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 143c2d62d9c6d77498af67b2304c4420, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4013848726950180376, guid: 143c2d62d9c6d77498af67b2304c4420, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0009
@@ -2770,6 +2861,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 143c2d62d9c6d77498af67b2304c4420, type: 3}
+--- !u!1 &4927773376672683731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 143c2d62d9c6d77498af67b2304c4420, type: 3}
+  m_PrefabInstance: {fileID: 5234201013392436098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5704133745846750313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 143c2d62d9c6d77498af67b2304c4420, type: 3}

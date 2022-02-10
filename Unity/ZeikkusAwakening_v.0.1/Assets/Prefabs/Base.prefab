@@ -795,6 +795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8258461700018357763}
   - component: {fileID: 8258461700018357762}
+  - component: {fileID: 760720525}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -828,7 +829,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88512261bc03c1642b5b99083d541e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inWorld: 0
+  inWorld: 1
+  pause: {fileID: 0}
+  maru: 1000
+  personajes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &760720525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8258461700018357789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568a38a4e682d424b98ec436c57f5282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8258461700271186068
 GameObject:
   m_ObjectHideFlags: 0
