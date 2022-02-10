@@ -191,8 +191,18 @@ public class InputManager : MonoBehaviour
         if (lBump)
         {
             if (inDialogue || inPause) return;
+            if (gameManager.inWorld) freeLook.m_RecenterToTargetHeading.m_enabled = true;
+            else
+            {
+                playerLocomotion.HandleBlock();
+            }
         }
-        if (gameManager.inWorld) freeLook.m_RecenterToTargetHeading.m_enabled = lBump;
+        else
+        {
+            animatorManager.animator.SetBool("blocking", false);
+            freeLook.m_RecenterToTargetHeading.m_enabled = false;
+        }
+
     }
 
     private void HandleLeftTrigger()

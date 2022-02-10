@@ -42,6 +42,7 @@ public class PlayerLocomotion : MonoBehaviour
     public Transform lookInBetween;
     public CameraManager cameraManager;
     private Vector3 directionWhileZtargetting;
+    public bool blocking;
 
     [Header("Sounds")] 
     public AudioClip[] shouts;
@@ -120,22 +121,6 @@ public class PlayerLocomotion : MonoBehaviour
         Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         transform.rotation = playerRotation;
-    }
-
-    public void HandleEvade()
-    {
-        if (!invincible)
-        {
-            animatorManager.PlayTargetAnimation("evade", true, true);
-            invincible = true;
-            StartCoroutine(Invincible(1));
-        }
-    }
-
-    IEnumerator Invincible(float time)
-    {
-        yield return new WaitForSeconds(time);
-        invincible = false;
     }
 
     private void HandleFallingAndLanding()
@@ -227,5 +212,30 @@ public class PlayerLocomotion : MonoBehaviour
             if (ibom.enemy) ibom.enemy.gameObject.GetComponent<EnemyManager>().ImTarget(false);
         }
         this.isZTargeting = isZTargeting;
+    }
+
+    public void HandleEvade()
+    {
+        if (!invincible)
+        {
+            animatorManager.PlayTargetAnimation("evade", true, true);
+            invincible = true;
+            StartCoroutine(Invincible(1));
+        }
+    }
+
+    IEnumerator Invincible(float time)
+    {
+        yield return new WaitForSeconds(time);
+        invincible = false;
+    }
+
+    public void HandleBlock()
+    {
+        if (!animatorManager.animator.GetBool("blocking"))
+        {
+            animatorManager.PlayTargetAnimation("block", true);
+            animatorManager.animator.SetBool("blocking", true);
+        }
     }
 }
