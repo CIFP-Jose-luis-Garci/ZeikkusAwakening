@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+    public string name;
+    public string title;
+    public Sprite sprite;
+    public int level;
     public int hp;
     public int maxHP;
     public int mp;
@@ -15,6 +19,7 @@ public class Stats : MonoBehaviour
     public int resistance;
     public int experience;
     public int nextLevelExperience;
+    public int turnPoints;
 
     private void Start()
     {

@@ -26,7 +26,7 @@ public class PantallaPausaManager : MonoBehaviour
         zeikkuStats = inputManager.gameObject.GetComponent<Stats>();
         zeikkuVida.text = zeikkuStats.hp + "/" + zeikkuStats.maxHP;
         zeikkuMagia.text = zeikkuStats.mp + "/" + zeikkuStats.maxMP;
-        maru.text = gameManager.maru + "";
+        maru.text = gameManager.maru.ToString();
     }
 
     private void OnDisable()

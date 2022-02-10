@@ -7,7 +7,9 @@ public class PantallaEstadoManager : MonoBehaviour
 {
     private InputManager inputManager;
     private Stats stats;
-    public Text vida, magia, experiencia, fuerza, defensa, poderMagico, resitencia, puntosDeTurno;
+    public GameObject pantallaPausa;
+    public Text nombre, titulo, nivel, vida, magia, experiencia, fuerza, defensa, poderMagico, resitencia, puntosDeTurno;
+    public Image imagenPersonaje;
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
@@ -16,19 +18,31 @@ public class PantallaEstadoManager : MonoBehaviour
     {
         inputManager.inPause = true;
         stats = inputManager.gameObject.GetComponent<Stats>();
+        nombre.text = stats.name;
+        titulo.text = stats.title;
+        nivel.text = "Nv. " + stats.level;
+        imagenPersonaje.sprite = stats.sprite; 
         vida.text = stats.hp + "/" + stats.maxHP;
         magia.text = stats.mp + "/" + stats.maxMP;
         experiencia.text = stats.experience + "/" + stats.nextLevelExperience;
-    }
-
-    void Start()
-    {
-        
+        fuerza.text = stats.strength.ToString();
+        poderMagico.text = stats.defense.ToString();
+        resitencia.text = stats.magicPower.ToString();
+        puntosDeTurno.text = stats.turnPoints.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        GoBack();
+    }
+
+    private void GoBack()
+    {
+        if (inputManager.bInput)
+        {
+            gameObject.SetActive(false);
+            pantallaPausa.SetActive(true);
+        }
     }
 }
