@@ -14,19 +14,18 @@ public class EnemyManager : MonoBehaviour
 
     public float velNPC = 10;
 
-    public bool noVeo;
     public bool detectado;
+    public Coroutine corrutina;
 
     public Vector3 direccion;
     Vector3 rondaGoal;
 
     private void Start()
     {
-        noVeo = true;
         detectado = false;
         animator = GetComponent<Animator>();
         agente = GetComponent<NavMeshAgent>();
-        StartCoroutine("IA");
+        IniciarMovimiento();
     }
     Vector3 SetRandomGoal(Vector3 npcPos, float randomValue)
     {
@@ -38,13 +37,22 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator IA()
     {
-        while (noVeo)
+        while (!detectado)
         {
             rondaGoal = SetRandomGoal(transform.position, 5);
             agente.SetDestination(rondaGoal);
-            animator.SetBool("moving", true);
-            yield return new WaitForSeconds(Random.Range(1,4));
+            yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    public void PararMovimiento()
+    {
+        StopCoroutine(corrutina);
+    }
+
+    public void IniciarMovimiento()
+    {
+        corrutina = StartCoroutine(IA());
     }
 
 
@@ -58,6 +66,21 @@ public class EnemyManager : MonoBehaviour
             rotation.z = 0;
             rotation.x = 0;
             transform.rotation = rotation;
+        } else
+        {
+            if (Vector3.Distance(player.transform.position, transform.position) > 2)
+                agente.SetDestination(player.position);
+            else
+                agente.SetDestination(transform.position);
+        }
+
+        if (agente.remainingDistance <= (detectado ? 2 : 0.1f))
+        {
+            animator.SetBool("moving", false);
+        }
+        else
+        {
+            animator.SetBool("moving", true);
         }
     }
 
