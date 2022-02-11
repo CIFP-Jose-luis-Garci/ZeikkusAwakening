@@ -7,6 +7,8 @@ public class HUDManager : MonoBehaviour
 {
     private float time;
     public Text tiempo;
+
+  
     // Update is called once per frame
     void Update()
     {
