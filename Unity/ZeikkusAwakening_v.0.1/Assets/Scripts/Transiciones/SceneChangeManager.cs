@@ -29,8 +29,9 @@ public class SceneChangeManager : MonoBehaviour
             
             Invoke("CargarNivel1", 2f);
         }
-        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("escenario_p1"))
+        else if (other.CompareTag("Player") && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("escenario_p1"))
         {
+            GameObject.Find("HUD").GetComponent<Canvas>().transform.GetChild(4).gameObject.SetActive(true);
             Invoke("CargarNivel2", 2f);
         }
     }
