@@ -11,11 +11,7 @@ public class EnemyManager : MonoBehaviour
     Animator animator;
     NavMeshAgent agente;
 
-
-    public float velNPC = 10;
-
     public bool detectado;
-    public Coroutine corrutina;
 
     public Vector3 direccion;
     Vector3 rondaGoal;
@@ -39,51 +35,64 @@ public class EnemyManager : MonoBehaviour
     {
         while (!detectado)
         {
+            animator.SetBool("moving", true);
             rondaGoal = SetRandomGoal(transform.position, 5);
             agente.SetDestination(rondaGoal);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(5f);
         }
     }
 
     public void PararMovimiento()
     {
-        StopCoroutine(corrutina);
+        agente.speed = 4;
+        StopCoroutine("IA");
     }
 
     public void IniciarMovimiento()
     {
-        corrutina = StartCoroutine(IA());
+        agente.speed = 1;
+        StartCoroutine("IA");
     }
-
 
     // Update is called once per frame
     void Update()
     {
-        if (detectado)
+        if (detectado == true)
         {
-            transform.LookAt(player);
+            animator.SetBool("detection", true);
+            transform.LookAt(player.position);
             Quaternion rotation = transform.rotation;
             rotation.z = 0;
             rotation.x = 0;
             transform.rotation = rotation;
-        } else
-        {
-            if (Vector3.Distance(player.transform.position, transform.position) > 2)
-                agente.SetDestination(player.position);
-            else
-                agente.SetDestination(transform.position);
-        }
-
-        if (agente.remainingDistance <= (detectado ? 2 : 0.1f))
-        {
-            animator.SetBool("moving", false);
+            agente.SetDestination(player.position);
         }
         else
         {
-            animator.SetBool("moving", true);
+            animator.SetBool("detection", false);
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            print("hola");
+            agente.SetDestination(transform.position);
+            agente.speed = 0;
+            animator.SetTrigger("caught");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            agente.speed = 4;
+            animator.SetBool("moving", true);
+            agente.SetDestination(player.position);
+        }
+    }
     public void ImTarget(bool set)
     {
         sprite.SetActive(set);

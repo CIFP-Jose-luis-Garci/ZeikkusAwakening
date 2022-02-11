@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 1443597770787440083}
   - component: {fileID: 1443597770787440082}
   - component: {fileID: 1443597770787440081}
+  - component: {fileID: 1250773059}
   m_Layer: 6
   m_Name: Ghoul
   m_TagString: Enemigo
@@ -527,7 +528,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   sprite: {fileID: 1443597770934799560}
-  velNPC: 10
   detectado: 0
   direccion: {x: 0, y: 0, z: 0}
 --- !u!195 &1443597770787440081
@@ -552,6 +552,19 @@ NavMeshAgent:
   m_BaseOffset: -0.17
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &1250773059
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444554315193150917}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.57
+  m_Center: {x: 0, y: 1.82, z: 0}
 --- !u!1 &1444557351371432481
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,7 +2718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0caf4126dad19014494acb717f73b439, type: 3}
       propertyPath: m_LocalScale.z
-      value: 55.89321
+      value: 295.1497
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0caf4126dad19014494acb717f73b439, type: 3}
       propertyPath: m_LocalPosition.x

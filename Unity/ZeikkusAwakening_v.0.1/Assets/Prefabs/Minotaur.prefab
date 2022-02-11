@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 24103731832490321}
   - component: {fileID: 24103731832490323}
   - component: {fileID: 24103731832490324}
+  - component: {fileID: 605161590}
   m_Layer: 6
   m_Name: Minotaur
   m_TagString: Enemigo
@@ -157,7 +158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   sprite: {fileID: 24103731582856676}
-  velNPC: 0
   detectado: 0
   direccion: {x: 0, y: 0, z: 0}
 --- !u!65 &24103731832490321
@@ -222,6 +222,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &605161590
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24103731832490320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 45.51
+  m_Center: {x: 0, y: 49.8, z: 0}
 --- !u!1 &24103731832490322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2520,6 +2533,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6297313706496321018, guid: 0caf4126dad19014494acb717f73b439, type: 3}
+--- !u!114 &1169889492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906573617079297574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78329d845da23464dbfb8e334234fed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &24103730878978935
 PrefabInstance:
   m_ObjectHideFlags: 0

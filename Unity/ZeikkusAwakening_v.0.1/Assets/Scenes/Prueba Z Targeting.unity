@@ -387,7 +387,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   sprite: {fileID: 1423301084}
-  velNPC: 0
   detectado: 0
   direccion: {x: 0, y: 0, z: 0}
 --- !u!114 &995699250
@@ -526,17 +525,6 @@ Transform:
   m_Father: {fileID: 995699248}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1715781445 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8258461700927976673, guid: 7ce8c0cdb09b4d441965dd09e9e9b573, type: 3}
-  m_PrefabInstance: {fileID: 430597835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b8e26047ef0edc459fcd3bd932368da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1744971014
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +616,7 @@ Transform:
   m_GameObject: {fileID: 1744971014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3393, y: 2.3393, z: 2.3393}
+  m_LocalScale: {x: 18.754168, y: 18.754168, z: 18.754168}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -644,10 +632,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zeikku
       objectReference: {fileID: 0}
-    - target: {fileID: 5234201012602325531, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: cameraManager
-      value: 
-      objectReference: {fileID: 1715781445}
     - target: {fileID: 5704133746653626008, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_RootOrder
       value: 6
