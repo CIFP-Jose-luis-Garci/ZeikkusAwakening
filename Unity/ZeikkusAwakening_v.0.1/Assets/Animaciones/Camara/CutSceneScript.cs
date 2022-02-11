@@ -6,37 +6,14 @@ using Cinemachine;
 
 public class CutSceneScript : MonoBehaviour
 {
-    private PlayableDirector director;
-    
+    public GameObject vCamera;
+    public Animator animatorBadZ;
+    public RuntimeAnimatorController animatorBadZController;
 
-
-    
-    //[SerializeField] private CinemachineVirtualCamera mainFollowVCam, bossVcam;
-
-    private void OnTriggerEnter2D(Collider2D other)
-     {
-         if (other.CompareTag("Player"))
-         {
-            // bossVcam.Priority = mainFollowVCam.Priority + 1;
-            director.Play();
-         }
-     }
-
-    /*private void OnTriggerExit()
+    public void DesactivarTimeline()
     {
-        bossVcam.Priority = mainFollowVCam.Priority - 1;
+        vCamera.SetActive(false);
+        animatorBadZ.runtimeAnimatorController = animatorBadZController;
     }
-
-    /* Start is called before the first frame update
-    void Start()
-    {
-       
-    }*/
-
-    /* Update is called once per frame
-    void Update()
-    {
-        
-    }*/
 
 }
