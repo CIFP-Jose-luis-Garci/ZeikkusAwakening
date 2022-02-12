@@ -19,7 +19,6 @@ public class PlayerBagManager : MonoBehaviour
 
     public void RemoveItem(int slot)
     {
-        Debug.Log(slot);
         bag.RemoveAt(slot);
     }
 

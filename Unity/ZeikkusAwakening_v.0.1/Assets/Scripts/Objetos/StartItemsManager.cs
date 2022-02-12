@@ -8,9 +8,10 @@ public class StartItemsManager : MonoBehaviour
     void Start()
     {
         Item[] items = GetComponentsInChildren<Item>();
-        FindObjectOfType<PlayerBagManager>().AddItem(items[0]);
-        FindObjectOfType<PlayerBagManager>().AddItem(items[1]);
-        FindObjectOfType<PlayerBagManager>().AddItem(items[2]);
-        FindObjectOfType<PlayerBagManager>().AddItem(items[3]);
+        PlayerBagManager pbm = FindObjectOfType<PlayerBagManager>();
+        foreach (Item item in items)
+        {
+            pbm.AddItem(item);
+        }
     }
 }
