@@ -43,6 +43,7 @@ public class PlayerLocomotion : MonoBehaviour
     public CameraManager cameraManager;
     private Vector3 directionWhileZtargetting;
     public bool blocking;
+    private Stats stats;
     
     private void Awake()
     {
@@ -52,7 +53,7 @@ public class PlayerLocomotion : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
         cameraObject = Camera.main.transform;
-        
+        stats = GetComponent<Stats>();
         animaciones = new string[puntosDeTurno];
         animaciones[0] = "final_slash";
         animaciones[1] = "hard_slash";
@@ -148,9 +149,9 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleAttack()
     {
         if (playerManager.isInteracting) return;
-        if (puntosDeTurno > 0)
+        if (stats.turnPoints > 0)
         {
-            puntosDeTurno--;
+            stats.turnPoints--;
             if (isZTargeting)
             {
                 transform.LookAt(enemyObject);
@@ -160,7 +161,7 @@ public class PlayerLocomotion : MonoBehaviour
                 transform.rotation = rotation;
             }
 
-            animatorManager.PlayTargetAnimation(animaciones[puntosDeTurno], true, true);
+            animatorManager.PlayTargetAnimation(animaciones[stats.turnPoints], true, true);
             if (coroutine != null) StopCoroutine(coroutine);
             coroutine = StartCoroutine(ReloadTurnPoints(animatorManager.GetAnimationLength() * 2));
         }
@@ -177,7 +178,7 @@ public class PlayerLocomotion : MonoBehaviour
     private IEnumerator ReloadTurnPoints(int waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        puntosDeTurno = 4;
+        stats.turnPoints = 4;
         coroutine = null;
     }
 
