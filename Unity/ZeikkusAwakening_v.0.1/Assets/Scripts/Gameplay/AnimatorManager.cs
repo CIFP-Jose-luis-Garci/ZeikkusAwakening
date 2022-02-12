@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class AnimatorManager : MonoBehaviour
 {
@@ -9,7 +11,8 @@ public class AnimatorManager : MonoBehaviour
     private int horizontal;
     private int vertical;
     public AudioSource source;
-    public AudioClip[] sounds;
+    public AudioClip[] stepSounds;
+    public AudioClip[] swordSounds;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -19,7 +22,7 @@ public class AnimatorManager : MonoBehaviour
 
     public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement)
     {
-        // Snap to aniamtions, not blend to make it look good
+        // Snap to animations, not blend to make it look good
         float snappedHorizontal;
         float snappedVertical;
 
@@ -48,7 +51,7 @@ public class AnimatorManager : MonoBehaviour
             snappedVertical = 0;
         #endregion
         
-        animator.SetFloat(horizontal, snappedHorizontal, 01f, Time.deltaTime);
+        animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
 
@@ -65,17 +68,14 @@ public class AnimatorManager : MonoBehaviour
     {
         return animator.GetCurrentAnimatorClipInfo(1).Length;
     }
-
-    public void AnimationSoundStep1()
+    
+    public void Step(AnimationEvent animationEvent)
     {
-        source.clip = sounds[0];
-        source.Play();
-    }
-
-    public void AnimationSoundStep2()
-    {
-        source.clip = sounds[1];
-        source.Play();
+        float weight = animationEvent.animatorClipInfo.weight;
+        if(weight > 0.8f)
+        {
+            source.PlayOneShot(stepSounds[Mathf.FloorToInt(Random.Range(0, stepSounds.Length - 0.1f))]);
+        }
     }
 
 }

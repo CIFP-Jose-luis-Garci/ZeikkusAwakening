@@ -55,7 +55,6 @@ public class PlayerLocomotion : MonoBehaviour
         playerManager = GetComponent<PlayerManager>();
         inputManager = GetComponent<InputManager>();
         animatorManager = GetComponent<AnimatorManager>();
-        shoutSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
         cameraObject = Camera.main.transform;
