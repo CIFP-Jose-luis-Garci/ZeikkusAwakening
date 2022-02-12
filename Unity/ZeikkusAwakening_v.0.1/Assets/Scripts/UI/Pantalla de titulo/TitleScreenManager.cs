@@ -14,7 +14,6 @@ public class TitleScreenManager : MonoBehaviour
     private bool titlepressActive;
     private bool titlepressVisible = false;
     private AudioSource musicaTitulo;
-    private GameObject current;
 
     private void Start()
     {
@@ -25,7 +24,6 @@ public class TitleScreenManager : MonoBehaviour
         titlepress.CrossFadeAlpha(0, 0, true);
         StartCoroutine(AnimateTitleScreen());
         musicaTitulo = GetComponent<AudioSource>();
-        current = EventSystem.current.currentSelectedGameObject;
     }
 
     IEnumerator AnimateTitleScreen()
