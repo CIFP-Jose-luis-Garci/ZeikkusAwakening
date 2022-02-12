@@ -3235,6 +3235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4297047793456264191}
   - component: {fileID: 3213455630601127889}
+  - component: {fileID: 7466891795915566153}
   m_Layer: 5
   m_Name: Vida
   m_TagString: Untagged
@@ -3315,6 +3316,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7466891795915566153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474633557966154864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0249cb4e34222145bb51ef1b4da5fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUpdating: 0
 --- !u!1 &1477520459448993316
 GameObject:
   m_ObjectHideFlags: 0
@@ -5702,6 +5716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6594369990801479397}
   - component: {fileID: 103923278523742688}
+  - component: {fileID: 1133716652055343776}
   m_Layer: 5
   m_Name: Magia
   m_TagString: Untagged
@@ -5782,6 +5797,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1133716652055343776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935029681898251648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b0b7358809b6e459428b76b7b0ab97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUpdating: 0
 --- !u!1 &3026969301698926541
 GameObject:
   m_ObjectHideFlags: 0
@@ -8881,6 +8909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5075835120691475619}
   - component: {fileID: 5075835120691475616}
+  - component: {fileID: 7378050627252470647}
   m_Layer: 5
   m_Name: Vida
   m_TagString: Untagged
@@ -8961,6 +8990,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7378050627252470647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075835120691475618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0249cb4e34222145bb51ef1b4da5fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUpdating: 1
 --- !u!1 &5075835120736944174
 GameObject:
   m_ObjectHideFlags: 0
@@ -9046,6 +9088,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5075835120883898973}
   - component: {fileID: 5075835120883898970}
+  - component: {fileID: 8476896984349617429}
   m_Layer: 5
   m_Name: Magia
   m_TagString: Untagged
@@ -9126,6 +9169,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8476896984349617429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075835120883898972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b0b7358809b6e459428b76b7b0ab97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUpdating: 1
 --- !u!1 &5075835121002782928
 GameObject:
   m_ObjectHideFlags: 0
@@ -12726,6 +12782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2819820434895683632}
   - component: {fileID: 3787189662555283403}
+  - component: {fileID: 9107067011041069447}
   m_Layer: 5
   m_Name: Magia
   m_TagString: Untagged
@@ -12806,6 +12863,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9107067011041069447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444852022707577149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b0b7358809b6e459428b76b7b0ab97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUpdating: 0
 --- !u!1 &7718843649349393496
 GameObject:
   m_ObjectHideFlags: 0
@@ -14614,6 +14684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1889880859052134299}
+  - component: {fileID: 6129750269283249503}
   m_Layer: 5
   m_Name: Experiencia
   m_TagString: Untagged
@@ -14643,6 +14714,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -260}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6129750269283249503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854603696149022408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614cea192aac8a94b915abad41b495ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUpdating: 0
 --- !u!1 &8866540457215059302
 GameObject:
   m_ObjectHideFlags: 0
@@ -15175,6 +15259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5963451317200733994}
   - component: {fileID: 3499652513483811099}
+  - component: {fileID: 287565791510757616}
   m_Layer: 5
   m_Name: Vida
   m_TagString: Untagged
@@ -15255,6 +15340,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &287565791510757616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9050853527949017897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0249cb4e34222145bb51ef1b4da5fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUpdating: 0
 --- !u!1 &9083958717341814640
 GameObject:
   m_ObjectHideFlags: 0
