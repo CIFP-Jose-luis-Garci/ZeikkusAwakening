@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Stats : MonoBehaviour
 {
-    public string name;
+    [FormerlySerializedAs("name")] public string actorName;
     public string title;
     public Sprite sprite;
     public int level;

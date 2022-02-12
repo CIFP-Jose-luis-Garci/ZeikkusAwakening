@@ -18,7 +18,7 @@ public class PantallaEstadoManager : MonoBehaviour
     {
         inputManager.inPause = true;
         stats = inputManager.gameObject.GetComponent<Stats>();
-        nombre.text = stats.name;
+        nombre.text = stats.actorName;
         titulo.text = stats.title;
         nivel.text = "Nv. " + stats.level;
         imagenPersonaje.sprite = stats.sprite; 

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Pocion : Item
 {
 
-    public override void UseItem(GameObject player)
+    public override bool UseItem()
     {
-
+        return true;
     }
 }

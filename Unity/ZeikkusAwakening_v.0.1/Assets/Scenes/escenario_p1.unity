@@ -400,11 +400,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372813b3cde08484f83158937718571d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  category: 
-  type: 0
+  itemName: "Pantal\xF3n vaquero"
+  category: "Pantal\xF3n"
+  type: 3
   itemSprite: {fileID: 0}
-  description: 
+  description: "Pantal\xF3n vaquero proveniente del departamento de costura del Palacio
+    de Zagrant. Te queda como un guante."
+  usable: 0
+  tossable: 1
 --- !u!1001 &64671298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1105,107 +1108,6 @@ Transform:
   m_Father: {fileID: 543450653587843455}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &493940164 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5075835121002782928, guid: 4b214a73477046d4a841619428783ded, type: 3}
-  m_PrefabInstance: {fileID: 2037331915}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &493940166
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493940164}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 3754084471617887534, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
-  m_audioClip: {fileID: 8300000, guid: f987126ff9120ab40a3a436f17dc31bb, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &512354869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,12 +1151,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097a4af3cfb97504ba53b430dc93ea8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: "Llave peque\xF1a"
+  itemName: "Llave peque\xF1a"
   category: Llave
   type: 5
   itemSprite: {fileID: 21300000, guid: fbe12a2d44660b34e9148a7f07eab1c9, type: 3}
   description: "Llave de un s\xF3lo uso que sirve para abrir puertas bloqueadas en
     esta mazmorra."
+  usable: 1
+  tossable: 0
 --- !u!1 &518210362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,12 +1381,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3782efb1002a6e5458e47a25ee03929f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: "Poci\xF3n"
+  itemName: "Poci\xF3n"
   category: Objeto curativo
   type: 4
   itemSprite: {fileID: 21300000, guid: 7d6085514d53c4e498d66a1dafed8d3c, type: 3}
   description: "Recupera un 20% de la vida del equipo. \xDAtil en momentos de urgencia
     para una cura r\xE1pida"
+  usable: 1
+  tossable: 1
 --- !u!1001 &612537888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3005,11 +2911,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b407febee7729eb458ae4256a3686a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  category: 
-  type: 0
+  itemName: Espada Legendaria Zagrant
+  category: Arma
+  type: 1
   itemSprite: {fileID: 0}
-  description: 
+  description: "Espada legendaria que se dice que es la encarnaci\xF3n del dios del
+    espacio. La encontraste al despertar junto a t\xED."
+  usable: 0
+  tossable: 0
 --- !u!4 &1138676105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5704133746653626008, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
@@ -3315,11 +3224,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126d59aa224f90a45a9859349637571f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  category: 
-  type: 0
+  itemName: Fragmento de memoria I
+  category: Tesoro neuronal
+  type: 5
   itemSprite: {fileID: 0}
-  description: 
+  description: "Recuerdo ganado de tus \xFAltimos momentos en el mundo exterior.
+    En ellos, una misteriosa sombra te habla de su odio hacia ti y de c\xF3mo le
+    arrebataste su futuro. Al final, observas la luz que te despert\xF3 en el mundo
+    neuronal"
+  usable: 0
+  tossable: 0
 --- !u!1 &1755926673
 GameObject:
   m_ObjectHideFlags: 0
@@ -3363,11 +3277,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f7d0316103c704d9ce21521e4701b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  category: 
-  type: 0
+  itemName: Chaqueta de cuero
+  category: Armadura
+  type: 2
   itemSprite: {fileID: 0}
-  description: 
+  description: Chaqueta de cuero regalada por tu padre. Siendo de lo poco que recuerdas
+    del mundo exterior, te reconforta su uso.
+  usable: 0
+  tossable: 1
 --- !u!4 &1768747631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1443245216424910135, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
@@ -3681,10 +3598,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8930775987390996484, guid: 4b214a73477046d4a841619428783ded, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b214a73477046d4a841619428783ded, type: 3}
 --- !u!223 &2037331916 stripped
@@ -3933,6 +3846,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2113668072}
+  - component: {fileID: 2113668073}
   m_Layer: 0
   m_Name: StartItems
   m_TagString: Untagged
@@ -3958,6 +3872,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113668073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113668071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2922b235f15233d4ea3df0f02bf61b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2134548254
 GameObject:
   m_ObjectHideFlags: 0

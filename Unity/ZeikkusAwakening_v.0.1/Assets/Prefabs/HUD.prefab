@@ -541,6 +541,7 @@ MonoBehaviour:
   - {fileID: 3906478282412465568}
   selectedCategory: {fileID: 6296820327117169694}
   categoryText: {fileID: 6551516362147779615}
+  itemSelected: 0
   itemName: {fileID: 5770478985822920576}
   itemCategory: {fileID: 5789069431193215532}
   itemDescription: {fileID: 3402300048756861838}
@@ -1278,6 +1279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
 --- !u!114 &691860320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2271,6 +2273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
 --- !u!114 &1997063735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3017,6 +3020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
 --- !u!114 &26251729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5212,6 +5216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
 --- !u!114 &455520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6393,6 +6398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
 --- !u!114 &1531245270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8438,6 +8444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
 --- !u!114 &577651186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9131,6 +9138,7 @@ GameObject:
   - component: {fileID: 5075835121002782942}
   - component: {fileID: 5075835121002782929}
   - component: {fileID: 583242531}
+  - component: {fileID: 493940166}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -9237,6 +9245,102 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiempo: {fileID: 8650189779957975506}
+--- !u!82 &493940166
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075835121002782928}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 3754084471617887534, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
+  m_audioClip: {fileID: 8300000, guid: f987126ff9120ab40a3a436f17dc31bb, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5075835121135058125
 GameObject:
   m_ObjectHideFlags: 0
@@ -9902,7 +10006,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1
@@ -11164,6 +11268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
 --- !u!114 &1071701750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11358,6 +11463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
 --- !u!114 &1213498741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13075,6 +13181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
 --- !u!114 &1126429140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14183,6 +14290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
 --- !u!114 &1020855790
 MonoBehaviour:
   m_ObjectHideFlags: 0

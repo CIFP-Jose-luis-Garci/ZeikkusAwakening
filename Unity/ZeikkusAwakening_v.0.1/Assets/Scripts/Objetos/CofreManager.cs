@@ -44,7 +44,7 @@ public class CofreManager : MonoBehaviour
         GameObject currentDialogue = Instantiate(dialogue, FindObjectOfType<Canvas>().transform);
         ItemDialogueBoxController idbc = currentDialogue.GetComponent<ItemDialogueBoxController>();
         idbc.description.text = containedItem.description;
-        idbc.name.text = containedItem.name;
+        idbc.itemName.text = containedItem.itemName;
         idbc.item.sprite = containedItem.itemSprite;
         containedItem = null;
     }

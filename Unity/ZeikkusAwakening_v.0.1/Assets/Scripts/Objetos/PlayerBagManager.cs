@@ -7,7 +7,7 @@ public class PlayerBagManager : MonoBehaviour
 {
     private ArrayList bag;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         bag = new ArrayList();
     }
@@ -17,10 +17,10 @@ public class PlayerBagManager : MonoBehaviour
         bag.Add(item);
     }
 
-    public Item GetItem(int slot)
+    public void RemoveItem(int slot)
     {
-        bag.Remove(slot);
-        return bag[slot] as Item;
+        Debug.Log(slot);
+        bag.RemoveAt(slot);
     }
 
     public Item[] GetBagContents(int category)

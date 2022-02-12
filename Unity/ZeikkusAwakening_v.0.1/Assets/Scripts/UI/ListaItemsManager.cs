@@ -25,6 +25,8 @@ public class ListaItemsManager : MonoBehaviour
     public Text categoryText;
     private int currentCategory;
     private bool pageChanged;
+    
+    public bool itemSelected;
 
     public Text itemName, itemCategory, itemDescription;
     public Image itemSprite;
@@ -38,7 +40,6 @@ public class ListaItemsManager : MonoBehaviour
     void OnEnable()
     {
         inputManager.inPause = true;
-        Debug.Log("hola");
         ReloadList();
     }
 
@@ -62,7 +63,7 @@ public class ListaItemsManager : MonoBehaviour
         Item current = currentObject.item;
         if (current == null) return;
 
-        itemName.text = current.name;
+        itemName.text = current.itemName;
         itemCategory.text = current.category;
         itemDescription.text = current.description;
         itemSprite.sprite = current.itemSprite;
@@ -70,7 +71,7 @@ public class ListaItemsManager : MonoBehaviour
 
     private void GoBack()
     {
-        if (inputManager.bInput)
+        if (inputManager.bInput && !itemSelected)
         {
             gameObject.SetActive(false);
             pantallaPausa.SetActive(true);
@@ -164,7 +165,7 @@ public class ListaItemsManager : MonoBehaviour
 
     }
 
-    private void ReloadList()
+    public void ReloadList()
     {
         ClearList();
         GetItems();
@@ -188,10 +189,11 @@ public class ListaItemsManager : MonoBehaviour
         for (int i = startPoint; i < nextPage; i++)
         {
             if (i >= currentItems.Length) break;
-            string name = currentItems[i].name;
-            items[i - startPoint].GetComponent<ItemSlotManager>().item = currentItems[i];
+            Item currentItem = currentItems[i];
+            currentItem.slot = i;
+            items[i - startPoint].GetComponent<ItemSlotManager>().item = currentItem;
             Text itemName = items[i - startPoint].GetComponentInChildren<Text>();
-            itemName.text = name;
+            itemName.text = currentItem.itemName;
         }
         items[0].GetComponent<Button>().Select();
     }

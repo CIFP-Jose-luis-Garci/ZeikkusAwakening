@@ -1,14 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class Item : MonoBehaviour
 {
-    public string name;
+    [NonSerialized] public int slot;
+    [FormerlySerializedAs("name")] public string itemName;
     public string category;
     public int type;
     public Sprite itemSprite;
     public string description;
+    public bool usable;
+    public bool tossable;
 
-    public abstract void UseItem(GameObject player);
+    public abstract bool UseItem();
 }

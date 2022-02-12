@@ -23,7 +23,6 @@ public class LightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Transform tMin = null;
         float minDist = 30;
         foreach (GameObject putaAntorcha in antorchas)
         {

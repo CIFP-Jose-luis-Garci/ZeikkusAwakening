@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ItemDialogueBoxController : MonoBehaviour
 {
-    public Text name, description;
+    public Text itemName, description;
     public Image item, dialogue;
     public Graphic[] children;
 
@@ -15,7 +16,7 @@ public class ItemDialogueBoxController : MonoBehaviour
     private void Start()
     {
         children = new Graphic[4];
-        children[0] = name;
+        children[0] = itemName;
         children[1] = description;
         children[2] = item;
         children[3] = dialogue;

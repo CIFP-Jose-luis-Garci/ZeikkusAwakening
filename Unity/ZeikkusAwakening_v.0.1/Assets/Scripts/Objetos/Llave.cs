@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Llave : Item
 {
-    public override void UseItem(GameObject player)
+    public override bool UseItem()
     {
-        throw new System.NotImplementedException();
+        return true;
     }
 }
