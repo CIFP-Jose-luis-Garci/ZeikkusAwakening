@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class AnimatorManager : MonoBehaviour
 {
-    public Animator animator;
+    [NonSerialized] public Animator animator;
     private int horizontal;
     private int vertical;
-
+    public AudioSource source;
+    public AudioClip[] sounds;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -47,8 +48,8 @@ public class AnimatorManager : MonoBehaviour
             snappedVertical = 0;
         #endregion
         
-        animator.SetFloat(horizontal, horizontalMovement, 01f, Time.deltaTime);
-        animator.SetFloat(vertical, verticalMovement, 0.1f, Time.deltaTime);
+        animator.SetFloat(horizontal, snappedHorizontal, 01f, Time.deltaTime);
+        animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
 
     public void PlayTargetAnimation(string targetAnimation, bool isInteracting, bool useRootMotion = false)
@@ -63,6 +64,18 @@ public class AnimatorManager : MonoBehaviour
     public int GetAnimationLength()
     {
         return animator.GetCurrentAnimatorClipInfo(1).Length;
+    }
+
+    public void AnimationSoundStep1()
+    {
+        source.clip = sounds[0];
+        source.Play();
+    }
+
+    public void AnimationSoundStep2()
+    {
+        source.clip = sounds[1];
+        source.Play();
     }
 
 }
