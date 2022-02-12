@@ -30,6 +30,7 @@ public class ListaItemsManager : MonoBehaviour
 
     public Text itemName, itemCategory, itemDescription;
     public Image itemSprite;
+    public Sprite noItemSprite;
     private void Awake()
     {
         bag = FindObjectOfType<PlayerBagManager>();
@@ -60,13 +61,22 @@ public class ListaItemsManager : MonoBehaviour
     {
         ItemSlotManager currentObject = EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlotManager>();
         if (currentObject == null) return;
-        Item current = currentObject.item;
-        if (current == null) return;
+        Item currentItem = currentObject.item;
+        if (currentItem == null)
+        {
+            itemName.text = "";
+            itemCategory.text = "";
+            itemDescription.text = "";
+            itemSprite.sprite = noItemSprite;
+        }
+        else
+        {
+            itemName.text = currentItem.itemName;
+            itemCategory.text = currentItem.category;
+            itemDescription.text = currentItem.description;
+            itemSprite.sprite = currentItem.itemSprite;
+        }
 
-        itemName.text = current.itemName;
-        itemCategory.text = current.category;
-        itemDescription.text = current.description;
-        itemSprite.sprite = current.itemSprite;
     }
 
     private void GoBack()

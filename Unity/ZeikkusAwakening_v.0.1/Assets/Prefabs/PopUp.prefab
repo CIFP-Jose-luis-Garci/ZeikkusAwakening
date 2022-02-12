@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5678686988768734610}
   - component: {fileID: 1018695979800488360}
   - component: {fileID: 4854524677604305812}
+  - component: {fileID: 7460342482368620834}
   m_Layer: 5
   m_Name: Salir
   m_TagString: Untagged
@@ -121,6 +122,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7460342482368620834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956691752539539664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
 --- !u!1 &1454285072829911420
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +226,7 @@ GameObject:
   - component: {fileID: 2956581241416678054}
   - component: {fileID: 1415342090743813511}
   - component: {fileID: 4467901073282462367}
+  - component: {fileID: 8557317848645084544}
   m_Layer: 5
   m_Name: Usar
   m_TagString: Untagged
@@ -321,6 +336,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8557317848645084544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750588461310089342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
 --- !u!1 &4185080557994996509
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +613,7 @@ GameObject:
   - component: {fileID: 5375006808123633803}
   - component: {fileID: 6066622504448807748}
   - component: {fileID: 2484656447118381402}
+  - component: {fileID: 2879352135918251294}
   m_Layer: 5
   m_Name: Tirar
   m_TagString: Untagged
@@ -694,3 +723,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2879352135918251294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992791760464108092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}

@@ -216,6 +216,7 @@ public class InputManager : MonoBehaviour
 
     private void HandleRightTrigger()
     {
+        if (inDialogue || inPause) return;
         if (rTrigger)
         {
             rTrigger = false;
