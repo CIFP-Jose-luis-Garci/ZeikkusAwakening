@@ -43,12 +43,6 @@ public class PlayerLocomotion : MonoBehaviour
     public CameraManager cameraManager;
     private Vector3 directionWhileZtargetting;
     public bool blocking;
-
-    [Header("Sounds")] 
-    public AudioClip[] shouts;
-    public AudioClip[] swords;
-    public AudioSource shoutSource;
-    public AudioSource swordSource;
     
     private void Awake()
     {
@@ -167,10 +161,6 @@ public class PlayerLocomotion : MonoBehaviour
             }
 
             animatorManager.PlayTargetAnimation(animaciones[puntosDeTurno], true, true);
-            shoutSource.clip = shouts[puntosDeTurno];
-            shoutSource.Play();
-            swordSource.clip = swords[puntosDeTurno];
-            swordSource.Play();
             if (coroutine != null) StopCoroutine(coroutine);
             coroutine = StartCoroutine(ReloadTurnPoints(animatorManager.GetAnimationLength() * 2));
         }

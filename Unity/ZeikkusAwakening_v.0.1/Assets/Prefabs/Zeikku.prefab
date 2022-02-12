@@ -1257,18 +1257,6 @@ MonoBehaviour:
   lookInBetween: {fileID: 3335101239391897373}
   cameraManager: {fileID: 0}
   blocking: 0
-  shouts:
-  - {fileID: 8300000, guid: daeb8df27929e6a4ea48f194babf6e41, type: 3}
-  - {fileID: 8300000, guid: 27b7da78703f37045a6250aa7496b3f2, type: 3}
-  - {fileID: 8300000, guid: 1534c305dd4beb4499a63e68c62e69ee, type: 3}
-  - {fileID: 8300000, guid: 46faf29aee210624798b6a28804712c1, type: 3}
-  swords:
-  - {fileID: 8300000, guid: 81160a889aeed4843b219899fe5206eb, type: 3}
-  - {fileID: 8300000, guid: 567eb66c99c48f64a9f2a0c1ef766da2, type: 3}
-  - {fileID: 8300000, guid: 4c9b76084e2d3a4479280ca4094ca8ac, type: 3}
-  - {fileID: 8300000, guid: 9ebc58365b7aa374d822a5e960abac88, type: 3}
-  shoutSource: {fileID: 1210680472}
-  swordSource: {fileID: 1210680473}
 --- !u!114 &5234201012602325530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1296,7 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 5205658801009420469}
-  sounds:
+  stepSounds:
   - {fileID: 8300000, guid: c57e62ba73ba0694ca5ef4d57e792a14, type: 3}
   - {fileID: 8300000, guid: 4678228d92b88af44b090d6643be2041, type: 3}
   - {fileID: 8300000, guid: b122a8e2d13fcff418ac9af241b22dda, type: 3}
@@ -1307,6 +1295,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1dc6dc7872c068e49ac371ff1f72ff67, type: 3}
   - {fileID: 8300000, guid: 294136279ae79f641bc52197d8919d04, type: 3}
   - {fileID: 8300000, guid: c47ed1caa57f5db45a5daa0f948a4388, type: 3}
+  swordSounds:
+  - {fileID: 8300000, guid: 9ebc58365b7aa374d822a5e960abac88, type: 3}
+  - {fileID: 8300000, guid: 4c9b76084e2d3a4479280ca4094ca8ac, type: 3}
+  - {fileID: 8300000, guid: 567eb66c99c48f64a9f2a0c1ef766da2, type: 3}
+  - {fileID: 8300000, guid: 81160a889aeed4843b219899fe5206eb, type: 3}
+  - {fileID: 8300000, guid: 1768acf053c365441b420df64f13b8ef, type: 3}
+  zeikkuSounds:
+  - {fileID: 8300000, guid: 46faf29aee210624798b6a28804712c1, type: 3}
+  - {fileID: 8300000, guid: 1534c305dd4beb4499a63e68c62e69ee, type: 3}
+  - {fileID: 8300000, guid: 27b7da78703f37045a6250aa7496b3f2, type: 3}
+  - {fileID: 8300000, guid: daeb8df27929e6a4ea48f194babf6e41, type: 3}
 --- !u!114 &2079246369808946005
 MonoBehaviour:
   m_ObjectHideFlags: 0
