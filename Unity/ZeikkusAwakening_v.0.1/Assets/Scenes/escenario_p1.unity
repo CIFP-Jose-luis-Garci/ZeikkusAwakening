@@ -4107,7 +4107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58864a601ca81c498e2fefd14d77ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasKey: 0
   player: {fileID: 1138676105}
 --- !u!1001 &761950005227644670
 PrefabInstance:
@@ -4800,7 +4799,7 @@ PrefabInstance:
     - target: {fileID: 2841788046295548226, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
       propertyPath: containedItem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 512354871}
     - target: {fileID: 4611902581490335492, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
       propertyPath: m_Name
       value: Cofre
@@ -4876,6 +4875,7 @@ GameObject:
   - component: {fileID: 2870328835750141599}
   - component: {fileID: 3662686748436386796}
   - component: {fileID: 5149971379972269697}
+  - component: {fileID: 5717736418100628092}
   m_Layer: 0
   m_Name: puerta:puerta_con_cerradura_con_decor
   m_TagString: Untagged
@@ -4883,6 +4883,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &5717736418100628092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5717736418100628091}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9808902, y: 2.5736747, z: 0.6}
+  m_Center: {x: -0.088983, y: 0.11895597, z: -0.00000012665987}
 --- !u!33 &6171135365953320380
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5039,8 +5052,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.6492023, y: 3.4796927, z: 4.749024}
-  m_Center: {x: 4.0804405, y: 1.3949956, z: -8.36018}
+  m_Size: {x: 5.6492023, y: 3.2366736, z: 4.7490234}
+  m_Center: {x: 4.0804405, y: 1.5165051, z: -8.36018}
 --- !u!4 &8273561738253554249
 Transform:
   m_ObjectHideFlags: 0

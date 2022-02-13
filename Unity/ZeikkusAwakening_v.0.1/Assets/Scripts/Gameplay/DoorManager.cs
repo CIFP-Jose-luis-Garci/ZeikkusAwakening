@@ -5,27 +5,36 @@ using UnityEngine;
 
 public class DoorManager : MonoBehaviour
 {
-    public bool hasKey;
     private bool doorOpen;
     public Transform player;
+    private PlayerBagManager bag;
+
+    void Awake()
+    {
+        bag = FindObjectOfType<PlayerBagManager>();
+    }
     
     void Start()
     {
-        hasKey = false;
         doorOpen = false;
-    }
-
-    void Update()
-    {
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if( hasKey && other.gameObject.tag == "Player" && !doorOpen)
+        if(other.gameObject.tag == "Player" && !doorOpen)
         {
-            doorOpen = true;
-            StartCoroutine("liftDoor");
+            foreach( Item item in bag.GetBagContents(5))
+            {
+                //print(item.itemName);
+                if(item.itemName == "Llave pequeña")
+                {
+                    bag.RemoveItem(bag.ItemSlot(item));
+                    //print(item.itemName);
+                    StartCoroutine("liftDoor");
+                    doorOpen = true;
+                    break;
+                }
+            }
         }
     }
 
@@ -33,11 +42,10 @@ public class DoorManager : MonoBehaviour
     {
         while(transform.position.y < 2.3f)
         {
-            transform.position += Vector3.up * 0.1f ;
+            transform.position += Vector3.up * 2.3f * Time.deltaTime;
             //print("habrir puerta");
             yield return null ;
         }
-        print("abierto");
-        StopCoroutine("liftDoor");
+        //print("abierto");
     }
 }

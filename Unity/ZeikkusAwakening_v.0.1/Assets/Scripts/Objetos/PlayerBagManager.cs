@@ -22,6 +22,12 @@ public class PlayerBagManager : MonoBehaviour
         bag.RemoveAt(slot);
     }
 
+    //añadido por Ignacio
+    public int ItemSlot(Item item)
+    {
+        return bag.IndexOf(item);
+    }
+
     public Item[] GetBagContents(int category)
     {
         object[] objects = bag.ToArray();

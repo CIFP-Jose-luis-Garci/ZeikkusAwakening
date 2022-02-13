@@ -4,30 +4,25 @@ using UnityEngine;
 
 public class KeyManager : MonoBehaviour
 {
-    private DoorManager doorManager;
-    public bool testGetKey = false;
-
-    void Awake()
-    {
-        doorManager = GameObject.Find("p1_puerta").GetComponent<DoorManager>();
-    }
+    public Item key;
 
     void Start()
     {
         
     }
+
+    // Update is called once per frame
     void Update()
     {
-
+        
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            doorManager.hasKey = true;
+            FindObjectOfType<PlayerBagManager>().AddItem(key);
             print("llave conseguida");
+            Destroy(this);
         }
     }
-
 }
