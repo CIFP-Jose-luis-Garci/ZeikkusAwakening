@@ -44,6 +44,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../builds/Zeikku's Awakening build 1\ZeikkusAwakening_v.0.1.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Repositories\unity\builds\Zeikku's Awakening build 1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -90,7 +98,7 @@
       <workItem from="1644348007872" duration="6895000" />
       <workItem from="1644433736803" duration="4180000" />
       <workItem from="1644507749686" duration="15193000" />
-      <workItem from="1644668615347" duration="22687000" />
+      <workItem from="1644668615347" duration="25577000" />
     </task>
     <servers />
   </component>

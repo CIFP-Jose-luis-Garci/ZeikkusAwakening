@@ -1130,8 +1130,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 264.6, y: -21.962}
-  m_SizeDelta: {x: 104.0219, y: 104.0219}
+  m_AnchoredPosition: {x: 260.6, y: -37.3}
+  m_SizeDelta: {x: 79.8211, y: 79.8211}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2820829068705734887
 CanvasRenderer:
@@ -3261,7 +3261,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 51.1553, y: 78.5601}
+  m_SizeDelta: {x: 38.6966, y: 59.427}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9060452796520728346
 CanvasRenderer:
@@ -5073,8 +5073,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.559, y: 241.95}
-  m_SizeDelta: {x: 378.6296, y: 65.3481}
+  m_AnchoredPosition: {x: 71.24479, y: 253.06169}
+  m_SizeDelta: {x: 386.0013, y: 43.1246}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1996073689201239770
 CanvasRenderer:
@@ -5106,10 +5106,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6f5f52a5bd45ca8468a26bf6e3997ee1, type: 3}
-    m_FontSize: 42
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 43
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -5117,7 +5117,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Poci\xF3n"
+  m_Text: Espada legendaria Zagrant
 --- !u!1 &2542003463125264599
 GameObject:
   m_ObjectHideFlags: 0
@@ -5430,8 +5430,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150.6, y: -22.904}
-  m_SizeDelta: {x: 108.4893, y: 102.1371}
+  m_AnchoredPosition: {x: 156.99997, y: -38.022896}
+  m_SizeDelta: {x: 83.2491, y: 78.3748}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1011083187161447810
 CanvasRenderer:
@@ -9637,8 +9637,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85edc4f87cb10f468777641a3b7a5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spritesPuntosDeTurno: []
-  valorPuntosDeTurno: {fileID: 0}
+  spritesPuntosDeTurno:
+  - {fileID: 21300000, guid: 668b479521387e74894fda7ed37a77ef, type: 3}
+  - {fileID: 21300000, guid: ffbd64efbff339d45add7a23336f88e2, type: 3}
+  - {fileID: 21300000, guid: ede79acb71d8ea446bf37157436277f5, type: 3}
+  - {fileID: 21300000, guid: 7ac4572b92538f244bc1493b6f0bd948, type: 3}
+  - {fileID: 21300000, guid: 3108dc40f08a62141b9bd278bdafa102, type: 3}
+  valorPuntosDeTurno: {fileID: 8571320306926447381}
 --- !u!1 &5075835121135058125
 GameObject:
   m_ObjectHideFlags: 0
@@ -12461,8 +12466,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.559, y: 172.95}
-  m_SizeDelta: {x: 378.63, y: 72.6511}
+  m_AnchoredPosition: {x: 71.24479, y: 211.06972}
+  m_SizeDelta: {x: 386.0017, y: 40.8516}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5679991564433367253
 CanvasRenderer:
@@ -12485,7 +12490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
+  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15099,7 +15104,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1889880859052134299}
-  - component: {fileID: 6129750269283249503}
   m_Layer: 5
   m_Name: Experiencia
   m_TagString: Untagged
@@ -15129,19 +15133,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -260}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6129750269283249503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8854603696149022408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 614cea192aac8a94b915abad41b495ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isUpdating: 0
 --- !u!1 &8866540457215059302
 GameObject:
   m_ObjectHideFlags: 0
@@ -15265,6 +15256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3427182013110544779}
   - component: {fileID: 7415627262896847275}
+  - component: {fileID: 1156719108551613109}
   m_Layer: 5
   m_Name: Experiencia
   m_TagString: Untagged
@@ -15345,6 +15337,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1156719108551613109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935776384243517293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614cea192aac8a94b915abad41b495ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUpdating: 0
 --- !u!1 &8972208002766443072
 GameObject:
   m_ObjectHideFlags: 0

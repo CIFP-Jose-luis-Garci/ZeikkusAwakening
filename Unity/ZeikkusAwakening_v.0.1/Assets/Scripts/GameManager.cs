@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,12 +12,13 @@ public class GameManager : MonoBehaviour
 
     private InputManager inputManager;
 
-    private void Update()
+    private void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
-        if (inputManager.start)
-        {
-            pause.SetActive(!pause.activeSelf);
-        }
+    }
+
+    public void Pause()
+    {
+        pause.SetActive(!pause.activeSelf);
     }
 }

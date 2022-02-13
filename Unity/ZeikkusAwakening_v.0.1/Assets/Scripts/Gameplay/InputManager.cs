@@ -170,6 +170,7 @@ public class InputManager : MonoBehaviour
         if (start)
         {
             start = false;
+            gameManager.Pause();
         }
     }
 
