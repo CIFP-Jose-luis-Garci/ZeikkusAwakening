@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     NavMeshAgent agente;
 
     public bool detectado;
+    public bool animatorCambiado = false;
 
     public Vector3 direccion;
     Vector3 rondaGoal;
@@ -57,19 +58,22 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (detectado == true)
+        if(animatorCambiado == false)
         {
-            animator.SetBool("detection", true);
-            transform.LookAt(player.position);
-            Quaternion rotation = transform.rotation;
-            rotation.z = 0;
-            rotation.x = 0;
-            transform.rotation = rotation;
-            agente.SetDestination(player.position);
-        }
-        else
-        {
-            animator.SetBool("detection", false);
+            if (detectado == true)
+            {
+                animator.SetBool("detection", true);
+                transform.LookAt(player.position);
+                Quaternion rotation = transform.rotation;
+                rotation.z = 0;
+                rotation.x = 0;
+                transform.rotation = rotation;
+                agente.SetDestination(player.position);
+            }
+            else
+            {
+                animator.SetBool("detection", false);
+            }
         }
     }
 
@@ -77,10 +81,28 @@ public class EnemyManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            print("hola");
             agente.SetDestination(transform.position);
             agente.speed = 0;
-            animator.SetTrigger("caught");
+            if(animatorCambiado == false)
+            {
+                animator.SetTrigger("caught");
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Espada"))
+        {
+            if(animatorCambiado == false)
+            {
+                CambiarAnimator();
+            }
+            else
+            {
+                agente.speed = -3;
+                animator.SetTrigger("daño");
+            }
         }
     }
 
@@ -89,12 +111,22 @@ public class EnemyManager : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             agente.speed = 4;
-            animator.SetBool("moving", true);
             agente.SetDestination(player.position);
+            if(animatorCambiado == false)
+            {
+                animator.SetBool("moving", true);
+            }
         }
     }
     public void ImTarget(bool set)
     {
         sprite.SetActive(set);
+    }
+
+    public void CambiarAnimator()
+    {
+        animatorCambiado = true;
+        print("Hola");
+        //Cambiar animator controller
     }
 }

@@ -228,4 +228,16 @@ public class PlayerLocomotion : MonoBehaviour
             animatorManager.animator.SetBool("blocking", true);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PunoEnemigo"))
+        {
+            //print("hola");
+            if(other.GetComponentInParent<EnemyManager>().animatorCambiado == false)
+            {
+                other.GetComponentInParent<EnemyManager>().SendMessage("CambiarAnimator");
+            }
+        }
+    }
 }
