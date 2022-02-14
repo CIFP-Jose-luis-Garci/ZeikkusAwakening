@@ -10,7 +10,10 @@ public class AnimatorManager : MonoBehaviour
     [NonSerialized] public Animator animator;
     private int horizontal;
     private int vertical;
+    [Header("Zagrant")]
     public GameObject zagrant;
+    public GameObject appearParticles, disappearParticles;
+    [Header("Sound")]
     public AudioSource source;
     public AudioClip[] stepSounds;
     public AudioClip[] swordSounds;
@@ -101,8 +104,20 @@ public class AnimatorManager : MonoBehaviour
         source.PlayOneShot(jumpSounds[animationEvent.intParameter]);
     }
 
-    public void DrawSword()
+    public void DrawSwordParticle()
     {
+        Transform zagranPos = zagrant.transform;
+        Instantiate(appearParticles, zagranPos.position, zagranPos.rotation).GetComponent<ParticleSystem>().Play();
+    }
+
+    public void HideSwordParticle()
+    {
+        Transform zagranPos = zagrant.transform;
+        Instantiate(disappearParticles, zagranPos.position, zagranPos.rotation).GetComponent<ParticleSystem>().Play();
+    }
+
+    public void DrawSword(){
+    
         zagrant.SetActive(true);
         source.PlayOneShot(swordSounds[5]);
     }
