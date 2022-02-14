@@ -75,6 +75,10 @@ public class EnemyManager : MonoBehaviour
                 animator.SetBool("detection", false);
             }
         }
+        else
+        {
+            agente.SetDestination(player.position);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -100,9 +104,14 @@ public class EnemyManager : MonoBehaviour
             }
             else
             {
+                //Bajar vida
                 agente.speed = -3;
                 animator.SetTrigger("daño");
             }
+        }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            animator.SetBool("alcance", true);
         }
     }
 
@@ -115,6 +124,10 @@ public class EnemyManager : MonoBehaviour
             if(animatorCambiado == false)
             {
                 animator.SetBool("moving", true);
+            }
+            else
+            {
+                animator.SetBool("alcance", true);
             }
         }
     }

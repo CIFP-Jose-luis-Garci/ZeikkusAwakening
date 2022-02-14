@@ -233,7 +233,7 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PunoEnemigo"))
         {
-            //print("hola");
+            //Bajar vida
             if(other.GetComponentInParent<EnemyManager>().animatorCambiado == false)
             {
                 other.GetComponentInParent<EnemyManager>().SendMessage("CambiarAnimator");
