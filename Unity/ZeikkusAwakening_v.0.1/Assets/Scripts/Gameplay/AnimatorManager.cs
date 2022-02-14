@@ -14,6 +14,7 @@ public class AnimatorManager : MonoBehaviour
     public AudioClip[] stepSounds;
     public AudioClip[] swordSounds;
     public AudioClip[] zeikkuSounds;
+    public AudioClip[] jumpSounds;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -92,5 +93,10 @@ public class AnimatorManager : MonoBehaviour
     public void BlockSound()
     {
         source.PlayOneShot(swordSounds[4]);
+    }
+
+    public void JumpSound(AnimationEvent animationEvent)
+    {
+        source.PlayOneShot(jumpSounds[animationEvent.intParameter]);
     }
 }
