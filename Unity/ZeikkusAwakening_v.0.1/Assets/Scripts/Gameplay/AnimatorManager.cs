@@ -10,6 +10,7 @@ public class AnimatorManager : MonoBehaviour
     [NonSerialized] public Animator animator;
     private int horizontal;
     private int vertical;
+    public GameObject zagrant;
     public AudioSource source;
     public AudioClip[] stepSounds;
     public AudioClip[] swordSounds;
@@ -98,5 +99,17 @@ public class AnimatorManager : MonoBehaviour
     public void JumpSound(AnimationEvent animationEvent)
     {
         source.PlayOneShot(jumpSounds[animationEvent.intParameter]);
+    }
+
+    public void DrawSword()
+    {
+        zagrant.SetActive(true);
+        source.PlayOneShot(swordSounds[5]);
+    }
+
+    public void HideSword()
+    {
+        zagrant.SetActive(false);
+        source.PlayOneShot(swordSounds[6]);
     }
 }

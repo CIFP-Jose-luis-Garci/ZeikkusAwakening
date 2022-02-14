@@ -234,21 +234,18 @@ public class InputManager : MonoBehaviour
 
     private IEnumerator DrawSword()
     {
-        gameManager.inWorld = false;
         animatorManager.animator.SetBool("isInteracting", true);
         animatorManager.animator.SetTrigger("toBattle");
-        yield return new WaitForSeconds(1f);
-        zagrantController.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.9f);
+        gameManager.inWorld = false;
         animatorManager.animator.runtimeAnimatorController = inBattleController;
     }
 
     private IEnumerator Win()
     {
-        gameManager.inWorld = true;
         animatorManager.PlayTargetAnimation("win", true);
         yield return new WaitForSeconds(1f);
-        zagrantController.gameObject.SetActive(false);
+        gameManager.inWorld = true;
         animatorManager.animator.runtimeAnimatorController = inWorldController;
     }
 }

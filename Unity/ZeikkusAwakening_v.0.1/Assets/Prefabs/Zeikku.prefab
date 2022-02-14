@@ -1241,7 +1241,7 @@ MonoBehaviour:
     m_Bits: 8
   raycastHeightOffset: 0.5
   isJumping: 0
-  jumpForce: 60
+  jumpForce: 50
   runningSpeed: 7
   rotationSpeed: 15
   puntosDeTurno: 4
@@ -1281,6 +1281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8512427efdc4514492d9701e5adaf75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zagrant: {fileID: 4927773376672683731}
   source: {fileID: 5205658801009420469}
   stepSounds:
   - {fileID: 8300000, guid: c57e62ba73ba0694ca5ef4d57e792a14, type: 3}
@@ -1299,11 +1300,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 567eb66c99c48f64a9f2a0c1ef766da2, type: 3}
   - {fileID: 8300000, guid: 81160a889aeed4843b219899fe5206eb, type: 3}
   - {fileID: 8300000, guid: 1768acf053c365441b420df64f13b8ef, type: 3}
+  - {fileID: 8300000, guid: 44bdd8b112dd21d45946b80fc7f920e8, type: 3}
+  - {fileID: 8300000, guid: 868b7f93a319f90419c77e3559db8d21, type: 3}
   zeikkuSounds:
   - {fileID: 8300000, guid: 46faf29aee210624798b6a28804712c1, type: 3}
   - {fileID: 8300000, guid: 1534c305dd4beb4499a63e68c62e69ee, type: 3}
   - {fileID: 8300000, guid: 27b7da78703f37045a6250aa7496b3f2, type: 3}
   - {fileID: 8300000, guid: daeb8df27929e6a4ea48f194babf6e41, type: 3}
+  jumpSounds:
+  - {fileID: 8300000, guid: 29fd8a75f5a57834486808346f890d84, type: 3}
+  - {fileID: 8300000, guid: 13b6bcc18a887c94193083b3bd9b03b1, type: 3}
 --- !u!114 &2079246369808946005
 MonoBehaviour:
   m_ObjectHideFlags: 0
