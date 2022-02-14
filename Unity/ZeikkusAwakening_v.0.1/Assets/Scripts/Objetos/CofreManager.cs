@@ -11,11 +11,14 @@ public class CofreManager : MonoBehaviour
     public GameObject dialogue;
     private InputManager inputManager;
     private Animator animator;
+    private AudioSource source;
+    
 
     private void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
         animator = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
         openChest.CrossFadeAlpha(0, 0f, false);
     }
 
@@ -32,6 +35,7 @@ public class CofreManager : MonoBehaviour
         if (collisionInfo.gameObject.CompareTag("Player"))
             if (containedItem != null && inputManager.xInput)
             {
+                source.Play();
                 animator.enabled = true;
             }
             
@@ -40,6 +44,7 @@ public class CofreManager : MonoBehaviour
     public void OpenEvent()
     {
         openChest.CrossFadeAlpha(0, 0.5f, false);
+        
         FindObjectOfType<PlayerBagManager>().AddItem(containedItem);
         GameObject currentDialogue = Instantiate(dialogue, FindObjectOfType<Canvas>().transform);
         ItemDialogueBoxController idbc = currentDialogue.GetComponent<ItemDialogueBoxController>();
