@@ -73,7 +73,7 @@ public class AnimatorManager : MonoBehaviour
     public void Step(AnimationEvent animationEvent)
     {
         float weight = animationEvent.animatorClipInfo.weight;
-        if(weight > 0.8f)
+        if(weight > 0.8f && !animator.GetBool("isInteracting"))
         {
             source.PlayOneShot(stepSounds[Mathf.FloorToInt(Random.Range(0, stepSounds.Length - 0.1f))]);
         }
