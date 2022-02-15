@@ -206,10 +206,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0908beaea152d5409e32d8ebd0cc2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: {fileID: 6750029946022478586}
+  itemName: {fileID: 6750029946022478586}
   description: {fileID: 3753201750928955018}
   item: {fileID: 3730457302785447701}
   dialogue: {fileID: 2815808299988880874}
+  children: []
 --- !u!1 &6049512295095607992
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,10 +299,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0908beaea152d5409e32d8ebd0cc2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: {fileID: 0}
+  itemName: {fileID: 0}
   description: {fileID: 0}
   item: {fileID: 0}
   dialogue: {fileID: 0}
+  children: []
 --- !u!1 &7870466432731696471
 GameObject:
   m_ObjectHideFlags: 0

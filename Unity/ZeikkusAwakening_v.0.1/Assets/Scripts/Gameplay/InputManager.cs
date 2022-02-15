@@ -237,15 +237,15 @@ public class InputManager : MonoBehaviour
         animatorManager.animator.SetBool("isInteracting", true);
         animatorManager.animator.SetTrigger("toBattle");
         yield return new WaitForSeconds(1.9f);
-        gameManager.inWorld = false;
         animatorManager.animator.runtimeAnimatorController = inBattleController;
+        gameManager.inWorld = false;
     }
 
     private IEnumerator Win()
     {
         animatorManager.PlayTargetAnimation("win", true);
         yield return new WaitForSeconds(1f);
-        gameManager.inWorld = true;
         animatorManager.animator.runtimeAnimatorController = inWorldController;
+        gameManager.inWorld = true;
     }
 }
