@@ -23,7 +23,6 @@ public class ZagrantController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("hola");
         if (isAttacking)
         {
             if (other.gameObject.CompareTag("Enemigo"))

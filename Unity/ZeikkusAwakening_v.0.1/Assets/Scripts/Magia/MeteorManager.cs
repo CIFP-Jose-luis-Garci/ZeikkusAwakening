@@ -45,16 +45,19 @@ public class MeteorManager : MonoBehaviour
             Stats enemyStats = other.gameObject.GetComponent<Stats>();
             Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
             float resultado = 0.2f * 2;
+            Debug.Log(resultado);
             resultado += 1;
             resultado *= zeikkuStats.magicPower;
             resultado *= animatorManager.animator.GetFloat("damage");
             resultado /= (25 * enemyStats.resistance);
             resultado += 2;
+            Debug.Log(resultado);
             float random = Random.Range(85, 100);
             resultado *= random;
             resultado *= 0.01f;
             resultado *= 5;
             enemyStats.hp -= (int)resultado;
+            Debug.Log(resultado);
             if (enemyStats.hp < 0)
             {
                 Destroy(other.gameObject);
