@@ -18,11 +18,10 @@ public class OptionsController : MonoBehaviour
         sfxSlider.onValueChanged.AddListener(delegate { SetSound("SFXVolume", sfxSlider.value); });
         exit.onClick.AddListener(() =>
         {
-            Transform uiTransform = GameObject.FindGameObjectWithTag("UI").transform;
-            GameObject seleccionesInstanciadas = Instantiate(selecciones, uiTransform);
-            seleccionesInstanciadas.GetComponentInChildren<Button>().Select();
-            Instantiate(gameLogo, uiTransform);
-            Destroy(gameObject);
+            selecciones.SetActive(true);
+            gameLogo.SetActive(true);
+            selecciones.GetComponentInChildren<Button>().Select();
+            gameObject.SetActive(false);
         });
     }
     

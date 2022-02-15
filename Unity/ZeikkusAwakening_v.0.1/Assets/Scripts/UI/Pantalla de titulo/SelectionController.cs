@@ -9,7 +9,7 @@ public class SelectionController : MonoBehaviour
 
     public Button newFile, continuee, options, exit;
 
-    public GameObject opciones;
+    public GameObject opciones, pantallaInicial;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +20,10 @@ public class SelectionController : MonoBehaviour
         continuee.interactable = false;
         options.onClick.AddListener(() =>
         {
-            GameObject opcionesInstanciadas = Instantiate(opciones, GameObject.FindGameObjectWithTag("UI").transform);
-            opcionesInstanciadas.GetComponentInChildren<Slider>().Select();
-            Destroy(GameObject.FindGameObjectWithTag("GameLogo"));
-            Destroy(gameObject);
+            opciones.SetActive(true);
+            opciones.GetComponentInChildren<Slider>().Select();
+            pantallaInicial.SetActive(false);
+            gameObject.SetActive(false);
         });
         exit.onClick.AddListener(() => Application.Quit(0));
     }
