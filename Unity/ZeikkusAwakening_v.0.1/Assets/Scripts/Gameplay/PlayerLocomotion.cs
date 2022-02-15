@@ -229,6 +229,11 @@ public class PlayerLocomotion : MonoBehaviour
         }
     }
 
+    public void ResetRigidbody()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PunoEnemigo"))

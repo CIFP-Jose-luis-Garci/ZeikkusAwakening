@@ -221,14 +221,11 @@ public class InputManager : MonoBehaviour
         if (rTrigger)
         {
             rTrigger = false;
+            playerLocomotion.ResetRigidbody();
             if (gameManager.inWorld)
-            {
                 StartCoroutine(DrawSword());
-            }
             else
-            {
                 StartCoroutine(Win());
-            }
         }
     }
 
@@ -236,6 +233,7 @@ public class InputManager : MonoBehaviour
     {
         animatorManager.animator.SetBool("isInteracting", true);
         animatorManager.animator.SetTrigger("toBattle");
+        playerLocomotion.ResetRigidbody();
         yield return new WaitForSeconds(1.9f);
         animatorManager.animator.runtimeAnimatorController = inBattleController;
         gameManager.inWorld = false;
@@ -244,6 +242,7 @@ public class InputManager : MonoBehaviour
     private IEnumerator Win()
     {
         animatorManager.PlayTargetAnimation("win", true);
+        playerLocomotion.ResetRigidbody();
         yield return new WaitForSeconds(1f);
         animatorManager.animator.runtimeAnimatorController = inWorldController;
         gameManager.inWorld = true;

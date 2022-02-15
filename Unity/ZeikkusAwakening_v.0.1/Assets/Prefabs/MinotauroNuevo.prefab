@@ -1180,7 +1180,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4185034580055445121}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ea751bdf030c4a43a9e67b2e959a259, type: 3}
   m_Name: 
@@ -1189,7 +1189,7 @@ MonoBehaviour:
   title: 
   sprite: {fileID: 0}
   level: 0
-  hp: 300
+  hp: 3000
   maxHP: 0
   mp: 0
   maxMP: 0
@@ -1653,7 +1653,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1455984997154146854}
   - component: {fileID: 5798897317626048342}
-  - component: {fileID: 5798897317626048341}
   m_Layer: 0
   m_Name: CATRigHub002
   m_TagString: Untagged
@@ -1691,33 +1690,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.062651895, y: 0.041025773, z: 0.037227735}
   m_Center: {x: 0.013424091, y: 0.0023781124, z: 0.004429484}
---- !u!114 &5798897317626048341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5798897317626048343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ea751bdf030c4a43a9e67b2e959a259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 
-  title: 
-  sprite: {fileID: 0}
-  level: 0
-  hp: 300
-  maxHP: 0
-  mp: 0
-  maxMP: 0
-  strength: 20
-  defense: 18
-  magicPower: 0
-  resistance: 0
-  experience: 0
-  nextLevelExperience: 0
-  turnPoints: 0
 --- !u!1 &5954633369656447886
 GameObject:
   m_ObjectHideFlags: 0
