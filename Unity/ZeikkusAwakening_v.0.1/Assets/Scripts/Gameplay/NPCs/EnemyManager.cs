@@ -106,7 +106,7 @@ public class EnemyManager : MonoBehaviour
             {
                 //Bajar vida
                 agente.speed = -3;
-                animator.SetTrigger("daño");
+                animator.SetTrigger("daï¿½o");
             }
         }
         if (other.gameObject.CompareTag("Player"))
@@ -139,7 +139,6 @@ public class EnemyManager : MonoBehaviour
     public void CambiarAnimator()
     {
         animatorCambiado = true;
-        print("Hola");
         //Cambiar animator controller
     }
 }

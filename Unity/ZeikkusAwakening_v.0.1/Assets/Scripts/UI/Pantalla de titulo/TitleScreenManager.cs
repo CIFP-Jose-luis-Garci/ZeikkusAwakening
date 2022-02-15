@@ -8,12 +8,10 @@ using UnityEngine.UI;
 
 public class TitleScreenManager : MonoBehaviour
 {
-    public Image logobg, logo, titlebg, titlelogo, titlepress;
+    public Image logobg, logo, titlebg, titlelogo, titlepress, blackBackground;
     public GameObject selecciones;
 
     private InputManager iMgr;
-    private bool titlepressActive;
-    private bool titlepressVisible = false;
     private AudioSource musicaTitulo;
 
     private void Start()
@@ -22,6 +20,7 @@ public class TitleScreenManager : MonoBehaviour
         logo.CrossFadeAlpha(0, 0, true);
         titlebg.CrossFadeAlpha(0, 0, true);
         titlelogo.CrossFadeAlpha(0, 0, true);
+        blackBackground.CrossFadeAlpha(0,0,true);
         StartCoroutine(AnimateTitleScreen());
         musicaTitulo = GetComponent<AudioSource>();
     }
@@ -40,8 +39,6 @@ public class TitleScreenManager : MonoBehaviour
         titlebg.CrossFadeAlpha(1, 1, true);
         titlelogo.CrossFadeAlpha(1, 1, true);
         yield return new WaitForSeconds(2f);
-        titlepressActive = true;
-        titlepressVisible = true;
         titlepress.GetComponent<Animator>().enabled = true;
         Button pressAnyButton = titlepress.GetComponent<Button>();
         pressAnyButton.onClick.AddListener(() =>

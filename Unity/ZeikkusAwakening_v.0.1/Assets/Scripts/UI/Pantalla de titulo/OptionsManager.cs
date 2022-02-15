@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class OptionsController : MonoBehaviour
+public class OptionsManager : MonoBehaviour
 {
     public Slider bgmSlider, sfxSlider;
     public Button exit;
@@ -29,7 +29,8 @@ public class OptionsController : MonoBehaviour
             selecciones.GetComponentInChildren<Button>().Select();
             gameObject.SetActive(false);
         });
-
+        bgmSlider.value = GameManager.BGMVolume;
+        sfxSlider.value = GameManager.SFXVolume;
         // Camera
         GameManager.invertCameraX = invertCameraX.isOn;
         GameManager.invertCameraY = invertCameraY.isOn;
@@ -43,6 +44,8 @@ public class OptionsController : MonoBehaviour
             inputManager.inPause = false;
         invertCameraX.isOn = GameManager.invertCameraX;
         invertCameraY.isOn = GameManager.invertCameraY;
+        mixer.GetFloat("BMGVolume", out GameManager.BGMVolume);
+        mixer.GetFloat("SFXVolume", out GameManager.SFXVolume);
         CameraManager cameraManager = FindObjectOfType<CameraManager>();
         if (cameraManager != null)
             cameraManager.ChangeCameraInvert();

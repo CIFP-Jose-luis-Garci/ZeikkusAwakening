@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SelectionController : MonoBehaviour
+public class SelectionManager : MonoBehaviour
 {
 
     public Button newFile, continuee, options, exit;
-
     public GameObject opciones, pantallaInicial;
+    public Image blackBackground, loading;
+    public AudioMixer mixer;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,14 +32,12 @@ public class SelectionController : MonoBehaviour
     
     IEnumerator LoadYourAsyncScene()
     {
-        // The Application loads the Scene in the background as the current Scene runs.
-        // This is particularly good for creating loading screens.
-        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
-        // a sceneBuildIndex of 1 as shown in Build Settings.
+        blackBackground.CrossFadeAlpha(1, 1, true);
+        yield return GameManager.CrossFadeMusic(mixer, 2, true);
+        loading.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1);
-
-        // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
             yield return null;

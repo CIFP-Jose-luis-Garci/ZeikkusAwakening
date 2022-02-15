@@ -1,14 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
     private float time;
     public Text tiempo;
+    public Image blackBackground;
+    public AudioMixer mixer;
 
-  
+    private void Start()
+    {
+        StartCoroutine(GameManager.CrossFadeMusic(mixer, 2, false));
+        blackBackground.CrossFadeAlpha(0,2,true);
+    }
+
     // Update is called once per frame
     void Update()
     {
