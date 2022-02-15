@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 public class GameManager : MonoBehaviour
 {
     public bool inWorld;
+    public static int currentDialogue = 0;
     public static float BGMVolume = -10;
     public static float SFXVolume = -10;
     public static bool invertCameraX = true;

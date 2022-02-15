@@ -13,10 +13,10 @@ public class MemoryInputManager : MonoBehaviour
 
     public bool aInput;
 
-    private void Start()
+    private void Awake()
     {
         dialogue = FindObjectOfType<DialogueManager>();
-        dialogueText = dialogue.GetComponent<Text>();
+        dialogueText = dialogue.GetComponentInChildren<Text>();
     }
 
     private void OnEnable()
@@ -51,23 +51,24 @@ public class MemoryInputManager : MonoBehaviour
         }
     }
 
-    private void NextDialogue()
+    public void NextDialogue()
     {
-        StartCoroutine(LetraALetra());
+        StartCoroutine(LetraALetra(DialogueLookupTable.DialogueLookup(GameManager.currentDialogue)));
     }
 
     private IEnumerator LetraALetra(string phrase)
     {
+        GameManager.currentDialogue++;
         dialogueText.text = "";
         // reproducir audio de doblaje
-        StringBuilder sb = new StringBuilder(dialogueText.text);
-        int count = 0;
-        while (count < phrase.Length)
+        string currentText = "";
+        for (int i = 0; i < phrase.Length; i++)
         {
-            sb.Append(phrase[0]);
-            count++;
-            yield return new WaitForSeconds(0.1f);
+            currentText = phrase.Substring(0, i);
+            dialogueText.text = currentText;
+            yield return new WaitForSeconds(0.05f);
         }
+        dialogueText.text = phrase;
         // mostrar flecha de seguir diálogo
     }
 }
