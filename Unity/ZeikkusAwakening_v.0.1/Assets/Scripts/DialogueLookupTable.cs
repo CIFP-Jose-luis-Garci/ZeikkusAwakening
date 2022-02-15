@@ -11,6 +11,7 @@ public class DialogueLookupTable
             case 0:
                 return "Mi futuro... mi vida al completo... ¡todo me lo arrebataste tú! Pero no te preocupes... el destino que te aguarda está a mi merced.";
             case 1:
+                GameManager.currentEvent = 1;
                 return "Es el momento. Padre ya no puede protegerte. Y él está dormido. A través de tí, conseguiré mis deseos, Zeikku. Gracias a este poder que recibí... es hora de llevar a cabo mi venganza.";
             case 2:
                 return "Zeikku...  Zeikku, ¡despierta! ¡Despierta de tu sueño!";
@@ -35,6 +36,7 @@ public class DialogueLookupTable
             case 12:
                 return "Llevo 10 años esperando que despiertes para poder derrotarla, pues sólo tú tienes el poder del Dios del Espacio. Tu padre, quién había forjado un lazo estrecho con su encarnación, no lo sabía, pero él te eligió como recipiente donde estaría a salvo en busca de los restos del mal.";
             case 13:
+                GameManager.currentEvent = 2;
                 return "Invocalo. Haz que venga junto a tí ese poder que una vez nos salvó a todos.";
             case 14:
                 return "Este... ¿es el poder?";
@@ -43,12 +45,14 @@ public class DialogueLookupTable
             case 16:
                 return "te espero a la salida de la prisión. Hasta entonces, ten cuidado, pues innumerables peligros te aguardan en el camino.";
             case 17:
+                GameManager.currentEvent = 3;
                 return "Lailah... De acuerdo, ¡espérame!";
             case 18:
                 return "¡Fuera de aquí! ¡¿No véis que ya no os queda nada más por destruir?!";
             case 19:
                 return "Juro venganza sobre el rey que destruyó mi mundo y asesinó a mis padres. Mist nos ayudará si la convencemos, estoy seguro, sólo tiene que entender que no podemos quedarnos de brazos cruzados.";
             case 20:
+                GameManager.currentEvent = 4;
                 return "Nosotros, ¿héroes, no? No podría imaginarlo hace unos años...";
             default:
                 return "";

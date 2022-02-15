@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a177229ede810438d4c099b7433a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEvent: 0
 --- !u!1 &452757298
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +299,9 @@ GameObject:
   - component: {fileID: 703861970}
   - component: {fileID: 703861969}
   - component: {fileID: 703861968}
+  - component: {fileID: 703861974}
   - component: {fileID: 703861972}
+  - component: {fileID: 703861973}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -401,6 +404,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aInput: 0
+--- !u!114 &703861973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703861967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43d245345a8d5f4d9c38e6786b96e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flash: {fileID: 2062069110}
+  dialogo: {fileID: 337730142}
+--- !u!95 &703861974
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703861967}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc038d8b43482e041845dc56919474dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1370968877
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -710,7 +746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2062069109
 RectTransform:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class MemoryInputManager : MonoBehaviour
     private void Awake()
     {
         dialogue = FindObjectOfType<DialogueManager>();
+        dialogue.gameObject.SetActive(false);
         dialogueText = dialogue.GetComponentInChildren<Text>();
     }
 
@@ -47,7 +48,10 @@ public class MemoryInputManager : MonoBehaviour
         if (aInput)
         {
             aInput = false;
-            NextDialogue();
+            if (dialogue.currentEvent == GameManager.currentEvent)
+                NextDialogue();
+            else
+                dialogue.gameObject.SetActive(false);
         }
     }
 
