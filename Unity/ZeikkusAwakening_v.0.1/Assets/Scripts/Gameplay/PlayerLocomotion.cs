@@ -141,7 +141,7 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (isGrounded)
         {
-            animatorManager.PlayTargetAnimation("isJumping", true);
+            animatorManager.PlayTargetAnimation("Jump", true);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }

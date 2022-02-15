@@ -3148,6 +3148,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4202659361239371299, guid: 103af076e56b54241870f2ca843b007b, type: 3}
   m_PrefabInstance: {fileID: 1354178518}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1406152040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7772951442453913796, guid: 4b214a73477046d4a841619428783ded, type: 3}
+  m_PrefabInstance: {fileID: 2037331915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1426837164
 GameObject:
   m_ObjectHideFlags: 0
@@ -3234,6 +3239,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8255810256127292182, guid: 4b214a73477046d4a841619428783ded, type: 3}
   m_PrefabInstance: {fileID: 2037331915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1587690509 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3442117194833645251, guid: 4b214a73477046d4a841619428783ded, type: 3}
+  m_PrefabInstance: {fileID: 2037331915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1678753285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1443245216424910135, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
@@ -3548,9 +3564,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5075835120457933346, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835120457933346, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835120457933346, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835120465973097, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835120465973097, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835120465973097, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5075835121002782928, guid: 4b214a73477046d4a841619428783ded, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835121002782928, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5075835121002782940, guid: 4b214a73477046d4a841619428783ded, type: 3}
       propertyPath: m_Pivot.x
@@ -3652,6 +3696,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7772951440717459251, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772951440717459251, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772951442700357094, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772951442700357094, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8505318143431840297, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: opciones
+      value: 
+      objectReference: {fileID: 1587690509}
+    - target: {fileID: 8505318143431840297, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: pantallaOpciones
+      value: 
+      objectReference: {fileID: 1406152040}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b214a73477046d4a841619428783ded, type: 3}
 --- !u!223 &2037331916 stripped

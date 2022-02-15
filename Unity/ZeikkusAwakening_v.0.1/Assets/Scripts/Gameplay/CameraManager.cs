@@ -22,6 +22,8 @@ public class CameraManager : MonoBehaviour
         cmfl.m_LookAt = player;
         inputManager = player.gameObject.GetComponent<InputManager>();
         originalRadius = cmfl.m_Orbits[1].m_Radius;
+
+        ChangeCameraInvert();
     }
 
     private void Update()
@@ -41,6 +43,12 @@ public class CameraManager : MonoBehaviour
                 cmfl.m_Orbits[1].m_Radius = originalRadius;
             }
         }
+    }
+
+    public void ChangeCameraInvert()
+    {
+        cmfl.m_XAxis.m_InvertInput = GameManager.invertCameraX;
+        cmfl.m_YAxis.m_InvertInput = GameManager.invertCameraY;
     }
 
     public void ChangeTarget(Transform newTarget)

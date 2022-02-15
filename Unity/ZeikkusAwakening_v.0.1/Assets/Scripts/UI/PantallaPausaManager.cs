@@ -9,8 +9,8 @@ public class PantallaPausaManager : MonoBehaviour
     private InputManager inputManager;
     private GameManager gameManager;
     private Stats zeikkuStats;
-    public GameObject pantallaInventario, pantallaEstado;
-    public Button inventario, estado;
+    public GameObject pantallaInventario, pantallaEstado, pantallaOpciones;
+    public Button inventario, estado, opciones;
     public Text tiempo, maru, zeikkuVida, zeikkuMagia;
 
     private void Awake()
@@ -45,6 +45,12 @@ public class PantallaPausaManager : MonoBehaviour
         {
             gameObject.SetActive(false);
             pantallaEstado.SetActive(true);
+        });
+
+        opciones.onClick.AddListener(() =>
+        {
+            gameObject.SetActive(false);
+            pantallaOpciones.SetActive(true);
         });
         inventario.Select();
 
