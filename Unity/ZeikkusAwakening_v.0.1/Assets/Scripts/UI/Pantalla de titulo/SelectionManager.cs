@@ -17,7 +17,7 @@ public class SelectionManager : MonoBehaviour
     {
         newFile.onClick.AddListener(() =>
         {
-            StartCoroutine(LoadYourAsyncScene());
+            StartCoroutine(StartGame());
         });
         continuee.interactable = false;
         options.onClick.AddListener(() =>
@@ -30,17 +30,11 @@ public class SelectionManager : MonoBehaviour
         exit.onClick.AddListener(() => Application.Quit(0));
     }
     
-    IEnumerator LoadYourAsyncScene()
+    IEnumerator StartGame()
     {
         blackBackground.CrossFadeAlpha(1, 1, true);
         yield return GameManager.CrossFadeMusic(mixer, 2, true);
         loading.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f);
-
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1);
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
+        yield return GameManager.LoadScene(2);
     }
 }

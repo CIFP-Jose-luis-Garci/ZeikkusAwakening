@@ -131,7 +131,11 @@ public class InputManager : MonoBehaviour
         if (aInput)
         {
             aInput = false;
-            if (inDialogue || inPause) return;
+            if (inPause) return;
+            if (inDialogue)
+            {
+                dialogue.NextDialogue();
+            }
             if (gameManager.inWorld) playerLocomotion.HandleJumping();
             else playerLocomotion.HandleMagic(0);
         }

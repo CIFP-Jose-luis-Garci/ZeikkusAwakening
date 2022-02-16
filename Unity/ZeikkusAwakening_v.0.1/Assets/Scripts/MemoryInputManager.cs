@@ -8,17 +8,9 @@ using UnityEngine.UI;
 public class MemoryInputManager : MonoBehaviour
 {
     private PlayerControls playerControls;
-    private DialogueManager dialogue;
-    private Text dialogueText;
+    public DialogueManager dialogue;
 
     public bool aInput;
-
-    private void Awake()
-    {
-        dialogue = FindObjectOfType<DialogueManager>();
-        dialogue.gameObject.SetActive(false);
-        dialogueText = dialogue.GetComponentInChildren<Text>();
-    }
 
     private void OnEnable()
     {
@@ -49,30 +41,12 @@ public class MemoryInputManager : MonoBehaviour
         {
             aInput = false;
             if (dialogue.currentEvent == GameManager.currentEvent)
-                NextDialogue();
+                dialogue.NextDialogue();
             else
+            {
                 dialogue.gameObject.SetActive(false);
+                StartCoroutine(GetComponent<MemorySceneManager>().FadeOutFlash(2));
+            }
         }
-    }
-
-    public void NextDialogue()
-    {
-        StartCoroutine(LetraALetra(DialogueLookupTable.DialogueLookup(GameManager.currentDialogue)));
-    }
-
-    private IEnumerator LetraALetra(string phrase)
-    {
-        GameManager.currentDialogue++;
-        dialogueText.text = "";
-        // reproducir audio de doblaje
-        string currentText = "";
-        for (int i = 0; i < phrase.Length; i++)
-        {
-            currentText = phrase.Substring(0, i);
-            dialogueText.text = currentText;
-            yield return new WaitForSeconds(0.05f);
-        }
-        dialogueText.text = phrase;
-        // mostrar flecha de seguir diálogo
     }
 }

@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public bool inWorld;
     public static int currentEvent = 0;
     public static int currentDialogue = 0;
+    private static int nextScene = 0;
     public static float BGMVolume = -10;
     public static float SFXVolume = -10;
     public static bool invertCameraX = true;
@@ -48,5 +50,14 @@ public class GameManager : MonoBehaviour
             time -= timeStep;
         } while (time > 0);
 
+    }
+
+    public static IEnumerator LoadScene(float timeToLoad)
+    {
+        nextScene++;
+        yield return new WaitForSeconds(timeToLoad);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(GameManager.nextScene);
+        while (!asyncOperation.isDone)
+            yield return null;
     }
 }

@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MemorySceneManager : MonoBehaviour
 {
-    public Image flash;
+    public Image flash, loading;
     public DialogueManager dialogo;
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator FadeOutFlash(float timeToLoad)
     {
-        
+        flash.CrossFadeAlpha(0, 2, true);
+        // sonido de deasaparecer
+        yield return new WaitForSeconds(3);
+        loading.gameObject.SetActive(true);
+        yield return GameManager.LoadScene(timeToLoad);
     }
 
     public void ShowDialogue()

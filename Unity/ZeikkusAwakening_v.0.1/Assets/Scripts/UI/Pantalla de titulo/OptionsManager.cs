@@ -44,7 +44,7 @@ public class OptionsManager : MonoBehaviour
             inputManager.inPause = false;
         invertCameraX.isOn = GameManager.invertCameraX;
         invertCameraY.isOn = GameManager.invertCameraY;
-        mixer.GetFloat("BMGVolume", out GameManager.BGMVolume);
+        mixer.GetFloat("BGMVolume", out GameManager.BGMVolume);
         mixer.GetFloat("SFXVolume", out GameManager.SFXVolume);
         CameraManager cameraManager = FindObjectOfType<CameraManager>();
         if (cameraManager != null)
