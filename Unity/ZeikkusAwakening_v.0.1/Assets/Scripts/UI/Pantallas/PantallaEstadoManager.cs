@@ -16,7 +16,6 @@ public class PantallaEstadoManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        inputManager.inPause = true;
         stats = inputManager.gameObject.GetComponent<Stats>();
         nombre.text = stats.actorName;
         titulo.text = stats.title;
@@ -43,6 +42,7 @@ public class PantallaEstadoManager : MonoBehaviour
         {
             gameObject.SetActive(false);
             pantallaPausa.SetActive(true);
+            pantallaPausa.GetComponentInChildren<Button>().Select();
         }
     }
 }

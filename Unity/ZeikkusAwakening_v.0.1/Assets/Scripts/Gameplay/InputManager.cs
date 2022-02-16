@@ -38,7 +38,6 @@ public class InputManager : MonoBehaviour
     public bool lBump;
 
     public bool inDialogue;
-    public bool inPause;
 
     public RuntimeAnimatorController inBattleController;
     public RuntimeAnimatorController inWorldController;
@@ -108,7 +107,7 @@ public class InputManager : MonoBehaviour
         verticalInput = movementInput.y;
         horizontalInput = movementInput.x;
 
-        if (inPause) return;
+        if (GameManager.inPause) return;
         if (inDialogue) return;
 
         cameraInputX = cameraInput.x;
@@ -125,7 +124,7 @@ public class InputManager : MonoBehaviour
         if (aInput)
         {
             aInput = false;
-            if (inPause) return;
+            if (GameManager.inPause) return;
             if (inDialogue)
             {
                 dialogue.NextDialogue();
@@ -139,7 +138,7 @@ public class InputManager : MonoBehaviour
         if (yInput)
         {
             yInput = false;
-            if (inDialogue || inPause) return;
+            if (inDialogue || GameManager.inPause) return;
             if (!gameManager.inWorld) playerLocomotion.HandleMagic(1);
             else playerLocomotion.HandleMagic(0);
         }
@@ -148,7 +147,7 @@ public class InputManager : MonoBehaviour
     {
         if (xInput)
         {
-            if (inDialogue || inPause) return;
+            if (inDialogue || GameManager.inPause) return;
             if (!gameManager.inWorld)
             {
                 xInput = false;
@@ -161,7 +160,7 @@ public class InputManager : MonoBehaviour
     {
         if (bInput)
         {
-            if (inDialogue || inPause) return;
+            if (inDialogue || GameManager.inPause) return;
             bInput = false;
             if (!gameManager.inWorld)
                 playerLocomotion.HandleAttack();
@@ -182,7 +181,7 @@ public class InputManager : MonoBehaviour
     {
         if (rBump)
         {
-            if (inDialogue || inPause) return;
+            if (inDialogue || GameManager.inPause) return;
             if (!gameManager.inWorld)
             {
                 rBump = false;
@@ -195,7 +194,7 @@ public class InputManager : MonoBehaviour
     {
         if (lBump)
         {
-            if (inDialogue || inPause) return;
+            if (inDialogue || GameManager.inPause) return;
             if (gameManager.inWorld) freeLook.m_RecenterToTargetHeading.m_enabled = true;
             else
             {
@@ -214,14 +213,14 @@ public class InputManager : MonoBehaviour
 
     private void HandleLeftTrigger()
     {
-        if (inDialogue || inPause) return;
+        if (inDialogue || GameManager.inPause) return;
         if (gameManager.inWorld) return;
         playerLocomotion.HandleCameraChange(lTrigger);
     }
 
     private void HandleRightTrigger()
     {
-        if (inDialogue || inPause) return;
+        if (inDialogue || GameManager.inPause) return;
         if (rTrigger)
         {
             rTrigger = false;

@@ -22,7 +22,7 @@ public class PantallaPausaManager : MonoBehaviour
 
     private void OnEnable()
     {
-        inputManager.inPause = true;
+        GameManager.inPause = true;
         inventario.Select();
         zeikkuStats = inputManager.gameObject.GetComponent<Stats>();
         zeikkuVida.text = zeikkuStats.hp + "/" + zeikkuStats.maxHP;
@@ -32,25 +32,22 @@ public class PantallaPausaManager : MonoBehaviour
 
     private void OnDisable()
     {
-        inputManager.inPause = false;
+        GameManager.inPause = false;
     }
 
     private void Start()
     {
         inventario.onClick.AddListener(() =>
         {
-            gameObject.SetActive(false);
             pantallaInventario.SetActive(true);
         });
         estado.onClick.AddListener(() =>
         {
-            gameObject.SetActive(false);
             pantallaEstado.SetActive(true);
         });
 
         opciones.onClick.AddListener(() =>
         {
-            gameObject.SetActive(false);
             pantallaOpciones.SetActive(true);
         });
         inventario.Select();

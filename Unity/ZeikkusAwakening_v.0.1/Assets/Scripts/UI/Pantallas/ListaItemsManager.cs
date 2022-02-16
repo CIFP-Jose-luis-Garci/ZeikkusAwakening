@@ -40,13 +40,7 @@ public class ListaItemsManager : MonoBehaviour
 
     void OnEnable()
     {
-        inputManager.inPause = true;
         ReloadList();
-    }
-
-    private void OnDisable()
-    {
-        inputManager.inPause = false;
     }
 
     private void Update()
@@ -85,6 +79,7 @@ public class ListaItemsManager : MonoBehaviour
         {
             gameObject.SetActive(false);
             pantallaPausa.SetActive(true);
+            pantallaPausa.GetComponentInChildren<Button>().Select();
         }
     }
 

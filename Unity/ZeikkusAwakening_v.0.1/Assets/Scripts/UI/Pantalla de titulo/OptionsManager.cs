@@ -12,13 +12,9 @@ public class OptionsManager : MonoBehaviour
     public Toggle invertCameraX, invertCameraY;
     public AudioMixer mixer;
     public GameObject selecciones, gameLogo;
-    private InputManager inputManager;
 
     private void OnEnable()
     {
-        inputManager = FindObjectOfType<InputManager>();
-        if (inputManager != null)
-            inputManager.inPause = true;
         bgmSlider.Select();
         bgmSlider.onValueChanged.AddListener(delegate { SetSound("BGMVolume", bgmSlider.value); });
         sfxSlider.onValueChanged.AddListener(delegate { SetSound("SFXVolume", sfxSlider.value); });
@@ -40,8 +36,6 @@ public class OptionsManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if (inputManager != null)
-            inputManager.inPause = false;
         invertCameraX.isOn = GameManager.invertCameraX;
         invertCameraY.isOn = GameManager.invertCameraY;
         mixer.GetFloat("BGMVolume", out GameManager.BGMVolume);

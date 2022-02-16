@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -15,19 +15,18 @@ public class GameManager : MonoBehaviour
     public static bool invertCameraX = true;
     public static bool invertCameraY = false;
     public GameObject pause;
-    private bool paused;
+    public static bool inPause;
     public GameObject mundo;
     public GameObject flash;
     public GameObject escenaBatalla;
     public int maru;
     public GameObject[] personajes;
-    
+
     public void Pause()
     {
-        if (EventSystem.current.currentSelectedGameObject == null)
-            pause.SetActive(true);
-        else
-            pause.SetActive(false);
+        inPause = !inPause;
+        pause.SetActive(inPause);
+        Time.timeScale = inPause ? 0 : 1;
     }
 
     public static IEnumerator CrossFadeMusic(AudioMixer mixer, float time, bool muting)
