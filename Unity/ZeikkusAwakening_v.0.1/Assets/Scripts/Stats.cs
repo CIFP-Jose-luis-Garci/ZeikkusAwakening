@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -21,6 +22,7 @@ public class Stats : MonoBehaviour
     public int experience;
     public int nextLevelExperience;
     public int turnPoints;
+    public bool alive;
 
     private void Start()
     {

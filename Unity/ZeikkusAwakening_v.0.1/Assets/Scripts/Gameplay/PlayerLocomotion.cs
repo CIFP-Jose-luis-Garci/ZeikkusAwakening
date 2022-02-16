@@ -231,6 +231,7 @@ public class PlayerLocomotion : MonoBehaviour
     
     public IEnumerator HandleFirstStrike(GameObject zagrant)
     {
+        if (playerManager.isInteracting) yield break;
         ResetRigidbody();
         animatorManager.PlayTargetAnimation("FirstStrikeDraw", true);
         yield return new WaitForSeconds(1.2f);

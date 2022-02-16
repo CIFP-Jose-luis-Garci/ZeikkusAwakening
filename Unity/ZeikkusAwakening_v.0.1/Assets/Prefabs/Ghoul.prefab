@@ -409,7 +409,6 @@ GameObject:
   - component: {fileID: 1443245216424910135}
   - component: {fileID: 1443597770787440080}
   - component: {fileID: 1443597770787440093}
-  - component: {fileID: 1443597770787440083}
   - component: {fileID: 1443597770787440081}
   - component: {fileID: 1250773059}
   - component: {fileID: 279334652}
@@ -473,33 +472,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1443597770787440083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444554315193150917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ea751bdf030c4a43a9e67b2e959a259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 
-  title: 
-  sprite: {fileID: 0}
-  level: 0
-  hp: 500
-  maxHP: 0
-  mp: 0
-  maxMP: 0
-  strength: 8
-  defense: 10
-  magicPower: 0
-  resistance: 6
-  experience: 0
-  nextLevelExperience: 0
-  turnPoints: 0
 --- !u!195 &1443597770787440081
 NavMeshAgent:
   m_ObjectHideFlags: 0

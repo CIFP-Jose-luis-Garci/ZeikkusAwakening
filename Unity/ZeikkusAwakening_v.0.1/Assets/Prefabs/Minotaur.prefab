@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 24103731832798512}
   - component: {fileID: 24103731824977552}
   - component: {fileID: 24103731832490321}
-  - component: {fileID: 24103731832490323}
   - component: {fileID: 24103731832490324}
   - component: {fileID: 2998404957974184883}
   m_Layer: 6
@@ -156,33 +155,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 30.711382, y: 71.04075, z: 29.045189}
   m_Center: {x: 0.31108558, y: 68.71332, z: 2.4364173}
---- !u!114 &24103731832490323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24103731832490320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ea751bdf030c4a43a9e67b2e959a259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 
-  title: 
-  sprite: {fileID: 0}
-  level: 0
-  hp: 300
-  maxHP: 0
-  mp: 0
-  maxMP: 0
-  strength: 20
-  defense: 18
-  magicPower: 0
-  resistance: 0
-  experience: 0
-  nextLevelExperience: 0
-  turnPoints: 0
 --- !u!195 &24103731832490324
 NavMeshAgent:
   m_ObjectHideFlags: 0

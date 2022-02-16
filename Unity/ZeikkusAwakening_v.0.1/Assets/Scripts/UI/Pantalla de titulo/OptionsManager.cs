@@ -24,10 +24,10 @@ public class OptionsManager : MonoBehaviour
         sfxSlider.onValueChanged.AddListener(delegate { SetSound("SFXVolume", sfxSlider.value); });
         exit.onClick.AddListener(() =>
         {
+            gameObject.SetActive(false);    
             selecciones.SetActive(true);
             gameLogo.SetActive(true);
             selecciones.GetComponentInChildren<Button>().Select();
-            gameObject.SetActive(false);
         });
         bgmSlider.value = GameManager.BGMVolume;
         sfxSlider.value = GameManager.SFXVolume;

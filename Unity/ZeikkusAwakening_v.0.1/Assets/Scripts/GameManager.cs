@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static bool invertCameraX = true;
     public static bool invertCameraY = false;
     public GameObject pause;
+    private bool paused;
     public GameObject mundo;
     public GameObject flash;
     public GameObject escenaBatalla;
@@ -22,7 +24,10 @@ public class GameManager : MonoBehaviour
     
     public void Pause()
     {
-        pause.SetActive(!pause.activeSelf);
+        if (EventSystem.current.currentSelectedGameObject == null)
+            pause.SetActive(true);
+        else
+            pause.SetActive(false);
     }
 
     public static IEnumerator CrossFadeMusic(AudioMixer mixer, float time, bool muting)

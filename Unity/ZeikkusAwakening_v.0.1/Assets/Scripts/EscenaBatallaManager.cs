@@ -8,23 +8,34 @@ public class EscenaBatallaManager : MonoBehaviour
 
     public GameObject enemyToSpawn;
 
-    private EnemyManager[] enemies;
+    private Stats[] enemies;
+    private bool alive;
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < Mathf.Floor(Random.Range(0, spawners.Length)); i++)
+        for (int i = 0; i < Mathf.Floor(Random.Range(2, spawners.Length)); i++)
         {
             Instantiate(enemyToSpawn, spawners[i].transform);
         }
-        enemies = FindObjectsOfType<EnemyManager>();
+        enemies = GetComponentsInChildren<Stats>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (EnemyManager enemy in enemies)
+        alive = false;
+        foreach (Stats enemy in enemies)
         {
-            if
+            if (enemy.alive)
+            {
+                alive = true;
+            }
+                
+        }
+
+        if (!alive)
+        {
+            Debug.Log("Win battle");
         }
     }
 }
