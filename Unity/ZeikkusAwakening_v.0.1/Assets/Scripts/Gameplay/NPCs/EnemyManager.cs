@@ -1,144 +1,139 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.PlayerLoop;
+using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
-    public Transform player;
+    [NonSerialized]public Transform player;
     public GameObject sprite;
-
-    Animator animator;
-    NavMeshAgent agente;
-
     public bool detectado;
-    public bool animatorCambiado = false;
-
-    public Vector3 direccion;
-    Vector3 rondaGoal;
+    
+    private Animator animator;
+    private NavMeshAgent agente;
+    public bool isWalking;
+    private bool isRunning;
+    private float waitTime;
+    private float hitLength;
+    private float idleLength;
 
     private void Start()
     {
         detectado = false;
         animator = GetComponent<Animator>();
         agente = GetComponent<NavMeshAgent>();
-        IniciarMovimiento();
-    }
-    Vector3 SetRandomGoal(Vector3 npcPos, float randomValue)
-    {
-        float newX = npcPos.x + Random.Range(-randomValue, randomValue);
-        float newZ = npcPos.z + Random.Range(-randomValue, randomValue);
-        direccion = new Vector3(newX, 0, newZ);
-        return direccion;
+        ClipLength();
     }
 
-    IEnumerator IA()
+    private void Update()
     {
-        while (!detectado)
+        if (detectado)
         {
-            animator.SetBool("moving", true);
-            rondaGoal = SetRandomGoal(transform.position, 5);
-            agente.SetDestination(rondaGoal);
-            yield return new WaitForSeconds(5f);
+            Run();
+        }
+        else 
+        {
+            Walk();
         }
     }
 
-    public void PararMovimiento()
+    private void Walk()
     {
-        agente.speed = 4;
-        StopCoroutine("IA");
-    }
-
-    public void IniciarMovimiento()
-    {
-        agente.speed = 1;
-        StartCoroutine("IA");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(animatorCambiado == false)
+        if (isWalking && Vector3.Distance(agente.destination, transform.position) < 0.2)
         {
-            if (detectado == true)
+            if (waitTime > idleLength)
             {
-                animator.SetBool("detection", true);
-                transform.LookAt(player.position);
-                Quaternion rotation = transform.rotation;
-                rotation.z = 0;
-                rotation.x = 0;
-                transform.rotation = rotation;
-                agente.SetDestination(player.position);
+                waitTime = 0;
+                isWalking = false;
+                return;
             }
-            else
+            if (waitTime <= 0)
             {
-                animator.SetBool("detection", false);
+                animator.SetBool("moving", false);
+                agente.speed = 0;
             }
+            waitTime += Time.deltaTime;
         }
         else
         {
-            agente.SetDestination(player.position);
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            agente.SetDestination(transform.position);
-            agente.speed = 0;
-            if(animatorCambiado == false)
+            if (!isWalking)
             {
-                animator.SetTrigger("caught");
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Espada"))
-        {
-            if(animatorCambiado == false)
-            {
-                CambiarAnimator();
-            }
-            else
-            {
-                //Bajar vida
-                agente.speed = -3;
-                animator.SetTrigger("da�o");
-            }
-        }
-        if (other.gameObject.CompareTag("Player"))
-        {
-            animator.SetBool("alcance", true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            agente.speed = 4;
-            agente.SetDestination(player.position);
-            if(animatorCambiado == false)
-            {
+                waitTime = 0;
                 animator.SetBool("moving", true);
-            }
-            else
-            {
-                animator.SetBool("alcance", true);
+                isWalking = true;
+                agente.speed = 2.5f;
+                agente.SetDestination(WalkTo(transform.position, 4));
             }
         }
     }
+
+    private void Run()
+    {
+        float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
+        if (distanceFromPlayer < 10)
+        {
+            if (!isRunning)
+            {
+                waitTime = 0;
+                animator.SetBool("detection", true);
+                isRunning = true;
+                agente.speed = 4;
+            }
+            if (distanceFromPlayer < 1)
+            {
+                if (waitTime <= 0)
+                {
+                    animator.SetTrigger("caught");
+                    agente.speed = 0;
+                }
+            }
+            if (waitTime > hitLength)
+            {
+                isRunning = false;
+                waitTime = 0;
+                return;
+            }
+            waitTime += Time.deltaTime;
+            agente.SetDestination(player.position);
+        }
+        else
+        {
+            animator.SetBool("detection", false);
+            detectado = false;
+            isRunning = false;
+        }
+    }
+    
+    private void ClipLength()
+    {
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach(AnimationClip clip in clips)
+        {
+            switch(clip.name)
+            {
+                case "Attack":
+                    hitLength = clip.length;
+                    break;
+                case "Idle":
+                    idleLength = clip.length;
+                    break;
+            }
+        }
+    }
+
+    private Vector3 WalkTo(Vector3 from, float randomValue)
+    {
+        float newX = from.x + Random.Range(-randomValue, randomValue);
+        float newZ = from.z + Random.Range(-randomValue, randomValue);
+        Vector3 direccion = new Vector3(newX, 0, newZ);
+        return direccion;
+    }
+
     public void ImTarget(bool set)
     {
         sprite.SetActive(set);
-    }
-
-    public void CambiarAnimator()
-    {
-        animatorCambiado = true;
-        //Cambiar animator controller
     }
 }

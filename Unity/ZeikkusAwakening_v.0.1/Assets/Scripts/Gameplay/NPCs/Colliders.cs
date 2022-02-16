@@ -15,25 +15,9 @@ public class Colliders : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            enemyManager.isWalking = false;
             enemyManager.detectado = true;
-            enemyManager.PararMovimiento();
+            enemyManager.player = other.transform;
         }
-    }
-
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            enemyManager.detectado = false;
-            enemyManager.IniciarMovimiento();
-        }
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -233,16 +233,4 @@ public class PlayerLocomotion : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("PunoEnemigo"))
-        {
-            //Bajar vida
-            if(other.GetComponentInParent<EnemyManager>().animatorCambiado == false)
-            {
-                other.GetComponentInParent<EnemyManager>().SendMessage("CambiarAnimator");
-            }
-        }
-    }
 }

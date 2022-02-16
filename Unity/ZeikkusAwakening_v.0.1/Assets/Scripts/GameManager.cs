@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -18,14 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject pause;
     public int maru;
     public GameObject[] personajes;
-
-    private InputManager inputManager;
-
-    private void Start()
-    {
-        inputManager = FindObjectOfType<InputManager>();
-    }
-
+    
     public void Pause()
     {
         pause.SetActive(!pause.activeSelf);
@@ -40,8 +31,8 @@ public class GameManager : MonoBehaviour
         float timeStep = 0.1f;
         mixer.GetFloat("BGMVolume", out current);
 
-        if (current > -80 && !muting) yield return null;
-        if (current < BGMVolume && muting) yield return null;
+        if (!muting && current > -80) yield break;
+        if (muting && current < BGMVolume) yield break;
         do
         {
             current += valueStep;
