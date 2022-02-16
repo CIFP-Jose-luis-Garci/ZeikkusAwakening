@@ -15,8 +15,9 @@ public class EnemyManager : MonoBehaviour
     private Animator animator;
     private NavMeshAgent agente;
     public bool isWalking;
-    private bool isRunning;
-    private float waitTime;
+    public bool isRunning;
+    private bool isAttacking;
+    public float waitTime;
     private float hitLength;
     private float idleLength;
 
@@ -72,38 +73,48 @@ public class EnemyManager : MonoBehaviour
 
     private void Run()
     {
-        float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
-        if (distanceFromPlayer < 10)
+        if (isAttacking)
         {
-            if (!isRunning)
+            if (waitTime <= 0)
             {
-                waitTime = 0;
-                animator.SetBool("detection", true);
-                isRunning = true;
-                agente.speed = 4;
-            }
-            if (distanceFromPlayer < 1)
-            {
-                if (waitTime <= 0)
-                {
-                    animator.SetTrigger("caught");
-                    agente.speed = 0;
-                }
+                animator.SetTrigger("caught");
+                agente.speed = 0;
             }
             if (waitTime > hitLength)
             {
                 isRunning = false;
                 waitTime = 0;
+                isAttacking = false;
                 return;
             }
             waitTime += Time.deltaTime;
-            agente.SetDestination(player.position);
         }
         else
         {
-            animator.SetBool("detection", false);
-            detectado = false;
-            isRunning = false;
+            float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
+            if (distanceFromPlayer < 10)
+            {
+                if (!isRunning)
+                {
+                    waitTime = 0;
+                    animator.SetBool("detection", true);
+                    isRunning = true;
+                    agente.speed = 4;
+                }
+
+                if (distanceFromPlayer < 1)
+                {
+                    isAttacking = true;
+                    return;
+                }
+                agente.SetDestination(player.position);
+            }
+            else
+            {
+                animator.SetBool("detection", false);
+                detectado = false;
+                isRunning = false;
+            }
         }
     }
     

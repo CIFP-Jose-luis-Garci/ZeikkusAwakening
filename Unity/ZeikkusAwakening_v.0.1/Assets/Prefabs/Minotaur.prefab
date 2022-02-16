@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 24103731832490321}
   - component: {fileID: 24103731832490323}
   - component: {fileID: 24103731832490324}
-  - component: {fileID: 605161590}
   - component: {fileID: 2998404957974184883}
   m_Layer: 6
   m_Name: Minotaur
@@ -206,19 +205,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!135 &605161590
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24103731832490320}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 45.51
-  m_Center: {x: 0, y: 49.8, z: 0}
 --- !u!114 &2998404957974184883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,8 +220,6 @@ MonoBehaviour:
   sprite: {fileID: 906573617079297574}
   detectado: 0
   isWalking: 0
-  isRunning: 0
-  waitTime: 0
 --- !u!1 &24103731832490322
 GameObject:
   m_ObjectHideFlags: 0
