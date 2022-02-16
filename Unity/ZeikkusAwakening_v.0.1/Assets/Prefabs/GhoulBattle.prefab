@@ -414,8 +414,8 @@ GameObject:
   - component: {fileID: 1250773059}
   - component: {fileID: 279334652}
   m_Layer: 6
-  m_Name: Ghoul
-  m_TagString: EnemigoWorld
+  m_Name: GhoulBattle
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 1443597770934799560}
   detectado: 0
-  enemyToSpawn: {fileID: 1444554315193150917, guid: aa96bee49c46a3a49928b78d1ab9d329, type: 3}
+  enemyToSpawn: {fileID: 24103731832490320, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 3}
   isWalking: 0
   isRunning: 0
   waitTime: 0

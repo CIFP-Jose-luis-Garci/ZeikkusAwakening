@@ -11,6 +11,7 @@ public class EnemyManager : MonoBehaviour
     [NonSerialized]public Transform player;
     public GameObject sprite;
     public bool detectado;
+    public GameObject enemyToSpawn;
     
     private Animator animator;
     private NavMeshAgent agente;

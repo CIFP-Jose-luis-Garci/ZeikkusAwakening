@@ -51,8 +51,8 @@ public class ZagrantController : MonoBehaviour
         {
             if (other.gameObject.CompareTag("EnemigoWorld"))
             {
+                FindObjectOfType<GameManager>().ToBattle(other.gameObject.GetComponent<EnemyManager>().enemyToSpawn);
                 Destroy(other.gameObject);
-                FindObjectOfType<GameManager>().ToBattle();
             }
         }
     }

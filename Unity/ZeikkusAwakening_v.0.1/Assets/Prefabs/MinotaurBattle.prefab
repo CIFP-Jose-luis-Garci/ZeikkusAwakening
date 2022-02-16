@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 24103731832490324}
   - component: {fileID: 2998404957974184883}
   m_Layer: 6
-  m_Name: Minotaur
-  m_TagString: EnemigoWorld
+  m_Name: MinotaurBattle
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 906573617079297574}
   detectado: 0
-  enemyToSpawn: {fileID: 24103731832490320, guid: 5613d45ea723ead43a072597183be6a7, type: 3}
+  enemyToSpawn: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
   isWalking: 0
   isRunning: 0
   waitTime: 0

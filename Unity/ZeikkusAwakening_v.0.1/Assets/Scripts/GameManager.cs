@@ -46,22 +46,21 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void ToBattle()
+    public void ToBattle(GameObject spawn)
     {
-        StartCoroutine(LoadBattle());
+        StartCoroutine(LoadBattle(spawn));
     }
 
-    private IEnumerator LoadBattle()
+    private IEnumerator LoadBattle(GameObject spawn)
     {
         flash.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.7f);
         mundo.SetActive(false);
-        escenaBatalla.SetActive(true);
-        StartCoroutine(personajes[0].GetComponent<InputManager>().StartBattle());
-        yield return new WaitForSeconds(3f);
         escenaBatalla.transform.parent = null;
+        escenaBatalla.SetActive(true);
+        escenaBatalla.GetComponent<EscenaBatallaManager>().enemyToSpawn = spawn;
+        yield return StartCoroutine(personajes[0].GetComponent<InputManager>().StartBattle());
         flash.SetActive(false);
-        Debug.Log("hola");
     }
 
     public static IEnumerator LoadScene(float timeToLoad)
