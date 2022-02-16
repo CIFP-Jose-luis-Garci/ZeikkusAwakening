@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2998404957974184883}
   m_Layer: 6
   m_Name: Minotaur
-  m_TagString: Enemigo
+  m_TagString: EnemigoWorld
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,6 +220,8 @@ MonoBehaviour:
   sprite: {fileID: 906573617079297574}
   detectado: 0
   isWalking: 0
+  isRunning: 0
+  waitTime: 0
 --- !u!1 &24103731832490322
 GameObject:
   m_ObjectHideFlags: 0

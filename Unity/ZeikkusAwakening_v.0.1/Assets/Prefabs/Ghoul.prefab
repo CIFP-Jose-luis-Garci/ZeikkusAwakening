@@ -217,10 +217,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1448152096153125511}
-  - component: {fileID: 1443597770800767973}
   m_Layer: 0
   m_Name: Character1_LeftHand
-  m_TagString: PunoEnemigo
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,19 +243,6 @@ Transform:
   m_Father: {fileID: 1448081676080404675}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1443597770800767973
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444289721532279951}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.32
-  m_Center: {x: -0.11, y: -0.1, z: 0}
 --- !u!1 &1444332123444076527
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +415,7 @@ GameObject:
   - component: {fileID: 279334652}
   m_Layer: 6
   m_Name: Ghoul
-  m_TagString: Enemigo
+  m_TagString: EnemigoWorld
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -564,6 +550,7 @@ MonoBehaviour:
   sprite: {fileID: 1443597770934799560}
   detectado: 0
   isWalking: 0
+  isRunning: 0
   waitTime: 0
 --- !u!1 &1444557351371432481
 GameObject:
@@ -966,10 +953,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1443097506398763327}
-  - component: {fileID: 1443597772206592165}
   m_Layer: 0
   m_Name: Character1_RightHand
-  m_TagString: PunoEnemigo
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -993,19 +979,6 @@ Transform:
   m_Father: {fileID: 1443346602430264541}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1443597772206592165
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444692411468927979}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.32
-  m_Center: {x: -0.11, y: -0.1, z: 0}
 --- !u!1 &1444713224122155041
 GameObject:
   m_ObjectHideFlags: 0

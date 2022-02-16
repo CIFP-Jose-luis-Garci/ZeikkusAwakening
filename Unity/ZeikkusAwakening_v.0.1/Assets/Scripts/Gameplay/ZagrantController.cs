@@ -13,7 +13,7 @@ public class ZagrantController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animatorManager = GameObject.FindObjectOfType<AnimatorManager>();
+        animatorManager = FindObjectOfType<AnimatorManager>();
     }
 
     private void Update()
@@ -45,6 +45,12 @@ public class ZagrantController : MonoBehaviour
                     Destroy(other.gameObject);
 
                 }
+            } 
+            else if (other.gameObject.CompareTag("EnemigoWorld"))
+            {
+                Destroy(other.gameObject);
+                Time.timeScale = 0.5f;
+                FindObjectOfType<GameManager>().ToBattle();
             }
         }
     }

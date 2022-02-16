@@ -115,11 +115,7 @@ public class InputManager : MonoBehaviour
         cameraInputY = cameraInput.y;
         
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-
-        if (bInput) // if wants to walk
-        {
-            moveAmount = Mathf.Clamp(moveAmount, 0, 0.5f); // limit speed and blend tree transform
-        }
+        
         animatorManager.UpdateAnimatorValues(0, moveAmount);
 
     }
@@ -170,7 +166,7 @@ public class InputManager : MonoBehaviour
             {
                 bInput = false;
                 playerLocomotion.HandleAttack();
-            }
+            } e
         }
     }
     private void HandleStartInput()
@@ -237,7 +233,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private IEnumerator DrawSword()
+    public IEnumerator DrawSword()
     {
         animatorManager.animator.SetBool("isInteracting", true);
         animatorManager.animator.SetTrigger("toBattle");

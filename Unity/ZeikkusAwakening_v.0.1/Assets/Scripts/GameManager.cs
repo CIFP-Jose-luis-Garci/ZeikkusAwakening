@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public static bool invertCameraX = true;
     public static bool invertCameraY = false;
     public GameObject pause;
+    public GameObject mundo;
+    public GameObject escenaBatalla;
     public int maru;
     public GameObject[] personajes;
     
@@ -41,6 +43,18 @@ public class GameManager : MonoBehaviour
             time -= timeStep;
         } while (time > 0);
 
+    }
+
+    public void ToBattle()
+    {
+        mundo.SetActive(false);
+        escenaBatalla.SetActive(true);
+        Debug.Log(escenaBatalla.transform);
+        Debug.Log(escenaBatalla.transform.parent);
+        Debug.Log(escenaBatalla.transform.parent.gameObject);
+        GameObject zeikku = escenaBatalla.transform.parent.gameObject;
+        StartCoroutine(zeikku.GetComponent<InputManager>().DrawSword());
+        escenaBatalla.transform.parent = null;
     }
 
     public static IEnumerator LoadScene(float timeToLoad)
