@@ -14,7 +14,6 @@ public class InputManager : MonoBehaviour
     private GameManager gameManager;
     private CinemachineFreeLook freeLook;
     private DialogueManager dialogue;
-    private Text dialogueText;
     public ZagrantController zagrantController;
     
 
@@ -52,7 +51,6 @@ public class InputManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         freeLook = FindObjectOfType<CinemachineFreeLook>();
         dialogue = FindObjectOfType<DialogueManager>();
-        dialogueText = dialogue.GetComponent<Text>();
     }
 
     private void OnEnable()
@@ -256,26 +254,5 @@ public class InputManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         animatorManager.animator.runtimeAnimatorController = inWorldController;
         gameManager.inWorld = true;
-    }
-
-    public void NextDialogue()
-    {
-        StartCoroutine(LetraALetra(DialogueLookupTable.DialogueLookup(GameManager.currentDialogue)));
-    }
-
-    private IEnumerator LetraALetra(string phrase)
-    {
-        GameManager.currentDialogue++;
-        dialogueText.text = "";
-        // reproducir audio de doblaje
-        string currentText = "";
-        for (int i = 0; i < phrase.Length; i++)
-        {
-            currentText = phrase.Substring(0, i);
-            dialogueText.text = currentText;
-            yield return new WaitForSeconds(0.05f);
-        }
-        dialogueText.text = phrase;
-        // mostrar flecha de seguir diálogo
     }
 }
