@@ -46,10 +46,12 @@ public class ZagrantController : MonoBehaviour
 
                 }
             } 
-            else if (other.gameObject.CompareTag("EnemigoWorld"))
+        }
+        else
+        {
+            if (other.gameObject.CompareTag("EnemigoWorld"))
             {
                 Destroy(other.gameObject);
-                Time.timeScale = 0.5f;
                 FindObjectOfType<GameManager>().ToBattle();
             }
         }

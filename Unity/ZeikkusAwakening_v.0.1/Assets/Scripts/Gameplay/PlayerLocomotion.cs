@@ -228,9 +228,18 @@ public class PlayerLocomotion : MonoBehaviour
             animatorManager.animator.SetBool("blocking", true);
         }
     }
+    
+    public IEnumerator HandleFirstStrike(GameObject zagrant)
+    {
+        ResetRigidbody();
+        animatorManager.PlayTargetAnimation("FirstStrikeDraw", true);
+        yield return new WaitForSeconds(1.2f);
+        zagrant.SetActive(false);
+    }
 
     public void ResetRigidbody()
     {
         rb.velocity = Vector3.zero;
     }
+
 }

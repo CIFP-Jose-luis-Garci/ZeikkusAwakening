@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static bool invertCameraY = false;
     public GameObject pause;
     public GameObject mundo;
+    public GameObject flash;
     public GameObject escenaBatalla;
     public int maru;
     public GameObject[] personajes;
@@ -47,14 +48,20 @@ public class GameManager : MonoBehaviour
 
     public void ToBattle()
     {
+        StartCoroutine(LoadBattle());
+    }
+
+    private IEnumerator LoadBattle()
+    {
+        flash.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
         mundo.SetActive(false);
         escenaBatalla.SetActive(true);
-        Debug.Log(escenaBatalla.transform);
-        Debug.Log(escenaBatalla.transform.parent);
-        Debug.Log(escenaBatalla.transform.parent.gameObject);
-        GameObject zeikku = escenaBatalla.transform.parent.gameObject;
-        StartCoroutine(zeikku.GetComponent<InputManager>().DrawSword());
+        StartCoroutine(personajes[0].GetComponent<InputManager>().StartBattle());
+        yield return new WaitForSeconds(3f);
         escenaBatalla.transform.parent = null;
+        flash.SetActive(false);
+        Debug.Log("hola");
     }
 
     public static IEnumerator LoadScene(float timeToLoad)

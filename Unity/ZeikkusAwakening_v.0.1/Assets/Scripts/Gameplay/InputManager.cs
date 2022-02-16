@@ -162,11 +162,11 @@ public class InputManager : MonoBehaviour
         if (bInput)
         {
             if (inDialogue || inPause) return;
+            bInput = false;
             if (!gameManager.inWorld)
-            {
-                bInput = false;
                 playerLocomotion.HandleAttack();
-            } e
+            else
+                StartCoroutine(playerLocomotion.HandleFirstStrike(zagrantController.gameObject));
         }
     }
     private void HandleStartInput()
@@ -225,18 +225,12 @@ public class InputManager : MonoBehaviour
         if (rTrigger)
         {
             rTrigger = false;
-            playerLocomotion.ResetRigidbody();
-            if (gameManager.inWorld)
-                StartCoroutine(DrawSword());
-            else
-                StartCoroutine(Win());
         }
     }
 
-    public IEnumerator DrawSword()
+    public IEnumerator StartBattle()
     {
-        animatorManager.animator.SetBool("isInteracting", true);
-        animatorManager.animator.SetTrigger("toBattle");
+        animatorManager.PlayTargetAnimation("DrawSword", true);
         playerLocomotion.ResetRigidbody();
         yield return new WaitForSeconds(1.9f);
         animatorManager.animator.runtimeAnimatorController = inBattleController;
