@@ -15,15 +15,20 @@ public class GameManager : MonoBehaviour
     public static bool invertCameraY = false;
     public static bool inPause;
     
+    [Header("Transiciones")]
     public bool inWorld;
-    public AudioClip battleMusic;
-    public AudioClip worldMusic;
     public GameObject pause;
     public GameObject flash;
     public EscenaBatallaManager escenaBatalla;
+    
+    [Header("Audio")]
+    public AudioClip battleMusic;
+    public AudioClip worldMusic;
+    
+    [Header("Datos de juego")]
     public int maru;
     public GameObject[] personajes;
-
+    
     public void Pause()
     {
         inPause = !inPause;
@@ -74,6 +79,7 @@ public class GameManager : MonoBehaviour
         musicSource.Stop();
         musicSource.clip = battleMusic;
         musicSource.Play();
+        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
         yield return StartCoroutine(personajes[0].GetComponent<InputManager>().StartBattle());
         flash.SetActive(false);
     }
@@ -87,7 +93,7 @@ public class GameManager : MonoBehaviour
         escenaBatalla.gameObject.SetActive(false);
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         musicSource.Stop();
-        musicSource.clip = battleMusic;
+        musicSource.clip = worldMusic;
         musicSource.Play();
         StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
         yield return StartCoroutine(personajes[0].GetComponent<InputManager>().WinBattle());
