@@ -18,9 +18,8 @@ public class GameManager : MonoBehaviour
     public bool inWorld;
     public AudioClip battleMusic;
     public GameObject pause;
-    public GameObject mundo;
     public GameObject flash;
-    public GameObject escenaBatalla;
+    public EscenaBatallaManager escenaBatalla;
     public int maru;
     public GameObject[] personajes;
 
@@ -62,15 +61,14 @@ public class GameManager : MonoBehaviour
         flash.SetActive(true);
         HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
         yield return CrossFadeMusic(hudManager.mixer, 1, true);
-        mundo.SetActive(false);
-        escenaBatalla.transform.parent = null;
-        escenaBatalla.SetActive(true);
+        escenaBatalla.enemyToSpawn = spawn;
+        escenaBatalla.playerOrigin = personajes[0].transform.position;
+        escenaBatalla.gameObject.SetActive(true);
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         musicSource.Stop();
         musicSource.clip = battleMusic;
         musicSource.Play();
         StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
-        escenaBatalla.GetComponent<EscenaBatallaManager>().enemyToSpawn = spawn;
         yield return StartCoroutine(personajes[0].GetComponent<InputManager>().StartBattle());
         flash.SetActive(false);
     }
