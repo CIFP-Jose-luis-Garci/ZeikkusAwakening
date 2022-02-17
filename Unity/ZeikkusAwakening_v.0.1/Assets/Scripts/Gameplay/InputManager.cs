@@ -236,7 +236,7 @@ public class InputManager : MonoBehaviour
         gameManager.inWorld = false;
     }
 
-    private IEnumerator Win()
+    public IEnumerator WinBattle()
     {
         animatorManager.PlayTargetAnimation("win", true);
         playerLocomotion.ResetRigidbody();

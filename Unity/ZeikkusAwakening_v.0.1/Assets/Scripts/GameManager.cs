@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     
     public bool inWorld;
     public AudioClip battleMusic;
+    public AudioClip worldMusic;
     public GameObject pause;
     public GameObject flash;
     public EscenaBatallaManager escenaBatalla;
@@ -56,6 +57,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadBattle(spawn));
     }
 
+    public void ToWin()
+    {
+        StartCoroutine(WinBattle());
+    }
+
     private IEnumerator LoadBattle(GameObject spawn)
     {
         flash.SetActive(true);
@@ -68,8 +74,23 @@ public class GameManager : MonoBehaviour
         musicSource.Stop();
         musicSource.clip = battleMusic;
         musicSource.Play();
-        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
         yield return StartCoroutine(personajes[0].GetComponent<InputManager>().StartBattle());
+        flash.SetActive(false);
+    }
+
+    private IEnumerator WinBattle()
+    {
+        flash.SetActive(true);
+        HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
+        yield return CrossFadeMusic(hudManager.mixer, 1, true);
+        personajes[0].transform.position = escenaBatalla.playerOrigin;
+        escenaBatalla.gameObject.SetActive(false);
+        AudioSource musicSource = hudManager.GetComponent<AudioSource>();
+        musicSource.Stop();
+        musicSource.clip = battleMusic;
+        musicSource.Play();
+        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
+        yield return StartCoroutine(personajes[0].GetComponent<InputManager>().WinBattle());
         flash.SetActive(false);
     }
 

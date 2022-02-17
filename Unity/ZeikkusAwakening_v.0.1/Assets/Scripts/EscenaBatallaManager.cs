@@ -46,6 +46,7 @@ public class EscenaBatallaManager : MonoBehaviour
             // result screen
             // press a, goto transition fade in black
             playerTransform.position = playerOrigin;
+            FindObjectOfType<GameManager>().ToWin();
             // fade out black
         }
     }
