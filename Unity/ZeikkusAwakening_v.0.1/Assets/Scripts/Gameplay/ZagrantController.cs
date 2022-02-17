@@ -43,7 +43,7 @@ public class ZagrantController : MonoBehaviour
                 if (enemyStats.hp < 0)
                 {
                     enemyStats.alive = false;
-
+                    enemyStats.gameObject.SetActive(false);
                 }
             } 
         }

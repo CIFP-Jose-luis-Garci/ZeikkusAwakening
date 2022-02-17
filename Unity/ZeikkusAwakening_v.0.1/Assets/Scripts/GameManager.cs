@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public bool inWorld;
     public static int currentEvent = 0;
     public static int currentDialogue = 0;
     private static int nextScene = 0;
@@ -14,8 +13,11 @@ public class GameManager : MonoBehaviour
     public static float SFXVolume = -10;
     public static bool invertCameraX = true;
     public static bool invertCameraY = false;
-    public GameObject pause;
     public static bool inPause;
+    
+    public bool inWorld;
+    public AudioClip battleMusic;
+    public GameObject pause;
     public GameObject mundo;
     public GameObject flash;
     public GameObject escenaBatalla;
@@ -58,10 +60,16 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadBattle(GameObject spawn)
     {
         flash.SetActive(true);
-        yield return new WaitForSeconds(0.7f);
+        HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
+        yield return CrossFadeMusic(hudManager.mixer, 1, true);
         mundo.SetActive(false);
         escenaBatalla.transform.parent = null;
         escenaBatalla.SetActive(true);
+        AudioSource musicSource = hudManager.GetComponent<AudioSource>();
+        musicSource.Stop();
+        musicSource.clip = battleMusic;
+        musicSource.Play();
+        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
         escenaBatalla.GetComponent<EscenaBatallaManager>().enemyToSpawn = spawn;
         yield return StartCoroutine(personajes[0].GetComponent<InputManager>().StartBattle());
         flash.SetActive(false);
