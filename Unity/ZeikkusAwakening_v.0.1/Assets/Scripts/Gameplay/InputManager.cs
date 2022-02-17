@@ -238,7 +238,7 @@ public class InputManager : MonoBehaviour
 
     public IEnumerator WinBattle()
     {
-        animatorManager.PlayTargetAnimation("win", true);
+        animatorManager.PlayTargetAnimation("WinBattle", true);
         playerLocomotion.ResetRigidbody();
         yield return new WaitForSeconds(1f);
         animatorManager.animator.runtimeAnimatorController = inWorldController;

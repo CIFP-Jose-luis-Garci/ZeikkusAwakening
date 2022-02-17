@@ -17,6 +17,7 @@ public class AnimatorManager : MonoBehaviour
     public AudioSource source;
     public AudioClip[] stepSounds;
     public AudioClip[] swordSounds;
+    public AudioClip[] magicSounds;
     public AudioClip[] zeikkuSounds;
     public AudioClip[] jumpSounds;
     private void Awake()
@@ -92,6 +93,11 @@ public class AnimatorManager : MonoBehaviour
     public void SwordSwingSound(AnimationEvent animationEvent)
     {
         source.PlayOneShot(swordSounds[animationEvent.intParameter]);
+    }
+
+    public void MagicSound(AnimationEvent animationEvent)
+    {
+        source.PlayOneShot(magicSounds[animationEvent.intParameter]);
     }
 
     public void BlockSound()
