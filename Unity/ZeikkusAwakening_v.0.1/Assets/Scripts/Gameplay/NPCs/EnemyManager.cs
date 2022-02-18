@@ -15,18 +15,23 @@ public class EnemyManager : MonoBehaviour
     
     private Animator animator;
     private NavMeshAgent agente;
+    private AudioSource source;
     public bool isWalking;
     public bool isRunning;
     private bool isAttacking;
-    public float waitTime;
+    private float waitTime;
     private float hitLength;
     private float idleLength;
+
+    public AudioClip[] stepSounds;
+    public AudioClip[] crySounds;
 
     private void Start()
     {
         detectado = false;
         animator = GetComponent<Animator>();
         agente = GetComponent<NavMeshAgent>();
+        source = GetComponent<AudioSource>();
         ClipLength();
     }
 
@@ -117,6 +122,16 @@ public class EnemyManager : MonoBehaviour
                 isRunning = false;
             }
         }
+    }
+
+    public void StepSound()
+    {
+        source.PlayOneShot(stepSounds[Mathf.FloorToInt(Random.Range(0, stepSounds.Length))]);
+    }
+
+    public void CrySound()
+    {
+        source.PlayOneShot(crySounds[Mathf.FloorToInt(Random.Range(0, stepSounds.Length))]);
     }
     
     private void ClipLength()
