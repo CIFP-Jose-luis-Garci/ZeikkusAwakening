@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
         HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
         yield return CrossFadeMusic(hudManager.mixer, 1, true);
         escenaBatalla.enemyToSpawn = spawn;
-        escenaBatalla.playerOrigin = personajes[0].transform.position;
         escenaBatalla.gameObject.SetActive(true);
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         musicSource.Stop();
@@ -89,7 +88,6 @@ public class GameManager : MonoBehaviour
         flash.SetActive(true);
         HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
         yield return CrossFadeMusic(hudManager.mixer, 1, true);
-        personajes[0].transform.position = escenaBatalla.playerOrigin;
         escenaBatalla.gameObject.SetActive(false);
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         musicSource.Stop();

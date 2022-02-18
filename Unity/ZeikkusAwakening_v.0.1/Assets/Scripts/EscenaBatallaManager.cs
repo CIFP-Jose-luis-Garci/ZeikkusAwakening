@@ -19,6 +19,7 @@ public class EscenaBatallaManager : MonoBehaviour
     void OnEnable()
     {
         playerTransform = FindObjectOfType<PlayerManager>().transform;
+        playerOrigin = playerTransform.position;
         playerTransform.position = playerSpawn.transform.position;
         for (int i = 0; i < Mathf.Floor(Random.Range(2, spawners.Length)); i++)
         {

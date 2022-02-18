@@ -29,7 +29,7 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        if (inputManager.lTrigger && !gameManager.inWorld)
+        if (!gameManager.inWorld)
         {
             if (ibom.enemyFound)
             {

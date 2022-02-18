@@ -40,8 +40,10 @@ public class InBetweenObjectManager : MonoBehaviour
             Transform tMin = null;
             float minDist = Mathf.Infinity;
             Vector3 currentPos = transform.position;
+            enemyFound = false;
             foreach (GameObject t in GameObject.FindGameObjectsWithTag("Enemigo"))
             {
+                enemyFound = true;
                 float dist = Vector3.Distance(t.transform.position, currentPos);
                 if (dist < minDist)
                 {
@@ -50,11 +52,14 @@ public class InBetweenObjectManager : MonoBehaviour
                 }
             }
             enemy = tMin;
-            enemyManager = enemy.GetComponent<EnemyManager>();
-            enemyStats = enemy.GetComponent<Stats>();
-            enemyFound = true;
+            if (enemyFound)
+            {
+                enemyManager = enemy.GetComponent<EnemyManager>();
+                enemyStats = enemy.GetComponent<Stats>();
+            }
         }
-        else if (!inputManager.lTrigger && enemyFound)
+
+        if (enemyFound && !enemyStats.alive)
         {
             enemyFound = false;
         }
