@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 4096c144f78f42f44b83b76fd1a2e53e
+guid: 5a3f7fe7433920f49a36d83e1497628d
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Get Up
+    second: Take 001
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -19,7 +19,11 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'mixamorig:LeftLeg'
+      : position error = 17.843338 mm\n\t'mixamorig:LeftFoot' : position error =
+      17.843355 mm\n\t'mixamorig:RightLeg' : position error = 45.413246 mm\n\t'mixamorig:RightFoot'
+      : position error = 18.651873 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -35,14 +39,14 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Get Up
+      name: Take 001
       takeName: Take 001
       internalID: 0
       firstFrame: 1
-      lastFrame: 120
+      lastFrame: 160
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: -0.6
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
@@ -52,7 +56,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
