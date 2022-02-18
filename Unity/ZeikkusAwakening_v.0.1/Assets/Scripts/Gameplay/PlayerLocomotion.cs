@@ -184,22 +184,20 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleCameraChange(bool isZTargeting = false)
     {
+        InBetweenObjectManager ibom = lookInBetween.gameObject.GetComponent<InBetweenObjectManager>();
+        ibom.FindEnemy();
         if (isZTargeting)
         {
-            InBetweenObjectManager ibom = lookInBetween.gameObject.GetComponent<InBetweenObjectManager>();
-            if (ibom.enemy)
-            {
-                enemyObject = ibom.enemy;
-                ibom.enemy.gameObject.GetComponent<EnemyManager>().ImTarget(true);
-            }
+            enemyObject = ibom.enemy;
+            ibom.enemyManager.ImTarget(true);
             cameraManager.ChangeTarget(lookInBetween);
             
         }
         else
         {
-            InBetweenObjectManager ibom = lookInBetween.gameObject.GetComponent<InBetweenObjectManager>();
             cameraManager.ChangeTarget(transform);
-            if (ibom.enemy) ibom.enemy.gameObject.GetComponent<EnemyManager>().ImTarget(false);
+            if (ibom.enemyFound)
+                ibom.enemyManager.ImTarget(false);
         }
         this.isZTargeting = isZTargeting;
     }

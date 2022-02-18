@@ -12,6 +12,7 @@ public class CameraManager : MonoBehaviour
     private float originalRadius;
     private InBetweenObjectManager ibom;
     private GameManager gameManager;
+    private CinemachineFreeLook.Orbit orbit;
     private void Awake()
     {
         cmfl = GetComponent<CinemachineFreeLook>();
@@ -22,7 +23,7 @@ public class CameraManager : MonoBehaviour
         cmfl.m_LookAt = player;
         inputManager = player.gameObject.GetComponent<InputManager>();
         originalRadius = cmfl.m_Orbits[1].m_Radius;
-
+        orbit = cmfl.m_Orbits[1];
         ChangeCameraInvert();
     }
 
@@ -30,17 +31,12 @@ public class CameraManager : MonoBehaviour
     {
         if (inputManager.lTrigger && !gameManager.inWorld)
         {
-            if (!ibom.enemy)
+            if (ibom.enemyFound)
             {
-                cmfl.m_Orbits[1].m_Radius = originalRadius;
-                return;
-            }
-            if (ibom.enemy.gameObject.CompareTag("Enemigo"))
-            {
-                cmfl.m_Orbits[1].m_Radius = Mathf.Clamp(ibom.distance, 4, Int32.MaxValue);
+                orbit.m_Radius = Mathf.Clamp(ibom.distance, 4, Int32.MaxValue);
             } else
             {
-                cmfl.m_Orbits[1].m_Radius = originalRadius;
+                orbit.m_Radius = originalRadius;
             }
         }
     }
