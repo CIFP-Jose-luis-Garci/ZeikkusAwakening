@@ -92,6 +92,7 @@ public class AnimatorManager : MonoBehaviour
     
     public void SwordSwingSound(AnimationEvent animationEvent)
     {
+        animator.SetBool("isAttacking", true);
         source.PlayOneShot(swordSounds[animationEvent.intParameter]);
     }
 

@@ -9,7 +9,7 @@ public class ZagrantController : MonoBehaviour
 
     private AnimatorManager animatorManager;
     private GameManager gameManager;
-    private AudioSource source
+    private AudioSource source;
     public bool isAttacking;
 
     // Start is called before the first frame update
@@ -17,6 +17,7 @@ public class ZagrantController : MonoBehaviour
     {
         animatorManager = FindObjectOfType<AnimatorManager>();
         gameManager = FindObjectOfType<GameManager>();
+        source = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -25,12 +26,14 @@ public class ZagrantController : MonoBehaviour
             isAttacking = animatorManager.animator.GetBool("isAttacking");
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (isAttacking)
         {
             if (other.gameObject.CompareTag("Enemigo"))
             {
+                animatorManager.animator.SetBool("isAttacking", false);
+                source.PlayOneShot(source.clip);
                 Stats enemyStats = other.gameObject.GetComponent<Stats>();
                 Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
                 float resultado = 0.2f * 2;
