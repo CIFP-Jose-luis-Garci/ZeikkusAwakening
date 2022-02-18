@@ -8,17 +8,20 @@ public class ZagrantController : MonoBehaviour
 {
 
     private AnimatorManager animatorManager;
+    private GameManager gameManager;
     public bool isAttacking;
 
     // Start is called before the first frame update
     void Start()
     {
         animatorManager = FindObjectOfType<AnimatorManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
     {
-        isAttacking = animatorManager.animator.GetBool("isAttacking");
+        if (!gameManager.inWorld)
+            isAttacking = animatorManager.animator.GetBool("isAttacking");
     }
 
     private void OnTriggerEnter(Collider other)

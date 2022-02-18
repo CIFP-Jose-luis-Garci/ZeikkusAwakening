@@ -71,14 +71,12 @@ public class GameManager : MonoBehaviour
     {
         flash.SetActive(true);
         HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
-        yield return CrossFadeMusic(hudManager.mixer, 1, true);
         escenaBatalla.enemyToSpawn = spawn;
         escenaBatalla.gameObject.SetActive(true);
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         musicSource.Stop();
         musicSource.clip = battleMusic;
         musicSource.Play();
-        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
         yield return StartCoroutine(personajes[0].GetComponent<InputManager>().StartBattle());
         flash.SetActive(false);
     }
@@ -87,13 +85,11 @@ public class GameManager : MonoBehaviour
     {
         flash.SetActive(true);
         HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
-        yield return CrossFadeMusic(hudManager.mixer, 1, true);
         escenaBatalla.gameObject.SetActive(false);
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         musicSource.Stop();
         musicSource.clip = worldMusic;
         musicSource.Play();
-        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
         yield return StartCoroutine(personajes[0].GetComponent<InputManager>().WinBattle());
         flash.SetActive(false);
     }
