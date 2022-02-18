@@ -525,7 +525,6 @@ MonoBehaviour:
   enemyToSpawn: {fileID: 1444554315193150917, guid: aa96bee49c46a3a49928b78d1ab9d329, type: 3}
   isWalking: 0
   isRunning: 0
-  waitTime: 0
   stepSounds:
   - {fileID: 8300000, guid: c57e62ba73ba0694ca5ef4d57e792a14, type: 3}
   - {fileID: 8300000, guid: 4678228d92b88af44b090d6643be2041, type: 3}
@@ -537,6 +536,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1dc6dc7872c068e49ac371ff1f72ff67, type: 3}
   - {fileID: 8300000, guid: 294136279ae79f641bc52197d8919d04, type: 3}
   - {fileID: 8300000, guid: c47ed1caa57f5db45a5daa0f948a4388, type: 3}
+  crySounds:
+  - {fileID: 8300000, guid: f23d80b5d0267d74a802efe697e40c27, type: 3}
+  - {fileID: 8300000, guid: 49d48f74dec2ba14eb0c176a0d36a212, type: 3}
+  attackSounds:
+  - {fileID: 8300000, guid: 8e5f533ada642d347a2d81c85acd9e3b, type: 3}
+  - {fileID: 8300000, guid: 8b1ac22baaecd3c4bb068e51752bf9c4, type: 3}
 --- !u!82 &1258843128
 AudioSource:
   m_ObjectHideFlags: 0

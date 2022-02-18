@@ -9,6 +9,7 @@ public class ZagrantController : MonoBehaviour
 
     private AnimatorManager animatorManager;
     private GameManager gameManager;
+    private AudioSource source
     public bool isAttacking;
 
     // Start is called before the first frame update

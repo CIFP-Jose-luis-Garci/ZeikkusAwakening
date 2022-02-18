@@ -25,6 +25,7 @@ public class EnemyManager : MonoBehaviour
 
     public AudioClip[] stepSounds;
     public AudioClip[] crySounds;
+    public AudioClip[] attackSounds;
 
     private void Start()
     {
@@ -131,7 +132,12 @@ public class EnemyManager : MonoBehaviour
 
     public void CrySound()
     {
-        source.PlayOneShot(crySounds[Mathf.FloorToInt(Random.Range(0, stepSounds.Length))]);
+        source.PlayOneShot(crySounds[Mathf.FloorToInt(Random.Range(0, crySounds.Length))]);
+    }
+
+    public void AttackSound(AnimationEvent animationEvent)
+    {
+        source.PlayOneShot(attackSounds[Mathf.FloorToInt(Random.Range(0, attackSounds.Length))]);
     }
     
     private void ClipLength()
