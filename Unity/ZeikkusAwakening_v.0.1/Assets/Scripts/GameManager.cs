@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadBattle(GameObject spawn)
     {
         flash.SetActive(true);
+        yield return new WaitForSeconds(1f);
         HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
         escenaBatalla.enemyToSpawn = spawn;
         escenaBatalla.gameObject.SetActive(true);
@@ -84,6 +85,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator WinBattle()
     {
         flash.SetActive(true);
+        yield return new WaitForSeconds(1f);
         HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
         escenaBatalla.gameObject.SetActive(false);
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
