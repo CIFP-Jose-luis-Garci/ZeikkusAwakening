@@ -45,7 +45,6 @@ public class PlayerLocomotion : MonoBehaviour
     private Vector3 directionWhileZtargetting;
     public bool blocking;
     private Stats stats;
-    public bool recoiled;
     public Slider lifebar;
     public GameObject damage;
 
@@ -244,7 +243,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical)
     {
-        recoiled = true;
+        animatorManager.PlayTargetAnimation("recoil", true);
         int resultado;
         if (isPhysical)
             resultado = GameManager.CalcPhysDamage(playerStats, stats, power);
