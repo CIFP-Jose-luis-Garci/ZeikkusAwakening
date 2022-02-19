@@ -14,6 +14,7 @@ public class ListaItemsManager : MonoBehaviour
     private PlayerBagManager bag;
     private Item[] currentItems;
     private InputManager inputManager;
+    private AudioSource source;
 
     private int currentPage;
     private int maxPages;
@@ -36,6 +37,7 @@ public class ListaItemsManager : MonoBehaviour
         bag = FindObjectOfType<PlayerBagManager>();
         currentPage = 1;
         inputManager = FindObjectOfType<InputManager>();
+        source = GetComponent<AudioSource>();
     }
 
     void OnEnable()
@@ -75,7 +77,8 @@ public class ListaItemsManager : MonoBehaviour
 
     private void GoBack()
     {
-        if (inputManager.bInput && !itemSelected)
+        if (itemSelected) return;
+        if (inputManager.bInput)
         {
             gameObject.SetActive(false);
             pantallaPausa.SetActive(true);
@@ -144,6 +147,7 @@ public class ListaItemsManager : MonoBehaviour
 
     private void ChangePage()
     {
+        if (itemSelected) return;
         float x = inputManager.horizontalInput;
         if (x != 0)
         {
@@ -201,6 +205,7 @@ public class ListaItemsManager : MonoBehaviour
             itemName.text = currentItem.itemName;
         }
         items[0].GetComponent<Button>().Select();
+        source.PlayOneShot(source.clip);
     }
 
     private void SetPages()

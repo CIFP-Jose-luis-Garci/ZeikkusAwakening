@@ -57,6 +57,7 @@ public class ItemPopupManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        inputManager.horizontalInput = 0;
         if (inputManager.bInput)
         {
             inputManager.bInput = false;
