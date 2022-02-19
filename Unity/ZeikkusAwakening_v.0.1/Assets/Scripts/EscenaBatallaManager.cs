@@ -31,6 +31,8 @@ public class EscenaBatallaManager : MonoBehaviour
             Instantiate(enemyToSpawn, spawners[i].transform);
         }
         enemies = GetComponentsInChildren<Stats>();
+        danoTotal = 0;
+        tiempoDeCombate = 0;
     }
 
     private void Update()
