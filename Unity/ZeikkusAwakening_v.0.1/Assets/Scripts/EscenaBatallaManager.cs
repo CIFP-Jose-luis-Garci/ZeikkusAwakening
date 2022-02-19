@@ -12,7 +12,7 @@ public class EscenaBatallaManager : MonoBehaviour
     [NonSerialized] public GameObject enemyToSpawn;
     [NonSerialized] public Vector3 playerOrigin;
 
-    private Stats[] enemies;
+    [NonSerialized] public Stats[] enemies;
     private bool alive;
     private Transform playerTransform;
     // Start is called before the first frame update

@@ -60,32 +60,47 @@ public class GameManager : MonoBehaviour
 
     public static int CalcPhysDamage(Stats playerStats, Stats enemyStats, float baseDamage)
     {
-        float resultado = 0.2f * 2;
-        resultado += 1;
-        resultado *= playerStats.strength;
-        resultado *= baseDamage;
-        resultado /= (25 * enemyStats.defense);
-        resultado += 2;
-        float random = Random.Range(85 ,100);
-        resultado *= random;
-        resultado *= 0.01f;
-        resultado *= 5;
-        return (int) resultado;
+        return CalcDamage(playerStats.strength, enemyStats.defense, baseDamage);
     }
 
     public static int CalcSpecDamage(Stats playerStats, Stats enemyStats, float baseDamage)
     {
+        return CalcDamage(playerStats.magicPower, enemyStats.resistance, baseDamage);
+    }
+
+    private static int CalcDamage(int power, int defense, float baseDamage)
+    {
         float resultado = 0.2f * 2;
         resultado += 1;
-        resultado *= playerStats.magicPower;
+        resultado *= power
         resultado *= baseDamage;
-        resultado /= (25 * enemyStats.resistance);
+        resultado /= (25 * defense);
         resultado += 2;
         float random = Random.Range(85, 100);
         resultado *= random;
         resultado *= 0.01f;
         resultado *= 5;
         return (int) resultado;
+    }
+
+    public static string CalcExp(Stats[] enemies)
+    {
+        float resultado = 0;
+        foreach (Stats current in enemies)
+        {
+            float baseExp = current.expBase * current.level;
+            baseExp /= 5;
+            float aCorrector = Mathf.Pow(2 * current.level, 2.5f);
+            float bCorrector = (current.level * GetTeamLevel() + 10);
+            float total = baseExp * (aCorrector / bCorrector) + 1;
+            resultado += total;
+        }
+    }
+
+    private static int GetTeamLevel()
+    {
+        GameObject[] characters = FindObjectOfType<GameManager>().personajes;
+        fore
     }
 
     public void ToBattle(GameObject spawn)

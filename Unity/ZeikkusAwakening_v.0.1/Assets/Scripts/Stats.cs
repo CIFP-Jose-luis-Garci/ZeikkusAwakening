@@ -22,6 +22,8 @@ public class Stats : MonoBehaviour
     public int experience;
     public int nextLevelExperience;
     public int turnPoints;
+    public int expBase;
+    public int marubase;
     public bool alive;
 
     private void Awake()

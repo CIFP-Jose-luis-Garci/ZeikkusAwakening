@@ -59,6 +59,7 @@ public class EnemyBattleManager : MonoBehaviour
                 animator.SetBool("alcance", true);
                 ClipLength();
                 agente.speed = 0;
+                agente.SetDestination(transform.position);
             }
             if (waitTime > hitLength)
             {
