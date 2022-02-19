@@ -11,6 +11,7 @@ public class ZagrantController : MonoBehaviour
     private GameManager gameManager;
     private AudioSource source;
     public bool isAttacking;
+    public GameObject damage;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,8 @@ public class ZagrantController : MonoBehaviour
                 animatorManager.animator.SetBool("isAttacking", false);
                 source.PlayOneShot(source.clip);
                 Stats enemyStats = other.gameObject.GetComponent<Stats>();
-                enemyStats.GetComponent<EnemyBattleManager>().recoiled = true;
+                EnemyBattleManager enemyBattleManager = enemyStats.GetComponent<EnemyBattleManager>();
+                enemyBattleManager.recoiled = true;
                 Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
                 float resultado = 0.2f * 2;
                 resultado += 1;
@@ -48,6 +50,8 @@ public class ZagrantController : MonoBehaviour
                 resultado *= 0.01f;
                 resultado *= 5;
                 enemyStats.hp -= (int) resultado;
+                DamageNumberManager damageNumber = Instantiate(damage, enemyStats.transform.position, Quaternion.identity, enemyStats.transform).GetComponent<DamageNumberManager>();
+                damageNumber.GetComponent<TextMesh>().text = Mathf.FloorToInt(resultado).ToString();
                 if (enemyStats.hp < 0)
                 {
                     enemyStats.alive = false;
