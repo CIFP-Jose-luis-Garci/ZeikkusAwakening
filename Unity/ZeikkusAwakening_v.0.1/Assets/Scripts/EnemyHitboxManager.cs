@@ -21,7 +21,9 @@ public class EnemyHitboxManager : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                enemy.DoDamage(other.gameObject.GetComponent<Stats>());
+                PlayerLocomotion playerLocomotion = other.gameObject.GetComponent<PlayerLocomotion>();
+                playerLocomotion.RecieveDamage(enemy.GetComponent<Stats>(), animator.GetFloat("damage"), true);
+                animator.SetBool("isAttacking", false);
             }
         }
     }

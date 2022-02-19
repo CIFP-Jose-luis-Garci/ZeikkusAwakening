@@ -41,6 +41,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void Update()
     {
+        if (!stats.alive) return;
         if (recoiled)
             Recoil();
         else
@@ -92,12 +93,6 @@ public class EnemyBattleManager : MonoBehaviour
     {
         animator.SetTrigger("daño");
         recoiled = false;
-    }
-
-    public void DoDamage(Stats playerStats)
-    {
-        playerStats.hp -= GameManager.CalcPhysDamage(playerStats, GetComponent<Stats>(), animator.GetFloat("damage"));
-        animator.SetBool("isAttacking", false);
     }
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical)

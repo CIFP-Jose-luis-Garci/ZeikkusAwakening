@@ -24,7 +24,7 @@ public class Stats : MonoBehaviour
     public int turnPoints;
     public bool alive;
 
-    private void Start()
+    private void Awake()
     {
         maxHP = hp;
         maxMP = mp;

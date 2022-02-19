@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLocomotion : MonoBehaviour
 {
@@ -44,6 +45,10 @@ public class PlayerLocomotion : MonoBehaviour
     private Vector3 directionWhileZtargetting;
     public bool blocking;
     private Stats stats;
+    public bool recoiled;
+    public Slider lifebar;
+    public GameObject damage;
+
     
     private void Awake()
     {
@@ -63,6 +68,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleAllMovement()
     {
+        //if (!stats.alive) return;
         if (gameManager.inWorld) HandleFallingAndLanding();
         if (playerManager.isInteracting) return;
         directionWhileZtargetting = (lookInBetween.position - transform.position).normalized;
@@ -234,6 +240,24 @@ public class PlayerLocomotion : MonoBehaviour
         animatorManager.PlayTargetAnimation("FirstStrikeDraw", true);
         yield return new WaitForSeconds(1.2f);
         zagrant.SetActive(false);
+    }
+
+    public void RecieveDamage(Stats playerStats, float power, bool isPhysical)
+    {
+        recoiled = true;
+        int resultado;
+        if (isPhysical)
+            resultado = GameManager.CalcPhysDamage(playerStats, stats, power);
+        else
+            resultado = GameManager.CalcSpecDamage(playerStats, stats, power);
+        stats.hp -= resultado;
+        lifebar.value = stats.hp;
+        GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
+        instantiated.GetComponent<TextMesh>().text = resultado.ToString();
+        if (stats.hp < 0)
+        {
+            stats.alive = false;
+        }
     }
 
     public void ResetRigidbody()
