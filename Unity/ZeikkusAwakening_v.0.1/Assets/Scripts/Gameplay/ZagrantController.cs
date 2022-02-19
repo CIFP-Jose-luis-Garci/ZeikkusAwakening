@@ -26,17 +26,17 @@ public class ZagrantController : MonoBehaviour
             isAttacking = animator.GetBool("isAttacking");
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (isAttacking)
         {
             if (other.gameObject.CompareTag("Enemigo"))
             {
-                animator.SetBool("isAttacking", false); // slash
                 EnemyBattleManager enemyBattleManager = other.gameObject.GetComponent<EnemyBattleManager>();
                 Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
-                if (enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat("damage"), true))
-                    source.PlayOneShot(source.clip);
+                enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat("damage"), true);
+                source.PlayOneShot(source.clip);
+                Debug.Log(Environment.StackTrace);
             }
             else
             {

@@ -100,29 +100,25 @@ public class EnemyBattleManager : MonoBehaviour
         playerStats.hp -= GameManager.CalcPhysDamage(playerStats, GetComponent<Stats>(), animator.GetFloat("damage"));
     }
 
-    public bool RecieveDamage(Stats playerStats, float power, bool isPhysical)
+    public void RecieveDamage(Stats playerStats, float power, bool isPhysical)
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Damage"))
+
+        recoiled = true;
+        int resultado;
+        if (isPhysical)
+            resultado = GameManager.CalcPhysDamage(playerStats, stats, power);
+        else
+            resultado = GameManager.CalcSpecDamage(playerStats, stats, power);
+        stats.hp -= resultado;
+        lifebar.value = stats.hp;
+        GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
+        instantiated.GetComponent<TextMesh>().text = resultado.ToString();
+        if (stats.hp < 0)
         {
-            recoiled = true;
-            int resultado;
-            if (isPhysical)
-                resultado = GameManager.CalcPhysDamage(playerStats, stats, power);
-            else
-                resultado = GameManager.CalcSpecDamage(playerStats, stats, power);
-            stats.hp -= resultado;
-            lifebar.value = stats.hp;
-            GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
-            instantiated.GetComponent<TextMesh>().text = resultado.ToString();
-            if (stats.hp < 0)
-            {
-                stats.alive = false;
-                isAttacking = false;
-                gameObject.SetActive(false);
-            }
-            return true;
+            stats.alive = false;
+            isAttacking = false;
+            gameObject.SetActive(false);
         }
-        return false;
     }
 
     public void StepSound()
