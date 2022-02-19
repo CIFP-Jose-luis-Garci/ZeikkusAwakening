@@ -15,6 +15,10 @@ public class EscenaBatallaManager : MonoBehaviour
     [NonSerialized] public Stats[] enemies;
     private bool alive;
     private Transform playerTransform;
+
+    public int danoTotal;
+    public float tiempoDeCombate;
+
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -32,5 +36,19 @@ public class EscenaBatallaManager : MonoBehaviour
     public void ResetPlayer()
     {
         playerTransform.position = playerOrigin;
+    }
+
+    public string TiempoBatalla()
+    {
+        //Añado el intervalo transcurrido a la variable tiempo
+        tiempoDeCombate += Time.deltaTime;
+    
+        //Formateo minutos y segundos a dos dígitos
+        string minutos = Mathf.Floor(tiempoDeCombate / 60).ToString("00");
+        string segundos = Mathf.Floor(tiempoDeCombate % 60).ToString("00");
+        string milis = ((tiempoDeCombate - Math.Floor(tiempoDeCombate)) * 1000).ToString("00");
+    
+        //Devuelvo el string formateado con : como separador
+        return minutos + ":" + segundos + ";" + milis;
     }
 }

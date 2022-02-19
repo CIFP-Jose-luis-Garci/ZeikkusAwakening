@@ -107,6 +107,7 @@ public class EnemyBattleManager : MonoBehaviour
             resultado = GameManager.CalcSpecDamage(playerStats, stats, power);
         stats.hp -= resultado;
         lifebar.value = stats.hp;
+        FindObjectOfType<EscenaBatallaManager>().danoTotal *= resultado;
         GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
         instantiated.GetComponent<TextMesh>().text = resultado.ToString();
         if (stats.hp < 0)

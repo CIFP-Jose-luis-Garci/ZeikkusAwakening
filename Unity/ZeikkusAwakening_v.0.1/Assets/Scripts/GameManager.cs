@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     {
         float resultado = 0.2f * 2;
         resultado += 1;
-        resultado *= power
+        resultado *= power;
         resultado *= baseDamage;
         resultado /= (25 * defense);
         resultado += 2;
@@ -80,12 +80,13 @@ public class GameManager : MonoBehaviour
         resultado *= random;
         resultado *= 0.01f;
         resultado *= 5;
+        
         return (int) resultado;
     }
 
     public static string CalcExp(Stats[] enemies)
     {
-        float resultado = 0;
+        int resultado = 0;
         foreach (Stats current in enemies)
         {
             float baseExp = current.expBase * current.level;
@@ -93,14 +94,35 @@ public class GameManager : MonoBehaviour
             float aCorrector = Mathf.Pow(2 * current.level, 2.5f);
             float bCorrector = (current.level * GetTeamLevel() + 10);
             float total = baseExp * (aCorrector / bCorrector) + 1;
-            resultado += total;
+            resultado += (int) total;
         }
+        
+        return resultado.ToString();
+    }
+
+    public static string CalcMaru(Stats[] enemies)
+    {
+        int totalMaru = 0;
+        foreach (Stats current in enemies)
+        {
+            totalMaru += (int)(current.marubase * Random.Range(0.85f, 1.1f));
+        }
+        
+        return totalMaru.ToString();
     }
 
     private static int GetTeamLevel()
     {
         GameObject[] characters = FindObjectOfType<GameManager>().personajes;
-        fore
+        int level = 0;
+        foreach (GameObject character in characters)
+        {
+            level = character.GetComponent<Stats>().level;
+        }
+
+        level /= characters.Length;
+        
+        return level;
     }
 
     public void ToBattle(GameObject spawn)

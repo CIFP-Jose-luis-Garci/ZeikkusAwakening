@@ -12,7 +12,7 @@ public class PantallaResultadosManager : MonoBehaviour
     {
         EscenaBatallaManager escenaBatallaManager = FindObjectOfType<EscenaBatallaManager>();
         exp.text = GameManager.CalcExp(escenaBatallaManager.enemies);
-        maru.text = GameManager.CalcMaru();
+        maru.text = GameManager.CalcMaru(escenaBatallaManager.enemies);
         danoTotal.text = escenaBatallaManager.danoTotal.ToString();
         tiempoBatalla.text = escenaBatallaManager.TiempoBatalla();
     }
