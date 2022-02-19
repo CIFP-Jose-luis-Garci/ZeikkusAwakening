@@ -42,7 +42,6 @@ public class PlayerLocomotion : MonoBehaviour
     public int[] magicSlots;
     public Transform lookInBetween;
     public CameraManager cameraManager;
-    private Vector3 directionWhileZtargetting;
     public bool blocking;
     private Stats stats;
     public Slider lifebar;
@@ -70,23 +69,14 @@ public class PlayerLocomotion : MonoBehaviour
         //if (!stats.alive) return;
         if (gameManager.inWorld) HandleFallingAndLanding();
         if (playerManager.isInteracting) return;
-        directionWhileZtargetting = (lookInBetween.position - transform.position).normalized;
         HandleMovement();
         HandleRotation();
     }
 
     private void HandleMovement()
     {
-        if (isZTargeting && enemyObject)
-        {
-            moveDirection = directionWhileZtargetting * inputManager.verticalInput;
-            moveDirection += directionWhileZtargetting * inputManager.horizontalInput;
-        }
-        else
-        {
-            moveDirection = cameraObject.forward * inputManager.verticalInput;
-            moveDirection += cameraObject.right * inputManager.horizontalInput;
-        }
+        moveDirection = cameraObject.forward * inputManager.verticalInput;
+        moveDirection += cameraObject.right * inputManager.horizontalInput;
         moveDirection.Normalize();
         
         moveDirection *= runningSpeed * inputManager.moveAmount;
@@ -99,17 +89,8 @@ public class PlayerLocomotion : MonoBehaviour
     private void HandleRotation()
     {
         Vector3 targetDirection = Vector3.zero;
-        if (isZTargeting && enemyObject)
-        {
-            
-            targetDirection = directionWhileZtargetting * inputManager.verticalInput;
-            targetDirection += directionWhileZtargetting * inputManager.horizontalInput;
-        }
-        else
-        {
-            targetDirection = cameraObject.forward * inputManager.verticalInput;
-            targetDirection += cameraObject.right * inputManager.horizontalInput;
-        }
+        targetDirection = cameraObject.forward * inputManager.verticalInput;
+        targetDirection += cameraObject.right * inputManager.horizontalInput;
         targetDirection.Normalize();
         targetDirection.y = 0;
 
@@ -157,15 +138,7 @@ public class PlayerLocomotion : MonoBehaviour
         if (stats.turnPoints > 0)
         {
             stats.turnPoints--;
-            if (isZTargeting)
-            {
-                transform.LookAt(enemyObject);
-                Quaternion rotation = transform.rotation;
-                rotation.z = 0;
-                rotation.x = 0;
-                transform.rotation = rotation;
-            }
-
+            LookAtEnemy();
             animatorManager.PlayTargetAnimation(animaciones[stats.turnPoints], true, true);
             if (coroutine != null) StopCoroutine(coroutine);
             coroutine = StartCoroutine(ReloadTurnPoints(animatorManager.GetAnimationLength() * 2));
@@ -175,9 +148,22 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleMagic(int slot)
     {
         if (playerManager.isInteracting) return;
-        rb.velocity = Vector3.zero;
+        LookAtEnemy();
+        ResetRigidbody();
         animatorManager.PlayTargetAnimation("magic", true);
         GetComponent<Magic>().MagicAttackLookupTable(magicSlots[slot]);
+    }
+
+    private void LookAtEnemy()
+    {
+        if (isZTargeting)
+        {
+            transform.LookAt(enemyObject);
+            Quaternion rotation = transform.rotation;
+            rotation.z = 0;
+            rotation.x = 0;
+            transform.rotation = rotation;
+        }
     }
 
     private IEnumerator ReloadTurnPoints(int waitTime)
@@ -243,6 +229,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical)
     {
+        if (invincible) return;
         animatorManager.PlayTargetAnimation("recoil", true);
         int resultado;
         if (isPhysical)
