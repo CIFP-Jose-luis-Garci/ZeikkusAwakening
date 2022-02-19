@@ -129,7 +129,13 @@ public class InputManager : MonoBehaviour
             {
                 dialogue.NextDialogue();
             }
-            if (gameManager.inWorld) playerLocomotion.HandleJumping();
+
+            if (gameManager.inWorld)
+            {
+                PantallaResultadosManager results = FindObjectOfType<PantallaResultadosManager>();
+                if (results) results.fade = true;
+                else playerLocomotion.HandleJumping();
+            }
             else playerLocomotion.HandleMagic(0);
         }
     }

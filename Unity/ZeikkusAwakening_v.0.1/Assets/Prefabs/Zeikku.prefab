@@ -1335,7 +1335,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   isZTargeting: 0
-  blocking: 0
+  magicSlots: 000000000000000000000000
   lifebar: {fileID: 0}
   damage: {fileID: 5256623395504277334, guid: 2ce27a2a2d66230418db0746ab5f57a9, type: 3}
   resultScreen: {fileID: 0}
@@ -1431,6 +1431,8 @@ MonoBehaviour:
   experience: 0
   nextLevelExperience: 1000
   turnPoints: 4
+  expBase: 0
+  marubase: 0
   alive: 1
 --- !u!114 &5358106998226234440
 MonoBehaviour:

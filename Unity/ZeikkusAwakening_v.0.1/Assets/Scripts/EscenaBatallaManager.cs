@@ -33,6 +33,11 @@ public class EscenaBatallaManager : MonoBehaviour
         enemies = GetComponentsInChildren<Stats>();
     }
 
+    private void Update()
+    {
+        tiempoDeCombate += Time.deltaTime;
+    }
+
     public void ResetPlayer()
     {
         playerTransform.position = playerOrigin;
@@ -40,15 +45,10 @@ public class EscenaBatallaManager : MonoBehaviour
 
     public string TiempoBatalla()
     {
-        //Añado el intervalo transcurrido a la variable tiempo
-        tiempoDeCombate += Time.deltaTime;
-    
-        //Formateo minutos y segundos a dos dígitos
         string minutos = Mathf.Floor(tiempoDeCombate / 60).ToString("00");
         string segundos = Mathf.Floor(tiempoDeCombate % 60).ToString("00");
         string milis = ((tiempoDeCombate - Math.Floor(tiempoDeCombate)) * 1000).ToString("00");
     
-        //Devuelvo el string formateado con : como separador
         return minutos + ":" + segundos + ";" + milis;
     }
 }

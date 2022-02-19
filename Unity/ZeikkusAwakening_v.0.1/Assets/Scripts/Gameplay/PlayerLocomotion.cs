@@ -267,28 +267,6 @@ public class PlayerLocomotion : MonoBehaviour
         // win battle anim
         yield return FindObjectOfType<InputManager>().WinBattle();
         // result screen
-        EscenaBatallaManager escenaBatallaManager = FindObjectOfType<EscenaBatallaManager>();
         resultScreen.SetActive(true);
-        while (true)
-        {
-            if (inputManager.aInput)
-            {
-                resultScreen.SetActive(false);
-                // press a, goto transition fade in black
-                blackFade.CrossFadeAlpha(1, 1, true);
-                escenaBatallaManager.gameObject.SetActive(false);
-                HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
-                yield return GameManager.CrossFadeMusic(hudManager.mixer, 1, true);
-                AudioSource musicSource = hudManager.GetComponent<AudioSource>();
-                musicSource.Stop();
-                musicSource.clip = gameManager.worldMusic;
-                musicSource.Play();
-                yield return GameManager.CrossFadeMusic(hudManager.mixer, 1, false);
-                escenaBatallaManager.ResetPlayer();
-                // fade out black
-                blackFade.CrossFadeAlpha(0, 1, true);
-                yield break;
-            }
-        }
     }
 }
