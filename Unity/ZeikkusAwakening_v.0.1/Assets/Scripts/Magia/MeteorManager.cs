@@ -10,11 +10,11 @@ public class MeteorManager : MonoBehaviour
     public GameObject damage;
 
     private int mpCost, strength;
-    private AnimatorManager animatorManager;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        animatorManager = FindObjectOfType<AnimatorManager>();
+        animator = FindObjectOfType<AnimatorManager>().animator;
         mpCost = 10;
         strength = 30;
         fire.SetActive(false);
@@ -42,26 +42,9 @@ public class MeteorManager : MonoBehaviour
         if (other.gameObject.layer == 3) Animate();
         if (other.gameObject.CompareTag("Enemigo"))
         {
-
-            Stats enemyStats = other.gameObject.GetComponent<Stats>();
+            EnemyBattleManager enemyBattleManager = other.gameObject.GetComponent<EnemyBattleManager>();
             Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
-            float resultado = 0.2f * 2;
-            resultado += 1;
-            resultado *= zeikkuStats.magicPower;
-            resultado *= animatorManager.animator.GetFloat("damage");
-            resultado /= (25 * enemyStats.resistance);
-            resultado += 2;
-            float random = Random.Range(85, 100);
-            resultado *= random;
-            resultado *= 0.01f;
-            resultado *= 5;
-            enemyStats.hp -= (int)resultado;
-            DamageNumberManager damageNumber = Instantiate(damage, enemyStats.transform.position, Quaternion.identity, enemyStats.transform).GetComponent<DamageNumberManager>();
-            damageNumber.GetComponent<TextMesh>().text = Mathf.FloorToInt(resultado).ToString();
-            if (enemyStats.hp < 0)
-            {
-                Destroy(other.gameObject);
-            }
+            enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat("damage"), false);
             Animate();
         }
     }

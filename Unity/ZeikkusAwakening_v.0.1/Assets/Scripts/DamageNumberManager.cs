@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DamageNumberManager : MonoBehaviour
 {
-    private TextMesh texto;
+    public TextMesh texto;
     private Color color;
 
     private float time;
@@ -21,7 +21,7 @@ public class DamageNumberManager : MonoBehaviour
     {
         texto.color = Color.Lerp(texto.color, color, time);
         transform.Translate(Vector3.up * Time.deltaTime);
-        time += Time.deltaTime / 2;
+        time += Time.deltaTime / 10;
         transform.LookAt(Camera.main.transform);
     }
 }

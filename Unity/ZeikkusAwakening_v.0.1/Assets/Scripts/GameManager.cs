@@ -73,6 +73,21 @@ public class GameManager : MonoBehaviour
         return (int) resultado;
     }
 
+    public static int CalcSpecDamage(Stats playerStats, Stats enemyStats, float baseDamage)
+    {
+        float resultado = 0.2f * 2;
+        resultado += 1;
+        resultado *= playerStats.magicPower;
+        resultado *= baseDamage;
+        resultado /= (25 * enemyStats.resistance);
+        resultado += 2;
+        float random = Random.Range(85, 100);
+        resultado *= random;
+        resultado *= 0.01f;
+        resultado *= 5;
+        return (int) resultado;
+    }
+
     public void ToBattle(GameObject spawn)
     {
         StartCoroutine(LoadBattle(spawn));
@@ -87,7 +102,7 @@ public class GameManager : MonoBehaviour
     {
         flash.SetActive(true);
         yield return new WaitForSeconds(1f);
-        HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
+        HUDManager hudManager = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
         escenaBatalla.enemyToSpawn = spawn;
         escenaBatalla.gameObject.SetActive(true);
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();

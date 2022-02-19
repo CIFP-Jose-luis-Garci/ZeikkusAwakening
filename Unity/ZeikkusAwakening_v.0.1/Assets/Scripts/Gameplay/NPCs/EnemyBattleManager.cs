@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class EnemyBattleManager : MonoBehaviour
@@ -11,10 +12,13 @@ public class EnemyBattleManager : MonoBehaviour
     private Transform player;
     public GameObject sprite;
     public bool recoiled;
+    public Slider lifebar;
+    public GameObject damage;
     
     private Animator animator;
     private NavMeshAgent agente;
     private AudioSource source;
+    private Stats stats;
     public bool isRunning;
     private bool isAttacking;
     private float waitTime;
@@ -30,6 +34,10 @@ public class EnemyBattleManager : MonoBehaviour
         player = FindObjectOfType<PlayerManager>().transform;
         agente = GetComponent<NavMeshAgent>();
         source = GetComponent<AudioSource>();
+        stats = GetComponent<Stats>();
+        lifebar.minValue = 0;
+        lifebar.maxValue = stats.maxHP;
+        lifebar.value = stats.hp;
     }
 
     private void Update()
@@ -90,6 +98,31 @@ public class EnemyBattleManager : MonoBehaviour
     public void DoDamage(Stats playerStats)
     {
         playerStats.hp -= GameManager.CalcPhysDamage(playerStats, GetComponent<Stats>(), animator.GetFloat("damage"));
+    }
+
+    public bool RecieveDamage(Stats playerStats, float power, bool isPhysical)
+    {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Damage"))
+        {
+            recoiled = true;
+            int resultado;
+            if (isPhysical)
+                resultado = GameManager.CalcPhysDamage(playerStats, stats, power);
+            else
+                resultado = GameManager.CalcSpecDamage(playerStats, stats, power);
+            stats.hp -= resultado;
+            lifebar.value = stats.hp;
+            GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
+            instantiated.GetComponent<TextMesh>().text = resultado.ToString();
+            if (stats.hp < 0)
+            {
+                stats.alive = false;
+                isAttacking = false;
+                gameObject.SetActive(false);
+            }
+            return true;
+        }
+        return false;
     }
 
     public void StepSound()
