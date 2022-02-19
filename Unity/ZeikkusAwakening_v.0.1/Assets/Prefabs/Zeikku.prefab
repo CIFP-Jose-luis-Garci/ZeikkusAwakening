@@ -1195,7 +1195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttacking: 0
-  damage: {fileID: 5256623395504277334, guid: 2ce27a2a2d66230418db0746ab5f57a9, type: 3}
 --- !u!1 &4927773376940549154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,27 +1331,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7f9463de53b9a4384bab3177236df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  isGrounded: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  raycastHeightOffset: 0.5
-  isJumping: 0
-  jumpForce: 50
-  runningSpeed: 7
-  rotationSpeed: 15
-  puntosDeTurno: 4
-  animaciones: []
   isZTargeting: 0
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  invincible: 0
-  magicSlots: 000000000000000000000000
-  lookInBetween: {fileID: 3335101239391897373}
-  cameraManager: {fileID: 0}
   blocking: 0
+  lifebar: {fileID: 0}
+  damage: {fileID: 5256623395504277334, guid: 2ce27a2a2d66230418db0746ab5f57a9, type: 3}
+  resultScreen: {fileID: 0}
+  blackFade: {fileID: 0}
 --- !u!114 &5234201012602325530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,9 +1421,9 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: aec7115013eaec9479845dd8f09cf5d5, type: 3}
   level: 1
   hp: 150
-  maxHP: 0
+  maxHP: 150
   mp: 100
-  maxMP: 0
+  maxMP: 100
   strength: 17
   defense: 10
   magicPower: 16

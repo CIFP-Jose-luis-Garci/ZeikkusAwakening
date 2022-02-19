@@ -2394,6 +2394,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4202659361239371299, guid: 103af076e56b54241870f2ca843b007b, type: 3}
   m_PrefabInstance: {fileID: 1009219423}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1013309805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7302383872842397048, guid: 4b214a73477046d4a841619428783ded, type: 3}
+  m_PrefabInstance: {fileID: 2037331915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1027020517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2689,30 +2700,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2079246369808946005, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: maxHP
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 2079246369808946005, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: maxMP
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 4927773376940549154, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_Name
       value: Zeikku
       objectReference: {fileID: 0}
     - target: {fileID: 5234201012602325531, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: damage
-      value: 
-      objectReference: {fileID: 5256623395504277334, guid: 2ce27a2a2d66230418db0746ab5f57a9, type: 3}
-    - target: {fileID: 5234201012602325531, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: lifebar
       value: 
       objectReference: {fileID: 896364799}
     - target: {fileID: 5234201012602325531, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: cameraManager
+      propertyPath: blackFade
       value: 
-      objectReference: {fileID: 2000559683}
+      objectReference: {fileID: 1013309805}
+    - target: {fileID: 5234201012602325531, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: magicSlots.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5704133746653626008, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3662,17 +3665,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a560a0d58d5c6424083d9a2fd56d1c60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2000559683 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8258461700927976673, guid: 7ce8c0cdb09b4d441965dd09e9e9b573, type: 3}
-  m_PrefabInstance: {fileID: 1874620796}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b8e26047ef0edc459fcd3bd932368da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2015698497 stripped

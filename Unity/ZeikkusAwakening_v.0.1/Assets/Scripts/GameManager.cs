@@ -93,11 +93,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadBattle(spawn));
     }
 
-    public void ToWin()
-    {
-        StartCoroutine(WinBattle());
-    }
-
     private IEnumerator LoadBattle(GameObject spawn)
     {
         flash.SetActive(true);
@@ -110,20 +105,6 @@ public class GameManager : MonoBehaviour
         musicSource.clip = battleMusic;
         musicSource.Play();
         yield return StartCoroutine(personajes[0].GetComponent<InputManager>().StartBattle());
-        flash.SetActive(false);
-    }
-
-    private IEnumerator WinBattle()
-    {
-        flash.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
-        escenaBatalla.gameObject.SetActive(false);
-        AudioSource musicSource = hudManager.GetComponent<AudioSource>();
-        musicSource.Stop();
-        musicSource.clip = worldMusic;
-        musicSource.Play();
-        yield return StartCoroutine(personajes[0].GetComponent<InputManager>().WinBattle());
         flash.SetActive(false);
     }
 

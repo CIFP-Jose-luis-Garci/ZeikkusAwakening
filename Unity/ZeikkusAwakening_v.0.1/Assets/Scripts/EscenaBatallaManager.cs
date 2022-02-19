@@ -29,28 +29,8 @@ public class EscenaBatallaManager : MonoBehaviour
         enemies = GetComponentsInChildren<Stats>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetPlayer()
     {
-        alive = false;
-        foreach (Stats enemy in enemies)
-        {
-            if (enemy.alive)
-            {
-                alive = true;
-            }
-                
-        }
-
-        if (!alive)
-        {
-            // win battle anim
-            // result screen
-            // press a, goto transition fade in black
-            playerTransform.position = playerOrigin;
-            gameObject.SetActive(false);
-            FindObjectOfType<GameManager>().ToWin();
-            // fade out black
-        }
+        playerTransform.position = playerOrigin;
     }
 }

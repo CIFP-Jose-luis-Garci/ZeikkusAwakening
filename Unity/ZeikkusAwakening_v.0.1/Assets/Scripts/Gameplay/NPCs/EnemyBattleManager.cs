@@ -112,7 +112,32 @@ public class EnemyBattleManager : MonoBehaviour
         {
             stats.alive = false;
             isAttacking = false;
-            gameObject.SetActive(false);
+            animator.applyRootMotion = true;
+            animator.SetTrigger("muerte");
+            Destroy(gameObject, 1f);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        CheckAlive();
+    }
+
+    private void CheckAlive()
+    {
+        bool alive = false;
+        foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
+        {
+            if (enemy.stats.alive)
+            {
+                alive = true;
+            }
+                
+        }
+
+        if (!alive)
+        {
+            player.GetComponent<PlayerLocomotion>().HandleWinBattle();
         }
     }
 

@@ -13,39 +13,39 @@ public class PlayerLocomotion : MonoBehaviour
     
     private Vector3 moveDirection;
     private Transform cameraObject;
-    public Rigidbody rb;
+    private Rigidbody rb;
     
     [Header("Falling and Landing")]
-    public bool isGrounded;
+    [NonSerialized] public bool isGrounded;
     public LayerMask groundLayer;
-    public float raycastHeightOffset = 0.5f;
+    private float raycastHeightOffset = 0.5f;
 
-    public bool isJumping;
-    public float jumpForce = 3;
+    [NonSerialized] public bool isJumping;
+    private float jumpForce = 50;
 
     [Header("Movement")]
-    public float runningSpeed = 7;
-    public float rotationSpeed = 15;
+    private float runningSpeed = 7;
+    private float rotationSpeed = 15;
     
     [Header("Attacking")]
-    public int puntosDeTurno = 4;
-    public string[] animaciones;
+    private string[] animaciones;
     private Coroutine coroutine;
 
     [Header("Z targeting")] 
     public bool isZTargeting;
-    public LayerMask enemyLayer;
     private Transform enemyObject;
 
     [Header("Battle")]
-    public bool invincible;
+    private bool invincible;
     public int[] magicSlots;
-    public Transform lookInBetween;
-    public CameraManager cameraManager;
-    public bool blocking;
+    private Transform lookInBetween;
+    private CameraManager cameraManager;
+    private bool blocking;
     private Stats stats;
     public Slider lifebar;
     public GameObject damage;
+    public GameObject resultScreen;
+    public Image blackFade;
 
     
     private void Awake()
@@ -57,7 +57,9 @@ public class PlayerLocomotion : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         cameraObject = Camera.main.transform;
         stats = GetComponent<Stats>();
-        animaciones = new string[puntosDeTurno];
+        lookInBetween = FindObjectOfType<InBetweenObjectManager>().transform;
+        cameraManager = FindObjectOfType<CameraManager>();
+        animaciones = new string[stats.turnPoints];
         animaciones[0] = "final_slash";
         animaciones[1] = "hard_slash";
         animaciones[2] = "second_slash";
@@ -211,7 +213,8 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleBlock()
     {
-        if (!animatorManager.animator.GetBool("blocking"))
+        blocking = animatorManager.animator.GetBool("blocking");
+        if (!blocking)
         {
             animatorManager.PlayTargetAnimation("block", true);
             animatorManager.animator.SetBool("blocking", true);
@@ -236,7 +239,10 @@ public class PlayerLocomotion : MonoBehaviour
             resultado = GameManager.CalcPhysDamage(playerStats, stats, power);
         else
             resultado = GameManager.CalcSpecDamage(playerStats, stats, power);
-        stats.hp -= resultado;
+        if (blocking)
+            stats.hp -= (int) (resultado * 0.2f);
+        else
+            stats.hp -= resultado;
         lifebar.value = stats.hp;
         GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
         instantiated.GetComponent<TextMesh>().text = resultado.ToString();
@@ -251,4 +257,38 @@ public class PlayerLocomotion : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
+    public void HandleWinBattle()
+    {
+        StartCoroutine(_HandleWinBattle());
+    }
+
+    private IEnumerator _HandleWinBattle()
+    {
+        // win battle anim
+        yield return FindObjectOfType<InputManager>().WinBattle();
+        // result screen
+        EscenaBatallaManager escenaBatallaManager = FindObjectOfType<EscenaBatallaManager>();
+        resultScreen.SetActive(true);
+        while (true)
+        {
+            if (inputManager.aInput)
+            {
+                resultScreen.SetActive(false);
+                // press a, goto transition fade in black
+                blackFade.CrossFadeAlpha(1, 1, true);
+                escenaBatallaManager.gameObject.SetActive(false);
+                HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
+                yield return GameManager.CrossFadeMusic(hudManager.mixer, 1, true);
+                AudioSource musicSource = hudManager.GetComponent<AudioSource>();
+                musicSource.Stop();
+                musicSource.clip = gameManager.worldMusic;
+                musicSource.Play();
+                yield return GameManager.CrossFadeMusic(hudManager.mixer, 1, false);
+                escenaBatallaManager.ResetPlayer();
+                // fade out black
+                blackFade.CrossFadeAlpha(0, 1, true);
+                yield break;
+            }
+        }
+    }
 }
