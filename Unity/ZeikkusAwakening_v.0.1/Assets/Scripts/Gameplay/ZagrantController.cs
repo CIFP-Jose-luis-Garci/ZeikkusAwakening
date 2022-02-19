@@ -39,17 +39,8 @@ public class ZagrantController : MonoBehaviour
                 EnemyBattleManager enemyBattleManager = enemyStats.GetComponent<EnemyBattleManager>();
                 enemyBattleManager.recoiled = true;
                 Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
-                float resultado = 0.2f * 2;
-                resultado += 1;
-                resultado *= zeikkuStats.strength;
-                resultado *= animatorManager.animator.GetFloat("damage");
-                resultado /= (25 * enemyStats.defense);
-                resultado += 2;
-                float random = Random.Range(85 ,100);
-                resultado *= random;
-                resultado *= 0.01f;
-                resultado *= 5;
-                enemyStats.hp -= (int) resultado;
+                int resultado = GameManager.CalcPhysDamage(zeikkuStats, enemyStats, animatorManager.animator.GetFloat("damage"));
+                enemyStats.hp -= resultado;
                 DamageNumberManager damageNumber = Instantiate(damage, enemyStats.transform.position, Quaternion.identity, enemyStats.transform).GetComponent<DamageNumberManager>();
                 damageNumber.GetComponent<TextMesh>().text = Mathf.FloorToInt(resultado).ToString();
                 if (enemyStats.hp < 0)

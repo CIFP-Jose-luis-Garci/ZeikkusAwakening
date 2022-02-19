@@ -7,15 +7,16 @@ public class MeteorManager : MonoBehaviour
     public GameObject fire, meteorExplosion, smoke;
     public float speed;
     public bool forward;
+    public GameObject damage;
 
-    private int mpCost, damage;
+    private int mpCost, strength;
     private AnimatorManager animatorManager;
     // Start is called before the first frame update
     void Start()
     {
         animatorManager = FindObjectOfType<AnimatorManager>();
         mpCost = 10;
-        damage = 30;
+        strength = 30;
         fire.SetActive(false);
         meteorExplosion.SetActive(false);
         smoke.SetActive(false);
@@ -55,6 +56,8 @@ public class MeteorManager : MonoBehaviour
             resultado *= 0.01f;
             resultado *= 5;
             enemyStats.hp -= (int)resultado;
+            DamageNumberManager damageNumber = Instantiate(damage, enemyStats.transform.position, Quaternion.identity, enemyStats.transform).GetComponent<DamageNumberManager>();
+            damageNumber.GetComponent<TextMesh>().text = Mathf.FloorToInt(resultado).ToString();
             if (enemyStats.hp < 0)
             {
                 Destroy(other.gameObject);

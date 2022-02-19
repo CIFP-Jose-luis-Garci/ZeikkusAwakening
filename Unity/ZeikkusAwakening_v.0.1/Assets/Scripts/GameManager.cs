@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -55,6 +56,21 @@ public class GameManager : MonoBehaviour
             time -= timeStep;
         } while (time > 0);
 
+    }
+
+    public static int CalcPhysDamage(Stats playerStats, Stats enemyStats, float baseDamage)
+    {
+        float resultado = 0.2f * 2;
+        resultado += 1;
+        resultado *= playerStats.strength;
+        resultado *= baseDamage;
+        resultado /= (25 * enemyStats.defense);
+        resultado += 2;
+        float random = Random.Range(85 ,100);
+        resultado *= random;
+        resultado *= 0.01f;
+        resultado *= 5;
+        return (int) resultado;
     }
 
     public void ToBattle(GameObject spawn)

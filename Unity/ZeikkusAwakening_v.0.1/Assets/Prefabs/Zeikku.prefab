@@ -1086,19 +1086,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04103283, y: 0.01, z: 0.24921143}
   m_Center: {x: 0.0006045619, y: -4.1697099e-10, z: 0.064606026}
---- !u!114 &2067915419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4927773376672683731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0cdf756007d2a4418d113ba658fb3b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAttacking: 0
 --- !u!82 &1666235024
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1195,6 +1182,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2067915419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927773376672683731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cdf756007d2a4418d113ba658fb3b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
+  damage: {fileID: 5256623395504277334, guid: 2ce27a2a2d66230418db0746ab5f57a9, type: 3}
 --- !u!1 &4927773376940549154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,9 +1437,9 @@ MonoBehaviour:
   maxHP: 0
   mp: 100
   maxMP: 0
-  strength: 15
+  strength: 17
   defense: 10
-  magicPower: 13
+  magicPower: 16
   resistance: 10
   experience: 0
   nextLevelExperience: 1000

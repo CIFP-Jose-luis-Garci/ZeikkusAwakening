@@ -87,6 +87,11 @@ public class EnemyBattleManager : MonoBehaviour
         recoiled = false;
     }
 
+    public void DoDamage(Stats playerStats)
+    {
+        playerStats.hp -= GameManager.CalcPhysDamage(playerStats, GetComponent<Stats>(), animator.GetFloat("damage"));
+    }
+
     public void StepSound()
     {
         source.PlayOneShot(stepSounds[Mathf.FloorToInt(Random.Range(0, stepSounds.Length))]);
