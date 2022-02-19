@@ -489,7 +489,7 @@ MonoBehaviour:
   title: 
   sprite: {fileID: 0}
   level: 0
-  hp: 500
+  hp: 300
   maxHP: 0
   mp: 0
   maxMP: 0
@@ -549,6 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1443597770934799560}
+  recoiled: 0
   isRunning: 0
   stepSounds:
   - {fileID: 8300000, guid: c57e62ba73ba0694ca5ef4d57e792a14, type: 3}

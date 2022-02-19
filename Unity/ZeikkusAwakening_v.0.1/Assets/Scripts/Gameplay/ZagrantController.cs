@@ -35,6 +35,7 @@ public class ZagrantController : MonoBehaviour
                 animatorManager.animator.SetBool("isAttacking", false);
                 source.PlayOneShot(source.clip);
                 Stats enemyStats = other.gameObject.GetComponent<Stats>();
+                enemyStats.GetComponent<EnemyBattleManager>().recoiled = true;
                 Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
                 float resultado = 0.2f * 2;
                 resultado += 1;

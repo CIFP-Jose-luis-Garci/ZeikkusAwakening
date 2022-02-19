@@ -10,6 +10,7 @@ public class EnemyBattleManager : MonoBehaviour
 {
     private Transform player;
     public GameObject sprite;
+    public bool recoiled;
     
     private Animator animator;
     private NavMeshAgent agente;
@@ -33,7 +34,10 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void Update()
     {
-        Run();
+        if (recoiled)
+            Recoil();
+        else
+            Run();
     }
 
     private void Run()
@@ -42,8 +46,9 @@ public class EnemyBattleManager : MonoBehaviour
         {
             if (waitTime <= 0)
             {
+                float randomAttack = Random.Range(0f, 1f);
+                animator.SetFloat("tipoAtaque", randomAttack);
                 animator.SetBool("alcance", true);
-                animator.SetFloat("tipoAtaque", Random.Range(0, 1));
                 ClipLength();
                 agente.speed = 0;
             }
@@ -76,6 +81,12 @@ public class EnemyBattleManager : MonoBehaviour
         }
     }
 
+    private void Recoil()
+    {
+        animator.SetTrigger("daño");
+        recoiled = false;
+    }
+
     public void StepSound()
     {
         source.PlayOneShot(stepSounds[Mathf.FloorToInt(Random.Range(0, stepSounds.Length))]);
@@ -93,19 +104,7 @@ public class EnemyBattleManager : MonoBehaviour
     
     private void ClipLength()
     {
-        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
-        foreach(AnimationClip clip in clips)
-        {
-            switch(clip.name)
-            {
-                case "Attack1":
-                    hitLength = clip.length;
-                    break;
-                case "Attack2":
-                    hitLength = clip.length;
-                    break;
-            }
-        }
+        hitLength = animator.GetCurrentAnimatorStateInfo(0).length;
     }
 
     public void ImTarget(bool set)

@@ -127,17 +127,17 @@ public class EnemyManager : MonoBehaviour
 
     public void StepSound()
     {
-        source.PlayOneShot(stepSounds[Mathf.FloorToInt(Random.Range(0, stepSounds.Length))]);
+        source.PlayOneShot(stepSounds[(Random.Range(0, stepSounds.Length))]);
     }
 
     public void CrySound()
     {
-        source.PlayOneShot(crySounds[Mathf.FloorToInt(Random.Range(0, crySounds.Length))]);
+        source.PlayOneShot(crySounds[Random.Range(0, crySounds.Length)]);
     }
 
     public void AttackSound(AnimationEvent animationEvent)
     {
-        source.PlayOneShot(attackSounds[Mathf.FloorToInt(Random.Range(0, attackSounds.Length))]);
+        source.PlayOneShot(attackSounds[Random.Range(0, attackSounds.Length)]);
     }
     
     private void ClipLength()
