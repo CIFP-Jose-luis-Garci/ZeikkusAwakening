@@ -22,6 +22,10 @@ public class Pocion : Item
             if (currentStats.hp > currentStats.maxHP)
                 currentStats.hp = currentStats.maxHP;
         }
+
+        FindObjectOfType<PantallaPausaManager>().UpdateValues();
+        FindObjectOfType<VidaSliderManager>().UpdateSliderValues();
+        
         return someoneIsHealed;
     }
 }

@@ -12,7 +12,7 @@ public class PantallaPausaManager : MonoBehaviour
     private Stats zeikkuStats;
     public GameObject pantallaInventario, pantallaEstado, pantallaOpciones;
     public Button inventario, estado, opciones;
-    public Text tiempo, maru, zeikkuVida, zeikkuMagia;
+    public Text maru, zeikkuVida, zeikkuMagia;
 
     private void Awake()
     {
@@ -24,10 +24,7 @@ public class PantallaPausaManager : MonoBehaviour
     {
         GameManager.inPause = true;
         inventario.Select();
-        zeikkuStats = inputManager.gameObject.GetComponent<Stats>();
-        zeikkuVida.text = zeikkuStats.hp + "/" + zeikkuStats.maxHP;
-        zeikkuMagia.text = zeikkuStats.mp + "/" + zeikkuStats.maxMP;
-        maru.text = gameManager.maru.ToString();
+        UpdateValues();
     }
 
     private void OnDisable()
@@ -52,5 +49,13 @@ public class PantallaPausaManager : MonoBehaviour
         });
         inventario.Select();
 
+    }
+
+    public void UpdateValues()
+    {
+        zeikkuStats = inputManager.gameObject.GetComponent<Stats>();
+        zeikkuVida.text = zeikkuStats.hp + "/" + zeikkuStats.maxHP;
+        zeikkuMagia.text = zeikkuStats.mp + "/" + zeikkuStats.maxMP;
+        maru.text = GameManager.maru.ToString();
     }
 }

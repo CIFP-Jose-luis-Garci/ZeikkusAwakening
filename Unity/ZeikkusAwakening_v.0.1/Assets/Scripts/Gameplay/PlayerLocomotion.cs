@@ -45,7 +45,6 @@ public class PlayerLocomotion : MonoBehaviour
     public Slider lifebar;
     public GameObject damage;
     public GameObject resultScreen;
-    public Image blackFade;
 
     
     private void Awake()
@@ -59,6 +58,7 @@ public class PlayerLocomotion : MonoBehaviour
         stats = GetComponent<Stats>();
         lookInBetween = FindObjectOfType<InBetweenObjectManager>().transform;
         cameraManager = FindObjectOfType<CameraManager>();
+        isGrounded = true;
         animaciones = new string[stats.turnPoints];
         animaciones[0] = "final_slash";
         animaciones[1] = "hard_slash";
@@ -233,7 +233,7 @@ public class PlayerLocomotion : MonoBehaviour
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical)
     {
         if (invincible) return;
-        animatorManager.PlayTargetAnimation("recoil", true);
+        if (!gameManager.inWorld) animatorManager.PlayTargetAnimation("recoil", true);
         int resultado;
         if (isPhysical)
             resultado = GameManager.CalcPhysDamage(playerStats, stats, power);

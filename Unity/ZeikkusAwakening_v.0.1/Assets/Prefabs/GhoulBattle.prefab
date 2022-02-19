@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1443597770934799567
 Transform:
   m_ObjectHideFlags: 0
@@ -726,10 +726,10 @@ MonoBehaviour:
   maxHP: 0
   mp: 0
   maxMP: 0
-  strength: 8
-  defense: 10
+  strength: 7
+  defense: 6
   magicPower: 0
-  resistance: 6
+  resistance: 4
   experience: 0
   nextLevelExperience: 0
   turnPoints: 0
@@ -749,7 +749,7 @@ NavMeshAgent:
   m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 300
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

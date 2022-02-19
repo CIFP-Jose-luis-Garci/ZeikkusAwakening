@@ -41,6 +41,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.inPause) return;
         if (!stats.alive) return;
         if (recoiled)
             Recoil();
@@ -98,7 +99,6 @@ public class EnemyBattleManager : MonoBehaviour
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical)
     {
-
         recoiled = true;
         int resultado;
         if (isPhysical)
@@ -107,7 +107,7 @@ public class EnemyBattleManager : MonoBehaviour
             resultado = GameManager.CalcSpecDamage(playerStats, stats, power);
         stats.hp -= resultado;
         lifebar.value = stats.hp;
-        FindObjectOfType<EscenaBatallaManager>().danoTotal *= resultado;
+        FindObjectOfType<EscenaBatallaManager>().danoTotal += resultado;
         GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
         instantiated.GetComponent<TextMesh>().text = resultado.ToString();
         if (stats.hp < 0)

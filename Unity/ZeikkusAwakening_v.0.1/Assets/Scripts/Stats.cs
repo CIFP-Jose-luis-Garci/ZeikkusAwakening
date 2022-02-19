@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class Stats : MonoBehaviour
 {
@@ -30,5 +31,25 @@ public class Stats : MonoBehaviour
     {
         maxHP = hp;
         maxMP = mp;
+    }
+
+    public void AddExp(int exp)
+    {
+        experience += exp;
+        if (experience > nextLevelExperience)
+        {
+            level++;
+            experience = 0;
+            nextLevelExperience = (int) (nextLevelExperience * 1.2f);
+            maxHP = (int) (maxHP * 1.2f);
+            maxMP = (int) (maxMP * 1.2f);
+            hp = maxHP;
+            mp = maxMP;
+            strength += Random.Range(1, 5);
+            defense += Random.Range(1, 3);
+            magicPower += Random.Range(1, 4);
+            resistance += Random.Range(1, 3);
+            strength += Random.Range(1, 3);
+        }
     }
 }

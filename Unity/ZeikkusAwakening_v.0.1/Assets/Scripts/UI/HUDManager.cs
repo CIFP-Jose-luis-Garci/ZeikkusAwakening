@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
-    private float time;
+    public float time;
     public Text tiempo;
     public Image blackBackground;
     public AudioMixer mixer;

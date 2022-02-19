@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.inPause) return;
         playerLocomotion.HandleAllMovement();
     }
 

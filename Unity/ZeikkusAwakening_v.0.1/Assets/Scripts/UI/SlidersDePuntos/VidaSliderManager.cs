@@ -29,7 +29,7 @@ public class VidaSliderManager : MonoBehaviour
         }
     }
 
-    private void UpdateSliderValues()
+    public void UpdateSliderValues()
     {
         slider.minValue = 0;
         slider.maxValue = stats.maxHP;

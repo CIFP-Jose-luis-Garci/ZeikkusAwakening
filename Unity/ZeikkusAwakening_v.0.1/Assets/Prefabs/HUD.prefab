@@ -3499,8 +3499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exp: {fileID: 3293275927483398301}
-  maru: {fileID: 8427062460811923159}
-  danoTotal: {fileID: 2290914390626243811}
+  maru: {fileID: 2290914390626243811}
+  danoTotal: {fileID: 8427062460811923159}
   tiempoBatalla: {fileID: 1471887834951021180}
   fade: 0
   blackFade: {fileID: 7302383872842397048}
@@ -4812,7 +4812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -560, y: 368}
+  m_AnchoredPosition: {x: -68, y: 368}
   m_SizeDelta: {x: 566, y: 53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7093536300214892689
@@ -10576,6 +10576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc9301ac0f7b8844bfc78787de8362a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 0
   tiempo: {fileID: 8650189779957975506}
   blackBackground: {fileID: 7302383872842397048}
   mixer: {fileID: 24100000, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
@@ -14114,8 +14115,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: -0.805, y: 0.7738}
+  m_SizeDelta: {x: 1927.1416, y: 1086.4602}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &90935928417029332
 CanvasRenderer:
@@ -14643,7 +14644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -560, y: 305}
+  m_AnchoredPosition: {x: -68, y: 305}
   m_SizeDelta: {x: 566, y: 53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2620245078319725125
@@ -14720,7 +14721,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 41, y: 368}
+  m_AnchoredPosition: {x: 533, y: 368}
   m_SizeDelta: {x: 566, y: 53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8929083823413586828
@@ -15304,7 +15305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 41, y: 305}
+  m_AnchoredPosition: {x: 533, y: 305}
   m_SizeDelta: {x: 566, y: 53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &986761526936393360
@@ -17962,7 +17963,6 @@ MonoBehaviour:
   inventario: {fileID: 799857486347070908}
   estado: {fileID: 4632349207259231887}
   opciones: {fileID: 3442117194833645251}
-  tiempo: {fileID: 8650189779957975506}
   maru: {fileID: 3127557967429345495}
   zeikkuVida: {fileID: 309374644139309527}
   zeikkuMagia: {fileID: 3716702334545430058}

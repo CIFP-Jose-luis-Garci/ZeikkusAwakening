@@ -25,8 +25,8 @@ public class EscenaBatallaManager : MonoBehaviour
         playerTransform = FindObjectOfType<PlayerManager>().transform;
         playerOrigin = playerTransform.position;
         playerTransform.position = playerSpawn.transform.position;
-        int randomLimit = 1;
-        for (int i = 0; i < randomLimit; i++)
+        
+        for (int i = 0; i < Random.Range(2, spawners.Length); i++)
         {
             Instantiate(enemyToSpawn, spawners[i].transform);
         }
@@ -35,6 +35,7 @@ public class EscenaBatallaManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.inPause) return;
         tiempoDeCombate += Time.deltaTime;
     }
 
