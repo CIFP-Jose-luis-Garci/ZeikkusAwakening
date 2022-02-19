@@ -1,53 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class SceneChangeManager : MonoBehaviour
 {
-    
+    public GameObject nivel1, nivel2;
+    public VideoPlayer video;
+    public Image blackFade;
+    private GameObject player;
 
-    public Canvas HUD;
-    
-
-    void Start()
+    private void Start()
     {
-        // Create a temporary reference to the current scene.
-        //Scene currentScene = SceneManager.GetActiveScene();
-
-        // Retrieve the name of this scene.
-        //string sceneName = currentScene.name;
-
+        player = FindObjectOfType<PlayerManager>().gameObject;
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        
-
-        if (other.CompareTag("Player") && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("escenario_p2"))
-        {
-            GameObject.Find("HUD").GetComponent<Canvas>().transform.GetChild(4).gameObject.SetActive(true);
-            
-            Invoke("CargarNivel1", 2f);
-        }
-        else if (other.CompareTag("Player") && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("escenario_p1"))
-        {
-            GameObject.Find("HUD").GetComponent<Canvas>().transform.GetChild(4).gameObject.SetActive(true);
-            Invoke("CargarNivel2", 2f);
-        }
-    }
-    
-    
-    private void CargarNivel1()
-    {
-        GameObject.Find("HUD").GetComponent<Canvas>().transform.GetChild(4).gameObject.SetActive(false);
-        SceneManager.LoadScene(0); 
-
+        StartCoroutine(LoadLevel());
     }
 
-    private void CargarNivel2()
+    private IEnumerator LoadLevel()
     {
-        GameObject.Find("HUD").GetComponent<Canvas>().transform.GetChild(4).gameObject.SetActive(false);
-        SceneManager.LoadScene(1);
-
+        blackFade.CrossFadeAlpha(1, 1, true);
+        yield return new WaitForSeconds(1f);
+        video.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        video.gameObject.SetActive(false);
+        if (nivel1.activeSelf){
+            nivel2.SetActive(true);
+            nivel1.SetActive(false);
+            player.transform.position = new Vector3(7.44f, 22.28f, -48.19f);
+        } else if (nivel2.activeSelf)
+        {
+            nivel2.SetActive(false);
+            nivel1.SetActive(true);
+            player.transform.position = new Vector3(2.75f, 0, -43.5f);
+        }
+        blackFade.CrossFadeAlpha(0, 1, true);
     }
 }

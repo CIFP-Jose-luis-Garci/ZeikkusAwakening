@@ -12,6 +12,7 @@ public class CofreManager : MonoBehaviour
     private InputManager inputManager;
     private Animator animator;
     private AudioSource source;
+    private bool opened;
     
 
     private void Start()
@@ -43,6 +44,8 @@ public class CofreManager : MonoBehaviour
 
     public void OpenEvent()
     {
+        if (opened) return;
+        
         openChest.CrossFadeAlpha(0, 0.5f, false);
         
         FindObjectOfType<PlayerBagManager>().AddItem(containedItem);
@@ -52,6 +55,7 @@ public class CofreManager : MonoBehaviour
         idbc.itemName.text = containedItem.itemName;
         idbc.item.sprite = containedItem.itemSprite;
         containedItem = null;
+        opened = true;
     }
 
     private void OnTriggerExit(Collider other)
