@@ -8,7 +8,7 @@ public class InBetweenObjectManager : MonoBehaviour
     CinemachineFreeLook cmfl;
     Transform player;
     public Transform enemy;
-    public EnemyManager enemyManager;
+    public EnemyBattleManager enemyManager;
     public Stats enemyStats;
     public bool enemyFound;
     public float distance;
@@ -54,7 +54,7 @@ public class InBetweenObjectManager : MonoBehaviour
             enemy = tMin;
             if (enemyFound)
             {
-                enemyManager = enemy.GetComponent<EnemyManager>();
+                enemyManager = enemy.GetComponent<EnemyBattleManager>();
                 enemyStats = enemy.GetComponent<Stats>();
             }
         }

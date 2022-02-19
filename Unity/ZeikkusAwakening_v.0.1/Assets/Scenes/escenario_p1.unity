@@ -252,6 +252,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghoul (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
 --- !u!1001 &28808488
@@ -846,6 +850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghoul (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
 --- !u!4 &177881573 stripped
@@ -1433,6 +1441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghoul (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
 --- !u!1001 &652788564
@@ -1568,6 +1580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghoul (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
 --- !u!1001 &661074144
@@ -1624,6 +1640,10 @@ PrefabInstance:
     - target: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
       propertyPath: m_Name
       value: Ghoul (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
@@ -2298,6 +2318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghoul (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
 --- !u!1001 &1009219423
@@ -2669,6 +2693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghoul (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
 --- !u!1001 &1109896512
@@ -2682,54 +2710,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zeikku
       objectReference: {fileID: 0}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: magicSounds.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: zeikkuSounds.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: magicSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: b3dd4736af252644d92e9b04b827e5bc, type: 3}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: magicSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: b014b1f0ad84664479cf33d35502a692, type: 3}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: zeikkuSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 538a97bd2775a8c46a8c6066757889a6, type: 3}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: zeikkuSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 344e2422071b9a24f8f754d8a9dc9e45, type: 3}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: zeikkuSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: d36da0cca58f12b43ba8fbb5db438084, type: 3}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: zeikkuSounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9c99fded4b861e84189ffbf3cf4b0a39, type: 3}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: zeikkuSounds.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 24ebc4ad096e18c48a47d4d67e4376da, type: 3}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: zeikkuSounds.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: 2440f455bef90ef45a812a537cee6f05, type: 3}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: zeikkuSounds.Array.data[6]
-      value: 
-      objectReference: {fileID: 8300000, guid: cfd79a1704d395346a10ae066269943b, type: 3}
-    - target: {fileID: 5234201012602325525, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: zeikkuSounds.Array.data[7]
-      value: 
-      objectReference: {fileID: 8300000, guid: 54974baed583a844490e53880aeb2c52, type: 3}
     - target: {fileID: 5234201012602325531, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: cameraManager
       value: 
@@ -2885,7 +2865,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1136011505}
-  - component: {fileID: 1136011506}
   m_Layer: 0
   m_Name: Zagrant
   m_TagString: Untagged
@@ -2907,26 +2886,6 @@ Transform:
   m_Father: {fileID: 2113668072}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1136011506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136011504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b407febee7729eb458ae4256a3686a54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: Espada Legendaria Zagrant
-  category: Arma
-  type: 1
-  itemSprite: {fileID: 21300000, guid: 01f25562182bb5d4db3755912d7c6b04, type: 3}
-  description: "Espada legendaria que se dice que es la encarnaci\xF3n del dios del
-    espacio. La encontraste al despertar junto a t\xED."
-  usable: 0
-  tossable: 0
 --- !u!4 &1138676105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5704133746653626008, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
@@ -3885,6 +3844,10 @@ PrefabInstance:
     - target: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
       propertyPath: m_Name
       value: Ghoul (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
