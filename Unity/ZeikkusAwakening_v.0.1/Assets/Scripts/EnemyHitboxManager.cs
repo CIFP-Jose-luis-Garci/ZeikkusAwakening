@@ -6,12 +6,23 @@ using UnityEngine;
 public class EnemyHitboxManager : MonoBehaviour
 {
     public EnemyBattleManager enemy;
+    private Animator animator;
+    private bool isAttacking;
+
+    private void Update()
+    {
+        animator = enemy.GetComponent<Animator>();
+        isAttacking = animator.GetBool("isAttacking");
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (isAttacking)
         {
-            enemy.DoDamage(other.gameObject.GetComponent<Stats>());
+            if (other.gameObject.CompareTag("Player"))
+            {
+                enemy.DoDamage(other.gameObject.GetComponent<Stats>());
+            }
         }
     }
 }

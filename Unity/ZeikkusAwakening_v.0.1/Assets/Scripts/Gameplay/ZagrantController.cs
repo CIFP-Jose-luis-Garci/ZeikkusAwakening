@@ -36,7 +36,6 @@ public class ZagrantController : MonoBehaviour
                 Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
                 enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat("damage"), true);
                 source.PlayOneShot(source.clip);
-                Debug.Log(Environment.StackTrace);
             }
             else
             {

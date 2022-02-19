@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -98,6 +97,7 @@ public class EnemyBattleManager : MonoBehaviour
     public void DoDamage(Stats playerStats)
     {
         playerStats.hp -= GameManager.CalcPhysDamage(playerStats, GetComponent<Stats>(), animator.GetFloat("damage"));
+        animator.SetBool("isAttacking", false);
     }
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical)
@@ -134,6 +134,11 @@ public class EnemyBattleManager : MonoBehaviour
     public void AttackSound(AnimationEvent animationEvent)
     {
         source.PlayOneShot(attackSounds[Mathf.FloorToInt(Random.Range(0, attackSounds.Length))]);
+    }
+
+    public void IsAttackingSet(AnimationEvent animationEvent)
+    {
+        animator.SetBool("isAttacking", animationEvent.intParameter == 1);
     }
     
     private void ClipLength()

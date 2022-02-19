@@ -21,7 +21,7 @@ public class EscenaBatallaManager : MonoBehaviour
         playerTransform = FindObjectOfType<PlayerManager>().transform;
         playerOrigin = playerTransform.position;
         playerTransform.position = playerSpawn.transform.position;
-        int randomLimit = Random.Range(2, spawners.Length);
+        int randomLimit = 1;
         for (int i = 0; i < randomLimit; i++)
         {
             Instantiate(enemyToSpawn, spawners[i].transform);
