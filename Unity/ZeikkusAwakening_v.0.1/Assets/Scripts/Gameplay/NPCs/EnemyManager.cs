@@ -9,7 +9,6 @@ using Random = UnityEngine.Random;
 public class EnemyManager : MonoBehaviour
 {
     [NonSerialized]public Transform player;
-    public GameObject sprite;
     public bool detectado;
     public GameObject enemyToSpawn;
     
@@ -163,10 +162,5 @@ public class EnemyManager : MonoBehaviour
         float newZ = from.z + Random.Range(-randomValue, randomValue);
         Vector3 direccion = new Vector3(newX, 0, newZ);
         return direccion;
-    }
-
-    public void ImTarget(bool set)
-    {
-        sprite.SetActive(set);
     }
 }
