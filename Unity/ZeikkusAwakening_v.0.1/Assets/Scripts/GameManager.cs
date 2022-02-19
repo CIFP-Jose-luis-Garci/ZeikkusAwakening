@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         {
             float baseExp = current.expBase * current.level;
             baseExp /= 5;
-            float aCorrector = Mathf.Pow(4 * current.level, 2.5f);
+            float aCorrector = Mathf.Pow(10 * current.level, 2.5f);
             float bCorrector = (current.level * GetTeamLevel() + 10);
             float total = baseExp * (aCorrector / bCorrector) + 1;
             resultado += (int) total;
