@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class Cutscene1Manager : CutsceneManager
@@ -9,6 +10,10 @@ public class Cutscene1Manager : CutsceneManager
     private AnimatorManager animatorManager;
     private InputManager inputManager;
     public Image blackFade;
+    public Material faceEyesOpen;
+    public SkinnedMeshRenderer face;
+    public AudioSource musicSource;
+    public AudioMixer mixer;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +24,9 @@ public class Cutscene1Manager : CutsceneManager
         animatorManager.transform.rotation = Quaternion.identity;
         animatorManager.animator.CrossFade("Sleeping", 0);
         inputManager.inDialogue = true;
+        musicSource.Stop();
+        mixer.SetFloat("EnemiesSFXVolume", -80);
+        mixer.SetFloat("EnvironmentSFXVolume", -80);
     }
 
 
@@ -27,6 +35,12 @@ public class Cutscene1Manager : CutsceneManager
         Debug.Log(dialogueCount);
         switch (dialogueCount)
         {
+            case 1:
+                Debug.Log(dialogueCount);
+                Material[] materials = face.materials;
+                materials[1] = faceEyesOpen;
+                face.materials = materials;
+                break;
             case 5:
                 StartCoroutine(ChangeCameraAndGetUp());
                 break;
@@ -75,6 +89,9 @@ public class Cutscene1Manager : CutsceneManager
         cameras[4].SetActive(true);
         yield return new WaitForSeconds(1f);
         inputManager.inDialogue = false;
+        mixer.SetFloat("EnemiesSFXVolume", 0);
+        mixer.SetFloat("EnvironmentSFXVolume", 0);
+        musicSource.Play();
         blackFade.CrossFadeAlpha(0,1,true);
     }
 }

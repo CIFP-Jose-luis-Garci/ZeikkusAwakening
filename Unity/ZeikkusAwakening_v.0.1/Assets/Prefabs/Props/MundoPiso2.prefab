@@ -693,7 +693,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 4294967287
   m_IsActive: 1
 --- !u!4 &3849086843609145514
 Transform:
@@ -818,8 +818,8 @@ GameObject:
   m_Name: puerta_sincerradura_sindecor7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2886320846515629785
 Transform:
@@ -1128,8 +1128,8 @@ GameObject:
   m_Name: puerta_sincerradura_sindecor12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &962142919093766902
 Transform:
@@ -1209,8 +1209,8 @@ GameObject:
   m_Name: puerta_con_cerradura_con_decor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &577538360932670614
 Transform:
@@ -1447,8 +1447,8 @@ GameObject:
   m_Name: puerta_sincerradura_sindecor8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6499810146865285032
 Transform:
@@ -1528,8 +1528,8 @@ GameObject:
   m_Name: puerta_sincerradura_sindecor10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3474748003714656635
 Transform:
@@ -1609,8 +1609,8 @@ GameObject:
   m_Name: puerta_sincerradura_sindecor9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &135172263424454627
 Transform:
@@ -1690,8 +1690,8 @@ GameObject:
   m_Name: puerta_sincerradura_sindecor11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5696350282513852528
 Transform:
@@ -1819,6 +1819,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5499033937593369198, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
 --- !u!4 &5425452554740540337 stripped
@@ -1889,6 +1893,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5499033937593369198, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
 --- !u!4 &5425452554682694420 stripped
@@ -1959,6 +1967,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5499033937593369198, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
 --- !u!4 &5425452554628083144 stripped
@@ -2037,6 +2049,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9166704000237736583, guid: 103af076e56b54241870f2ca843b007b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103af076e56b54241870f2ca843b007b, type: 3}
 --- !u!4 &4223905205268044740 stripped
@@ -2115,6 +2131,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9166704000237736583, guid: 103af076e56b54241870f2ca843b007b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103af076e56b54241870f2ca843b007b, type: 3}
 --- !u!4 &4223905205385544075 stripped
@@ -2193,6 +2213,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9166704000237736583, guid: 103af076e56b54241870f2ca843b007b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103af076e56b54241870f2ca843b007b, type: 3}
 --- !u!4 &4223905205545830154 stripped
@@ -2271,6 +2295,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9166704000237736583, guid: 103af076e56b54241870f2ca843b007b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103af076e56b54241870f2ca843b007b, type: 3}
 --- !u!4 &4223905204587883381 stripped
@@ -2555,6 +2583,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9166704000237736583, guid: 103af076e56b54241870f2ca843b007b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103af076e56b54241870f2ca843b007b, type: 3}
 --- !u!4 &4223905206162056853 stripped
@@ -2633,6 +2665,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9166704000237736583, guid: 103af076e56b54241870f2ca843b007b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103af076e56b54241870f2ca843b007b, type: 3}
 --- !u!4 &4223905206140114506 stripped
@@ -2711,6 +2747,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9166704000237736583, guid: 103af076e56b54241870f2ca843b007b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103af076e56b54241870f2ca843b007b, type: 3}
 --- !u!4 &4223905206596210257 stripped
@@ -2867,6 +2907,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9166704000237736583, guid: 103af076e56b54241870f2ca843b007b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103af076e56b54241870f2ca843b007b, type: 3}
 --- !u!4 &4223905205740595619 stripped
@@ -2945,6 +2989,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9166704000237736583, guid: 103af076e56b54241870f2ca843b007b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103af076e56b54241870f2ca843b007b, type: 3}
 --- !u!4 &4223905205920503454 stripped
@@ -3023,6 +3071,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9166704000237736583, guid: 103af076e56b54241870f2ca843b007b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3999744993584879197, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103af076e56b54241870f2ca843b007b, type: 3}
 --- !u!4 &4223905206028881593 stripped
