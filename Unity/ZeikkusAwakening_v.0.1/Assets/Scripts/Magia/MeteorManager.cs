@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorManager : MonoBehaviour
+public class MeteorManager : Magic
 {
     public GameObject fire, meteorExplosion, smoke;
     public float speed;
     public bool forward;
-    public GameObject damage;
 
-    private int mpCost, strength;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         animator = FindObjectOfType<AnimatorManager>().animator;
-        mpCost = 10;
-        strength = 30;
         fire.SetActive(false);
         meteorExplosion.SetActive(false);
         smoke.SetActive(false);

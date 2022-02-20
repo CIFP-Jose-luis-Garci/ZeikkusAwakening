@@ -155,7 +155,7 @@ public class PlayerLocomotion : MonoBehaviour
             animatorManager.PlayTargetAnimation("magicSelected", true);
         else
             animatorManager.PlayTargetAnimation("magic", true);
-        GetComponent<Magic>().MagicAttackLookupTable(magicSlots[slot]);
+        GetComponent<PlayerMagic >().MagicAttackLookupTable(magicSlots[slot]);
     }
 
     private void LookAtEnemy()
