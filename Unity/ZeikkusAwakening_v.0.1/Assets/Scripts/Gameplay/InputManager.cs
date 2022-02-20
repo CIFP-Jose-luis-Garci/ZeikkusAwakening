@@ -19,9 +19,6 @@ public class InputManager : MonoBehaviour
 
     public Vector2 movementInput;
     public Vector2 cameraInput;
-
-    public float cameraInputX;
-    public float cameraInputY;
     
     public float moveAmount;
     public float verticalInput;
@@ -109,9 +106,6 @@ public class InputManager : MonoBehaviour
 
         if (GameManager.inPause) return;
         if (inDialogue) return;
-
-        cameraInputX = cameraInput.x;
-        cameraInputY = cameraInput.y;
         
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
         
@@ -127,7 +121,10 @@ public class InputManager : MonoBehaviour
             if (GameManager.inPause) return;
             if (inDialogue)
             {
-                dialogue.NextDialogue();
+                if (dialogue.currentEvent == GameManager.currentEvent || dialogue.showingPhrase)
+                    dialogue.NextDialogue();
+                else 
+                    dialogue.gameObject.SetActive(false);
             }
 
             if (gameManager.inWorld)
@@ -178,6 +175,7 @@ public class InputManager : MonoBehaviour
     {
         if (start)
         {
+            if (inDialogue) return;
             start = false;
             gameManager.Pause();
         }

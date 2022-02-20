@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
         NextDialogue();
     }
 
-    public void NextDialogue()
+    public bool NextDialogue()
     {
         if (coroutine != null)
         {
@@ -29,13 +29,14 @@ public class DialogueManager : MonoBehaviour
                 StopCoroutine(coroutine);
                 dialogueText.text = currentPhrase;
                 showingPhrase = false;
-                return;
+                return false;
             }
         }
 
         voice.clip = voiceOvers[GameManager.currentDialogue];
         voice.Play();
         coroutine = StartCoroutine(LetraALetra(DialogueLookupTable.DialogueLookup(GameManager.currentDialogue)));
+        return true;
     }
 
     private IEnumerator LetraALetra(string phrase)
