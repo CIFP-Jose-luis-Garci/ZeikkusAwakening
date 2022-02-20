@@ -62,12 +62,12 @@ public class AnimatorManager : MonoBehaviour
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
 
-    public void PlayTargetAnimation(string targetAnimation, bool isInteracting, bool useRootMotion = false)
+    public void PlayTargetAnimation(string targetAnimation, bool isInteracting, bool useRootMotion = false, float transitionDuration = 0.2f)
     {
         animator.SetBool("isInteracting", isInteracting);
         if (useRootMotion)
             animator.applyRootMotion = true;
-        animator.CrossFade(targetAnimation, 0.2f);
+        animator.CrossFade(targetAnimation, transitionDuration);
         
     }
 

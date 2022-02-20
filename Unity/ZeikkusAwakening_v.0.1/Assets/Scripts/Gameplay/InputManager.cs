@@ -154,8 +154,7 @@ public class InputManager : MonoBehaviour
         {
             yInput = false;
             if (inDialogue || GameManager.inPause) return;
-            if (!gameManager.inWorld) playerLocomotion.HandleMagic(1);
-            else playerLocomotion.HandleMagic(0);
+            playerLocomotion.HandleMagic(1);
         }
     }
     private void HandleXInput()
@@ -244,21 +243,19 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public IEnumerator StartBattle()
+    public void StartBattle()
     {
-        animatorManager.PlayTargetAnimation("DrawSword", true);
+        animatorManager.PlayTargetAnimation("DrawSword", true, false, 0.05f);
         playerLocomotion.ResetRigidbody();
-        yield return new WaitForSeconds(1.9f);
-        animatorManager.animator.runtimeAnimatorController = inBattleController;
         gameManager.inWorld = false;
+        animatorManager.animator.SetBool("inWorld", gameManager.inWorld);
     }
 
-    public IEnumerator WinBattle()
+    public void WinBattle()
     {
         animatorManager.PlayTargetAnimation("WinBattle", true);
         playerLocomotion.ResetRigidbody();
-        yield return new WaitForSeconds(1f);
-        animatorManager.animator.runtimeAnimatorController = inWorldController;
         gameManager.inWorld = true;
+        animatorManager.animator.SetBool("inWorld", gameManager.inWorld);
     }
 }

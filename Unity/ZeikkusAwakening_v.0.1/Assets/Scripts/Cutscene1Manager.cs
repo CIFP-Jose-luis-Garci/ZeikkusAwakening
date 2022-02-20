@@ -55,8 +55,8 @@ public class Cutscene1Manager : CutsceneManager
             case 13:
                 StartCoroutine(GetSwordAndShow());
                 break;
-            case 14:
-                animatorManager.PlayTargetAnimation("sword_idle", false);
+            case 16:
+                inputManager.WinBattle();
                 break;
             case 17:
                 StartCoroutine(FadeToBlack());
@@ -76,7 +76,8 @@ public class Cutscene1Manager : CutsceneManager
 
     private IEnumerator GetSwordAndShow()
     {
-        animatorManager.animator.CrossFade("Get Sword", 0.05f);
+        //animatorManager.animator.CrossFade("Get Sword", 0.05f);
+        inputManager.StartBattle();
         yield return new WaitForSeconds(2f);
         dialogue.gameObject.SetActive(true);
     }

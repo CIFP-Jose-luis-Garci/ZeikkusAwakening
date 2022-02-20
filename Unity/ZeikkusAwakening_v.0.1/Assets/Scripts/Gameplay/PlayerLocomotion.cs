@@ -151,7 +151,10 @@ public class PlayerLocomotion : MonoBehaviour
         if (playerManager.isInteracting) return;
         LookAtEnemy();
         ResetRigidbody();
-        animatorManager.PlayTargetAnimation("magic", true);
+        if (gameManager.inWorld)
+            animatorManager.PlayTargetAnimation("magicSelected", true);
+        else
+            animatorManager.PlayTargetAnimation("magic", true);
         GetComponent<Magic>().MagicAttackLookupTable(magicSlots[slot]);
     }
 
@@ -264,7 +267,8 @@ public class PlayerLocomotion : MonoBehaviour
     private IEnumerator _HandleWinBattle()
     {
         // win battle anim
-        yield return FindObjectOfType<InputManager>().WinBattle();
+        inputManager.WinBattle();
+        yield return new WaitForSeconds(1.2f);
         // result screen
         resultScreen.SetActive(true);
     }

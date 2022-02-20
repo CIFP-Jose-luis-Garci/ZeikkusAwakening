@@ -84,6 +84,10 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: 85b22f05c822d3a488a06651e4c4e5d1
     name: BGMVolume
+  - guid: dfaa4be47837adb4fb742bcea1c2defb
+    name: EnemiesSFXVolume
+  - guid: f5d98576a0e8d9d47ac3eacd42e8c214
+    name: EnvironmentSFXVolume
   - guid: 0e5426634376fdf4ab830803a18a2b60
     name: SFXVolume
   - guid: 32ddd65651c1da24c8898ac3e2146730
@@ -181,7 +185,7 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: 1070806275779908397}
   m_UserColorIndex: 0
-  m_Mute: 1
+  m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
 --- !u!244 &3924056497758102010

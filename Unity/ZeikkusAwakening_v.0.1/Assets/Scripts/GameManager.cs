@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
         musicSource.Stop();
         musicSource.clip = battleMusic;
         musicSource.Play();
-        yield return StartCoroutine(personajes[0].GetComponent<InputManager>().StartBattle());
+        personajes[0].GetComponent<InputManager>().StartBattle();
         flash.SetActive(false);
     }
 
