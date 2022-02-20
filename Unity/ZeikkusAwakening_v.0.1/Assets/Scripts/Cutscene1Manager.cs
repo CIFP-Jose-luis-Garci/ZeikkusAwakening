@@ -30,7 +30,7 @@ public class Cutscene1Manager : CutsceneManager
             case 5:
                 StartCoroutine(ChangeCameraAndGetUp());
                 break;
-            case 8:
+            case 7:
                 cameras[1].SetActive(false);
                 cameras[2].SetActive(true);
                 break;
@@ -62,14 +62,19 @@ public class Cutscene1Manager : CutsceneManager
 
     private IEnumerator GetSwordAndShow()
     {
-        animatorManager.PlayTargetAnimation("Get Sword", false);
+        animatorManager.animator.CrossFade("Get Sword", 0.05f);
         yield return new WaitForSeconds(2f);
         dialogue.gameObject.SetActive(true);
     }
 
     private IEnumerator FadeToBlack()
     {
-        blackFade.CrossFadeAlpha(0,1,true);
+        blackFade.CrossFadeAlpha(1,1,true);
         yield return new WaitForSeconds(1f);
+        cameras[3].SetActive(false);
+        cameras[4].SetActive(true);
+        yield return new WaitForSeconds(1f);
+        inputManager.inDialogue = false;
+        blackFade.CrossFadeAlpha(0,1,true);
     }
 }

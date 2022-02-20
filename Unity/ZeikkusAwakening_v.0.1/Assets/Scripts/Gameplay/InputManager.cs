@@ -209,6 +209,8 @@ public class InputManager : MonoBehaviour
     private void HandleLeftBump()
     {
         if (inDialogue || GameManager.inPause) return;
+        if (!freeLook)
+            freeLook = FindObjectOfType<CinemachineFreeLook>();
         if (lBump)
         {
             if (gameManager.inWorld)

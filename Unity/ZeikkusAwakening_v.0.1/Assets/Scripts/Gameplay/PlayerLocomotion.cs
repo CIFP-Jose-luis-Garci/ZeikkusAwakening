@@ -39,7 +39,7 @@ public class PlayerLocomotion : MonoBehaviour
     private bool invincible;
     public int[] magicSlots;
     private Transform lookInBetween;
-    private CameraManager cameraManager;
+    public CameraManager cameraManager;
     private bool blocking;
     private Stats stats;
     public Slider lifebar;
@@ -57,7 +57,6 @@ public class PlayerLocomotion : MonoBehaviour
         cameraObject = Camera.main.transform;
         stats = GetComponent<Stats>();
         lookInBetween = FindObjectOfType<InBetweenObjectManager>().transform;
-        cameraManager = FindObjectOfType<CameraManager>();
         isGrounded = true;
         animaciones = new string[stats.turnPoints];
         animaciones[0] = "final_slash";

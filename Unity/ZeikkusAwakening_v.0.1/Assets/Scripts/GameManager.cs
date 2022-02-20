@@ -8,9 +8,8 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool changeCamera = false;
-    public static int currentEvent = 0;
-    public static int currentDialogue = 0;
+    public static int currentEvent = 1;
+    public static int currentDialogue = 2;
     private static int nextScene = 0;
     public static float BGMVolume = -10;
     public static float SFXVolume = -10;
