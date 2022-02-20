@@ -13,7 +13,7 @@ public class InputManager : MonoBehaviour
     private AnimatorManager animatorManager;
     private GameManager gameManager;
     private CinemachineFreeLook freeLook;
-    private DialogueManager dialogue;
+    public DialogueManager dialogue;
     public ZagrantController zagrantController;
     
 
@@ -35,6 +35,7 @@ public class InputManager : MonoBehaviour
     public bool lBump;
 
     public bool inDialogue;
+    public CutsceneManager cutsceneManager;
 
     public RuntimeAnimatorController inBattleController;
     public RuntimeAnimatorController inWorldController;
@@ -46,7 +47,6 @@ public class InputManager : MonoBehaviour
         playerLocomotion = GetComponent<PlayerLocomotion>();
         gameManager = FindObjectOfType<GameManager>();
         freeLook = FindObjectOfType<CinemachineFreeLook>();
-        dialogue = FindObjectOfType<DialogueManager>();
     }
 
     private void OnEnable()
@@ -122,7 +122,13 @@ public class InputManager : MonoBehaviour
             if (inDialogue)
             {
                 if (dialogue.currentEvent == GameManager.currentEvent || dialogue.showingPhrase)
-                    dialogue.NextDialogue();
+                {
+                    if (dialogue.NextDialogue())
+                    {
+                        cutsceneManager.dialogueCount++;
+                        cutsceneManager.DoStuff();
+                    }
+                }
                 else 
                     dialogue.gameObject.SetActive(false);
             }
@@ -196,9 +202,9 @@ public class InputManager : MonoBehaviour
 
     private void HandleLeftBump()
     {
+        if (inDialogue || GameManager.inPause) return;
         if (lBump)
         {
-            if (inDialogue || GameManager.inPause) return;
             if (gameManager.inWorld)
                 freeLook.m_RecenterToTargetHeading.m_enabled = true;
             else
