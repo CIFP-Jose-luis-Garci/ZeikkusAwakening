@@ -22,7 +22,10 @@ public class MeteorManager : Magic
     void Update()
     {
         if (forward)
+        {
+            transform.parent = null;
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
     }
 
     public void FireAndSmokeEvent()
@@ -35,6 +38,7 @@ public class MeteorManager : Magic
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!forward) return;
         if (other.gameObject.layer == 3) Animate();
         if (other.gameObject.CompareTag("Enemigo"))
         {
@@ -50,6 +54,7 @@ public class MeteorManager : Magic
         foreach (DestroyAfter i in GetComponentsInChildren<DestroyAfter>())
         {
             i.Destruir();
+            Debug.Log("hola");
         }
         meteorExplosion.transform.parent = null;
         fire.transform.parent = null;

@@ -155,7 +155,7 @@ public class PlayerLocomotion : MonoBehaviour
             animatorManager.PlayTargetAnimation("magicSelected", true);
         else
             animatorManager.PlayTargetAnimation("magic", true);
-        GetComponent<PlayerMagic >().MagicAttackLookupTable(magicSlots[slot]);
+        GetComponent<PlayerMagic>().MagicAttackLookupTable(magicSlots[slot]);
     }
 
     private void LookAtEnemy()
@@ -235,7 +235,7 @@ public class PlayerLocomotion : MonoBehaviour
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical)
     {
         if (invincible) return;
-        if (!gameManager.inWorld) animatorManager.PlayTargetAnimation("recoil", true);
+        if (!playerManager.isInteracting) animatorManager.PlayTargetAnimation("recoil", true);
         int resultado;
         if (isPhysical)
             resultado = GameManager.CalcPhysDamage(playerStats, stats, power);

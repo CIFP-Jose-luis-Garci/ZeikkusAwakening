@@ -13,6 +13,6 @@ public class PlayerMagic : MonoBehaviour
         pos.z -= xzPos.z;
         pos.x -= xzPos.x;
         GetComponent<Stats>().mp -= magics[selected].GetComponent<Magic>().mpCost;
-        Instantiate(magics[selected], pos, transform.rotation);
+        Instantiate(magics[selected], pos, transform.rotation, transform);
     }
 }
