@@ -126,8 +126,11 @@ public class InputManager : MonoBehaviour
                 }
                 else
                 {
-                    cutsceneManager.dialogueCount++;
-                    cutsceneManager.DoStuff();
+                    if (dialogue.gameObject.activeSelf)
+                    {
+                        cutsceneManager.dialogueCount++;
+                        cutsceneManager.DoStuff();
+                    }
                     dialogue.gameObject.SetActive(false);
                 }
 

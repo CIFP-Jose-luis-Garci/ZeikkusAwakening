@@ -35,7 +35,8 @@ public class DialogueManager : MonoBehaviour
 
         voice.clip = voiceOvers[GameManager.currentDialogue];
         voice.Play();
-        coroutine = StartCoroutine(LetraALetra(DialogueLookupTable.DialogueLookup(GameManager.currentDialogue)));
+        string dialogue = DialogueLookupTable.DialogueLookup(GameManager.currentDialogue);
+        coroutine = StartCoroutine(LetraALetra(dialogue));
         return true;
     }
 
