@@ -3299,7 +3299,7 @@ MonoBehaviour:
   category: Objeto curativo
   type: 4
   itemSprite: {fileID: 21300000, guid: 7d6085514d53c4e498d66a1dafed8d3c, type: 3}
-  description: "Recupera un 20% de la vida del equipo. \xDAtil en momentos de urgencia
+  description: "Recupera un 25% de la vida del equipo. \xDAtil en momentos de urgencia
     para una cura r\xE1pida"
   usable: 1
   tossable: 1
@@ -3559,10 +3559,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zeikku
       objectReference: {fileID: 0}
-    - target: {fileID: 5205658801009420469, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -8529392960434402090, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     - target: {fileID: 5234201012602325531, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: lifebar
       value: 
@@ -3734,6 +3730,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1136011505}
+  - component: {fileID: 1136011506}
   m_Layer: 0
   m_Name: Zagrant
   m_TagString: Untagged
@@ -3755,6 +3752,26 @@ Transform:
   m_Father: {fileID: 2113668072}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1136011506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136011504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b407febee7729eb458ae4256a3686a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Espada legendaria Zagrant
+  category: Armas legendarias
+  type: 1
+  itemSprite: {fileID: 21300000, guid: 01f25562182bb5d4db3755912d7c6b04, type: 3}
+  description: Espada encontrada en el momento que despertaste. Representa el dios
+    del espacio.  Parece que te sientes completamente acostumbrado a su uso.
+  usable: 0
+  tossable: 0
 --- !u!4 &1138676105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5704133746653626008, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
@@ -6359,10 +6376,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base
       objectReference: {fileID: 0}
-    - target: {fileID: 953306984786114377, guid: 7ce8c0cdb09b4d441965dd09e9e9b573, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -8529392960434402090, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
     - target: {fileID: 2381670979209470000, guid: 7ce8c0cdb09b4d441965dd09e9e9b573, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -6519,10 +6532,6 @@ PrefabInstance:
     - target: {fileID: 4736683253989526644, guid: c6354c0809d7979439e361e1d969725d, type: 3}
       propertyPath: m_Name
       value: EscenarioBatalla
-      objectReference: {fileID: 0}
-    - target: {fileID: 4736683253989526644, guid: c6354c0809d7979439e361e1d969725d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5402002874683496142, guid: c6354c0809d7979439e361e1d969725d, type: 3}
       propertyPath: m_RootOrder

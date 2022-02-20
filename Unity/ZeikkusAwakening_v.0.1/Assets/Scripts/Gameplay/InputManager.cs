@@ -17,28 +17,24 @@ public class InputManager : MonoBehaviour
     public ZagrantController zagrantController;
     
 
-    public Vector2 movementInput;
-    public Vector2 cameraInput;
+    private Vector2 movementInput;
     
-    public float moveAmount;
-    public float verticalInput;
-    public float horizontalInput;
+    [NonSerialized] public float moveAmount;
+    [NonSerialized] public float verticalInput;
+    [NonSerialized] public float horizontalInput;
 
-    public bool bInput;
-    public bool aInput;
-    public bool yInput;
-    public bool xInput;
-    public bool start;
-    public bool lTrigger;
-    public bool rTrigger;
-    public bool rBump;
-    public bool lBump;
+    [NonSerialized] public bool bInput;
+    [NonSerialized] public bool aInput;
+    [NonSerialized] public bool yInput;
+    [NonSerialized] public bool xInput;
+    [NonSerialized] public bool start;
+    [NonSerialized] public bool lTrigger;
+    [NonSerialized] public bool rTrigger;
+    [NonSerialized] public bool rBump;
+    [NonSerialized] public bool lBump;
 
     public bool inDialogue;
     public CutsceneManager cutsceneManager;
-
-    public RuntimeAnimatorController inBattleController;
-    public RuntimeAnimatorController inWorldController;
 
 
     private void Awake()
@@ -55,7 +51,6 @@ public class InputManager : MonoBehaviour
         {
             playerControls = new PlayerControls();
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
-            playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
             playerControls.PlayerActions.B.performed += i => bInput = true;
             playerControls.PlayerActions.B.canceled += i => bInput = false;
             playerControls.PlayerActions.A.performed += i => aInput = true;
