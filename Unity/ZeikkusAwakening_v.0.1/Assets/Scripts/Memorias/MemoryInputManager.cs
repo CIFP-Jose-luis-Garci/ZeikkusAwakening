@@ -40,6 +40,7 @@ public class MemoryInputManager : MonoBehaviour
         if (aInput)
         {
             aInput = false;
+            if (!dialogue.gameObject.activeSelf) return;
             if (dialogue.currentEvent == GameManager.currentEvent || dialogue.showingPhrase)
             {
                 dialogue.NextDialogue();

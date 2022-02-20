@@ -24,6 +24,7 @@ public class Cutscene1Manager : CutsceneManager
 
     public override void DoStuff()
     {
+        Debug.Log(dialogueCount);
         switch (dialogueCount)
         {
             case 5:

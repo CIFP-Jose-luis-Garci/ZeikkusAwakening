@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
     {
         nextScene++;
         yield return new WaitForSeconds(timeToLoad);
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(GameManager.nextScene);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(nextScene);
         while (!asyncOperation.isDone)
             yield return null;
     }

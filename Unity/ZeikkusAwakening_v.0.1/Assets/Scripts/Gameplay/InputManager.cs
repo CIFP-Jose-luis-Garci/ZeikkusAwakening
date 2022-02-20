@@ -129,8 +129,14 @@ public class InputManager : MonoBehaviour
                         cutsceneManager.DoStuff();
                     }
                 }
-                else 
+                else
+                {
+                    cutsceneManager.dialogueCount++;
+                    cutsceneManager.DoStuff();
                     dialogue.gameObject.SetActive(false);
+                }
+
+                return;
             }
 
             if (gameManager.inWorld)

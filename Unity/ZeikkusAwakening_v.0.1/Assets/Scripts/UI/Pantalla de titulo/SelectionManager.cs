@@ -12,12 +12,18 @@ public class SelectionManager : MonoBehaviour
     public GameObject opciones, pantallaInicial;
     public Image blackBackground, loading;
     public AudioMixer mixer;
+
+    private bool started;
     // Start is called before the first frame update
     void Start()
     {
         newFile.onClick.AddListener(() =>
         {
-            StartCoroutine(StartGame());
+            if (!started)
+            {
+                started = true;
+                StartCoroutine(StartGame());
+            }
         });
         continuee.interactable = false;
         options.onClick.AddListener(() =>
