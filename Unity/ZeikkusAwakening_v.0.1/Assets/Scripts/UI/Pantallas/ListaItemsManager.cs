@@ -78,12 +78,7 @@ public class ListaItemsManager : MonoBehaviour
     private void GoBack()
     {
         if (itemSelected) return;
-        if (inputManager.bInput)
-        {
-            gameObject.SetActive(false);
-            pantallaPausa.SetActive(true);
-            pantallaPausa.GetComponentInChildren<Button>().Select();
-        }
+        inputManager.GoBack(gameObject, pantallaPausa);
     }
 
     private void ChangeCategory()

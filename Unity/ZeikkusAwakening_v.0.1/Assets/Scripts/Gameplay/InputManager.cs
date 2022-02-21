@@ -177,7 +177,15 @@ public class InputManager : MonoBehaviour
     {
         if (bInput)
         {
-            if (inDialogue || GameManager.inPause) return;
+            if (inDialogue) return;
+            if (GameManager.inPause)
+            {
+                if (gameManager.Pause())
+                {
+                    bInput = false;
+                }
+                return;
+            }
             bInput = false;
             if (!gameManager.inWorld)
                 playerLocomotion.HandleAttack();
@@ -247,6 +255,16 @@ public class InputManager : MonoBehaviour
         if (rTrigger)
         {
             rTrigger = false;
+        }
+    }
+    
+    public void GoBack(GameObject toDisable, GameObject pantallaPausa)
+    {
+        if (bInput)
+        {
+            gameObject.SetActive(false);
+            pantallaPausa.SetActive(true);
+            pantallaPausa.GetComponentInChildren<Button>().Select();
         }
     }
 

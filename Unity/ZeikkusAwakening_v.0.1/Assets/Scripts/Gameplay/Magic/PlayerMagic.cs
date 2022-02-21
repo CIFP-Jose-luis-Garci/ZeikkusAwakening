@@ -9,9 +9,7 @@ public class PlayerMagic : MonoBehaviour
     {
         Vector3 pos = transform.position;
         pos.y += 1;
-        Vector3 xzPos = (-0.8f * transform.forward);
-        pos.z -= xzPos.z;
-        pos.x -= xzPos.x;
+        pos.z -= -0.6f;
         GetComponent<Stats>().mp -= magics[selected].GetComponent<Magic>().mpCost;
         Instantiate(magics[selected], pos, transform.rotation, transform);
     }

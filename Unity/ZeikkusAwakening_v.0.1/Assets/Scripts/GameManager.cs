@@ -31,13 +31,15 @@ public class GameManager : MonoBehaviour
     public static int maru = 1000;
     public GameObject[] personajes;
     
-    public void Pause()
+    public bool Pause()
     {
         if (!pause.HasChildrenActive())
         {
             inPause = !inPause;
             pause.gameObject.SetActive(inPause);
+            return true;
         }
+        return false;
     }
 
     public static IEnumerator CrossFadeMusic(AudioMixer mixer, float time, bool muting)

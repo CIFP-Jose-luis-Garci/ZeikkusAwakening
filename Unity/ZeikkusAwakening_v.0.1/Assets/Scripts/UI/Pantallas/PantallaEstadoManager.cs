@@ -40,11 +40,6 @@ public class PantallaEstadoManager : MonoBehaviour
 
     private void GoBack()
     {
-        if (inputManager.bInput)
-        {
-            gameObject.SetActive(false);
-            pantallaPausa.SetActive(true);
-            pantallaPausa.GetComponentInChildren<Button>().Select();
-        }
+        inputManager.GoBack(gameObject, pantallaPausa);
     }
 }
