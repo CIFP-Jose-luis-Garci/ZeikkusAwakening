@@ -183,22 +183,18 @@ public class PlayerLocomotion : MonoBehaviour
         coroutine = null;
     }
 
-    public void HandleCameraChange(bool isZTargeting = false)
+    public void HandleCameraChange(bool isZTargeting)
     {
-        InBetweenObjectManager ibom = lookInBetween.gameObject.GetComponent<InBetweenObjectManager>();
-        ibom.FindEnemy();
+        InBetweenObjectManager ibom = lookInBetween.GetComponent<InBetweenObjectManager>();
+        ibom.FindEnemy(isZTargeting);
         if (isZTargeting)
         {
             enemyObject = ibom.enemy;
-            ibom.enemyManager.ImTarget(true);
             cameraManager.ChangeTarget(lookInBetween);
-            
         }
         else
         {
             cameraManager.ChangeTarget(transform);
-            if (ibom.enemyFound)
-                ibom.enemyManager.ImTarget(false);
         }
         this.isZTargeting = isZTargeting;
     }

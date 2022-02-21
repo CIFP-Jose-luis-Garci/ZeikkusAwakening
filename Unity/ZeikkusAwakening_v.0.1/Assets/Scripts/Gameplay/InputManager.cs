@@ -189,12 +189,12 @@ public class InputManager : MonoBehaviour
     {
         if (start)
         {
+            start = false;
             if (inDialogue)
             {
                 cutsceneManager.EndCutScene();
                 return;
             }
-            start = false;
             gameManager.Pause();
         }
     }

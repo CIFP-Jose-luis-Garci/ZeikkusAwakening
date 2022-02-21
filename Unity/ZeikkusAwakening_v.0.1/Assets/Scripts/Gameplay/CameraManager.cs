@@ -8,7 +8,6 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     private CinemachineFreeLook cmfl;
-    private InputManager inputManager;
     private float originalRadius;
     private InBetweenObjectManager ibom;
     private GameManager gameManager;
@@ -18,10 +17,6 @@ public class CameraManager : MonoBehaviour
         cmfl = GetComponent<CinemachineFreeLook>();
         ibom = FindObjectOfType<InBetweenObjectManager>();
         gameManager = FindObjectOfType<GameManager>();
-        Transform player = FindObjectOfType<PlayerManager>().transform;
-        cmfl.m_Follow = player;
-        cmfl.m_LookAt = player;
-        inputManager = player.gameObject.GetComponent<InputManager>();
         originalRadius = cmfl.m_Orbits[1].m_Radius;
         orbit = cmfl.m_Orbits[1];
         ChangeCameraInvert();

@@ -12,12 +12,10 @@ public class InBetweenObjectManager : MonoBehaviour
     public Stats enemyStats;
     public bool enemyFound;
     public float distance;
-    private InputManager inputManager;
     // Start is called before the first frame update
     void Start()
     {
-        inputManager = FindObjectOfType<InputManager>();
-        player = inputManager.transform;
+        player = transform.parent;
     }
 
     // Update is called once per frame
@@ -33,9 +31,9 @@ public class InBetweenObjectManager : MonoBehaviour
         }
     }
 
-    public void FindEnemy()
+    public void FindEnemy(bool isZTargeting)
     {
-        if (inputManager.lTrigger && !enemyFound)
+        if (isZTargeting && !enemyFound)
         {
             Transform tMin = null;
             float minDist = Mathf.Infinity;
@@ -56,7 +54,12 @@ public class InBetweenObjectManager : MonoBehaviour
             {
                 enemyManager = enemy.GetComponent<EnemyBattleManager>();
                 enemyStats = enemy.GetComponent<Stats>();
+                enemyManager.ImTarget(true);
             }
+        } else if (!isZTargeting && enemyFound)
+        {
+            enemyManager.ImTarget(false);
+            enemyFound = false;
         }
 
         if (enemyFound && !enemyStats.alive)
