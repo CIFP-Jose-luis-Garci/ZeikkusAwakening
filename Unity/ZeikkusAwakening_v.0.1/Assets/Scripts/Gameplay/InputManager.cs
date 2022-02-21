@@ -184,7 +184,11 @@ public class InputManager : MonoBehaviour
     {
         if (start)
         {
-            if (inDialogue) return;
+            if (inDialogue)
+            {
+                cutsceneManager.EndCutScene();
+                return;
+            }
             start = false;
             gameManager.Pause();
         }

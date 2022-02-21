@@ -66,6 +66,19 @@ public class Cutscene1Manager : CutsceneManager
         }
     }
 
+    public override void EndCutScene()
+    {
+        foreach (GameObject camera in cameras)
+        {
+            camera.SetActive(false);
+        }
+
+        GameManager.currentDialogue = 18;
+        GameManager.currentEvent = 3;
+        dialogue.gameObject.SetActive(false);
+        StartCoroutine(FadeToBlack());
+    }
+
     private IEnumerator ChangeCameraAndGetUp()
     {
         cameras[0].SetActive(false);
@@ -86,6 +99,7 @@ public class Cutscene1Manager : CutsceneManager
     {
         blackFade.CrossFadeAlpha(1,1,true);
         yield return new WaitForSeconds(1f);
+        animatorManager.PlayTargetAnimation("Empty", false);
         cameras[3].SetActive(false);
         cameras[4].SetActive(true);
         yield return new WaitForSeconds(1f);

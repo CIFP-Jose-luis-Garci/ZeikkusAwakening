@@ -9,4 +9,6 @@ public abstract class CutsceneManager : MonoBehaviour
     public int dialogueCount;
 
     public abstract void DoStuff();
+
+    public abstract void EndCutScene();
 }
