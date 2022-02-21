@@ -84,6 +84,7 @@ public class EnemyManager : MonoBehaviour
             if (waitTime <= 0)
             {
                 animator.SetTrigger("caught");
+                agente.SetDestination(transform.position);
                 agente.speed = 0;
             }
             if (waitTime > hitLength)
@@ -97,7 +98,11 @@ public class EnemyManager : MonoBehaviour
         }
         else
         {
-            float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
+            Vector3 a = player.position;
+            Vector3 b = transform.position;
+            a.y = 0;
+            b.y = 0;
+            float distanceFromPlayer = Vector3.Distance(a, b);
             if (distanceFromPlayer < 10)
             {
                 if (!isRunning)

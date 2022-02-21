@@ -68,7 +68,6 @@ public class Cutscene1Manager : CutsceneManager
 
     public override void EndCutScene()
     {
-        Debug.Log(dialogueCount);
         Material[] materials = face.materials;
         materials[1] = faceEyesOpen;
         face.materials = materials;
