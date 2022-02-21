@@ -3479,7 +3479,7 @@ RectTransform:
   - {fileID: 8148998416962805457}
   - {fileID: 3750350012068468657}
   m_Father: {fileID: 5075835121002782940}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5713,7 +5713,7 @@ RectTransform:
   m_Children:
   - {fileID: 357897109785620334}
   m_Father: {fileID: 5075835121002782940}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10490,8 +10490,8 @@ RectTransform:
   - {fileID: 3140780281933443802}
   - {fileID: 7393238906195780851}
   - {fileID: 7772951442453913799}
-  - {fileID: 3769214386287004479}
   - {fileID: 4163317478540988174}
+  - {fileID: 3769214386287004479}
   - {fileID: 3168599170780296646}
   - {fileID: 5144111570676482354}
   - {fileID: 2842285755700387758}
@@ -16850,9 +16850,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7772951442453913799}
-  - component: {fileID: 5907143425564191650}
+  - component: {fileID: 2230309309181152763}
   m_Layer: 5
-  m_Name: Opciones
+  m_Name: PantallaOpciones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16884,7 +16884,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5907143425564191650
+--- !u!114 &2230309309181152763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16893,7 +16893,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7772951442453913796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16e40f6e9a5ef15478cebd4b8f1e6803, type: 3}
+  m_Script: {fileID: 11500000, guid: 54913eadbccb9e349a1068b6676d2f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bgmSlider: {fileID: 7772951441490324651}
@@ -16902,8 +16902,7 @@ MonoBehaviour:
   invertCameraX: {fileID: 8583704293107745903}
   invertCameraY: {fileID: 2962741019588447177}
   mixer: {fileID: 24100000, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
-  selecciones: {fileID: 8255810256127292182}
-  gameLogo: {fileID: 247066091}
+  pantallaPausa: {fileID: 8255810256127292182}
 --- !u!1 &7772951442535996197
 GameObject:
   m_ObjectHideFlags: 0

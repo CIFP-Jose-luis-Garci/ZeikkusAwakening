@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,16 +11,18 @@ public class PantallaOpcionesManager : MonoBehaviour
     public Button exit;
     public Toggle invertCameraX, invertCameraY;
     public AudioMixer mixer;
-    private GameObject pantallaPausa;
+    public GameObject pantallaPausa;
+    private InputManager inputManager;
     
     private void OnEnable()
     {
+        inputManager = FindObjectOfType<InputManager>();
         bgmSlider.Select();
         bgmSlider.onValueChanged.AddListener(delegate { SetSound("BGMVolume", bgmSlider.value); });
         sfxSlider.onValueChanged.AddListener(delegate { SetSound("SFXVolume", sfxSlider.value); });
         exit.onClick.AddListener(() =>
         {
-            
+            inputManager.GoBack(gameObject, pantallaPausa);
         });
         bgmSlider.value = GameManager.BGMVolume;
         sfxSlider.value = GameManager.SFXVolume;
@@ -30,6 +33,11 @@ public class PantallaOpcionesManager : MonoBehaviour
         invertCameraY.onValueChanged.AddListener((value) => GameManager.invertCameraY = value);
     }
 
+    private void Update()
+    {
+        inputManager.GoBack(gameObject, pantallaPausa);
+    }
+
     private void OnDisable()
     {
         invertCameraX.isOn = GameManager.invertCameraX;
@@ -37,8 +45,7 @@ public class PantallaOpcionesManager : MonoBehaviour
         mixer.GetFloat("BGMVolume", out GameManager.BGMVolume);
         mixer.GetFloat("SFXVolume", out GameManager.SFXVolume);
         CameraManager cameraManager = FindObjectOfType<CameraManager>();
-        if (cameraManager != null)
-            cameraManager.ChangeCameraInvert();
+        cameraManager.ChangeCameraInvert();
     }
 
     public void SetSound(string param, float soundLevel)

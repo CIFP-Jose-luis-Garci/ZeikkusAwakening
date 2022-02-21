@@ -262,9 +262,10 @@ public class InputManager : MonoBehaviour
     {
         if (bInput)
         {
-            gameObject.SetActive(false);
+            toDisable.SetActive(false);
             pantallaPausa.SetActive(true);
             pantallaPausa.GetComponentInChildren<Button>().Select();
+            bInput = false;
         }
     }
 
