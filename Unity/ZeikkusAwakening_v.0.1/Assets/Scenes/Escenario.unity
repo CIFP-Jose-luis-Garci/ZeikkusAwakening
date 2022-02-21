@@ -1652,6 +1652,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1328228690629047628, guid: 4b214a73477046d4a841619428783ded, type: 3}
   m_PrefabInstance: {fileID: 2037331915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &596716771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4183884927214227421, guid: 4b214a73477046d4a841619428783ded, type: 3}
+  m_PrefabInstance: {fileID: 2037331915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596716770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e2275c23595b945a4a7c8b8db531a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &611401527
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,6 +3582,10 @@ PrefabInstance:
       propertyPath: cameraManager
       value: 
       objectReference: {fileID: 652512104}
+    - target: {fileID: 5234201012602325535, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: results
+      value: 
+      objectReference: {fileID: 596716771}
     - target: {fileID: 5234201012602325535, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: dialogue
       value: 

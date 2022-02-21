@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class PantallaPausaManager : MonoBehaviour
 {
     private InputManager inputManager;
-    private GameManager gameManager;
     private Stats zeikkuStats;
     public GameObject pantallaInventario, pantallaEstado, pantallaOpciones, pantallaResultados;
     public Button inventario, estado, opciones;
@@ -17,7 +16,6 @@ public class PantallaPausaManager : MonoBehaviour
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnEnable()
