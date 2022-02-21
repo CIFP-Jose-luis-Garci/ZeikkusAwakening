@@ -116,7 +116,13 @@ public class PlayerLocomotion : MonoBehaviour
         if (Physics.SphereCast(raycastOrigin, 0.2f, -Vector3.up, out hit, 0.6f, groundLayer))
         {
             if (!isGrounded)
+            {
+                Vector3 fix = rb.velocity;
+                fix.x = 0;
+                fix.z = 0;
+                rb.velocity = fix;
                 animatorManager.PlayTargetAnimation("Land", true);
+            }
             
             isGrounded = true;
         }
@@ -201,9 +207,12 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (!invincible)
         {
+            rotationSpeed = 1000;
+            HandleRotation();
+            rotationSpeed = 15;
             animatorManager.PlayTargetAnimation("evade", true, true);
             invincible = true;
-            StartCoroutine(Invincible(1));
+            StartCoroutine(Invincible(1.2f));
         }
     }
 
