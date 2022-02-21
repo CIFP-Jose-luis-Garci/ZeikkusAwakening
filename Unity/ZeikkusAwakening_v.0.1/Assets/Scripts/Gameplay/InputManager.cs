@@ -95,13 +95,12 @@ public class InputManager : MonoBehaviour
     
     private void HandleMovementInput()
     {
-
-        verticalInput = movementInput.y;
-        horizontalInput = movementInput.x;
-
         if (GameManager.inPause) return;
         if (inDialogue) return;
         
+        verticalInput = movementInput.y;
+        horizontalInput = movementInput.x;
+
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
         
         animatorManager.UpdateAnimatorValues(0, moveAmount);
