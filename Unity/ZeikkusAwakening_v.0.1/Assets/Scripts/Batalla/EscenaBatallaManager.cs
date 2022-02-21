@@ -28,7 +28,8 @@ public class EscenaBatallaManager : MonoBehaviour
         
         for (int i = 0; i < Random.Range(2, spawners.Length); i++)
         {
-            Instantiate(enemyToSpawn, spawners[i].transform);
+            Transform spawner = spawners[i].transform;
+            Instantiate(enemyToSpawn, spawner.position, spawner.rotation, spawner);
         }
         enemies = GetComponentsInChildren<Stats>();
         danoTotal = 0;

@@ -150,15 +150,20 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadBattle(GameObject spawn)
     {
         flash.SetActive(true);
-        yield return new WaitForSeconds(1f);
         HUDManager hudManager = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
-        escenaBatalla.enemyToSpawn = spawn;
-        escenaBatalla.gameObject.SetActive(true);
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
+        yield return CrossFadeMusic(hudManager.mixer, 1, true);
         musicSource.Stop();
         musicSource.clip = battleMusic;
         musicSource.Play();
+        escenaBatalla.enemyToSpawn = spawn;
+        escenaBatalla.gameObject.SetActive(true);
         personajes[0].GetComponent<InputManager>().StartBattle();
+        yield return CrossFadeMusic(hudManager.mixer, 1, false);
+        foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
+        {
+            enemy.battleStarted = true;
+        }
         flash.SetActive(false);
     }
 
@@ -167,18 +172,15 @@ public class GameManager : MonoBehaviour
         // press a, goto transition fade in black
         blackFade.CrossFadeAlpha(1, 1, true);
         HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
-        Debug.Log("termino");
-        yield return GameManager.CrossFadeMusic(hudManager.mixer, 1, true);
-        Debug.Log("termino");
+        yield return CrossFadeMusic(hudManager.mixer, 1, true);
+        escenaBatallaManager.ResetPlayer();
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         musicSource.Stop();
         musicSource.clip = worldMusic;
         musicSource.Play();
-        yield return GameManager.CrossFadeMusic(hudManager.mixer, 1, false);
+        yield return CrossFadeMusic(hudManager.mixer, 1, false);
         escenaBatallaManager.gameObject.SetActive(false);
-        escenaBatallaManager.ResetPlayer();
         inPause = false;
-        // fade out black
         blackFade.CrossFadeAlpha(0, 1, true);
     }
 

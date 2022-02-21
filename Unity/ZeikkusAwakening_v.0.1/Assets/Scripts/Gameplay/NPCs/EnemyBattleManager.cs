@@ -11,6 +11,7 @@ public class EnemyBattleManager : MonoBehaviour
     private Transform player;
     public GameObject sprite;
     public bool recoiled;
+    public bool battleStarted;
     public Slider lifebar;
     public GameObject damage;
     
@@ -41,6 +42,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void Update()
     {
+        if (!battleStarted) return;
         if (GameManager.inPause) return;
         if (!stats.alive) return;
         if (recoiled)
