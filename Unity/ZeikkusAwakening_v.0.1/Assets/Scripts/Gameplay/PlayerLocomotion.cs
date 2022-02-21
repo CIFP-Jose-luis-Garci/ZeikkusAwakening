@@ -280,6 +280,8 @@ public class PlayerLocomotion : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         // result screen
         GameManager.inPause = true;
+        cameraManager.ChangeTarget(transform);
+        cameraManager.ResetRaidus();
         resultScreen.SetActive(true);
     }
 }
