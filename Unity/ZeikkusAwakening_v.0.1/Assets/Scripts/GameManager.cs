@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public static float SFXVolume = -10;
     public static bool invertCameraX = true;
     public static bool invertCameraY = false;
+    public static int cameraSensitivityX = 5;
+    public static int cameraSensitivityY = 2;
     public static bool inPause;
     
     [Header("Transiciones")]

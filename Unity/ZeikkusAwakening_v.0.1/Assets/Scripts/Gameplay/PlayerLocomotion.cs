@@ -232,7 +232,7 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (playerManager.isInteracting) yield break;
         ResetRigidbody();
-        animatorManager.PlayTargetAnimation("FirstStrikeDraw", true);
+        animatorManager.PlayTargetAnimation("FirstStrikeDraw", true, true);
         yield return new WaitForSeconds(1.2f);
         zagrant.SetActive(false);
     }

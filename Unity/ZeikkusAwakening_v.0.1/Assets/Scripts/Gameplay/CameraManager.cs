@@ -42,6 +42,14 @@ public class CameraManager : MonoBehaviour
         cmfl.m_YAxis.m_InvertInput = GameManager.invertCameraY;
     }
 
+    public void ChangeCameraSensitivity()
+    {
+        int sensitivityX = 50 + (GameManager.cameraSensitivityX * 50);
+        int sensitivityY = GameManager.cameraSensitivityY;
+        cmfl.m_XAxis.m_MaxSpeed = sensitivityX;
+        cmfl.m_YAxis.m_MaxSpeed = sensitivityY;
+    }
+
     public void ChangeTarget(Transform newTarget)
     {
         cmfl.m_Follow = newTarget;

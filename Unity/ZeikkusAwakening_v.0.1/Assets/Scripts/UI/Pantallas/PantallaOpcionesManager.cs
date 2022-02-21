@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PantallaOpcionesManager : MonoBehaviour
 {
-    public Slider bgmSlider, sfxSlider;
+    public Slider bgmSlider, sfxSlider, cameraSensitivityXSlider, cameraSensitivityYSlider;
     public Button exit;
     public Toggle invertCameraX, invertCameraY;
     public AudioMixer mixer;
@@ -18,19 +18,26 @@ public class PantallaOpcionesManager : MonoBehaviour
     {
         inputManager = FindObjectOfType<InputManager>();
         bgmSlider.Select();
-        bgmSlider.onValueChanged.AddListener(delegate { SetSound("BGMVolume", bgmSlider.value); });
-        sfxSlider.onValueChanged.AddListener(delegate { SetSound("SFXVolume", sfxSlider.value); });
+        bgmSlider.onValueChanged.AddListener((value) => SetSound("BGMVolume", value));
+        sfxSlider.onValueChanged.AddListener( (value) => SetSound("SFXVolume", value));
         exit.onClick.AddListener(() =>
         {
-            inputManager.GoBack(gameObject, pantallaPausa);
+            gameObject.SetActive(false);
+            pantallaPausa.SetActive(true);
+            pantallaPausa.GetComponentInChildren<Button>().Select();
         });
         bgmSlider.value = GameManager.BGMVolume;
         sfxSlider.value = GameManager.SFXVolume;
+        
         // Camera
-        GameManager.invertCameraX = invertCameraX.isOn;
-        GameManager.invertCameraY = invertCameraY.isOn;
+        invertCameraX.isOn = GameManager.invertCameraX;
+        invertCameraY.isOn = GameManager.invertCameraY;
         invertCameraX.onValueChanged.AddListener((value) => GameManager.invertCameraX = value);
         invertCameraY.onValueChanged.AddListener((value) => GameManager.invertCameraY = value);
+        cameraSensitivityXSlider.value = GameManager.cameraSensitivityX;
+        cameraSensitivityYSlider.value = GameManager.cameraSensitivityY;
+        cameraSensitivityXSlider.onValueChanged.AddListener((value) => GameManager.cameraSensitivityX = (int) value);
+        cameraSensitivityYSlider.onValueChanged.AddListener((value) => GameManager.cameraSensitivityY = (int) value);
     }
 
     private void Update()
@@ -40,12 +47,11 @@ public class PantallaOpcionesManager : MonoBehaviour
 
     private void OnDisable()
     {
-        invertCameraX.isOn = GameManager.invertCameraX;
-        invertCameraY.isOn = GameManager.invertCameraY;
         mixer.GetFloat("BGMVolume", out GameManager.BGMVolume);
         mixer.GetFloat("SFXVolume", out GameManager.SFXVolume);
         CameraManager cameraManager = FindObjectOfType<CameraManager>();
         cameraManager.ChangeCameraInvert();
+        cameraManager.ChangeCameraSensitivity();
     }
 
     public void SetSound(string param, float soundLevel)
