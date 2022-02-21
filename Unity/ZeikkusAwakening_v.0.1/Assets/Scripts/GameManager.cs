@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
         yield return GameManager.CrossFadeMusic(hudManager.mixer, 1, false);
         escenaBatallaManager.gameObject.SetActive(false);
         escenaBatallaManager.ResetPlayer();
+        inPause = false;
         // fade out black
         blackFade.CrossFadeAlpha(0, 1, true);
     }

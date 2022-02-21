@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
     private GameManager gameManager;
     private CinemachineFreeLook freeLook;
     public DialogueManager dialogue;
+    public PantallaResultadosManager results;
     public ZagrantController zagrantController;
     
 
@@ -111,7 +112,6 @@ public class InputManager : MonoBehaviour
         if (aInput)
         {
             aInput = false;
-            if (GameManager.inPause) return;
             if (inDialogue)
             {
                 if (dialogue.currentEvent == GameManager.currentEvent || dialogue.showingPhrase)
@@ -137,11 +137,18 @@ public class InputManager : MonoBehaviour
 
             if (gameManager.inWorld)
             {
-                PantallaResultadosManager results = FindObjectOfType<PantallaResultadosManager>();
-                if (results) results.fade = true;
-                else playerLocomotion.HandleJumping();
+                if (results.gameObject.activeSelf && !results.fade) results.fade = true;
+                else
+                {
+                    if (GameManager.inPause) return;
+                    playerLocomotion.HandleJumping();
+                }
             }
-            else playerLocomotion.HandleMagic(0);
+            else
+            {
+                if (GameManager.inPause) return;
+                playerLocomotion.HandleMagic(0);
+            }
         }
     }
     private void HandleYInput()

@@ -10,7 +10,7 @@ public class PantallaPausaManager : MonoBehaviour
     private InputManager inputManager;
     private GameManager gameManager;
     private Stats zeikkuStats;
-    public GameObject pantallaInventario, pantallaEstado, pantallaOpciones;
+    public GameObject pantallaInventario, pantallaEstado, pantallaOpciones, pantallaResultados;
     public Button inventario, estado, opciones;
     public Text maru, zeikkuVida, zeikkuMagia;
 
@@ -61,6 +61,6 @@ public class PantallaPausaManager : MonoBehaviour
 
     public bool HasChildrenActive()
     {
-        return pantallaEstado.activeSelf || pantallaInventario.activeSelf || pantallaOpciones.activeSelf;
+        return pantallaEstado.activeSelf || pantallaInventario.activeSelf || pantallaOpciones.activeSelf || pantallaResultados.activeSelf;
     }
 }
