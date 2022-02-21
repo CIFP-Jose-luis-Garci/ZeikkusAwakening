@@ -58,4 +58,9 @@ public class PantallaPausaManager : MonoBehaviour
         zeikkuMagia.text = zeikkuStats.mp + "/" + zeikkuStats.maxMP;
         maru.text = GameManager.maru.ToString();
     }
+
+    public bool HasChildrenActive()
+    {
+        return pantallaEstado.activeSelf || pantallaInventario.activeSelf || pantallaOpciones.activeSelf;
+    }
 }

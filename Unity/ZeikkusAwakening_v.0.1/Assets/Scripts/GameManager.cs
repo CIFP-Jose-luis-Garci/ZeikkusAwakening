@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Transiciones")]
     public bool inWorld;
-    public GameObject pause;
+    public PantallaPausaManager pause;
     public GameObject flash;
     public EscenaBatallaManager escenaBatalla;
     
@@ -33,8 +33,11 @@ public class GameManager : MonoBehaviour
     
     public void Pause()
     {
-        inPause = !inPause;
-        pause.SetActive(inPause);
+        if (!pause.HasChildrenActive())
+        {
+            inPause = !inPause;
+            pause.gameObject.SetActive(inPause);
+        }
     }
 
     public static IEnumerator CrossFadeMusic(AudioMixer mixer, float time, bool muting)
