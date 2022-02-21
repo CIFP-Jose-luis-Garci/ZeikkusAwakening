@@ -88,7 +88,7 @@ public class ListaItemsManager : MonoBehaviour
 
     private void ChangeCategory()
     {
-
+        if (itemSelected) return;
         if (inputManager.rBump)
         {
             currentCategory++;
