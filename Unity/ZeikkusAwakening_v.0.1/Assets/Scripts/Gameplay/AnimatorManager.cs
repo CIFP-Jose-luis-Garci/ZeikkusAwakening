@@ -130,7 +130,7 @@ public class AnimatorManager : MonoBehaviour
         Instantiate(disappearParticles, zagranPos.position, zagranPos.rotation).GetComponent<ParticleSystem>().Play();
     }
 
-    public void DrawSword()
+    public void DrawSwordChangeAnimator()
     {
         zagrant.SetActive(true);
         source.PlayOneShot(swordSounds[5]);
@@ -146,7 +146,7 @@ public class AnimatorManager : MonoBehaviour
         animator.SetBool("inWorld", gameManager.inWorld);
     }
 
-    public void EmbodyFireSword()
+    public void DrawSword()
     {
         zagrant.SetActive(true);
         source.PlayOneShot(swordSounds[5]);
