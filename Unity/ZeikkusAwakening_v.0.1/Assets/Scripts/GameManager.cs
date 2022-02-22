@@ -164,19 +164,18 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LoadBattle(GameObject spawn, bool boss, bool enemyAdvantage)
     {
+        flash.SetActive(true);
         Text textoCarga = flash.GetComponentInChildren<Text>();
         if (enemyAdvantage)
         {
             textoCarga.text = "¡Emboscada enemiga!";
-            textoCarga.color = new Color(39, 104, 52);
+            textoCarga.color = new Color(190/255f, 17/255f, 17/255f);
         }
         else
         {
             textoCarga.text = "¡Emboscada!";
-            textoCarga.color = new Color(104, 35, 117);
+            textoCarga.color = new Color(23/255f, 209/255f, 79/255f);
         }
-            
-        flash.SetActive(true);
         HUDManager hudManager = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         yield return CrossFadeMusic(hudManager.mixer, 1, true);
