@@ -273,15 +273,11 @@ public class InputManager : MonoBehaviour
     {
         animatorManager.PlayTargetAnimation("DrawSword", true, false, 0.05f);
         playerLocomotion.ResetRigidbody();
-        gameManager.inWorld = false;
-        animatorManager.animator.SetBool("inWorld", gameManager.inWorld);
     }
 
     public void WinBattle()
     {
         animatorManager.PlayTargetAnimation("WinBattle", true);
         playerLocomotion.ResetRigidbody();
-        gameManager.inWorld = true;
-        animatorManager.animator.SetBool("inWorld", gameManager.inWorld);
     }
 }

@@ -67,17 +67,17 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public static int CalcPhysDamage(Stats playerStats, Stats enemyStats, float baseDamage)
+    public static int CalcPhysDamage(Stats playerStats, Stats enemyStats, float baseDamage, bool forceCrit)
     {
-        return CalcDamage(playerStats.strength, enemyStats.defense, baseDamage);
+        return CalcDamage(playerStats.strength, enemyStats.defense, baseDamage, forceCrit);
     }
 
-    public static int CalcSpecDamage(Stats playerStats, Stats enemyStats, float baseDamage)
+    public static int CalcSpecDamage(Stats playerStats, Stats enemyStats, float baseDamage, bool forceCrit)
     {
-        return CalcDamage(playerStats.magicPower, enemyStats.resistance, baseDamage);
+        return CalcDamage(playerStats.magicPower, enemyStats.resistance, baseDamage, forceCrit);
     }
 
-    private static int CalcDamage(int power, int defense, float baseDamage)
+    private static int CalcDamage(int power, int defense, float baseDamage, bool forceCrit)
     {
         float resultado = 0.2f * 2;
         resultado += 1;
@@ -89,6 +89,15 @@ public class GameManager : MonoBehaviour
         resultado *= random;
         resultado *= 0.01f;
         resultado *= 5;
+
+        if (forceCrit)
+            resultado *= 2;
+        else
+        {
+            float chance = Random.Range(0f, 1f);
+            if (chance < 0.1f)
+                resultado *= 2;
+        }
         
         return (int) resultado;
     }

@@ -233,15 +233,15 @@ public class PlayerLocomotion : MonoBehaviour
         zagrant.SetActive(false);
     }
 
-    public void RecieveDamage(Stats playerStats, float power, bool isPhysical)
+    public void RecieveDamage(Stats playerStats, float power, bool isPhysical, bool forceCrit = false)
     {
         if (invincible) return;
         if (!playerManager.isInteracting) animatorManager.PlayTargetAnimation("recoil", true);
         int resultado;
         if (isPhysical)
-            resultado = GameManager.CalcPhysDamage(playerStats, stats, power);
+            resultado = GameManager.CalcPhysDamage(playerStats, stats, power, forceCrit);
         else
-            resultado = GameManager.CalcSpecDamage(playerStats, stats, power);
+            resultado = GameManager.CalcSpecDamage(playerStats, stats, power, forceCrit);
         if (blocking)
             stats.hp -= (int) (resultado * 0.2f);
         else

@@ -99,14 +99,14 @@ public class EnemyBattleManager : MonoBehaviour
         recoiled = false;
     }
 
-    public void RecieveDamage(Stats playerStats, float power, bool isPhysical)
+    public void RecieveDamage(Stats playerStats, float power, bool isPhysical, bool forceCrit = false)
     {
         recoiled = true;
         int resultado;
         if (isPhysical)
-            resultado = GameManager.CalcPhysDamage(playerStats, stats, power);
+            resultado = GameManager.CalcPhysDamage(playerStats, stats, power, forceCrit);
         else
-            resultado = GameManager.CalcSpecDamage(playerStats, stats, power);
+            resultado = GameManager.CalcSpecDamage(playerStats, stats, power, forceCrit);
         stats.hp -= resultado;
         lifebar.value = stats.hp;
         FindObjectOfType<EscenaBatallaManager>().danoTotal += resultado;

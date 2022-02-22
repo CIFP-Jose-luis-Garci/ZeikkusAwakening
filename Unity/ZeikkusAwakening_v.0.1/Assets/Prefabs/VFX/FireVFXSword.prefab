@@ -49,10 +49,10 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 1.2
+      - m_Value: 0.8
         m_Name: FlameSize
         m_Overridden: 1
-      - m_Value: 100
+      - m_Value: 40
         m_Name: FlameRate
         m_Overridden: 1
       - m_Value: 0
@@ -4939,6 +4939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834962341608836045}
+  - component: {fileID: 3342662316716728608}
   m_Layer: 0
   m_Name: FireVFXSword
   m_TagString: Untagged
@@ -4962,3 +4963,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3342662316716728608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834962341608836042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af987e50b2c82446803941ea85b7500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToDestruction: 20

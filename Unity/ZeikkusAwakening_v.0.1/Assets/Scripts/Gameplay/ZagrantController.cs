@@ -11,6 +11,7 @@ public class ZagrantController : MonoBehaviour
     private GameManager gameManager;
     private AudioSource source;
     public bool isAttacking;
+    public bool onFire;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class ZagrantController : MonoBehaviour
             {
                 EnemyBattleManager enemyBattleManager = other.gameObject.GetComponent<EnemyBattleManager>();
                 Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
-                enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat("damage"), true);
+                enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat("damage"), true, onFire);
                 source.PlayOneShot(source.clip);
             }
             else

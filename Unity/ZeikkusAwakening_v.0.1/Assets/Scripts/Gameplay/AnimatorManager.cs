@@ -8,10 +8,12 @@ using Random = UnityEngine.Random;
 public class AnimatorManager : MonoBehaviour
 {
     [NonSerialized] public Animator animator;
+    private GameManager gameManager;
     private int horizontal;
     private int vertical;
     [Header("Zagrant")]
     public GameObject zagrant;
+    
     public GameObject appearParticles, disappearParticles;
     [Header("Sound")]
     public AudioSource source;
@@ -25,6 +27,7 @@ public class AnimatorManager : MonoBehaviour
         animator = GetComponent<Animator>();
         horizontal = Animator.StringToHash("Horizontal");
         vertical = Animator.StringToHash("Vertical");
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement)
@@ -127,30 +130,32 @@ public class AnimatorManager : MonoBehaviour
         Instantiate(disappearParticles, zagranPos.position, zagranPos.rotation).GetComponent<ParticleSystem>().Play();
     }
 
-    public void DrawSword(){
-    
+    public void DrawSword()
+    {
         zagrant.SetActive(true);
         source.PlayOneShot(swordSounds[5]);
+        gameManager.inWorld = false;
+        animator.SetBool("inWorld", gameManager.inWorld);
     }
 
     public void HideSword()
     {
         zagrant.SetActive(false);
         source.PlayOneShot(swordSounds[6]);
+        gameManager.inWorld = true;
+        animator.SetBool("inWorld", gameManager.inWorld);
+    }
+
+    public void EmbodyFireSword()
+    {
+        zagrant.SetActive(true);
+        source.PlayOneShot(swordSounds[5]);
     }
 
     public void SpawnFire(AnimationEvent animationEvent)
     {
-        zagrant.SetActive(true);
-        Destroy(Instantiate(animationEvent.objectReferenceParameter, zagrant.transform.position, zagrant.transform.rotation,
-            zagrant.transform), 2f);
-    }
-
-    public void ZagrantInWorld()
-    {
-        if (FindObjectOfType<GameManager>().inWorld)
-        {
-            zagrant.SetActive(false);
-        }
+        zagrant.GetComponent<ZagrantController>().onFire = true;
+        Instantiate(animationEvent.objectReferenceParameter, zagrant.transform.position, zagrant.transform.rotation, 
+            zagrant.transform);
     }
 }

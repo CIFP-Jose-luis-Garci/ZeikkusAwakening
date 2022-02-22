@@ -39,7 +39,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 177
+      lastFrame: 74
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -59,31 +59,17 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.19108842
+      - time: 0.49714905
         functionName: SpawnFire
         data: 
         objectReferenceParameter: {fileID: 834962341608836042, guid: 77a3af5ed6d2f384faac515b295e27a9, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.46902376
-        functionName: IsAttackingSet
+      - time: 0.22374429
+        functionName: EmbodyFireSword
         data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
-        messageOptions: 0
-      - time: 0.8062016
-        functionName: IsAttackingSet
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.936073
-        functionName: ZagrantInWorld
-        data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 834962341608836042, guid: 77a3af5ed6d2f384faac515b295e27a9, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
