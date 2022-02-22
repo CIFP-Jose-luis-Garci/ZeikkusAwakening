@@ -164,7 +164,17 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LoadBattle(GameObject spawn, bool boss, bool enemyAdvantage)
     {
+        Text textoCarga = flash.GetComponentInChildren<Text>();
         if (enemyAdvantage)
+        {
+            textoCarga.text = "¡Emboscada enemiga!";
+            textoCarga.color = new Color(39, 104, 52);
+        }
+        else
+        {
+            textoCarga.text = "¡Emboscada!";
+            textoCarga.color = new Color(104, 35, 117);
+        }
             
         flash.SetActive(true);
         HUDManager hudManager = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
