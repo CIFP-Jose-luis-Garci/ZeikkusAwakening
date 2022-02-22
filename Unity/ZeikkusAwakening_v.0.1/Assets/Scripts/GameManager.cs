@@ -26,8 +26,10 @@ public class GameManager : MonoBehaviour
     public EscenaBatallaManager escenaBatalla;
     
     [Header("Audio")]
-    public AudioClip battleMusic;
     public AudioClip worldMusic;
+    public AudioClip battleMusic;
+    public AudioClip bossMusic;
+    public AudioClip fanfare;
     
     [Header("Datos de juego")]
     public static int maru = 1000;

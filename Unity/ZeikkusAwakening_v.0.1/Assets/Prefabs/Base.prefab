@@ -152,7 +152,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698192378602789849}
-  m_LocalRotation: {x: 0.0000000026495466, y: 0.9960402, z: -0.08890402, w: 0.000000029684315}
+  m_LocalRotation: {x: -0.0000000026495466, y: 0.9960402, z: -0.08890402, w: -0.000000029684315}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -226,7 +226,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4707024960499154895}
-  m_LocalRotation: {x: 6.587694e-10, y: 0.99930996, z: -0.037143204, w: 0.000000017723695}
+  m_LocalRotation: {x: -6.587694e-10, y: 0.99930996, z: -0.037143204, w: -0.000000017723695}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -426,7 +426,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5289323935190428922}
-  m_LocalRotation: {x: 2.708929e-10, y: 0.9980151, z: -0.06297499, w: 0.0000000042930566}
+  m_LocalRotation: {x: -2.7089295e-10, y: 0.9980151, z: -0.06297499, w: -0.0000000042930575}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -928,8 +928,10 @@ MonoBehaviour:
   pause: {fileID: 0}
   flash: {fileID: 0}
   escenaBatalla: {fileID: 0}
-  battleMusic: {fileID: 8300000, guid: 39a006a41a2c88040abf2b5a819f35be, type: 3}
   worldMusic: {fileID: 8300000, guid: f987126ff9120ab40a3a436f17dc31bb, type: 3}
+  battleMusic: {fileID: 8300000, guid: 39a006a41a2c88040abf2b5a819f35be, type: 3}
+  bossMusic: {fileID: 8300000, guid: 4b75d7fba9df5194aa244ffdc5e37a78, type: 3}
+  fanfare: {fileID: 8300000, guid: c830772b0b511314dbb9ade97c8c7750, type: 3}
   personajes:
   - {fileID: 0}
 --- !u!114 &760720525
@@ -1107,7 +1109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8258461700927976672
 Transform:
   m_ObjectHideFlags: 0
@@ -1163,7 +1165,7 @@ MonoBehaviour:
   m_YAxis:
     Value: 0.5
     m_SpeedMode: 0
-    m_MaxSpeed: 2
+    m_MaxSpeed: 5
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
