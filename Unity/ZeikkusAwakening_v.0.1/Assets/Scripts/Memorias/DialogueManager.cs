@@ -10,12 +10,11 @@ public class DialogueManager : MonoBehaviour
     public bool showingPhrase;
     public AudioSource voice;
     public AudioClip[] voiceOvers;
-    private Text dialogueText;
+    public Text dialogueText, dialogueName;
     private Coroutine coroutine;
     private string currentPhrase;
     private void OnEnable()
     {
-        dialogueText = GetComponentInChildren<Text>();
         currentEvent = GameManager.currentEvent;
         NextDialogue();
     }
@@ -36,6 +35,7 @@ public class DialogueManager : MonoBehaviour
         voice.clip = voiceOvers[GameManager.currentDialogue];
         voice.Play();
         string dialogue = DialogueLookupTable.DialogueLookup(GameManager.currentDialogue);
+        dialogueName.text = GameManager.talking;
         coroutine = StartCoroutine(LetraALetra(dialogue));
         return true;
     }
