@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,15 @@ public class FlashManager : MonoBehaviour
 {
     private Text text;
     private Image background;
-    void Start()
+
+    private void Awake()
     {
         background = GetComponent<Image>();
         text = GetComponentInChildren<Text>();
+    }
+
+    void OnEnable()
+    {
         background.CrossFadeAlpha(0,0,true);
         text.CrossFadeAlpha(0, 0, true);
         StartCoroutine(Animate());

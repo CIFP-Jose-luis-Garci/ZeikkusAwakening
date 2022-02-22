@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static int currentEvent = 0;
     public static int currentDialogue = 0;
     public static string talking;
-    private static int nextScene = 1;
+    private static int nextScene = 0;
     public static float BGMVolume = -10;
     public static float SFXVolume = -10;
     public static bool invertCameraX = true;

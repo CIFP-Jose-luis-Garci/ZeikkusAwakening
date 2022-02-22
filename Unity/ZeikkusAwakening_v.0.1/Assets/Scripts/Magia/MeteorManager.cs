@@ -17,9 +17,9 @@ public class MeteorManager : Magic
         animatorManager = transform.parent.GetComponent<AnimatorManager>();
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager.inWorld)
-            animatorManager.PlayTargetAnimation("magicSelected", true);
+            animatorManager.PlayTargetAnimation("magicSelected fireball", true);
         else
-            animatorManager.PlayTargetAnimation("magic", true);
+            animatorManager.PlayTargetAnimation("magic fireball", true);
         animator = FindObjectOfType<AnimatorManager>().animator;
         fire.SetActive(false);
         meteorExplosion.SetActive(false);
