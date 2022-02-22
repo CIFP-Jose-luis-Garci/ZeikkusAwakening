@@ -16,7 +16,7 @@ public class LightManager : MonoBehaviour
         antorchas = new GameObject[lights.Length];
         for (int i = 0; i < lights.Length; i++)
         {
-            antorchas[i] = lights[i].gameObject.transform.parent.gameObject;
+            antorchas[i] = lights[i].transform.parent.gameObject;
         }
     }
 
@@ -24,10 +24,10 @@ public class LightManager : MonoBehaviour
     void Update()
     {
         float minDist = 30;
-        foreach (GameObject putaAntorcha in antorchas)
+        foreach (GameObject antorcha in antorchas)
         {
-            float dist = Vector3.Distance(putaAntorcha.transform.position, player.transform.position);
-            putaAntorcha.SetActive(dist < minDist);
+            float dist = Vector3.Distance(antorcha.transform.position, player.transform.position);
+            antorcha.SetActive(dist < minDist);
         }
     }
 }

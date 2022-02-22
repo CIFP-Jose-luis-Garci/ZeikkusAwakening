@@ -269,6 +269,10 @@ public class PlayerLocomotion : MonoBehaviour
     {
         // win battle anim
         inputManager.WinBattle();
+        AudioSource source = lifebar.transform.root.GetComponent<AudioSource>();
+        source.Stop();
+        source.clip = gameManager.fanfare;
+        source.Play();
         yield return new WaitForSeconds(1.2f);
         // result screen
         GameManager.inPause = true;

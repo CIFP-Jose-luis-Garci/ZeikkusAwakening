@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(LoadBattle(spawn));
     }
-
+    
     public void ToFade(Image blackFade, EscenaBatallaManager escenaBatallaManager)
     {
         StartCoroutine(FadeOutBattle(blackFade, escenaBatallaManager));
