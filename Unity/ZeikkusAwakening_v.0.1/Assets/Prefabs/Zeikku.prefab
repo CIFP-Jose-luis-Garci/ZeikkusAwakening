@@ -1317,7 +1317,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   isZTargeting: 0
-  magicSlots: 000000000000000000000000
+  magicSlots: 000000000100000000000000
   cameraManager: {fileID: 0}
   lifebar: {fileID: 0}
   damage: {fileID: 5256623395504277334, guid: 2ce27a2a2d66230418db0746ab5f57a9, type: 3}
@@ -1430,6 +1430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magics:
   - {fileID: 8755966844123130295, guid: 945ec140f401a3540866ba26c162e337, type: 3}
+  - {fileID: 4533313861010879522, guid: 336cda0eb0ab1454a98774d23fb59c64, type: 3}
 --- !u!82 &5205658801009420469
 AudioSource:
   m_ObjectHideFlags: 0

@@ -138,4 +138,19 @@ public class AnimatorManager : MonoBehaviour
         zagrant.SetActive(false);
         source.PlayOneShot(swordSounds[6]);
     }
+
+    public void SpawnFire(AnimationEvent animationEvent)
+    {
+        zagrant.SetActive(true);
+        Destroy(Instantiate(animationEvent.objectReferenceParameter, zagrant.transform.position, zagrant.transform.rotation,
+            zagrant.transform), 2f);
+    }
+
+    public void ZagrantInWorld()
+    {
+        if (FindObjectOfType<GameManager>().inWorld)
+        {
+            zagrant.SetActive(false);
+        }
+    }
 }

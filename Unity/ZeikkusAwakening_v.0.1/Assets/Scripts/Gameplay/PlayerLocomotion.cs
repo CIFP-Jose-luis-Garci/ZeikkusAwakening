@@ -157,10 +157,6 @@ public class PlayerLocomotion : MonoBehaviour
         if (playerManager.isInteracting) return;
         LookAtEnemy();
         ResetRigidbody();
-        if (gameManager.inWorld)
-            animatorManager.PlayTargetAnimation("magicSelected", true);
-        else
-            animatorManager.PlayTargetAnimation("magic", true);
         GetComponent<PlayerMagic>().MagicAttackLookupTable(magicSlots[slot]);
     }
 

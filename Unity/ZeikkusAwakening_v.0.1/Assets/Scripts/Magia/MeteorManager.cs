@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MeteorManager : Magic
 {
+    private AnimatorManager animatorManager;
+    private GameManager gameManager;
     public GameObject fire, meteorExplosion, smoke;
     public float speed;
     public bool forward;
@@ -12,6 +14,12 @@ public class MeteorManager : Magic
     // Start is called before the first frame update
     void Start()
     {
+        animatorManager = transform.parent.GetComponent<AnimatorManager>();
+        gameManager = FindObjectOfType<GameManager>();
+        if (gameManager.inWorld)
+            animatorManager.PlayTargetAnimation("magicSelected", true);
+        else
+            animatorManager.PlayTargetAnimation("magic", true);
         animator = FindObjectOfType<AnimatorManager>().animator;
         fire.SetActive(false);
         meteorExplosion.SetActive(false);
