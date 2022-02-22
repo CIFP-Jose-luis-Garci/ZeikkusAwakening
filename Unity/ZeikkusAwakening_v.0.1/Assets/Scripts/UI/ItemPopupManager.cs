@@ -1,16 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ItemPopupManager : MonoBehaviour
 {
 
     public Button usar, tirar, salir;
+    [NonSerialized] public GameObject botonesBolsa, botonesItem;
     private Item selectedItem;
 
     private InputManager inputManager;
-    // Start is called before the first frame update
+
     void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
@@ -25,7 +28,7 @@ public class ItemPopupManager : MonoBehaviour
                 }
                 else
                 {
-                    // play sound
+                    // TODO: play sound
                 }
             }
         });
@@ -43,6 +46,8 @@ public class ItemPopupManager : MonoBehaviour
 
     private void Exit()
     {
+        botonesBolsa.SetActive(true);
+        botonesItem.SetActive(false);
         ListaItemsManager lista = FindObjectOfType<ListaItemsManager>();
         lista.ReloadList();
         lista.itemSelected = false;

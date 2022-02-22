@@ -9,6 +9,7 @@ public class ItemSlotManager : MonoBehaviour, ISelectHandler
 {
     public Item item;
     public GameObject popup;
+    public GameObject botonesBolsa, botonesItem;
 
     private void Start()
     {
@@ -22,7 +23,12 @@ public class ItemSlotManager : MonoBehaviour, ISelectHandler
             position.y -= 100;
             rectTransform.anchoredPosition = position;
             instantiatedPopup.GetComponentInChildren<Button>().Select();
-            instantiatedPopup.GetComponent<ItemPopupManager>().SetItem(item);
+            ItemPopupManager iPopManager = instantiatedPopup.GetComponent<ItemPopupManager>();
+            iPopManager.SetItem(item);
+            iPopManager.botonesBolsa = botonesBolsa;
+            iPopManager.botonesItem = botonesItem;
+            botonesBolsa.SetActive(false);
+            botonesItem.SetActive(true);
         });
     }
 

@@ -144,6 +144,7 @@ public class ListaItemsManager : MonoBehaviour
     {
         if (itemSelected) return;
         float x = inputManager.horizontalInput;
+        Debug.Log(x);
         if (x != 0)
         {
             if (pageChanged) return;
