@@ -152,9 +152,9 @@ public class GameManager : MonoBehaviour
         return level;
     }
 
-    public void ToBattle(GameObject spawn, bool boss)
+    public void ToBattle(GameObject spawn, bool boss, bool enemyAdvantage = false)
     {
-        StartCoroutine(LoadBattle(spawn, boss));
+        StartCoroutine(LoadBattle(spawn, boss, enemyAdvantage));
     }
     
     public void ToFade(Image blackFade, EscenaBatallaManager escenaBatallaManager)
@@ -162,8 +162,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeOutBattle(blackFade, escenaBatallaManager));
     }
 
-    private IEnumerator LoadBattle(GameObject spawn, bool boss)
+    private IEnumerator LoadBattle(GameObject spawn, bool boss, bool enemyAdvantage)
     {
+        if (enemyAdvantage)
+            
         flash.SetActive(true);
         HUDManager hudManager = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
