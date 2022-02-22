@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  enemyManager: {fileID: 0}
+  enemyStats: {fileID: 0}
+  enemyFound: 0
   distance: 0
-  inputManager: {fileID: 0}
 --- !u!114 &1190149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,26 +60,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea751bdf030c4a43a9e67b2e959a259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actorName: 
+  title: 
+  sprite: {fileID: 0}
+  level: 0
   hp: 150
+  maxHP: 0
   mp: 100
+  maxMP: 0
   strength: 15
   defense: 10
   magicPower: 13
-  resistence: 10
---- !u!114 &248963137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5933897830930740816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71d1b0fcd54e1a45bb1751b7e1c0b3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magics:
-  - {fileID: 8755966844123130295, guid: 945ec140f401a3540866ba26c162e337, type: 3}
+  resistance: 0
+  experience: 0
+  nextLevelExperience: 0
+  turnPoints: 0
+  expBase: 0
+  marubase: 0
+  alive: 0
 --- !u!65 &650309836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -119,9 +119,13 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3335101239391897373, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4927773376940549154, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_Name
-      value: Zeikku_battle
+      value: BadZ
       objectReference: {fileID: 0}
     - target: {fileID: 5234201011639302338, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_Mode

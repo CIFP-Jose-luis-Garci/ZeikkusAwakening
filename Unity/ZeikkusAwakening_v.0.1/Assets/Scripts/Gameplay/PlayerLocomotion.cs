@@ -273,6 +273,7 @@ public class PlayerLocomotion : MonoBehaviour
         source.Stop();
         source.clip = gameManager.fanfare;
         source.Play();
+        source.loop = false;
         yield return new WaitForSeconds(1.2f);
         // result screen
         GameManager.inPause = true;

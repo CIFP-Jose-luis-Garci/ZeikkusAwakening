@@ -143,9 +143,9 @@ public class GameManager : MonoBehaviour
         return level;
     }
 
-    public void ToBattle(GameObject spawn)
+    public void ToBattle(GameObject spawn, bool boss)
     {
-        StartCoroutine(LoadBattle(spawn));
+        StartCoroutine(LoadBattle(spawn, boss));
     }
     
     public void ToFade(Image blackFade, EscenaBatallaManager escenaBatallaManager)
@@ -153,15 +153,19 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeOutBattle(blackFade, escenaBatallaManager));
     }
 
-    private IEnumerator LoadBattle(GameObject spawn)
+    private IEnumerator LoadBattle(GameObject spawn, bool boss)
     {
         flash.SetActive(true);
         HUDManager hudManager = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         yield return CrossFadeMusic(hudManager.mixer, 1, true);
         musicSource.Stop();
-        musicSource.clip = battleMusic;
+        if (boss)
+            musicSource.clip = bossMusic;
+        else
+            musicSource.clip = battleMusic;
         musicSource.Play();
+        musicSource.loop = true;
         escenaBatalla.enemyToSpawn = spawn;
         escenaBatalla.gameObject.SetActive(true);
         personajes[0].GetComponent<InputManager>().StartBattle();
