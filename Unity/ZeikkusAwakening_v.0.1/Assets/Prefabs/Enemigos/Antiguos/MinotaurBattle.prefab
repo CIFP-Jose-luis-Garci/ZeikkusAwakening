@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 24103731832490323}
   - component: {fileID: 24103731832490324}
   - component: {fileID: 2998404957974184883}
+  - component: {fileID: 4558791842745786967}
   m_Layer: 6
   m_Name: MinotaurBattle
   m_TagString: Enemigo
@@ -183,6 +184,8 @@ MonoBehaviour:
   experience: 0
   nextLevelExperience: 0
   turnPoints: 0
+  expBase: 0
+  marubase: 0
   alive: 1
 --- !u!195 &24103731832490324
 NavMeshAgent:
@@ -218,12 +221,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f630643d6880c41a574c7bff03ecc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 906573617079297574}
   detectado: 0
   enemyToSpawn: {fileID: 1444554315193150917, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
   isWalking: 0
   isRunning: 0
-  waitTime: 0
+  stepSounds: []
+  crySounds: []
+  attackSounds: []
+--- !u!114 &4558791842745786967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24103731832490320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea751bdf030c4a43a9e67b2e959a259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 
+  title: 
+  sprite: {fileID: 0}
+  level: 0
+  hp: 0
+  maxHP: 0
+  mp: 0
+  maxMP: 0
+  strength: 0
+  defense: 0
+  magicPower: 0
+  resistance: 0
+  experience: 0
+  nextLevelExperience: 0
+  turnPoints: 0
+  expBase: 0
+  marubase: 0
+  alive: 0
 --- !u!1 &24103731832490322
 GameObject:
   m_ObjectHideFlags: 0
