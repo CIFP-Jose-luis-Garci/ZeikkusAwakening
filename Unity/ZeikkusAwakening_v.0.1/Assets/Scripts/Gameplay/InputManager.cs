@@ -36,6 +36,8 @@ public class InputManager : MonoBehaviour
 
     public bool inDialogue;
     public CutsceneManager cutsceneManager;
+    public GameObject container, magicTutorial, buttonTutorial, lockOnTutorial, evadeBlockTutorial;
+    private bool showedMagicTutorial, showedButtonTutorial, showedLockOnTutorial, showedEvadeBlockTutorial;
 
 
     private void Awake()
@@ -148,6 +150,7 @@ public class InputManager : MonoBehaviour
             else
             {
                 if (GameManager.inPause) return;
+                showedButtonTutorial = ShowTutorial(buttonTutorial, showedButtonTutorial);
                 playerLocomotion.HandleMagic(0);
             }
         }
@@ -158,6 +161,10 @@ public class InputManager : MonoBehaviour
         {
             yInput = false;
             if (inDialogue || GameManager.inPause) return;
+            if (!gameManager.inWorld)
+                showedButtonTutorial = ShowTutorial(buttonTutorial, showedButtonTutorial);
+            else
+                showedMagicTutorial = ShowTutorial(magicTutorial, showedMagicTutorial);
             playerLocomotion.HandleMagic(1);
         }
     }
@@ -169,6 +176,7 @@ public class InputManager : MonoBehaviour
             if (!gameManager.inWorld)
             {
                 xInput = false;
+                showedButtonTutorial = ShowTutorial(buttonTutorial, showedButtonTutorial);
                 playerLocomotion.HandleMagic(2);
             }
         }
@@ -189,10 +197,20 @@ public class InputManager : MonoBehaviour
             }
             bInput = false;
             if (!gameManager.inWorld)
+            {
+                showedButtonTutorial = ShowTutorial(buttonTutorial, showedButtonTutorial);
                 playerLocomotion.HandleAttack();
+            }
             else
                 StartCoroutine(playerLocomotion.HandleFirstStrike(zagrantController.gameObject));
         }
+    }
+
+    private bool ShowTutorial(GameObject tutorial, bool condition)
+    {
+        if (condition) return true;
+        GameManager.SpawnTutorial(container, tutorial, null);
+        return true;
     }
     private void HandleStartInput()
     {
@@ -216,6 +234,7 @@ public class InputManager : MonoBehaviour
             if (!gameManager.inWorld)
             {
                 rBump = false;
+                showedEvadeBlockTutorial = ShowTutorial(evadeBlockTutorial, showedEvadeBlockTutorial);
                 playerLocomotion.HandleEvade();
             }
         }
@@ -231,7 +250,10 @@ public class InputManager : MonoBehaviour
             if (gameManager.inWorld)
                 freeLook.m_RecenterToTargetHeading.m_enabled = true;
             else
+            {
+                showedEvadeBlockTutorial = ShowTutorial(evadeBlockTutorial, showedEvadeBlockTutorial);
                 playerLocomotion.HandleBlock();
+            }
         }
         else
         {
@@ -247,7 +269,11 @@ public class InputManager : MonoBehaviour
     {
         if (inDialogue || GameManager.inPause) return;
         if (gameManager.inWorld) return;
-        playerLocomotion.HandleCameraChange(lTrigger);
+        if (lTrigger)
+        {
+            showedLockOnTutorial = ShowTutorial(lockOnTutorial, showedLockOnTutorial);
+            playerLocomotion.HandleCameraChange(lTrigger);
+        }
     }
 
     private void HandleRightTrigger()

@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadBattle(GameObject spawn, bool boss, bool enemyAdvantage)
     {
         flash.gameObject.SetActive(true);
+        flash.AnimateStart();
         cameraXAngle = cmfl.m_XAxis.Value;
         Text textoCarga = flash.GetComponentInChildren<Text>();
         if (enemyAdvantage)
@@ -187,7 +188,6 @@ public class GameManager : MonoBehaviour
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, true));
         yield return new WaitForSeconds(1);
-        flash.AnimateStart();
         musicSource.Stop();
         if (boss)
             musicSource.clip = bossMusic;
