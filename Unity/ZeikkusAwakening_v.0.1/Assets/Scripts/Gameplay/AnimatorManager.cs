@@ -103,6 +103,11 @@ public class AnimatorManager : MonoBehaviour
         animator.SetBool("isAttacking", animationEvent.intParameter == 1);
     }
 
+    public void CanStartBattle(AnimationEvent animationEvent)
+    {
+        animator.SetBool("canStartBattle", animationEvent.intParameter == 1);
+    }
+
     public void MagicSound(AnimationEvent animationEvent)
     {
         source.PlayOneShot(magicSounds[animationEvent.intParameter]);

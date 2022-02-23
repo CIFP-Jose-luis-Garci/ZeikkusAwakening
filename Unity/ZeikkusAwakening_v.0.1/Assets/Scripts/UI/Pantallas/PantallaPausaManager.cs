@@ -10,6 +10,7 @@ public class PantallaPausaManager : MonoBehaviour
     private InputManager inputManager;
     private Stats zeikkuStats;
     public GameObject pantallaInventario, pantallaEstado, pantallaOpciones, pantallaResultados;
+    public Image flash, blackFade;
     public Button inventario, estado, opciones;
     public Text maru, zeikkuVida, zeikkuMagia;
 
@@ -21,6 +22,8 @@ public class PantallaPausaManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.inPause = true;
+        blackFade.gameObject.SetActive(false);
+        flash.gameObject.SetActive(false);
         inventario.Select();
         UpdateValues();
     }
@@ -28,6 +31,10 @@ public class PantallaPausaManager : MonoBehaviour
     private void OnDisable()
     {
         GameManager.inPause = false;
+        blackFade.gameObject.SetActive(true);
+        blackFade.CrossFadeAlpha(0, 0, true);
+        flash.gameObject.SetActive(true);
+        flash.CrossFadeAlpha(0, 0, true);
     }
 
     private void Start()

@@ -6683,7 +6683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3769214386287004479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6697,7 +6697,7 @@ RectTransform:
   m_Children:
   - {fileID: 357897109785620334}
   m_Father: {fileID: 5075835121002782940}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12472,8 +12472,8 @@ RectTransform:
   - {fileID: 7393238906195780851}
   - {fileID: 7772951442453913799}
   - {fileID: 4163317478540988174}
-  - {fileID: 3769214386287004479}
   - {fileID: 3168599170780296646}
+  - {fileID: 3769214386287004479}
   - {fileID: 5144111570676482354}
   - {fileID: 2842285755700387758}
   m_Father: {fileID: 0}
@@ -21321,6 +21321,8 @@ MonoBehaviour:
   pantallaEstado: {fileID: 1788510853708910617}
   pantallaOpciones: {fileID: 7772951442453913796}
   pantallaResultados: {fileID: 1328228690629047628}
+  flash: {fileID: 2525350440140279375}
+  blackFade: {fileID: 6574036215205173053}
   inventario: {fileID: 799857486347070908}
   estado: {fileID: 4632349207259231887}
   opciones: {fileID: 3442117194833645251}
@@ -24005,7 +24007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5221308583153085428, guid: b42bdc0e8a324744ebe4caa29189b942, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5221308583153085428, guid: b42bdc0e8a324744ebe4caa29189b942, type: 3}
       propertyPath: m_AnchorMax.x

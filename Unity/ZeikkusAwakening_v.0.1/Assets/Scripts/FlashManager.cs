@@ -13,13 +13,8 @@ public class FlashManager : MonoBehaviour
     {
         background = GetComponent<Image>();
         text = GetComponentInChildren<Text>();
-    }
-
-    void OnEnable()
-    {
-        background.CrossFadeAlpha(0,0,true);
+        background.CrossFadeAlpha(0, 0, true);
         text.CrossFadeAlpha(0, 0, true);
-        StartCoroutine(Animate());
     }
 
     IEnumerator Animate()
@@ -31,5 +26,10 @@ public class FlashManager : MonoBehaviour
         text.CrossFadeAlpha(0, 0.3f, true);
         yield return new WaitForSeconds(0.2f);
         background.CrossFadeAlpha(0,0.5f,true);
+    }
+
+    public void AnimateStart()
+    {
+        StartCoroutine(Animate());
     }
 }

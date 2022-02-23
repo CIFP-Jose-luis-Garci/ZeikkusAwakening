@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [Header("Transiciones")]
     public bool inWorld;
     public PantallaPausaManager pause;
-    public GameObject flash;
+    public FlashManager flash;
     public EscenaBatallaManager escenaBatalla;
     
     [Header("Audio")]
@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LoadBattle(GameObject spawn, bool boss, bool enemyAdvantage)
     {
-        flash.SetActive(true);
+        flash.AnimateStart();
         Text textoCarga = flash.GetComponentInChildren<Text>();
         if (enemyAdvantage)
         {
@@ -195,7 +195,6 @@ public class GameManager : MonoBehaviour
         {
             enemy.battleStarted = true;
         }
-        flash.SetActive(false);
     }
 
     private IEnumerator FadeOutBattle(Image blackFade, EscenaBatallaManager escenaBatallaManager)
@@ -203,13 +202,15 @@ public class GameManager : MonoBehaviour
         // press a, goto transition fade in black
         blackFade.CrossFadeAlpha(1, 1, true);
         HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
-        yield return CrossFadeMusic(hudManager.mixer, 1, true);
+        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, true));
+        yield return new WaitForSeconds(1);
         escenaBatallaManager.ResetPlayer();
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         musicSource.Stop();
         musicSource.clip = worldMusic;
         musicSource.Play();
-        yield return CrossFadeMusic(hudManager.mixer, 1, false);
+        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
+        yield return new WaitForSeconds(1);
         escenaBatallaManager.gameObject.SetActive(false);
         inPause = false;
         blackFade.CrossFadeAlpha(0, 1, true);

@@ -12,6 +12,7 @@ public class ZagrantController : MonoBehaviour
     private AudioSource source;
     public bool isAttacking;
     public bool onFire;
+    private bool canStartBattle;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,8 @@ public class ZagrantController : MonoBehaviour
     {
         if (!gameManager.inWorld)
             isAttacking = animator.GetBool("isAttacking");
+        else
+            canStartBattle = animator.GetBool("canStartBattle");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,15 +48,18 @@ public class ZagrantController : MonoBehaviour
         }
         else
         {
-            if (other.gameObject.CompareTag("EnemigoWorld"))
+            if (canStartBattle)
             {
-                Destroy(other.gameObject);
-                gameManager.ToBattle(other.gameObject.GetComponent<EnemyManager>().enemyToSpawn, false);
-            }
-            if (other.gameObject.CompareTag("Boss"))
-            {
-                Destroy(other.gameObject);
-                gameManager.ToBattle(other.gameObject.GetComponent<EnemyManager>().enemyToSpawn, true);
+                if (other.gameObject.CompareTag("EnemigoWorld"))
+                {
+                    Destroy(other.gameObject);
+                    gameManager.ToBattle(other.gameObject.GetComponent<EnemyManager>().enemyToSpawn, false);
+                }
+                if (other.gameObject.CompareTag("Boss"))
+                {
+                    Destroy(other.gameObject);
+                    gameManager.ToBattle(other.gameObject.GetComponent<EnemyManager>().enemyToSpawn, true);
+                }
             }
         }
     }
