@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 7893778891538753494}
   - component: {fileID: 4300689784235668215}
   - component: {fileID: -2972562290605431575}
+  - component: {fileID: 12258480490095825}
   m_Layer: 5
   m_Name: Caja Tutorial Primer Golpe
   m_TagString: Untagged
@@ -168,6 +169,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20fb825a212089498a1965bcac740f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &12258480490095825
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014057622549275260}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 471fe2e636544864aa588f1b74f03842, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6909195438998640359
 GameObject:
   m_ObjectHideFlags: 0

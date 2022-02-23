@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 4342632709549092212}
   - component: {fileID: 7667213397406660693}
   - component: {fileID: -4428135711287688948}
+  - component: {fileID: -6027012854386831450}
   m_Layer: 5
   m_Name: Caja Tutorial Start_Select
   m_TagString: Untagged
@@ -405,3 +406,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20fb825a212089498a1965bcac740f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &-6027012854386831450
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907078634328893662}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7420c937c1774114cb855a83bc511a51, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
