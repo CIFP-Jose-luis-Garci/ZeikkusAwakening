@@ -179,7 +179,8 @@ public class GameManager : MonoBehaviour
         }
         HUDManager hudManager = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
-        yield return CrossFadeMusic(hudManager.mixer, 1, true);
+        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, true));
+        yield return new WaitForSeconds(1);
         musicSource.Stop();
         if (boss)
             musicSource.clip = bossMusic;
@@ -190,7 +191,8 @@ public class GameManager : MonoBehaviour
         escenaBatalla.enemyToSpawn = spawn;
         escenaBatalla.gameObject.SetActive(true);
         personajes[0].GetComponent<InputManager>().StartBattle();
-        yield return CrossFadeMusic(hudManager.mixer, 1, false);
+        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
+        yield return new WaitForSeconds(1);
         foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
         {
             enemy.battleStarted = true;

@@ -164,7 +164,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 57573777187014775}
-  - component: {fileID: 57573777187014772}
   - component: {fileID: 2002002476}
   m_Layer: 0
   m_Name: CameraChanger
@@ -188,36 +187,6 @@ Transform:
   m_Father: {fileID: 524161891691801945}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &57573777187014772
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57573777187014776}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 761a6a4734021904aad7b5fcaf7b2cd6, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -6243858434406192548, guid: 761a6a4734021904aad7b5fcaf7b2cd6, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 8094798983649139215, guid: 761a6a4734021904aad7b5fcaf7b2cd6, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 7064787187606829933, guid: 761a6a4734021904aad7b5fcaf7b2cd6, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References:
-    - cbc6f89d574d83047a5022f37b885e43: {fileID: 0}
-    - 1945fb51a68d6514ca247cdae99753f5: {fileID: 0}
-    - 72ac3d4b7e5419c428dd03eb3add94b0: {fileID: 57573778637709179}
-    - 8df90b311d4c7974fa0326ef04ad0cb0: {fileID: 57573778078170259}
-    - c8d9ef667818f3e44ad23b055aa5af5f: {fileID: 57573778637709179}
-    - f8689e132c0fddd428cbb579aef50fc1: {fileID: 57573778637709179}
-    - bc2b88e973e9b124e8f445ee52680fae: {fileID: 57573778078170259}
 --- !u!114 &2002002476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +274,7 @@ GameObject:
   - component: {fileID: 57573777347235274}
   - component: {fileID: 57573777347235275}
   - component: {fileID: 57573777347235273}
+  - component: {fileID: 968156272}
   m_Layer: 0
   m_Name: Trigger_PlayCutScene
   m_TagString: Untagged
@@ -354,6 +324,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraChanger: {fileID: 57573777187014776}
+--- !u!114 &968156272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57573777347235276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3e4ee46f4b2a845b55130da80d124f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameras: []
+  dialogue: {fileID: 0}
+  dialogueCount: 0
+  blackFade: {fileID: 0}
+  faceEyesOpen: {fileID: 0}
+  face: {fileID: 0}
+  musicSource: {fileID: 0}
+  mixer: {fileID: 0}
 --- !u!1 &57573777709980518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,7 +1328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2621743643019153983
 Transform:
   m_ObjectHideFlags: 0
