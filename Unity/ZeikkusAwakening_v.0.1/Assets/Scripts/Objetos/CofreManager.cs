@@ -36,6 +36,7 @@ public class CofreManager : MonoBehaviour
         if (collisionInfo.gameObject.CompareTag("Player"))
             if (containedItem != null && inputManager.xInput)
             {
+                if (GameManager.inPause) return;
                 source.Play();
                 animator.enabled = true;
             }

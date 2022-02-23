@@ -282,6 +282,9 @@ public class InputManager : MonoBehaviour
         if (rTrigger)
         {
             rTrigger = false;
+            TutorialManager tutorialManager = container.GetComponentInChildren<TutorialManager>();
+            if (tutorialManager)
+                tutorialManager.ReverseAndDestroy();
         }
     }
     

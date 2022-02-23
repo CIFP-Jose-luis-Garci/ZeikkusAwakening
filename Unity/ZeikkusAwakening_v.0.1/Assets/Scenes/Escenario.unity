@@ -3076,6 +3076,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MundoPiso2
       objectReference: {fileID: 0}
+    - target: {fileID: 2841788044438013773, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
+      propertyPath: openChest
+      value: 
+      objectReference: {fileID: 247066093}
+    - target: {fileID: 2841788044459247924, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
+      propertyPath: openChest
+      value: 
+      objectReference: {fileID: 247066093}
+    - target: {fileID: 2841788044497739752, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
+      propertyPath: openChest
+      value: 
+      objectReference: {fileID: 247066093}
     - target: {fileID: 4223905204671194649, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4965,7 +4977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nivel1: {fileID: 919132149133538245}
-  nivel2: {fileID: 0}
+  nivel2: {fileID: 1789078653}
   video: {fileID: 1297710738}
   blackFade: {fileID: 1013309805}
 --- !u!1001 &850584999
@@ -9945,6 +9957,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8084260496155575943, guid: 04fb81f2df724884fba53775828c2e35, type: 3}
   m_PrefabInstance: {fileID: 556875183}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1789078653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 868599729177917411, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
+  m_PrefabInstance: {fileID: 531384410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1834582119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10931,6 +10948,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5075835121002782940, guid: 4b214a73477046d4a841619428783ded, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835121135058122, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835121135058122, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835121198721705, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835121198721705, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
