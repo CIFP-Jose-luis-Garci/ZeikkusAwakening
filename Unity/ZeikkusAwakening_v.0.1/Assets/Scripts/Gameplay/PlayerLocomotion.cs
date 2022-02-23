@@ -82,7 +82,6 @@ public class PlayerLocomotion : MonoBehaviour
         
         moveDirection *= runningSpeed * inputManager.moveAmount;
         moveDirection.y = rb.velocity.y;
-        
         Vector3 movementVelocity = moveDirection;
         rb.velocity = movementVelocity;
     }
