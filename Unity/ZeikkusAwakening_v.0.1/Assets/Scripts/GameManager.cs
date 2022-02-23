@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     public PantallaPausaManager pause;
     public FlashManager flash;
     public EscenaBatallaManager escenaBatalla;
+    public CinemachineFreeLook cmfl;
+    public float cameraXAngle;
     
     [Header("Audio")]
     public AudioClip worldMusic;
@@ -166,6 +169,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadBattle(GameObject spawn, bool boss, bool enemyAdvantage)
     {
         flash.AnimateStart();
+        cameraXAngle = cmfl.m_XAxis.Value;
         Text textoCarga = flash.GetComponentInChildren<Text>();
         if (enemyAdvantage)
         {
@@ -206,6 +210,7 @@ public class GameManager : MonoBehaviour
         HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
         StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, true));
         yield return new WaitForSeconds(1);
+        cmfl.m_XAxis.Value = cameraXAngle;
         escenaBatallaManager.ResetPlayer();
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         musicSource.Stop();
