@@ -68,6 +68,9 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(timeStep);
             time -= timeStep;
         } while (time > 0);
+        
+        if (!muting)
+            mixer.SetFloat("BGMVolume", -10f);
 
     }
 
@@ -167,7 +170,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LoadBattle(GameObject spawn, bool boss, bool enemyAdvantage)
     {
-        flash.AnimateStart();
+        flash.gameObject.SetActive(true);
         cameraXAngle = cmfl.m_XAxis.Value;
         Text textoCarga = flash.GetComponentInChildren<Text>();
         if (enemyAdvantage)
@@ -184,6 +187,7 @@ public class GameManager : MonoBehaviour
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, true));
         yield return new WaitForSeconds(1);
+        flash.AnimateStart();
         musicSource.Stop();
         if (boss)
             musicSource.clip = bossMusic;

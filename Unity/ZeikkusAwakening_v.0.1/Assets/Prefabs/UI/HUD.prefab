@@ -610,6 +610,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pantallaPausa: {fileID: 8255810256127292182}
+  container: {fileID: 8451068874230603142}
+  tutorialToSpawn: {fileID: 4411679183823415819, guid: 9d8cf2812372f204b94b195afd7b535d, type: 3}
   items:
   - {fileID: 1293793211130351534}
   - {fileID: 3395006558130288972}
@@ -4973,6 +4975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pantallaPausa: {fileID: 8255810256127292182}
+  container: {fileID: 8451068874230603142}
+  tutorialToSpawn: {fileID: 5507654966516977600, guid: 5070234a1f906b64a8f91b004517cbad, type: 3}
   nombre: {fileID: 7948202631862487008}
   titulo: {fileID: 5535223115069870947}
   nivel: {fileID: 243332978878292499}
@@ -6683,7 +6687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3769214386287004479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6754,6 +6758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca1edf8cfe94fb49bd72594160386d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  container: {fileID: 8451068874230603142}
+  tutorialToSpawn: {fileID: 7553659060683722465, guid: 950e07d3bfcc7044b93fe5fa039c1499, type: 3}
 --- !u!1 &2542003463125264599
 GameObject:
   m_ObjectHideFlags: 0

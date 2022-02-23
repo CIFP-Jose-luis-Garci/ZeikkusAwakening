@@ -8,11 +8,13 @@ public class FlashManager : MonoBehaviour
 {
     private Text text;
     private Image background;
+    public GameObject container, tutorialToSpawn;
 
     private void Awake()
     {
         background = GetComponent<Image>();
         text = GetComponentInChildren<Text>();
+        GameManager.SpawnTutorial(container, tutorialToSpawn, null);
     }
 
     private void OnEnable()
