@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,13 @@ public class PantallaEstadoManager : MonoBehaviour
     private InputManager inputManager;
     private Stats stats;
     public GameObject pantallaPausa;
+    public GameObject container, tutorialToSpawn;
     public Text nombre, titulo, nivel, vida, magia, experiencia, fuerza, defensa, poderMagico, resitencia, puntosDeTurno;
     public Image imagenPersonaje;
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
+        GameManager.SpawnTutorial(container, tutorialToSpawn, null);
     }
     private void OnEnable()
     {
@@ -27,9 +30,14 @@ public class PantallaEstadoManager : MonoBehaviour
         magia.text = stats.mp + "/" + stats.maxMP;
         experiencia.text = stats.experience + "/" + stats.nextLevelExperience;
         fuerza.text = stats.strength.ToString();
-        poderMagico.text = stats.defense.ToString();
-        resitencia.text = stats.magicPower.ToString();
+        defensa.text = stats.defense.ToString();
+        poderMagico.text = stats.magicPower.ToString();
+        resitencia.text = stats.resistance.ToString();
         puntosDeTurno.text = stats.turnPoints.ToString();
+    }
+
+    private void Start()
+    {
     }
 
     // Update is called once per frame

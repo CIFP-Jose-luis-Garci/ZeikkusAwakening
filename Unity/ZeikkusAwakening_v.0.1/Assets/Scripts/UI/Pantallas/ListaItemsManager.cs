@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ListaItemsManager : MonoBehaviour
 {
     public GameObject pantallaPausa;
+    public GameObject container, tutorialToSpawn;
 
     public GameObject[] items;
     public Text paginas;
@@ -43,6 +44,11 @@ public class ListaItemsManager : MonoBehaviour
     void OnEnable()
     {
         ReloadList();
+    }
+
+    private void Start()
+    {
+        GameManager.SpawnTutorial(container, tutorialToSpawn, null);
     }
 
     private void Update()
@@ -144,7 +150,6 @@ public class ListaItemsManager : MonoBehaviour
     {
         if (itemSelected) return;
         float x = inputManager.horizontalInput;
-        Debug.Log(x);
         if (x != 0)
         {
             if (pageChanged) return;

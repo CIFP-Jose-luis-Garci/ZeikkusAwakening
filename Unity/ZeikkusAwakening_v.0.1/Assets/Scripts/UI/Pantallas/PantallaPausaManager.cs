@@ -10,6 +10,7 @@ public class PantallaPausaManager : MonoBehaviour
     private InputManager inputManager;
     private Stats zeikkuStats;
     public GameObject pantallaInventario, pantallaEstado, pantallaOpciones, pantallaResultados;
+    public GameObject container, tutorialToSpawn;
     public Image flash, blackFade;
     public Button inventario, estado, opciones;
     public Text maru, zeikkuVida, zeikkuMagia;
@@ -39,6 +40,7 @@ public class PantallaPausaManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.SpawnTutorial(container, tutorialToSpawn, null);
         inventario.onClick.AddListener(() =>
         {
             pantallaInventario.SetActive(true);

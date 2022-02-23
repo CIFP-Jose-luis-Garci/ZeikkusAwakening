@@ -123,7 +123,6 @@ public class GameManager : MonoBehaviour
         foreach (GameObject character in characters)
         {
             character.GetComponent<Stats>().AddExp(resultado);
-            Debug.Log(character.name);
         }
         return resultado.ToString();
     }
@@ -221,6 +220,17 @@ public class GameManager : MonoBehaviour
         escenaBatallaManager.gameObject.SetActive(false);
         inPause = false;
         blackFade.CrossFadeAlpha(0, 1, true);
+    }
+    
+    public static void SpawnTutorial(GameObject container, GameObject tutorialToSpawn, GameObject caller)
+    {
+        TutorialManager contained = container.GetComponentInChildren<TutorialManager>();
+        if (contained)
+            Destroy(contained.gameObject);
+        Instantiate(tutorialToSpawn, container.transform);
+        if (caller)
+            Destroy(caller);
+        
     }
 
     public static IEnumerator LoadScene(float timeToLoad)
