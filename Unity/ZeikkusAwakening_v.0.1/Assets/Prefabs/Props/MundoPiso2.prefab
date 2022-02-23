@@ -165,6 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 57573777187014775}
   - component: {fileID: 57573777187014772}
+  - component: {fileID: 2002002476}
   m_Layer: 0
   m_Name: CameraChanger
   m_TagString: Untagged
@@ -206,6 +207,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 8094798983649139215, guid: 761a6a4734021904aad7b5fcaf7b2cd6, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 7064787187606829933, guid: 761a6a4734021904aad7b5fcaf7b2cd6, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - cbc6f89d574d83047a5022f37b885e43: {fileID: 0}
@@ -215,6 +218,21 @@ PlayableDirector:
     - c8d9ef667818f3e44ad23b055aa5af5f: {fileID: 57573778637709179}
     - f8689e132c0fddd428cbb579aef50fc1: {fileID: 57573778637709179}
     - bc2b88e973e9b124e8f445ee52680fae: {fileID: 57573778078170259}
+--- !u!114 &2002002476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57573777187014776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e087f5e37f53f64a91f2e85cde3f773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vCamera: {fileID: 57573778078170260}
+  animatorBadZ: {fileID: 0}
+  animatorBadZController: {fileID: 0}
 --- !u!1 &57573777346377934
 GameObject:
   m_ObjectHideFlags: 0

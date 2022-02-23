@@ -12,7 +12,8 @@ public class PlayerMagic : MonoBehaviour
         Vector3 zPos = (-0.6f * transform.forward);
         pos.x -= zPos.x;
         pos.z -= zPos.z;
-        GetComponent<Stats>().mp -= magics[selected].GetComponent<Magic>().mpCost;
+        if (!FindObjectOfType<GameManager>().inWorld)
+            GetComponent<Stats>().mp -= magics[selected].GetComponent<Magic>().mpCost;
         Instantiate(magics[selected], pos, transform.rotation, transform);
     }
 }
