@@ -13,9 +13,9 @@ public class TutorialSpawnManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Text contained = container.GetComponentInChildren<Text>();
+            TutorialManager contained = container.GetComponentInChildren<TutorialManager>();
             if (contained)
-                Destroy(contained.transform.parent.gameObject);
+                Destroy(contained.gameObject);
             Instantiate(tutorialToSpawn, container.transform);
             Destroy(gameObject);
         }
