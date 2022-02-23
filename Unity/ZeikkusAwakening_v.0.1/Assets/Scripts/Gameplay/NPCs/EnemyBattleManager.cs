@@ -42,9 +42,15 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void Update()
     {
-        if (!battleStarted) return;
-        if (GameManager.inPause) return;
-        if (!stats.alive) return;
+        if (GameManager.inPause || !stats.alive || !battleStarted)
+        {
+            animator.SetBool("alcance", false);
+            isRunning = false;
+            waitTime = 0;
+            isAttacking = false;
+            agente.SetDestination(transform.position);
+            return;
+        }
         if (recoiled)
             Recoil();
         else
@@ -62,7 +68,6 @@ public class EnemyBattleManager : MonoBehaviour
                 animator.SetBool("alcance", true);
                 ClipLength();
                 agente.speed = 0;
-                agente.SetDestination(transform.position);
             }
             if (waitTime > hitLength)
             {
@@ -73,6 +78,7 @@ public class EnemyBattleManager : MonoBehaviour
                 return;
             }
             waitTime += Time.deltaTime;
+            agente.SetDestination(transform.position);
         }
         else
         {

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
@@ -37,6 +36,15 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.inPause)
+        {
+            agente.SetDestination(transform.position);
+            animator.SetBool("detection", false);
+            isRunning = false;
+            waitTime = 0;
+            isWalking = false;
+            return;
+        }
         if (detectado)
         {
             Run();

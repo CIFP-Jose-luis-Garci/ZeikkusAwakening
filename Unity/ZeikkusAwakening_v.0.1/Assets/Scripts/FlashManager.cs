@@ -25,13 +25,13 @@ public class FlashManager : MonoBehaviour
 
     IEnumerator Animate()
     {
-        background.CrossFadeAlpha(1,0.5f,true);
+        background.CrossFadeAlpha(1,0.3f,true);
         yield return new WaitForSeconds(0.2f);
-        text.CrossFadeAlpha(1, 0.3f, true);
-        yield return new WaitForSeconds(1f);
-        text.CrossFadeAlpha(0, 0.3f, true);
+        text.CrossFadeAlpha(1, 0.2f, true);
+        yield return new WaitForSeconds(0.8f);
+        text.CrossFadeAlpha(0, 0.2f, true);
         yield return new WaitForSeconds(0.2f);
-        background.CrossFadeAlpha(0,0.5f,true);
+        background.CrossFadeAlpha(0,0.3f,true);
     }
 
     public void AnimateStart()

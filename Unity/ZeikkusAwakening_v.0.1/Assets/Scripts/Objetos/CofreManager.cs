@@ -39,6 +39,7 @@ public class CofreManager : MonoBehaviour
                 if (GameManager.inPause) return;
                 source.Play();
                 animator.enabled = true;
+                GameManager.inPause = true;
             }
             
     }
