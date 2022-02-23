@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ public class PantallaPausaManager : MonoBehaviour
     public Image flash, blackFade;
     public Button inventario, estado, opciones;
     public Text maru, zeikkuVida, zeikkuMagia;
+    public AudioMixer mixer;
 
     private void Awake()
     {
@@ -27,6 +29,9 @@ public class PantallaPausaManager : MonoBehaviour
         flash.gameObject.SetActive(false);
         inventario.Select();
         UpdateValues();
+        mixer.SetFloat("BGMVolume", GameManager.BGMVolume - 5);
+        mixer.SetFloat("EnemiesSFXVolume", -80);
+        mixer.SetFloat("EnvironmentSFXVolume", -80);
     }
 
     private void OnDisable()
@@ -36,6 +41,10 @@ public class PantallaPausaManager : MonoBehaviour
         blackFade.CrossFadeAlpha(0, 0, true);
         flash.gameObject.SetActive(true);
         flash.CrossFadeAlpha(0, 0, true);
+        
+        mixer.SetFloat("BGMVolume", GameManager.BGMVolume);
+        mixer.SetFloat("EnemiesSFXVolume", 0);
+        mixer.SetFloat("EnvironmentSFXVolume", 0);
     }
 
     private void Start()
