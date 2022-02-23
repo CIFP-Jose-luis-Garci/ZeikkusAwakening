@@ -14,6 +14,7 @@ public class Cutscene1Manager : CutsceneManager
     public SkinnedMeshRenderer face;
     public AudioSource musicSource;
     public AudioMixer mixer;
+    public GameObject tutorial;
 
     // Start is called before the first frame update
     void Start()
@@ -111,5 +112,6 @@ public class Cutscene1Manager : CutsceneManager
         mixer.SetFloat("EnvironmentSFXVolume", 0);
         musicSource.Play();
         blackFade.CrossFadeAlpha(0,1,true);
+        tutorial.SetActive(true);
     }
 }

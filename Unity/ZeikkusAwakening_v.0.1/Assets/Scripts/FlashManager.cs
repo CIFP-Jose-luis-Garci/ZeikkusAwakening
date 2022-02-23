@@ -13,6 +13,10 @@ public class FlashManager : MonoBehaviour
     {
         background = GetComponent<Image>();
         text = GetComponentInChildren<Text>();
+    }
+
+    private void OnEnable()
+    {
         background.CrossFadeAlpha(0, 0, true);
         text.CrossFadeAlpha(0, 0, true);
     }
