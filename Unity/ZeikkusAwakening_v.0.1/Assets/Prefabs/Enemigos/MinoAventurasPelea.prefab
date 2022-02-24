@@ -1234,10 +1234,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2975737719486442313}
   - component: {fileID: 2449994601567105527}
+  - component: {fileID: 8745729624354138987}
   - component: {fileID: 2449994601567105520}
   - component: {fileID: 1732883669597306079}
   - component: {fileID: 428543050690769450}
-  - component: {fileID: 8745729624354138987}
   - component: {fileID: -5326428243457186870}
   m_Layer: 0
   m_Name: MinoAventurasPelea
@@ -1283,6 +1283,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &8745729624354138987
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2449994601567105523}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 1.07
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.51, z: 0}
 --- !u!195 &2449994601567105520
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1294,7 +1308,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.22
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 180
   avoidancePriority: 50
   m_AngularSpeed: 1800
   m_StoppingDistance: 0
@@ -1431,20 +1445,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &8745729624354138987
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2449994601567105523}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 1.07
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.51, z: 0}
 --- !u!114 &-5326428243457186870
 MonoBehaviour:
   m_ObjectHideFlags: 0

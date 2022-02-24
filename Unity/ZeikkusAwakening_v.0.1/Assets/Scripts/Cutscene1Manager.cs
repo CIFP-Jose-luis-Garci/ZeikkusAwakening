@@ -9,6 +9,7 @@ public class Cutscene1Manager : CutsceneManager
 {
     private AnimatorManager animatorManager;
     private InputManager inputManager;
+    private bool gotSword;
     public Image blackFade;
     public Material faceEyesOpen;
     public SkinnedMeshRenderer face;
@@ -55,9 +56,11 @@ public class Cutscene1Manager : CutsceneManager
                 break;
             case 13:
                 StartCoroutine(GetSwordAndShow());
+                gotSword = true;
                 break;
             case 16:
                 inputManager.WinBattle();
+                gotSword = false;
                 break;
             case 17:
                 StartCoroutine(FadeToBlack());
@@ -71,6 +74,8 @@ public class Cutscene1Manager : CutsceneManager
     {
         if (endingCutscene) return;
         endingCutscene = true;
+        if (gotSword)
+            inputManager.WinBattle();
         Material[] materials = face.materials;
         materials[1] = faceEyesOpen;
         face.materials = materials;
