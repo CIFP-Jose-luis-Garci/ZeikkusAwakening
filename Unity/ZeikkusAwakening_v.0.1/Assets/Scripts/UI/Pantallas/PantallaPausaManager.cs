@@ -39,8 +39,6 @@ public class PantallaPausaManager : MonoBehaviour
         GameManager.inPause = false;
         blackFade.gameObject.SetActive(true);
         blackFade.CrossFadeAlpha(0, 0, true);
-        flash.gameObject.SetActive(true);
-        flash.CrossFadeAlpha(0, 0, true);
         
         mixer.SetFloat("BGMVolume", GameManager.BGMVolume);
         mixer.SetFloat("EnemiesSFXVolume", 0);

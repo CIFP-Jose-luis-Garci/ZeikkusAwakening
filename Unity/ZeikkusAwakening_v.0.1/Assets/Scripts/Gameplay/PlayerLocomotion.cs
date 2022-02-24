@@ -40,7 +40,7 @@ public class PlayerLocomotion : MonoBehaviour
     public int[] magicSlots;
     private Transform lookInBetween;
     public CameraManager cameraManager;
-    private bool blocking;
+    public bool blocking;
     private Stats stats;
     public Slider lifebar;
     public GameObject damage;
@@ -216,6 +216,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleBlock()
     {
+        if (GameManager.win) return;
         blocking = animatorManager.animator.GetBool("blocking");
         if (!blocking)
         {
@@ -243,9 +244,9 @@ public class PlayerLocomotion : MonoBehaviour
         else
             resultado = GameManager.CalcSpecDamage(playerStats, stats, power, forceCrit);
         if (blocking)
-            stats.hp -= (int) (resultado * 0.2f);
-        else
-            stats.hp -= resultado;
+            resultado -= (int) (resultado * 0.5f);
+        
+        stats.hp -= resultado;
         lifebar.value = stats.hp;
         GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
         instantiated.GetComponent<TextMesh>().text = resultado.ToString();

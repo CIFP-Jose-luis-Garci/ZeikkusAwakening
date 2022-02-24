@@ -263,7 +263,10 @@ public class InputManager : MonoBehaviour
         else
         {
             if (!gameManager.inWorld)
+            {
                 animatorManager.animator.SetBool("blocking", false);
+                playerLocomotion.blocking = false;
+            }
             else
                 freeLook.m_RecenterToTargetHeading.m_enabled = false;
         }

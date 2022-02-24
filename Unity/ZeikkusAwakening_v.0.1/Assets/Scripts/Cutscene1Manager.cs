@@ -69,6 +69,8 @@ public class Cutscene1Manager : CutsceneManager
 
     public override void EndCutScene()
     {
+        if (endingCutscene) return;
+        endingCutscene = true;
         Material[] materials = face.materials;
         materials[1] = faceEyesOpen;
         face.materials = materials;

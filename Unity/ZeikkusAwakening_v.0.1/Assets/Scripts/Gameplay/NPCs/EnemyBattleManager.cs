@@ -135,6 +135,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void CheckAlive()
     {
+        if (GameManager.win) return;
         bool alive = false;
         foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
         {

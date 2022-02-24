@@ -7,6 +7,7 @@ public abstract class CutsceneManager : MonoBehaviour
     public GameObject[] cameras;
     public DialogueManager dialogue;
     public int dialogueCount;
+    public bool endingCutscene;
 
     public abstract void DoStuff();
 
