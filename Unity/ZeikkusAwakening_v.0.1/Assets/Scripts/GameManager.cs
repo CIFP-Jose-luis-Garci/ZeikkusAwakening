@@ -100,14 +100,15 @@ public class GameManager : MonoBehaviour
         resultado *= random;
         resultado *= 0.01f;
         resultado *= 5;
-
         if (forceCrit)
             resultado *= 2;
         else
         {
             float chance = Random.Range(0f, 1f);
             if (chance < 0.1f)
+            {
                 resultado *= 2;
+            }
         }
         
         return (int) resultado;

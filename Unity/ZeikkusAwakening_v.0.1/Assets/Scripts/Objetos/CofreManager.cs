@@ -10,6 +10,7 @@ public class CofreManager : MonoBehaviour
     public Image openChest;
     public GameObject dialogue;
     private InputManager inputManager;
+    private PlayerManager playerManager;
     private Animator animator;
     private AudioSource source;
     private bool opened;
@@ -18,6 +19,7 @@ public class CofreManager : MonoBehaviour
     private void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
+        playerManager = inputManager.GetComponent<PlayerManager>();
         animator = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
         openChest.CrossFadeAlpha(0, 0f, false);
@@ -36,14 +38,14 @@ public class CofreManager : MonoBehaviour
         if (collisionInfo.gameObject.CompareTag("Player"))
             if (containedItem != null && inputManager.xInput)
             {
-                if (GameManager.inPause) return;
+                if (GameManager.inPause || playerManager.isInteracting) return;
                 source.Play();
                 animator.enabled = true;
                 GameManager.inPause = true;
             }
             
     }
-
+    
     public void OpenEvent()
     {
         if (opened) return;

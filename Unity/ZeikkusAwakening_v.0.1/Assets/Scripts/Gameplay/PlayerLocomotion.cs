@@ -51,7 +51,7 @@ public class PlayerLocomotion : MonoBehaviour
     public GameObject damage;
     public GameObject resultScreen;
 
-    
+
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager>();
@@ -118,9 +118,9 @@ public class PlayerLocomotion : MonoBehaviour
             if (!playerManager.isInteracting)
                 animatorManager.PlayTargetAnimation("Falling", true);
 
-        if (Physics.SphereCast(raycastOrigin, 0.2f, -Vector3.up, out hit, 0.6f, groundLayer))
+        if (Physics.SphereCast(raycastOrigin, 0.2f, -Vector3.up, out hit, 1f, groundLayer))
         {
-            if (!isGrounded)
+            if (!isGrounded )
             {
                 Vector3 fix = rb.velocity;
                 fix.x = 0;
@@ -128,7 +128,6 @@ public class PlayerLocomotion : MonoBehaviour
                 rb.velocity = fix;
                 animatorManager.PlayTargetAnimation("Land", true);
             }
-            
             isGrounded = true;
         }
         else
@@ -137,7 +136,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleJumping()
     {
-        if (isGrounded)
+        if (isGrounded && !playerManager.isInteracting)
         {
             animatorManager.PlayTargetAnimation("Jump", true);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
