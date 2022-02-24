@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
     
     [Header("Transiciones")]
     public bool inWorld;
-    public static bool win;
+    public static bool transitioning;
+    public HUDManager hudManager;
     public PantallaPausaManager pause;
     public FlashManager flash;
     public EscenaBatallaManager escenaBatalla;
@@ -189,23 +190,17 @@ public class GameManager : MonoBehaviour
             textoCarga.text = "¡Emboscada!";
             textoCarga.color = new Color(23/255f, 209/255f, 79/255f);
         }
-        HUDManager hudManager = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
-        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, true));
-        yield return new WaitForSeconds(1);
-        musicSource.Stop();
+        yield return CrossFadeMusic(hudManager.mixer, 1, true);
         if (boss)
-            musicSource.clip = bossMusic;
+            ChangeMusic(bossMusic);
         else
-            musicSource.clip = battleMusic;
-        musicSource.Play();
-        musicSource.loop = true;
+            ChangeMusic(battleMusic);
         escenaBatalla.enemyToSpawn = spawn;
         escenaBatalla.enemyAdvantage = enemyAdvantage;
         escenaBatalla.gameObject.SetActive(true);
         personajes[0].GetComponent<InputManager>().StartBattle();
-        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
-        yield return new WaitForSeconds(1);
+        yield return CrossFadeMusic(hudManager.mixer, 1, false);
         foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
         {
             enemy.battleStarted = true;
@@ -216,20 +211,23 @@ public class GameManager : MonoBehaviour
     {
         // press a, goto transition fade in black
         blackFade.CrossFadeAlpha(1, 1, true);
-        HUDManager hudManager = FindObjectOfType<Canvas>().GetComponent<HUDManager>();
-        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, true));
-        yield return new WaitForSeconds(1);
+        yield return CrossFadeMusic(hudManager.mixer, 1, true);
         cmfl.m_XAxis.Value = cameraXAngle;
+        ChangeMusic(worldMusic);
         escenaBatallaManager.ResetPlayer();
-        AudioSource musicSource = hudManager.GetComponent<AudioSource>();
-        musicSource.Stop();
-        musicSource.clip = worldMusic;
-        musicSource.Play();
-        StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
-        yield return new WaitForSeconds(1);
+        yield return CrossFadeMusic(hudManager.mixer, 1, false);
         escenaBatallaManager.gameObject.SetActive(false);
         inPause = false;
+        transitioning = false;
         blackFade.CrossFadeAlpha(0, 1, true);
+    }
+
+    private void ChangeMusic(AudioClip clip)
+    {
+        AudioSource musicSource = hudManager.GetComponent<AudioSource>();
+        musicSource.Stop();
+        musicSource.clip = clip;
+        musicSource.Play();
     }
     
     public static void SpawnTutorial(GameObject container, GameObject tutorialToSpawn, GameObject caller)

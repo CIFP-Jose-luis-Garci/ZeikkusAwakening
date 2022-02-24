@@ -201,7 +201,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleEvade()
     {
-        if (GameManager.win) return;
+        if (GameManager.transitioning) return;
         if (!invincible)
         {
             rotationSpeed = 1000;
@@ -221,7 +221,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleBlock()
     {
-        if (GameManager.win) return;
+        if (GameManager.transitioning) return;
         blocking = animatorManager.animator.GetBool("blocking");
         if (!blocking)
         {
@@ -291,7 +291,6 @@ public class PlayerLocomotion : MonoBehaviour
     {
         // win battle anim
         inputManager.WinBattle();
-        GameManager.win = true;
         AudioSource source = lifebar.transform.root.GetComponent<AudioSource>();
         source.Stop();
         source.clip = gameManager.fanfare;
@@ -299,9 +298,8 @@ public class PlayerLocomotion : MonoBehaviour
         source.loop = false;
         yield return new WaitForSeconds(1.2f);
         // result screen
-        GameManager.inPause = true;
         cameraManager.ChangeTarget(transform);
-        cameraManager.ResetRaidus();
+        cameraManager.ResetRadius();
         resultScreen.SetActive(true);
     }
 }

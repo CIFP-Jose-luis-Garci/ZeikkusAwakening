@@ -120,7 +120,7 @@ public class InputManager : MonoBehaviour
         animatorManager.UpdateAnimatorValues(0, moveAmount);
     }
 
-    private void HandleAInput()
+    internal void HandleAInput()
     {
         if (aInput)
         {
@@ -150,7 +150,10 @@ public class InputManager : MonoBehaviour
 
             if (gameManager.inWorld)
             {
-                if (results.gameObject.activeSelf && !results.fade) results.fade = true;
+                if (GameManager.transitioning)
+                {
+                    results.Animate();
+                }
                 else
                 {
                     if (GameManager.inPause) return;
@@ -159,6 +162,7 @@ public class InputManager : MonoBehaviour
             }
             else
             {
+                if (GameManager.transitioning) return;
                 if (GameManager.inPause) return;
                 showedButtonTutorial = ShowTutorial(buttonTutorial, showedButtonTutorial);
                 playerLocomotion.HandleMagic(0);
@@ -326,12 +330,14 @@ public class InputManager : MonoBehaviour
     public void StartBattle()
     {
         animatorManager.PlayTargetAnimation("DrawSword", true, false, 0.05f);
+        animatorManager.ChangeWorld(false);
         playerLocomotion.ResetRigidbody();
     }
 
     public void WinBattle()
     {
         animatorManager.PlayTargetAnimation("WinBattle", true);
+        animatorManager.ChangeWorld(true);
         playerLocomotion.ResetRigidbody();
     }
 }

@@ -24,7 +24,9 @@ public class EnemyBattleManager : MonoBehaviour
     private float waitTime;
     private float hit1Length;
     private float hit2Length;
+    private float dieLength;
     private float randomAttack;
+    public float time;
 
     public AudioClip[] stepSounds;
     public AudioClip[] crySounds;
@@ -47,6 +49,13 @@ public class EnemyBattleManager : MonoBehaviour
     {
         if (GameManager.inPause || !stats.alive || !battleStarted)
         {
+            if (!stats.alive)
+            {
+                time += Time.deltaTime;
+                if (time > dieLength)
+                    CheckAlive();
+                return;
+            }
             animator.SetBool("alcance", false);
             isRunning = false;
             waitTime = 0;
@@ -130,32 +139,31 @@ public class EnemyBattleManager : MonoBehaviour
             animator.applyRootMotion = true;
             animator.SetTrigger("muerte");
             ImTarget(false);
-            Destroy(gameObject, 2f);
         }
-    }
-
-    private void OnDestroy()
-    {
-        CheckAlive();
     }
 
     private void CheckAlive()
     {
-        if (GameManager.win) return;
-        bool alive = false;
-        foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
+        if (!GameManager.transitioning)
         {
-            if (enemy.stats.alive)
+            bool anyoneAlive = false;
+            foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
             {
-                alive = true;
-            }
+                if (enemy.stats.alive)
+                {
+                    anyoneAlive = true;
+                }
                 
-        }
+            }
 
-        if (!alive)
-        {
-            player.GetComponent<PlayerLocomotion>().HandleWinBattle();
+            if (!anyoneAlive)
+            {
+                GameManager.transitioning = true;
+                GameManager.inPause = true;
+                player.GetComponent<PlayerLocomotion>().HandleWinBattle();
+            } 
         }
+        Destroy(gameObject);
     }
 
     public void StepSound()
@@ -190,6 +198,9 @@ public class EnemyBattleManager : MonoBehaviour
                     break;
                 case "Attack2":
                     hit2Length = clip.length;
+                    break;
+                case "Die":
+                    dieLength = clip.length;
                     break;
             }
         }

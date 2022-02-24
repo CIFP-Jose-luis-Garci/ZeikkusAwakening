@@ -56,7 +56,7 @@ public class CameraManager : MonoBehaviour
         cmfl.m_LookAt = newTarget;
     }
 
-    public void ResetRaidus()
+    public void ResetRadius()
     {
         orbit.m_Radius = 3.89f;
     }

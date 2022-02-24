@@ -11,7 +11,7 @@ public class PantallaResultadosManager : MonoBehaviour
     private EscenaBatallaManager escenaBatallaManager;
     private Stats[] enemies;
     private GameManager gameManager;
-    public bool fade;
+    public bool animated;
     public Image blackFade;
     
     // Start is called before the first frame update
@@ -22,20 +22,16 @@ public class PantallaResultadosManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         exp.text = GameManager.CalcExp(enemies);
         maru.text = GameManager.CalcMaru(enemies);
+        animated = false;
         danoTotal.text = escenaBatallaManager.danoTotal.ToString();
         tiempoBatalla.text = escenaBatallaManager.TiempoBatalla();
     }
 
-    private void Update()
+    public void Animate()
     {
-        if (!fade) return;
-        if (fade)
-        {
-            
-            GameManager.win = false;
-            fade = false;
-            gameManager.ToFade(blackFade, escenaBatallaManager);
-            gameObject.SetActive(false);
-        }
+        if (animated) return;
+        animated = true;
+        gameManager.ToFade(blackFade, escenaBatallaManager);
+        gameObject.SetActive(false);
     }
 }

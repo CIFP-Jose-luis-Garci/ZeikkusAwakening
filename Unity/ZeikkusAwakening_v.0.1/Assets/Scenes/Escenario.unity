@@ -1991,6 +1991,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &253622158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 583242531, guid: 4b214a73477046d4a841619428783ded, type: 3}
+  m_PrefabInstance: {fileID: 2037331915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc9301ac0f7b8844bfc78787de8362a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &289829995 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1443245216424910135, guid: 6687ac7a2b7179b438c99612fff999eb, type: 3}
@@ -10738,6 +10749,10 @@ PrefabInstance:
       propertyPath: pause
       value: 
       objectReference: {fileID: 1578825743}
+    - target: {fileID: 8258461700018357762, guid: 7ce8c0cdb09b4d441965dd09e9e9b573, type: 3}
+      propertyPath: hudManager
+      value: 
+      objectReference: {fileID: 253622158}
     - target: {fileID: 8258461700018357762, guid: 7ce8c0cdb09b4d441965dd09e9e9b573, type: 3}
       propertyPath: escenaBatalla
       value: 

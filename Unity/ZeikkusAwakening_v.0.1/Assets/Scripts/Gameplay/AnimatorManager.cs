@@ -78,6 +78,12 @@ public class AnimatorManager : MonoBehaviour
     {
         return animator.GetCurrentAnimatorClipInfo(1).Length;
     }
+
+    public void ChangeWorld(bool value)
+    {
+        gameManager.inWorld = value;
+        animator.SetBool("inWorld", value);
+    }
     
     public void Step(AnimationEvent animationEvent)
     {
@@ -135,20 +141,10 @@ public class AnimatorManager : MonoBehaviour
         Instantiate(disappearParticles, zagranPos.position, zagranPos.rotation).GetComponent<ParticleSystem>().Play();
     }
 
-    public void DrawSwordChangeAnimator()
-    {
-        zagrant.SetActive(true);
-        source.PlayOneShot(swordSounds[5]);
-        gameManager.inWorld = false;
-        animator.SetBool("inWorld", gameManager.inWorld);
-    }
-
     public void HideSword()
     {
         zagrant.SetActive(false);
         source.PlayOneShot(swordSounds[6]);
-        gameManager.inWorld = true;
-        animator.SetBool("inWorld", gameManager.inWorld);
     }
 
     public void DrawSword()

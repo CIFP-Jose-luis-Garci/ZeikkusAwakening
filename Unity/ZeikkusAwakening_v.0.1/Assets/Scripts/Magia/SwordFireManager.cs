@@ -15,7 +15,7 @@ public class SwordFireManager : Magic
         animatorManager = transform.parent.GetComponent<AnimatorManager>();
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager.inWorld)
-            animatorManager.PlayTargetAnimation("magicSelected firecast", true);
+            animatorManager.PlayTargetAnimation("magicSelected firecast", true, true);
         else
             animatorManager.PlayTargetAnimation("magic firecast", true);
     }
