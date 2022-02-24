@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     public AudioSource voice;
     public AudioClip[] voiceOvers;
     public Text dialogueText, dialogueName;
+    public GameObject aButton;
     private Coroutine coroutine;
     private string currentPhrase;
     private void OnEnable()
@@ -28,10 +29,11 @@ public class DialogueManager : MonoBehaviour
                 StopCoroutine(coroutine);
                 dialogueText.text = currentPhrase;
                 showingPhrase = false;
+                aButton.SetActive(true);
                 return false;
             }
         }
-
+        aButton.SetActive(false);
         voice.clip = voiceOvers[GameManager.currentDialogue];
         voice.Play();
         string dialogue = DialogueLookupTable.DialogueLookup(GameManager.currentDialogue);
@@ -56,6 +58,7 @@ public class DialogueManager : MonoBehaviour
         }
         dialogueText.text = phrase;
         showingPhrase = false;
+        aButton.SetActive(true);
         // mostrar flecha de seguir diálogo
     }
 }
