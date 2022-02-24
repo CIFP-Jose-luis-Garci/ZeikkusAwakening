@@ -156,9 +156,9 @@ public class AnimatorManager : MonoBehaviour
     public void SpawnFire(AnimationEvent animationEvent)
     {
         zagrant.GetComponent<ZagrantController>().onFire = true;
-        GameObject oldFire = zagrant.GetComponentInChildren<SwordFireManager>().gameObject;
+        DestroyParticle oldFire = zagrant.GetComponentInChildren<DestroyParticle>();
         if (oldFire)
-            Destroy(oldFire);
+            Destroy(oldFire.gameObject);
         Instantiate(animationEvent.objectReferenceParameter, zagrant.transform.position, zagrant.transform.rotation, 
             zagrant.transform);
     }

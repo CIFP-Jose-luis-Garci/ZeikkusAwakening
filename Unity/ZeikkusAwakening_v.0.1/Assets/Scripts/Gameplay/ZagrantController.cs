@@ -21,12 +21,6 @@ public class ZagrantController : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    private void OnDisable()
-    {
-        Debug.Log("me desactivan ayuda");
-        Debug.Log(Environment.StackTrace);
-    }
-
     private void Update()
     {
         isAttacking = animator.GetBool("isAttacking");
