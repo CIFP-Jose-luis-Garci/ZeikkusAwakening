@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerLocomotion : MonoBehaviour
 {
@@ -19,13 +20,17 @@ public class PlayerLocomotion : MonoBehaviour
     [NonSerialized] public bool isGrounded;
     public LayerMask groundLayer;
     private float raycastHeightOffset = 0.5f;
-
     [NonSerialized] public bool isJumping;
     private float jumpForce = 50;
 
     [Header("Movement")]
     private float runningSpeed = 7;
     private float rotationSpeed = 15;
+
+    [Header("Textures")] 
+    public SkinnedMeshRenderer body;
+    public Texture faceEyesOpen;
+    public Texture faceEyesClosed;
     
     [Header("Attacking")]
     private string[] animaciones;
@@ -63,6 +68,7 @@ public class PlayerLocomotion : MonoBehaviour
         animaciones[1] = "hard_slash";
         animaciones[2] = "second_slash";
         animaciones[3] = "basic_slash";
+        StartCoroutine(Blink());
     }
 
     public void HandleAllMovement()
@@ -260,6 +266,21 @@ public class PlayerLocomotion : MonoBehaviour
     public void ResetRigidbody()
     {
         rb.velocity = Vector3.zero;
+    }
+
+    private IEnumerator Blink()
+    {
+        yield return new WaitForSeconds(1f);
+        while (true)
+        {
+            if (!inputManager.inDialogue)
+            {
+                body.materials[1].mainTexture = faceEyesClosed;
+                yield return new WaitForSeconds(0.1f);
+                body.materials[1].mainTexture = faceEyesOpen;
+            }
+            yield return new WaitForSeconds(Random.Range(2f, 5f));
+        }
     }
 
     public void HandleWinBattle()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7807223541349642918}
   - component: {fileID: 8128471867228000740}
   m_Layer: 0
-  m_Name: Damage
+  m_Name: EnemyDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5256623395504277334}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 3.75, z: 0}
-  m_LocalScale: {x: -0.05, y: 0.05, z: 5}
+  m_LocalScale: {x: -0.04, y: 0.04, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,7 +95,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 6f5f52a5bd45ca8468a26bf6e3997ee1, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4294046193
 --- !u!114 &8128471867228000740
 MonoBehaviour:
   m_ObjectHideFlags: 0

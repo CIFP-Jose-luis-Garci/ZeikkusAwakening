@@ -11,7 +11,7 @@ public class Cutscene1Manager : CutsceneManager
     private InputManager inputManager;
     private bool gotSword;
     public Image blackFade;
-    public Material faceEyesOpen;
+    public Texture faceEyesOpen;
     public SkinnedMeshRenderer face;
     public AudioSource musicSource;
     public AudioMixer mixer;
@@ -40,8 +40,7 @@ public class Cutscene1Manager : CutsceneManager
             case 1:
                 Debug.Log(dialogueCount);
                 Material[] materials = face.materials;
-                materials[1] = faceEyesOpen;
-                face.materials = materials;
+                materials[1].mainTexture = faceEyesOpen;
                 break;
             case 5:
                 StartCoroutine(ChangeCameraAndGetUp());
@@ -77,7 +76,7 @@ public class Cutscene1Manager : CutsceneManager
         if (gotSword)
             inputManager.WinBattle();
         Material[] materials = face.materials;
-        materials[1] = faceEyesOpen;
+        materials[1].mainTexture = faceEyesOpen;
         face.materials = materials;
         foreach (GameObject camera in cameras)
         {
