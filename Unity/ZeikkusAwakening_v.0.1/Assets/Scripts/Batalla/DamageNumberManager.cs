@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DamageNumberManager : MonoBehaviour
 {
-    public TextMesh texto;
+    private TextMesh texto;
     private Color color;
 
     private float time;
@@ -13,7 +13,7 @@ public class DamageNumberManager : MonoBehaviour
     void Start()
     {
         texto = GetComponent<TextMesh>();
-        color = new Color(255, 255, 255, 0);
+        color = new Color(texto.color.r, texto.color.g, texto.color.b, 0);
         Destroy(gameObject,2f);
     }
 

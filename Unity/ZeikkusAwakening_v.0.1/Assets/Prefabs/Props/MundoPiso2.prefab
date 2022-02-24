@@ -240,7 +240,6 @@ GameObject:
   - component: {fileID: 57573777347235274}
   - component: {fileID: 57573777347235275}
   - component: {fileID: 57573777347235273}
-  - component: {fileID: 5752349568670271630}
   m_Layer: 0
   m_Name: Trigger_PlayCutScene
   m_TagString: Untagged
@@ -287,24 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b53d5cf30f8df459e02d5d563a8837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraChanger: {fileID: 0}
---- !u!114 &5752349568670271630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57573777347235276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db3e4ee46f4b2a845b55130da80d124f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameras: []
-  dialogue: {fileID: 0}
-  dialogueCount: 0
-  endingCutscene: 0
-  triggerCutScene: {fileID: 0}
+  cameraChanger: {fileID: 7963287844637719200}
 --- !u!1 &57573778017473854
 GameObject:
   m_ObjectHideFlags: 0
@@ -6321,14 +6303,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 18f63ff904099034daf971dac5b32582, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
---- !u!4 &5122941086666083830 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
-  m_PrefabInstance: {fileID: 5122941086665955190}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5122941086666052054 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
+  m_PrefabInstance: {fileID: 5122941086665955190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5122941086666083830 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
   m_PrefabInstance: {fileID: 5122941086665955190}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5379557366085860430

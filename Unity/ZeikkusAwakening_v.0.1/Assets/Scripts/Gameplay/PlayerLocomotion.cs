@@ -248,7 +248,8 @@ public class PlayerLocomotion : MonoBehaviour
         
         stats.hp -= resultado;
         lifebar.value = stats.hp;
-        GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
+        Vector3 damageLocation = new Vector3(transform.position.x, 1.75f, transform.position.z);
+        GameObject instantiated = Instantiate(damage, damageLocation, Quaternion.identity, transform);
         instantiated.GetComponent<TextMesh>().text = resultado.ToString();
         if (stats.hp < 0)
         {
