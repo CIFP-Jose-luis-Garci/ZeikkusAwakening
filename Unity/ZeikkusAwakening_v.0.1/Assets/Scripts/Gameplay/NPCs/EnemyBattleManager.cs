@@ -161,7 +161,7 @@ public class EnemyBattleManager : MonoBehaviour
         source.PlayOneShot(crySounds[Mathf.FloorToInt(Random.Range(0, crySounds.Length))]);
     }
 
-    public void AttackSound(AnimationEvent animationEvent)
+    public void AttackSound()
     {
         source.PlayOneShot(attackSounds[Mathf.FloorToInt(Random.Range(0, attackSounds.Length))]);
     }

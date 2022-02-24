@@ -18,6 +18,7 @@ public class EscenaBatallaManager : MonoBehaviour
 
     public int danoTotal;
     public float tiempoDeCombate;
+    public bool enemyAdvantage;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -25,8 +26,13 @@ public class EscenaBatallaManager : MonoBehaviour
         playerTransform = FindObjectOfType<PlayerManager>().transform;
         playerOrigin = playerTransform.position;
         playerTransform.position = playerSpawn.transform.position;
+        int maxSpawns;
+        if (enemyToSpawn.name.StartsWith("Mino"))
+            maxSpawns = 4;
+        else
+            maxSpawns = 5;
         
-        for (int i = 0; i < Random.Range(2, spawners.Length); i++)
+        for (int i = 0; i < Random.Range(2, maxSpawns); i++)
         {
             Transform spawner = spawners[i].transform;
             Instantiate(enemyToSpawn, spawner.position, spawner.rotation, spawner);
@@ -38,8 +44,9 @@ public class EscenaBatallaManager : MonoBehaviour
         {
             int newLevel = Random.Range(teamlevel - 3, teamlevel + 2);
             enemy.SetLevel(newLevel);
-            Debug.Log(newLevel);
-            
+            if (!enemyAdvantage)
+                enemy.hp -= (int) (enemy.hp * 0.2);
+
         }
         danoTotal = 0;
         tiempoDeCombate = 0;

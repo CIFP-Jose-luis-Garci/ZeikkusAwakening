@@ -200,6 +200,7 @@ public class GameManager : MonoBehaviour
         musicSource.Play();
         musicSource.loop = true;
         escenaBatalla.enemyToSpawn = spawn;
+        escenaBatalla.enemyAdvantage = enemyAdvantage;
         escenaBatalla.gameObject.SetActive(true);
         personajes[0].GetComponent<InputManager>().StartBattle();
         StartCoroutine(CrossFadeMusic(hudManager.mixer, 1, false));
