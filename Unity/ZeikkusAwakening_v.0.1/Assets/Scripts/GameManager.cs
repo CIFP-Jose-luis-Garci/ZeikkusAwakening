@@ -166,22 +166,41 @@ public class GameManager : MonoBehaviour
         return level;
     }
 
-    public void ToBattle(GameObject spawn, bool boss, bool enemyAdvantage = false)
+    public void StartBattle(GameObject worldEnemy, bool isBoss, int enemyAdvantage = 1)
+    {
+        inPause = true;
+        winning = false;
+        ToBattle(worldEnemy, isBoss, enemyAdvantage);
+    }
+
+    public void ToBattle(GameObject spawn, bool boss, int enemyAdvantage)
     {
         StartCoroutine(LoadBattle(spawn, boss, enemyAdvantage));
     }
 
-    private IEnumerator LoadBattle(GameObject worldEnemy, bool boss, bool enemyAdvantage)
+    private IEnumerator LoadBattle(GameObject worldEnemy, bool boss, int enemyAdvantage)
     {
         flash.gameObject.SetActive(true);
-        if (enemyAdvantage){ BattleAdvantageText("¡Asalto enemigo!", new Color(190/255f, 17/255f, 17/255f)); }
-        else { BattleAdvantageText("¡Emboscada!", new Color(23/255f, 209/255f, 79/255f)); }
+        switch (enemyAdvantage)
+        {
+            case 0:
+                BattleAdvantageText("¡Asalto enemigo!", new Color(0.75f, 0.066f, 0.066f));
+                break;
+            case 1:
+                BattleAdvantageText("¡Adelante!", Color.white);
+                break;
+            case 2:
+                BattleAdvantageText("¡Emboscada!", new Color(0.09f, 0.82f, 0.31f));
+                break;
+        }
         flash.AnimateStart();
         
         cameraXAngle = cmfl.m_XAxis.Value;
         yield return CrossFadeMusic(hudManager.mixer, 1, true);
-        if (boss){ ChangeMusic(bossMusic); }
-        else { ChangeMusic(battleMusic); }
+        if (boss)
+            ChangeMusic(bossMusic);
+        else 
+            ChangeMusic(battleMusic);
         escenaBatalla.enemyToSpawn = worldEnemy.GetComponent<EnemyManager>().enemyToSpawn;
         escenaBatalla.enemyAdvantage = enemyAdvantage;
         escenaBatalla.gameObject.SetActive(true);

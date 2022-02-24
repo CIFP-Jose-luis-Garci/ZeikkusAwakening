@@ -39,20 +39,12 @@ public class ZagrantController : MonoBehaviour
             }
             if (other.gameObject.CompareTag("EnemigoWorld"))
             {
-                StartBattle(other.gameObject, false);
+                gameManager.StartBattle(other.gameObject, false);
             }
             if (other.gameObject.CompareTag("Boss"))
             {
-                StartBattle(other.gameObject, true);
+                gameManager.StartBattle(other.gameObject, true);
             }
         }
-    }
-
-    private void StartBattle(GameObject worldEnemy, bool isBoss)
-    {
-        GameManager.inPause = true;
-        GameManager.winning = false;
-        animator.SetBool("canStartBattle", false);
-        gameManager.ToBattle(worldEnemy, isBoss);
     }
 }

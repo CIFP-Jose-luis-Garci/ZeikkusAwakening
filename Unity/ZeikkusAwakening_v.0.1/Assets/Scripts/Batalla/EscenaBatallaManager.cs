@@ -18,7 +18,7 @@ public class EscenaBatallaManager : MonoBehaviour
 
     public int danoTotal;
     public float tiempoDeCombate;
-    public bool enemyAdvantage;
+    public int enemyAdvantage;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -44,8 +44,16 @@ public class EscenaBatallaManager : MonoBehaviour
         {
             int newLevel = Random.Range(teamlevel - 3, teamlevel + 2);
             enemy.SetLevel(newLevel);
-            if (!enemyAdvantage)
-                enemy.hp -= (int) (enemy.hp * 0.2);
+            switch (enemyAdvantage)
+            {
+                case 0:
+                    Stats playerStats = playerTransform.GetComponent<Stats>();
+                    playerStats.hp -= (int) (playerStats.hp * 0.05);
+                    break;
+                case 2:
+                    enemy.hp -= (int) (enemy.hp * 0.2);
+                    break;
+            }
 
         }
         danoTotal = 0;
