@@ -187,6 +187,7 @@ public class ListaItemsManager : MonoBehaviour
         foreach (GameObject item in items)
         {
             item.GetComponentInChildren<Text>().text = "";
+            item.GetComponent<ItemSlotManager>().item = null;
         }
     }
 
