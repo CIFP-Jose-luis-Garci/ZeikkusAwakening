@@ -118,13 +118,13 @@ public class EnemyBattleManager : MonoBehaviour
         FindObjectOfType<EscenaBatallaManager>().danoTotal += resultado;
         GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
         instantiated.GetComponent<TextMesh>().text = resultado.ToString();
-        if (stats.hp < 0)
+        if (stats.hp < 0 && stats.alive)
         {
             stats.alive = false;
             isAttacking = false;
             animator.applyRootMotion = true;
             animator.SetTrigger("muerte");
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 2f);
         }
     }
 

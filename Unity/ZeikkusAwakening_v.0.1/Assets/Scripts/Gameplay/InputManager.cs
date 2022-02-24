@@ -283,13 +283,14 @@ public class InputManager : MonoBehaviour
 
     private void HandleRightTrigger()
     {
-        if (inDialogue || GameManager.inPause) return;
         if (rTrigger)
         {
             rTrigger = false;
             TutorialManager tutorialManager = container.GetComponentInChildren<TutorialManager>();
             if (tutorialManager)
                 tutorialManager.ReverseAndDestroy();
+            
+            if (inDialogue || GameManager.inPause) return;
         }
     }
     
