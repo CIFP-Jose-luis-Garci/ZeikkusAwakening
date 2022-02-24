@@ -32,6 +32,15 @@ public class EscenaBatallaManager : MonoBehaviour
             Instantiate(enemyToSpawn, spawner.position, spawner.rotation, spawner);
         }
         enemies = GetComponentsInChildren<Stats>();
+
+        int teamlevel = GameManager.GetTeamLevel();
+        foreach (Stats enemy in enemies)
+        {
+            int newLevel = Random.Range(teamlevel - 3, teamlevel + 2);
+            enemy.SetLevel(newLevel);
+            Debug.Log(newLevel);
+            
+        }
         danoTotal = 0;
         tiempoDeCombate = 0;
     }

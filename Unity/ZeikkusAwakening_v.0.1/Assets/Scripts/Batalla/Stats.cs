@@ -51,4 +51,13 @@ public class Stats : MonoBehaviour
             strength += Random.Range(1, 3);
         }
     }
+
+    public void SetLevel(int level)
+    {
+        if (level < 1)
+        {
+            level = 1;
+        }
+        this.level = level;
+    }
 }
