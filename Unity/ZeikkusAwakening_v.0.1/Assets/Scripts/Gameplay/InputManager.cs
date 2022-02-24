@@ -277,8 +277,8 @@ public class InputManager : MonoBehaviour
         if (lTrigger)
         {
             showedLockOnTutorial = ShowTutorial(lockOnTutorial, showedLockOnTutorial);
-            playerLocomotion.HandleCameraChange(lTrigger);
         }
+        playerLocomotion.HandleCameraChange(lTrigger);
     }
 
     private void HandleRightTrigger()

@@ -147,7 +147,7 @@ public class PlayerLocomotion : MonoBehaviour
             LookAtEnemy();
             animatorManager.PlayTargetAnimation(animaciones[stats.turnPoints], true, true);
             if (coroutine != null) StopCoroutine(coroutine);
-            coroutine = StartCoroutine(ReloadTurnPoints(animatorManager.GetAnimationLength() * 2));
+            coroutine = StartCoroutine(ReloadTurnPoints(animatorManager.GetAnimationLength() * 3));
         }
     }
 
@@ -196,6 +196,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleEvade()
     {
+        if (GameManager.win) return;
         if (!invincible)
         {
             rotationSpeed = 1000;
@@ -268,6 +269,7 @@ public class PlayerLocomotion : MonoBehaviour
     {
         // win battle anim
         inputManager.WinBattle();
+        GameManager.win = true;
         AudioSource source = lifebar.transform.root.GetComponent<AudioSource>();
         source.Stop();
         source.clip = gameManager.fanfare;

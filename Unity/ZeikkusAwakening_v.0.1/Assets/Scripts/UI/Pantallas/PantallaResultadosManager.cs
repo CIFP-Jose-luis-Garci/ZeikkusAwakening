@@ -31,6 +31,8 @@ public class PantallaResultadosManager : MonoBehaviour
         if (!fade) return;
         if (fade)
         {
+            
+            GameManager.win = false;
             fade = false;
             gameManager.ToFade(blackFade, escenaBatallaManager);
             gameObject.SetActive(false);

@@ -9,10 +9,13 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Dialogos")]
     public static int currentEvent = 0;
     public static int currentDialogue = 0;
     public static string talking;
     private static int nextScene = 0;
+    
+    [Header("Configuración")]
     public static float BGMVolume = -10;
     public static float SFXVolume = -10;
     public static bool invertCameraX = true;
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Transiciones")]
     public bool inWorld;
+    public static bool win;
     public PantallaPausaManager pause;
     public FlashManager flash;
     public EscenaBatallaManager escenaBatalla;
