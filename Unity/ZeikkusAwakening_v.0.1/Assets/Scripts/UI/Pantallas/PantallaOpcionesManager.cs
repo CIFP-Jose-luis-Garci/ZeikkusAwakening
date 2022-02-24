@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PantallaOpcionesManager : MonoBehaviour
 {
-    public Slider bgmSlider, sfxSlider, cameraSensitivityXSlider, cameraSensitivityYSlider;
+    public Slider bgmSlider, sfxSlider, voiceSlider, cameraSensitivityXSlider, cameraSensitivityYSlider;
     public Button exit;
     public Toggle invertCameraX, invertCameraY;
     public AudioMixer mixer;
@@ -18,16 +18,19 @@ public class PantallaOpcionesManager : MonoBehaviour
     {
         inputManager = FindObjectOfType<InputManager>();
         bgmSlider.Select();
+        
+        bgmSlider.value = GameManager.BGMVolume;
+        sfxSlider.value = GameManager.SFXVolume;
+        voiceSlider.value = GameManager.voiceVolume;
         bgmSlider.onValueChanged.AddListener((value) => SetSound("BGMVolume", value));
         sfxSlider.onValueChanged.AddListener( (value) => SetSound("SFXVolume", value));
+        voiceSlider.onValueChanged.AddListener( (value) => SetSound("VoiceVolume", value));
         exit.onClick.AddListener(() =>
         {
             gameObject.SetActive(false);
             pantallaPausa.SetActive(true);
             pantallaPausa.GetComponentInChildren<Button>().Select();
         });
-        bgmSlider.value = GameManager.BGMVolume;
-        sfxSlider.value = GameManager.SFXVolume;
         
         // Camera
         invertCameraX.isOn = GameManager.invertCameraX;
@@ -47,8 +50,9 @@ public class PantallaOpcionesManager : MonoBehaviour
 
     private void OnDisable()
     {
-        mixer.GetFloat("BGMVolume", out GameManager.BGMVolume);
-        mixer.GetFloat("SFXVolume", out GameManager.SFXVolume);
+        GameManager.BGMVolume = bgmSlider.value;
+        GameManager.SFXVolume = sfxSlider.value;
+        GameManager.voiceVolume = voiceSlider.value;
         CameraManager cameraManager = FindObjectOfType<CameraManager>();
         cameraManager.ChangeCameraInvert();
         cameraManager.ChangeCameraSensitivity();

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [Header("Configuración")]
     public static float BGMVolume = -10;
     public static float SFXVolume = -10;
+    public static float voiceVolume = -5;
     public static bool invertCameraX = true;
     public static bool invertCameraY = false;
     public static int cameraSensitivityX = 5;
