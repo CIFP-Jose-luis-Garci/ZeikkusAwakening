@@ -256,6 +256,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""87c68b2d-d8c8-4e68-b7f1-f9011c6ccc31"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""L Trigger"",
                     ""type"": ""Button"",
                     ""id"": ""ad9dee02-df15-45c2-a5a9-e47762df15a3"",
@@ -401,17 +409,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b3c3aa11-8372-4979-bbc6-7e54b06efa62"",
-                    ""path"": ""<Gamepad>/select"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Start"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1874fba2-18e0-4322-9c8f-3d2a85613c1f"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
@@ -429,6 +426,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""R Trigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44f3e00b-90c2-4a68-a11c-8a8e40ebd525"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -449,6 +457,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_PlayerActions_Y = m_PlayerActions.FindAction("Y", throwIfNotFound: true);
         m_PlayerActions_X = m_PlayerActions.FindAction("X", throwIfNotFound: true);
         m_PlayerActions_Start = m_PlayerActions.FindAction("Start", throwIfNotFound: true);
+        m_PlayerActions_Select = m_PlayerActions.FindAction("Select", throwIfNotFound: true);
         m_PlayerActions_LTrigger = m_PlayerActions.FindAction("L Trigger", throwIfNotFound: true);
         m_PlayerActions_RTrigger = m_PlayerActions.FindAction("R Trigger", throwIfNotFound: true);
         m_PlayerActions_RBump = m_PlayerActions.FindAction("R Bump", throwIfNotFound: true);
@@ -549,6 +558,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerActions_Y;
     private readonly InputAction m_PlayerActions_X;
     private readonly InputAction m_PlayerActions_Start;
+    private readonly InputAction m_PlayerActions_Select;
     private readonly InputAction m_PlayerActions_LTrigger;
     private readonly InputAction m_PlayerActions_RTrigger;
     private readonly InputAction m_PlayerActions_RBump;
@@ -563,6 +573,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Y => m_Wrapper.m_PlayerActions_Y;
         public InputAction @X => m_Wrapper.m_PlayerActions_X;
         public InputAction @Start => m_Wrapper.m_PlayerActions_Start;
+        public InputAction @Select => m_Wrapper.m_PlayerActions_Select;
         public InputAction @LTrigger => m_Wrapper.m_PlayerActions_LTrigger;
         public InputAction @RTrigger => m_Wrapper.m_PlayerActions_RTrigger;
         public InputAction @RBump => m_Wrapper.m_PlayerActions_RBump;
@@ -594,6 +605,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Start.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStart;
                 @Start.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStart;
                 @Start.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStart;
+                @Select.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSelect;
                 @LTrigger.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
                 @LTrigger.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
                 @LTrigger.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLTrigger;
@@ -628,6 +642,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Start.started += instance.OnStart;
                 @Start.performed += instance.OnStart;
                 @Start.canceled += instance.OnStart;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
                 @LTrigger.started += instance.OnLTrigger;
                 @LTrigger.performed += instance.OnLTrigger;
                 @LTrigger.canceled += instance.OnLTrigger;
@@ -657,6 +674,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnY(InputAction.CallbackContext context);
         void OnX(InputAction.CallbackContext context);
         void OnStart(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
         void OnLTrigger(InputAction.CallbackContext context);
         void OnRTrigger(InputAction.CallbackContext context);
         void OnRBump(InputAction.CallbackContext context);

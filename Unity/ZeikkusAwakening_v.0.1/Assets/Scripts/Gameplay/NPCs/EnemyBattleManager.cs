@@ -124,6 +124,7 @@ public class EnemyBattleManager : MonoBehaviour
             isAttacking = false;
             animator.applyRootMotion = true;
             animator.SetTrigger("muerte");
+            ImTarget(false);
             Destroy(gameObject, 2f);
         }
     }

@@ -243,6 +243,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "87c68b2d-d8c8-4e68-b7f1-f9011c6ccc31",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "L Trigger",
                     "type": "Button",
                     "id": "ad9dee02-df15-45c2-a5a9-e47762df15a3",
@@ -388,17 +396,6 @@
                 },
                 {
                     "name": "",
-                    "id": "b3c3aa11-8372-4979-bbc6-7e54b06efa62",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Start",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1874fba2-18e0-4322-9c8f-3d2a85613c1f",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
@@ -416,6 +413,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "R Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44f3e00b-90c2-4a68-a11c-8a8e40ebd525",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

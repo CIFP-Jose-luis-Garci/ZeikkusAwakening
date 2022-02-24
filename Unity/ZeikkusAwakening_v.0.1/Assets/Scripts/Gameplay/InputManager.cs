@@ -29,6 +29,7 @@ public class InputManager : MonoBehaviour
     [NonSerialized] public bool yInput;
     [NonSerialized] public bool xInput;
     [NonSerialized] public bool start;
+    [NonSerialized] public bool select;
     [NonSerialized] public bool lTrigger;
     [NonSerialized] public bool rTrigger;
     [NonSerialized] public bool rBump;
@@ -36,6 +37,7 @@ public class InputManager : MonoBehaviour
 
     public bool inDialogue;
     public CutsceneManager cutsceneManager;
+    public Image minimap;
     public GameObject container, magicTutorial, buttonTutorial, lockOnTutorial, evadeBlockTutorial;
     private bool showedMagicTutorial, showedButtonTutorial, showedLockOnTutorial, showedEvadeBlockTutorial;
 
@@ -64,6 +66,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.X.canceled += i => xInput = false;
             playerControls.PlayerActions.Start.performed += i => start = true;
             playerControls.PlayerActions.Start.canceled += i => start = false;
+            playerControls.PlayerActions.Select.performed += i => select = true;
+            playerControls.PlayerActions.Select.canceled += i => select = false;
             playerControls.PlayerActions.LTrigger.performed += i => lTrigger = true;
             playerControls.PlayerActions.LTrigger.canceled += i => lTrigger = false;
             playerControls.PlayerActions.RTrigger.performed += i => rTrigger = true;
@@ -92,10 +96,11 @@ public class InputManager : MonoBehaviour
         HandleXInput();
         HandleYInput();
         HandleStartInput();
+        HandleSelectInput();
         HandleLeftBump();
         HandleRightBump();
     }
-    
+
     private void HandleMovementInput()
     {
         if (inDialogue) return;
@@ -228,6 +233,16 @@ public class InputManager : MonoBehaviour
                 return;
             }
             gameManager.Pause();
+        }
+    }
+
+    private void HandleSelectInput()
+    {
+        if (select)
+        {
+            select = false;
+            bool activeSelf = minimap.gameObject.activeSelf;
+            minimap.gameObject.SetActive(!activeSelf);
         }
     }
 

@@ -5522,6 +5522,7 @@ MonoBehaviour:
   - {fileID: 449832851}
   dialogue: {fileID: 242596549}
   dialogueCount: 0
+  endingCutscene: 0
   blackFade: {fileID: 1013309805}
   faceEyesOpen: {fileID: 2100000, guid: e683197e272c70440918a0735bd3db2e, type: 2}
   face: {fileID: 1958054160}
@@ -6946,6 +6947,10 @@ PrefabInstance:
       propertyPath: cameraManager
       value: 
       objectReference: {fileID: 1874620797}
+    - target: {fileID: 5234201012602325535, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: minimap
+      value: 
+      objectReference: {fileID: 1465545818}
     - target: {fileID: 5234201012602325535, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: results
       value: 
@@ -8762,6 +8767,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d09551e31bb07c47986e28ed4f63a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1465545818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1996974299649149609, guid: 4b214a73477046d4a841619428783ded, type: 3}
+  m_PrefabInstance: {fileID: 2037331915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1467239291 stripped
@@ -11007,22 +11023,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5075835121002782940, guid: 4b214a73477046d4a841619428783ded, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5075835121135058122, guid: 4b214a73477046d4a841619428783ded, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5075835121135058122, guid: 4b214a73477046d4a841619428783ded, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5075835121198721705, guid: 4b214a73477046d4a841619428783ded, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5075835121198721705, guid: 4b214a73477046d4a841619428783ded, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
