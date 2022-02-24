@@ -22,7 +22,9 @@ public class EnemyBattleManager : MonoBehaviour
     public bool isRunning;
     private bool isAttacking;
     private float waitTime;
-    private float hitLength;
+    private float hit1Length;
+    private float hit2Length;
+    private float randomAttack;
 
     public AudioClip[] stepSounds;
     public AudioClip[] crySounds;
@@ -38,6 +40,7 @@ public class EnemyBattleManager : MonoBehaviour
         lifebar.minValue = 0;
         lifebar.maxValue = stats.maxHP;
         lifebar.value = stats.hp;
+        ClipLength();
     }
 
     private void Update()
@@ -59,22 +62,24 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void Run()
     {
+        float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
         if (isAttacking)
         {
             if (waitTime <= 0)
             {
-                float randomAttack = Random.Range(0f, 1f);
+                randomAttack = Random.Range(0f, 1f);
                 animator.SetFloat("tipoAtaque", randomAttack);
-                animator.SetBool("alcance", true);
-                ClipLength();
+                animator.SetTrigger("alcance");
                 agente.speed = 0;
             }
-            if (waitTime > hitLength)
+            if (waitTime > (randomAttack < 0.5f ? hit2Length : hit1Length))
             {
-                animator.SetBool("alcance", false);
-                isRunning = false;
                 waitTime = 0;
-                isAttacking = false;
+                if (distanceFromPlayer > 1)
+                {
+                    isRunning = false;
+                    isAttacking = false;
+                }
                 return;
             }
             waitTime += Time.deltaTime;
@@ -82,7 +87,6 @@ public class EnemyBattleManager : MonoBehaviour
         }
         else
         {
-            float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
             if (!isRunning)
             { 
                 waitTime = 0;
@@ -102,6 +106,7 @@ public class EnemyBattleManager : MonoBehaviour
     private void Recoil()
     {
         animator.SetTrigger("daño");
+        waitTime = 0;
         recoiled = false;
     }
 
@@ -175,7 +180,19 @@ public class EnemyBattleManager : MonoBehaviour
     
     private void ClipLength()
     {
-        hitLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach(AnimationClip clip in clips)
+        {
+            switch(clip.name)
+            {
+                case "Attack":
+                    hit1Length = clip.length;
+                    break;
+                case "Attack2":
+                    hit2Length = clip.length;
+                    break;
+            }
+        }
     }
 
     public void ImTarget(bool set)
