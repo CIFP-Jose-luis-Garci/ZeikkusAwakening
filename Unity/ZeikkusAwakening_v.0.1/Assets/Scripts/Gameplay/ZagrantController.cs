@@ -21,12 +21,15 @@ public class ZagrantController : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
+    private void OnDisable()
+    {
+        Debug.Log("me desactivan ayuda");
+        Debug.Log(Environment.StackTrace);
+    }
+
     private void Update()
     {
-        if (!gameManager.inWorld)
-            isAttacking = animator.GetBool("isAttacking");
-        else
-            canStartBattle = animator.GetBool("canStartBattle");
+        isAttacking = animator.GetBool("isAttacking");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,31 +43,22 @@ public class ZagrantController : MonoBehaviour
                 enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat("damage"), true, onFire);
                 source.PlayOneShot(source.clip);
             }
-            else
+            if (other.gameObject.CompareTag("EnemigoWorld"))
             {
-                isAttacking = false;
+                StartBattle(other.gameObject, false);
             }
-        }
-        else
-        {
-            if (canStartBattle)
+            if (other.gameObject.CompareTag("Boss"))
             {
-                if (other.gameObject.CompareTag("EnemigoWorld"))
-                {
-                    StartBattle(other.gameObject, false);
-                }
-                if (other.gameObject.CompareTag("Boss"))
-                {
-                    StartBattle(other.gameObject, true);
-                }
+                StartBattle(other.gameObject, true);
             }
         }
     }
 
     private void StartBattle(GameObject worldEnemy, bool isBoss)
     {
+        GameManager.inPause = true;
+        GameManager.winning = false;
         animator.SetBool("canStartBattle", false);
-        Destroy(worldEnemy);
-        gameManager.ToBattle(worldEnemy.GetComponent<EnemyManager>().enemyToSpawn, isBoss);
+        gameManager.ToBattle(worldEnemy, isBoss);
     }
 }

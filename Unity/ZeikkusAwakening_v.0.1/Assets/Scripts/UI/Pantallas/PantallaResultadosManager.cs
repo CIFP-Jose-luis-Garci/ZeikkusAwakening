@@ -31,7 +31,7 @@ public class PantallaResultadosManager : MonoBehaviour
     {
         if (animated) return;
         animated = true;
-        gameManager.ToFade(blackFade, escenaBatallaManager);
+        gameManager.ToFadeBattle(blackFade, escenaBatallaManager);
         gameObject.SetActive(false);
     }
 }

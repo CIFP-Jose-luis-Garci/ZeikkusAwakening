@@ -26,9 +26,10 @@ public class GameManager : MonoBehaviour
     
     [Header("Transiciones")]
     public bool inWorld;
-    public static bool transitioning;
+    public static bool winning;
     public HUDManager hudManager;
     public PantallaPausaManager pause;
+    public GameObject resultScreen;
     public FlashManager flash;
     public EscenaBatallaManager escenaBatalla;
     public CinemachineFreeLook cmfl;
@@ -168,43 +169,56 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(LoadBattle(spawn, boss, enemyAdvantage));
     }
-    
-    public void ToFade(Image blackFade, EscenaBatallaManager escenaBatallaManager)
-    {
-        StartCoroutine(FadeOutBattle(blackFade, escenaBatallaManager));
-    }
 
-    private IEnumerator LoadBattle(GameObject spawn, bool boss, bool enemyAdvantage)
+    private IEnumerator LoadBattle(GameObject worldEnemy, bool boss, bool enemyAdvantage)
     {
         flash.gameObject.SetActive(true);
+        if (enemyAdvantage){ BattleAdvantageText("¡Asalto enemigo!", new Color(190/255f, 17/255f, 17/255f)); }
+        else { BattleAdvantageText("¡Emboscada!", new Color(23/255f, 209/255f, 79/255f)); }
         flash.AnimateStart();
+        
         cameraXAngle = cmfl.m_XAxis.Value;
-        Text textoCarga = flash.GetComponentInChildren<Text>();
-        if (enemyAdvantage)
-        {
-            textoCarga.text = "¡Emboscada enemiga!";
-            textoCarga.color = new Color(190/255f, 17/255f, 17/255f);
-        }
-        else
-        {
-            textoCarga.text = "¡Emboscada!";
-            textoCarga.color = new Color(23/255f, 209/255f, 79/255f);
-        }
-        AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         yield return CrossFadeMusic(hudManager.mixer, 1, true);
-        if (boss)
-            ChangeMusic(bossMusic);
-        else
-            ChangeMusic(battleMusic);
-        escenaBatalla.enemyToSpawn = spawn;
+        if (boss){ ChangeMusic(bossMusic); }
+        else { ChangeMusic(battleMusic); }
+        escenaBatalla.enemyToSpawn = worldEnemy.GetComponent<EnemyManager>().enemyToSpawn;
         escenaBatalla.enemyAdvantage = enemyAdvantage;
         escenaBatalla.gameObject.SetActive(true);
+        Destroy(worldEnemy);
         personajes[0].GetComponent<InputManager>().StartBattle();
         yield return CrossFadeMusic(hudManager.mixer, 1, false);
-        foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
-        {
-            enemy.battleStarted = true;
-        }
+        escenaBatalla.EnemiesStart();
+        inPause = false;
+        winning = false;
+    }
+
+    private void BattleAdvantageText(string text, Color color)
+    {
+        Text textoCarga = flash.GetComponentInChildren<Text>();
+        textoCarga.text = text;
+        textoCarga.color = color;
+    }
+    
+
+    public void ToWinBattle()
+    {
+        StartCoroutine(WinBattle());
+    }
+
+    private IEnumerator WinBattle()
+    {
+        personajes[0].GetComponent<InputManager>().WinBattle();
+        ChangeMusic(fanfare, false);
+        yield return new WaitForSeconds(1.2f);
+        CameraManager cameraManager = cmfl.GetComponent<CameraManager>();
+        cameraManager.ChangeTarget(personajes[0].transform);
+        cameraManager.ResetRadius();
+        resultScreen.SetActive(true);
+    }
+    
+    public void ToFadeBattle(Image blackFade, EscenaBatallaManager escenaBatallaManager)
+    {
+        StartCoroutine(FadeOutBattle(blackFade, escenaBatallaManager));
     }
 
     private IEnumerator FadeOutBattle(Image blackFade, EscenaBatallaManager escenaBatallaManager)
@@ -218,16 +232,17 @@ public class GameManager : MonoBehaviour
         yield return CrossFadeMusic(hudManager.mixer, 1, false);
         escenaBatallaManager.gameObject.SetActive(false);
         inPause = false;
-        transitioning = false;
+        winning = false;
         blackFade.CrossFadeAlpha(0, 1, true);
     }
 
-    private void ChangeMusic(AudioClip clip)
+    private void ChangeMusic(AudioClip clip, bool isLooping = true)
     {
         AudioSource musicSource = hudManager.GetComponent<AudioSource>();
         musicSource.Stop();
         musicSource.clip = clip;
         musicSource.Play();
+        musicSource.loop = isLooping;
     }
     
     public static void SpawnTutorial(GameObject container, GameObject tutorialToSpawn, GameObject caller)

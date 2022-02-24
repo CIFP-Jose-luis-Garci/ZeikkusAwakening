@@ -49,7 +49,6 @@ public class PlayerLocomotion : MonoBehaviour
     private Stats stats;
     public Slider lifebar;
     public GameObject damage;
-    public GameObject resultScreen;
 
 
     private void Awake()
@@ -201,7 +200,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleEvade()
     {
-        if (GameManager.transitioning) return;
+        if (GameManager.winning) return;
         if (!invincible)
         {
             rotationSpeed = 1000;
@@ -221,7 +220,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleBlock()
     {
-        if (GameManager.transitioning) return;
+        if (GameManager.winning) return;
         blocking = animatorManager.animator.GetBool("blocking");
         if (!blocking)
         {
@@ -236,6 +235,7 @@ public class PlayerLocomotion : MonoBehaviour
         ResetRigidbody();
         animatorManager.PlayTargetAnimation("FirstStrikeDraw", true, true);
         yield return new WaitForSeconds(1.2f);
+        Debug.Log("culpable");
         zagrant.SetActive(false);
     }
 
@@ -280,26 +280,5 @@ public class PlayerLocomotion : MonoBehaviour
             }
             yield return new WaitForSeconds(Random.Range(2f, 5f));
         }
-    }
-
-    public void HandleWinBattle()
-    {
-        StartCoroutine(_HandleWinBattle());
-    }
-
-    private IEnumerator _HandleWinBattle()
-    {
-        // win battle anim
-        inputManager.WinBattle();
-        AudioSource source = lifebar.transform.root.GetComponent<AudioSource>();
-        source.Stop();
-        source.clip = gameManager.fanfare;
-        source.Play();
-        source.loop = false;
-        yield return new WaitForSeconds(1.2f);
-        // result screen
-        cameraManager.ChangeTarget(transform);
-        cameraManager.ResetRadius();
-        resultScreen.SetActive(true);
     }
 }

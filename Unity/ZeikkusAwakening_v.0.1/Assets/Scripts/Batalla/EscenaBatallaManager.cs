@@ -58,6 +58,14 @@ public class EscenaBatallaManager : MonoBehaviour
         tiempoDeCombate += Time.deltaTime;
     }
 
+    public void EnemiesStart()
+    {
+        foreach (EnemyBattleManager enemy in GetComponentsInChildren<EnemyBattleManager>())
+        {
+            enemy.battleStarted = true;
+        }
+    }
+
     public void ResetPlayer()
     {
         playerTransform.position = playerOrigin;

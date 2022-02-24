@@ -144,7 +144,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void CheckAlive()
     {
-        if (!GameManager.transitioning)
+        if (!GameManager.winning)
         {
             bool anyoneAlive = false;
             foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
@@ -158,9 +158,9 @@ public class EnemyBattleManager : MonoBehaviour
 
             if (!anyoneAlive)
             {
-                GameManager.transitioning = true;
+                GameManager.winning = true;
                 GameManager.inPause = true;
-                player.GetComponent<PlayerLocomotion>().HandleWinBattle();
+                FindObjectOfType<GameManager>().ToWinBattle();
             } 
         }
         Destroy(gameObject);

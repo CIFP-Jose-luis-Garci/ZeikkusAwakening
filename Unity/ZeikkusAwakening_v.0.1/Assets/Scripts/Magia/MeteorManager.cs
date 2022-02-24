@@ -62,7 +62,6 @@ public class MeteorManager : Magic
         foreach (DestroyAfter i in GetComponentsInChildren<DestroyAfter>())
         {
             i.Destruir();
-            Debug.Log("hola");
         }
         meteorExplosion.transform.parent = null;
         fire.transform.parent = null;
