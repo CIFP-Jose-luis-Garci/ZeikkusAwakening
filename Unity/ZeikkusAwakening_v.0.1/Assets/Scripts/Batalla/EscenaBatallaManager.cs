@@ -7,32 +7,31 @@ using Random = UnityEngine.Random;
 public class EscenaBatallaManager : MonoBehaviour
 {
     public GameObject[] spawners;
-
-    public GameObject playerSpawn;
+    public Transform playerSpawn;
     [NonSerialized] public GameObject enemyToSpawn;
     [NonSerialized] public Vector3 playerOrigin;
-
     [NonSerialized] public Stats[] enemies;
-    private bool alive;
+    private bool battling;
     private Transform playerTransform;
 
     public int danoTotal;
     public float tiempoDeCombate;
     public int enemyAdvantage;
 
-    // Start is called before the first frame update
-    void OnEnable()
+    private void Update()
     {
+        if (GameManager.inPause || !battling) return;
+        tiempoDeCombate += Time.deltaTime;
+    }
+
+    public void ControlScene()
+    {
+        battling = true;
         playerTransform = FindObjectOfType<PlayerManager>().transform;
         playerOrigin = playerTransform.position;
-        playerTransform.position = playerSpawn.transform.position;
-        int maxSpawns;
-        if (enemyToSpawn.name.StartsWith("Mino"))
-            maxSpawns = 4;
-        else
-            maxSpawns = 5;
+        playerTransform.position = playerSpawn.position;
         
-        for (int i = 0; i < Random.Range(2, maxSpawns); i++)
+        for (int i = 0; i < Random.Range(1, 4); i++)
         {
             Transform spawner = spawners[i].transform;
             Instantiate(enemyToSpawn, spawner.position, spawner.rotation, spawner);
@@ -55,15 +54,10 @@ public class EscenaBatallaManager : MonoBehaviour
                     break;
             }
 
+            Debug.Log(newLevel);
         }
         danoTotal = 0;
         tiempoDeCombate = 0;
-    }
-
-    private void Update()
-    {
-        if (GameManager.inPause) return;
-        tiempoDeCombate += Time.deltaTime;
     }
 
     public void EnemiesStart()
@@ -77,6 +71,7 @@ public class EscenaBatallaManager : MonoBehaviour
     public void ResetPlayer()
     {
         playerTransform.position = playerOrigin;
+        battling = false;
     }
 
     public string TiempoBatalla()

@@ -8,25 +8,26 @@ using Random = UnityEngine.Random;
 
 public class EnemyBattleManager : MonoBehaviour
 {
-    private Transform player;
     public GameObject sprite;
     public bool recoiled;
     public bool battleStarted;
     public Slider lifebar;
     public GameObject damage;
+    public bool isRunning;
     
+    private Transform player;
     private Animator animator;
     private NavMeshAgent agente;
     private AudioSource source;
     private Stats stats;
-    public bool isRunning;
+    private EscenaBatallaManager escenaBatalla;
     private bool isAttacking;
     private float waitTime;
     private float hit1Length;
     private float hit2Length;
     private float dieLength;
     private float randomAttack;
-    public float time;
+    private float time;
 
     public AudioClip[] stepSounds;
     public AudioClip[] crySounds;
@@ -39,6 +40,7 @@ public class EnemyBattleManager : MonoBehaviour
         agente = GetComponent<NavMeshAgent>();
         source = GetComponent<AudioSource>();
         stats = GetComponent<Stats>();
+        escenaBatalla = FindObjectOfType<EscenaBatallaManager>();
         lifebar.minValue = 0;
         lifebar.maxValue = stats.maxHP;
         lifebar.value = stats.hp;
@@ -129,8 +131,8 @@ public class EnemyBattleManager : MonoBehaviour
             resultado = GameManager.CalcSpecDamage(playerStats, stats, power, forceCrit);
         stats.hp -= resultado;
         lifebar.value = stats.hp;
-        FindObjectOfType<EscenaBatallaManager>().danoTotal += resultado;
-        GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity, transform);
+        escenaBatalla.danoTotal += resultado;
+        GameObject instantiated = Instantiate(damage, transform.position, Quaternion.identity);
         instantiated.GetComponent<TextMesh>().text = resultado.ToString();
         if (stats.hp < 0 && stats.alive)
         {
@@ -138,6 +140,7 @@ public class EnemyBattleManager : MonoBehaviour
             isAttacking = false;
             animator.applyRootMotion = true;
             animator.SetTrigger("muerte");
+            GetComponent<Collider>().enabled = false;
             ImTarget(false);
         }
     }

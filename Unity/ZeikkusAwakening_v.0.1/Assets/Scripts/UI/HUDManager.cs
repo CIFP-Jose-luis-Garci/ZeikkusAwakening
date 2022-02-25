@@ -8,18 +8,19 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
-    public float time;
+    private float time;
     public Text tiempo;
     public Image blackBackground;
 
     [Header("Transitions")] 
     private AnimatorManager animatorManager;
+    private EscenaBatallaManager escenaBatalla;
+    private CinemachineFreeLook cmfl;
+    private float cameraXAngle;
+    private bool inBattle;
     public AudioMixer mixer;
     public GameObject resultScreen;
     public FlashManager flash;
-    public EscenaBatallaManager escenaBatalla;
-    public CinemachineFreeLook cmfl;
-    public float cameraXAngle;
     
     [Header("Audio")]
     public AudioClip worldMusic;
@@ -30,6 +31,7 @@ public class HUDManager : MonoBehaviour
     private void Start()
     {
         animatorManager = FindObjectOfType<AnimatorManager>();
+        escenaBatalla = FindObjectOfType<EscenaBatallaManager>();
         StartCoroutine(GameManager.CrossFadeMusic(mixer, 2, false));
         blackBackground.CrossFadeAlpha(0,2,true);
     }
@@ -51,16 +53,22 @@ public class HUDManager : MonoBehaviour
     
         return horas + ":" + minutos + ":" + segundos;
     }
+
+    public void GetCamera()
+    {
+        cmfl = FindObjectOfType<CinemachineFreeLook>();
+    }
     
     public void StartBattle(GameObject worldEnemy, bool isBoss, int enemyAdvantage = 1)
     {
-        if (GameManager.inPause) return;
+        if (inBattle) return;
+        inBattle = true;
         GameManager.inPause = true;
         GameManager.winning = false;
         ToBattle(worldEnemy, isBoss, enemyAdvantage);
     }
 
-    public void ToBattle(GameObject spawn, bool boss, int enemyAdvantage)
+    private void ToBattle(GameObject spawn, bool boss, int enemyAdvantage)
     {
         StartCoroutine(LoadBattle(spawn, boss, enemyAdvantage));
     }
@@ -90,7 +98,7 @@ public class HUDManager : MonoBehaviour
             ChangeMusic(battleMusic);
         escenaBatalla.enemyToSpawn = worldEnemy.GetComponent<EnemyManager>().enemyToSpawn;
         escenaBatalla.enemyAdvantage = enemyAdvantage;
-        escenaBatalla.gameObject.SetActive(true);
+        escenaBatalla.ControlScene();
         Destroy(worldEnemy);
         StartBattleAnimation();
         yield return GameManager.CrossFadeMusic(mixer, 1, false);
@@ -136,9 +144,9 @@ public class HUDManager : MonoBehaviour
         ChangeMusic(worldMusic);
         escenaBatallaManager.ResetPlayer();
         yield return GameManager.CrossFadeMusic(mixer, 1, false);
-        escenaBatallaManager.gameObject.SetActive(false);
         GameManager.inPause = false;
         GameManager.winning = false;
+        inBattle = false;
         blackFade.CrossFadeAlpha(0, 1, true);
     }
 

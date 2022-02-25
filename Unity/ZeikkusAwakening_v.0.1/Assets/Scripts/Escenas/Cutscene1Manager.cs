@@ -9,6 +9,7 @@ public class Cutscene1Manager : CutsceneManager
 {
     private AnimatorManager animatorManager;
     private InputManager inputManager;
+    private HUDManager hudManager;
     private bool gotSword;
     public Image blackFade;
     public Texture faceEyesOpen;
@@ -22,6 +23,7 @@ public class Cutscene1Manager : CutsceneManager
     {
         animatorManager = FindObjectOfType<AnimatorManager>();
         inputManager = animatorManager.GetComponent<InputManager>();
+        hudManager = FindObjectOfType<HUDManager>();
         dialogue.gameObject.SetActive(true);
         animatorManager.transform.rotation = Quaternion.identity;
         animatorManager.animator.CrossFade("Sleeping", 0);
@@ -62,8 +64,6 @@ public class Cutscene1Manager : CutsceneManager
             case 17:
                 StartCoroutine(FadeToBlack());
                 break;
-            default:
-                break;
         }
     }
 
@@ -72,7 +72,7 @@ public class Cutscene1Manager : CutsceneManager
         if (endingCutscene) return;
         endingCutscene = true;
         if (gotSword)
-            FindObjectOfType<HUDManager>().WinBattleAnimation();
+            hudManager.WinBattleAnimation();
         Material[] materials = face.materials;
         materials[1].mainTexture = faceEyesOpen;
         face.materials = materials;
@@ -97,8 +97,7 @@ public class Cutscene1Manager : CutsceneManager
 
     private IEnumerator GetSwordAndShow()
     {
-        //animatorManager.animator.CrossFade("Get Sword", 0.05f);
-        FindObjectOfType<HUDManager>().StartBattleAnimation();
+        hudManager.StartBattleAnimation();
         yield return new WaitForSeconds(2f);
         dialogue.gameObject.SetActive(true);
     }
@@ -110,6 +109,7 @@ public class Cutscene1Manager : CutsceneManager
         animatorManager.PlayTargetAnimation("Empty", false);
         cameras[3].SetActive(false);
         cameras[4].SetActive(true);
+        hudManager.GetCamera();
         yield return new WaitForSeconds(1f);
         inputManager.inDialogue = false;
         mixer.SetFloat("EnemiesSFXVolume", 0);
