@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: -5326428243457186870}
+  enemyWorld: {fileID: 0}
 --- !u!82 &8598656891214676654
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1346,7 +1347,7 @@ MonoBehaviour:
   experience: 0
   nextLevelExperience: 0
   turnPoints: 0
-  expBase: 60
+  expBase: 75
   marubase: 200
   alive: 1
 --- !u!82 &428543050690769450
@@ -1463,6 +1464,7 @@ MonoBehaviour:
   lifebar: {fileID: 3473533452695196048}
   damage: {fileID: 5256623395504277334, guid: 2ce27a2a2d66230418db0746ab5f57a9, type: 3}
   isRunning: 0
+  time: 0
   stepSounds:
   - {fileID: 8300000, guid: c57e62ba73ba0694ca5ef4d57e792a14, type: 3}
   - {fileID: 8300000, guid: 4678228d92b88af44b090d6643be2041, type: 3}

@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemyToSpawn;
     
     private Animator animator;
+    private GameManager gameManager;
     private NavMeshAgent agente;
     private AudioSource source;
     public bool isWalking;
@@ -29,6 +30,7 @@ public class EnemyManager : MonoBehaviour
     {
         detectado = false;
         animator = GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
         agente = GetComponent<NavMeshAgent>();
         source = GetComponent<AudioSource>();
         ClipLength();
@@ -147,9 +149,14 @@ public class EnemyManager : MonoBehaviour
         source.PlayOneShot(crySounds[Random.Range(0, crySounds.Length)]);
     }
 
-    public void AttackSound(AnimationEvent animationEvent)
+    public void AttackSound()
     {
         source.PlayOneShot(attackSounds[Random.Range(0, attackSounds.Length)]);
+    }
+    
+    public void IsAttackingSet(AnimationEvent animationEvent)
+    {
+        animator.SetBool("isAttacking", animationEvent.intParameter == 1);
     }
     
     private void ClipLength()
@@ -176,4 +183,13 @@ public class EnemyManager : MonoBehaviour
         Vector3 direccion = new Vector3(newX, 0, newZ);
         return direccion;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            gameManager.StartBattle(gameObject, false, 1);
+        }
+    }
+
 }

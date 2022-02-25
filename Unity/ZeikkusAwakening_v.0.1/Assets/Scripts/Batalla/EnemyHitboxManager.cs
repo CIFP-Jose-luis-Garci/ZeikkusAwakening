@@ -6,14 +6,29 @@ using UnityEngine;
 public class EnemyHitboxManager : MonoBehaviour
 {
     public EnemyBattleManager enemy;
+    public EnemyManager enemyWorld;
+    private GameManager gameManager;
     private Animator animator;
     private AudioSource source;
     private bool isAttacking;
 
+    private void Start()
+    {
+        if (enemyWorld)
+        {
+            animator = enemyWorld.GetComponent<Animator>();
+            gameManager = FindObjectOfType<GameManager>();
+        }
+
+        if (enemy)
+        {
+            animator = enemy.GetComponent<Animator>();
+            source = GetComponent<AudioSource>();
+        }
+    }
+
     private void Update()
     {
-        animator = enemy.GetComponent<Animator>();
-        source = GetComponent<AudioSource>();
         isAttacking = animator.GetBool("isAttacking");
     }
 
@@ -21,12 +36,17 @@ public class EnemyHitboxManager : MonoBehaviour
     {
         if (isAttacking)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (enemy && other.gameObject.CompareTag("Player"))
             {
                 source.PlayOneShot(source.clip);
                 PlayerLocomotion playerLocomotion = other.gameObject.GetComponent<PlayerLocomotion>();
                 playerLocomotion.RecieveDamage(enemy.GetComponent<Stats>(), animator.GetFloat("damage"), true);
                 animator.SetBool("isAttacking", false);
+            }
+
+            if (enemyWorld && other.gameObject.CompareTag("Player"))
+            {
+                gameManager.StartBattle(enemyWorld.gameObject, false, 0);
             }
         }
     }

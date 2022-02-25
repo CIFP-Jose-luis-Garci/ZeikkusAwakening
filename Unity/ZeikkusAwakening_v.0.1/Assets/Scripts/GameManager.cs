@@ -168,6 +168,9 @@ public class GameManager : MonoBehaviour
 
     public void StartBattle(GameObject worldEnemy, bool isBoss, int enemyAdvantage = 1)
     {
+        Debug.Log("hola");
+        if (inPause) return;
+        Debug.Log("halo");
         inPause = true;
         winning = false;
         ToBattle(worldEnemy, isBoss, enemyAdvantage);

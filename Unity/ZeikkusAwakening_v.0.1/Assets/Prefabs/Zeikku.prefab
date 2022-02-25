@@ -1323,7 +1323,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  hasJumped: 0
   body: {fileID: 5999122478611902105}
   faceEyesOpen: {fileID: 2800000, guid: 9544a1fc36d3f964cb687491eedeab94, type: 3}
   faceEyesClosed: {fileID: 2800000, guid: c092a20764c8aec4db9f2b2fcf3974db, type: 3}
@@ -1333,7 +1332,6 @@ MonoBehaviour:
   blocking: 0
   lifebar: {fileID: 0}
   damage: {fileID: 5256623395504277334, guid: a3d4182631316ae48bc08a525ccdeeb1, type: 3}
-  resultScreen: {fileID: 0}
 --- !u!114 &5234201012602325530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,9 +1417,9 @@ MonoBehaviour:
   mp: 100
   maxMP: 100
   strength: 17
-  defense: 10
+  defense: 14
   magicPower: 16
-  resistance: 10
+  resistance: 13
   experience: 0
   nextLevelExperience: 1000
   turnPoints: 4
