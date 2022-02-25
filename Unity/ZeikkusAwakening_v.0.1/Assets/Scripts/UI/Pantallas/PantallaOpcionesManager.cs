@@ -23,9 +23,9 @@ public class PantallaOpcionesManager : MonoBehaviour
         bgmSlider.value = GameManager.BGMVolume;
         sfxSlider.value = GameManager.SFXVolume;
         voiceSlider.value = GameManager.voiceVolume;
-        bgmSlider.onValueChanged.AddListener((value) => SetSound("BGMVolume", value));
-        sfxSlider.onValueChanged.AddListener( (value) => SetSound("SFXVolume", value));
-        voiceSlider.onValueChanged.AddListener( (value) => SetSound("VoiceVolume", value));
+        bgmSlider.onValueChanged.AddListener((value) => SetSound(bgmSlider, "BGMVolume", value));
+        sfxSlider.onValueChanged.AddListener( (value) => SetSound(sfxSlider, "SFXVolume", value));
+        voiceSlider.onValueChanged.AddListener( (value) => SetSound(voiceSlider, "VoiceVolume", value));
         
         // Camera
         invertCameraX.isOn = GameManager.invertCameraX;
@@ -60,8 +60,11 @@ public class PantallaOpcionesManager : MonoBehaviour
         cameraManager.ChangeCameraSensitivity();
     }
 
-    private void SetSound(string param, float soundLevel)
+    private void SetSound(Slider slider, string param, float soundLevel)
     {
-        mixer.SetFloat(param, soundLevel);
+        if (soundLevel <= slider.minValue)
+            mixer.SetFloat(param, -80f);
+        else
+            mixer.SetFloat(param, soundLevel);
     }
 }

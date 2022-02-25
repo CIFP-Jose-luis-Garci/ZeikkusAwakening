@@ -235,7 +235,6 @@ public class PlayerLocomotion : MonoBehaviour
         ResetRigidbody();
         animatorManager.PlayTargetAnimation("FirstStrikeDraw", true, true);
         yield return new WaitForSeconds(1.2f);
-        Debug.Log("culpable");
         zagrant.SetActive(false);
     }
 

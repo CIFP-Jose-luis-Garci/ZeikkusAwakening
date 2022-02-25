@@ -9,14 +9,18 @@ public class SelectionManager : MonoBehaviour
 {
 
     public Button newFile, continuee, options, exit;
-    public GameObject opciones, pantallaInicial;
-    public Image blackBackground, loading;
+    public GameObject opciones, logo;
+    public Image background, loading;
+    private Animator animator;
+    private GameObject zeikku;
     public AudioMixer mixer;
 
     private bool started;
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+        zeikku = GetComponentInParent<TitleScreenManager>().zeikkuInstatiated;
         newFile.onClick.AddListener(() =>
         {
             if (!started)
@@ -28,10 +32,10 @@ public class SelectionManager : MonoBehaviour
         continuee.interactable = false;
         options.onClick.AddListener(() =>
         {
-            GetComponentInParent<TitleScreenManager>().zeikkuInstatiated.SetActive(false);
+            zeikku.SetActive(false);
             opciones.SetActive(true);
             opciones.GetComponentInChildren<Slider>().Select();
-            pantallaInicial.SetActive(false);
+            logo.SetActive(false);
             gameObject.SetActive(false);
         });
         exit.onClick.AddListener(() => Application.Quit(0));
@@ -39,7 +43,10 @@ public class SelectionManager : MonoBehaviour
     
     IEnumerator StartGame()
     {
-        blackBackground.CrossFadeAlpha(1, 1, true);
+        zeikku.SetActive(false);
+        background.CrossFadeAlpha(0, 1, true);
+        logo.GetComponent<Image>().CrossFadeAlpha(0, 1, true);
+        animator.SetBool("start", true);
         yield return GameManager.CrossFadeMusic(mixer, 2, true);
         loading.gameObject.SetActive(true);
         yield return GameManager.LoadScene(2);

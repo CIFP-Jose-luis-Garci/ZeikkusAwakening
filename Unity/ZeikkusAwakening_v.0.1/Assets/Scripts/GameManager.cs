@@ -60,24 +60,30 @@ public class GameManager : MonoBehaviour
     public static IEnumerator CrossFadeMusic(AudioMixer mixer, float time, bool muting)
     {
         float current;
+        float min = -40;
         float timeLoop = time * 10;
-        float valueStep = -80 / timeLoop;
+        float valueStep = (min - BGMVolume) / timeLoop;
         if (!muting) valueStep *= -1;
         float timeStep = 0.1f;
         mixer.GetFloat("BGMVolume", out current);
+        if (!muting && current < min)
+            current = min;
 
-        if (!muting && current > -80) yield break;
+        if (!muting && current > min) yield break;
         if (muting && current < BGMVolume) yield break;
-        do
+        while (time > 0)
         {
             current += valueStep;
             mixer.SetFloat("BGMVolume", current);
             yield return new WaitForSeconds(timeStep);
             time -= timeStep;
-        } while (time > 0);
+        }
         
         if (!muting)
-            mixer.SetFloat("BGMVolume", -10f);
+            mixer.SetFloat("BGMVolume", BGMVolume);
+        else
+            mixer.SetFloat("BGMVolume", min);
+            
 
     }
 
@@ -168,9 +174,7 @@ public class GameManager : MonoBehaviour
 
     public void StartBattle(GameObject worldEnemy, bool isBoss, int enemyAdvantage = 1)
     {
-        Debug.Log("hola");
         if (inPause) return;
-        Debug.Log("halo");
         inPause = true;
         winning = false;
         ToBattle(worldEnemy, isBoss, enemyAdvantage);

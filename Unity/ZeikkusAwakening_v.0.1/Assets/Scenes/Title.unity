@@ -214,7 +214,7 @@ RectTransform:
   m_Children:
   - {fileID: 130109421}
   m_Father: {fileID: 1735821426}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -229,6 +229,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1735821426}
     m_Modifications:
     - target: {fileID: 6246120566568160129, guid: abc67be8e3b02874d9d55accb4f2bf9e, type: 3}
+      propertyPath: logo
+      value: 
+      objectReference: {fileID: 1594760351}
+    - target: {fileID: 6246120566568160129, guid: abc67be8e3b02874d9d55accb4f2bf9e, type: 3}
       propertyPath: loading
       value: 
       objectReference: {fileID: 227345965}
@@ -237,9 +241,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 230902917}
     - target: {fileID: 6246120566568160129, guid: abc67be8e3b02874d9d55accb4f2bf9e, type: 3}
-      propertyPath: pantallaInicial
+      propertyPath: background
       value: 
-      objectReference: {fileID: 1594760351}
+      objectReference: {fileID: 1231227601}
     - target: {fileID: 7888827100349094751, guid: abc67be8e3b02874d9d55accb4f2bf9e, type: 3}
       propertyPath: m_Name
       value: Selecciones
@@ -254,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7888827100349094816, guid: abc67be8e3b02874d9d55accb4f2bf9e, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7888827100349094816, guid: abc67be8e3b02874d9d55accb4f2bf9e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -400,7 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
-  m_DragThreshold: 10
+  m_DragThreshold: 2
 --- !u!4 &527259373
 Transform:
   m_ObjectHideFlags: 0
@@ -558,11 +562,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1735821426}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00000040698, y: -399}
+  m_AnchoredPosition: {x: 0, y: -399}
   m_SizeDelta: {x: 559.02, y: 158.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &663271186
@@ -823,6 +827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: loading
       objectReference: {fileID: 0}
+    - target: {fileID: 5898414662995180898, guid: ccccfd71b01f8a343b4802e10c21adaa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5898414662995180899, guid: ccccfd71b01f8a343b4802e10c21adaa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -853,11 +861,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5898414662995180899, guid: ccccfd71b01f8a343b4802e10c21adaa, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 113.0429
+      value: 289.781
       objectReference: {fileID: 0}
     - target: {fileID: 5898414662995180899, guid: ccccfd71b01f8a343b4802e10c21adaa, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 63.5866
+      value: 163.002
       objectReference: {fileID: 0}
     - target: {fileID: 5898414662995180899, guid: ccccfd71b01f8a343b4802e10c21adaa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -889,11 +897,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5898414662995180899, guid: ccccfd71b01f8a343b4802e10c21adaa, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 343.48
+      value: 856
       objectReference: {fileID: 0}
     - target: {fileID: 5898414662995180899, guid: ccccfd71b01f8a343b4802e10c21adaa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -176.7
+      value: -424
       objectReference: {fileID: 0}
     - target: {fileID: 5898414662995180899, guid: ccccfd71b01f8a343b4802e10c21adaa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1156,9 +1164,9 @@ RectTransform:
   - {fileID: 744345432}
   - {fileID: 1231227603}
   - {fileID: 1112363372}
+  - {fileID: 599772504}
   - {fileID: 557428272}
   - {fileID: 230902919}
-  - {fileID: 599772504}
   - {fileID: 1830676500}
   m_Father: {fileID: 0}
   m_RootOrder: 2
