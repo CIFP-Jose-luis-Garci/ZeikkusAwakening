@@ -10,7 +10,6 @@ public class PantallaResultadosManager : MonoBehaviour
 
     private EscenaBatallaManager escenaBatallaManager;
     private Stats[] enemies;
-    private GameManager gameManager;
     public bool animated;
     public Image blackFade;
     
@@ -19,7 +18,6 @@ public class PantallaResultadosManager : MonoBehaviour
     {
         escenaBatallaManager = FindObjectOfType<EscenaBatallaManager>();
         enemies = escenaBatallaManager.enemies;
-        gameManager = FindObjectOfType<GameManager>();
         exp.text = GameManager.CalcExp(enemies);
         maru.text = GameManager.CalcMaru(enemies);
         animated = false;
@@ -31,7 +29,7 @@ public class PantallaResultadosManager : MonoBehaviour
     {
         if (animated) return;
         animated = true;
-        gameManager.ToFadeBattle(blackFade, escenaBatallaManager);
+        FindObjectOfType<HUDManager>().ToFadeBattle(blackFade, escenaBatallaManager);
         gameObject.SetActive(false);
     }
 }

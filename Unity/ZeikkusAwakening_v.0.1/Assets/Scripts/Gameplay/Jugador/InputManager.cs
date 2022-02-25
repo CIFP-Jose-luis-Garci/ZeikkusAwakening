@@ -325,16 +325,4 @@ public class InputManager : MonoBehaviour
             bInput = false;
         }
     }
-
-    public void StartBattle()
-    {
-        animatorManager.PlayTargetAnimation("DrawSword", true, false, 0.05f);
-        animatorManager.ChangeWorld(false);
-    }
-
-    public void WinBattle()
-    {
-        animatorManager.PlayTargetAnimation("WinBattle", true);
-        animatorManager.ChangeWorld(true);
-    }
 }

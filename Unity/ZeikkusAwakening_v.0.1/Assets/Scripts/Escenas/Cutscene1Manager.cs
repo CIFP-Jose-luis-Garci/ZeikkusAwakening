@@ -34,11 +34,9 @@ public class Cutscene1Manager : CutsceneManager
 
     public override void DoStuff()
     {
-        Debug.Log(dialogueCount);
         switch (dialogueCount)
         {
             case 1:
-                Debug.Log(dialogueCount);
                 Material[] materials = face.materials;
                 materials[1].mainTexture = faceEyesOpen;
                 break;
@@ -58,7 +56,7 @@ public class Cutscene1Manager : CutsceneManager
                 gotSword = true;
                 break;
             case 16:
-                inputManager.WinBattle();
+                FindObjectOfType<HUDManager>().WinBattleAnimation();
                 gotSword = false;
                 break;
             case 17:
@@ -74,7 +72,7 @@ public class Cutscene1Manager : CutsceneManager
         if (endingCutscene) return;
         endingCutscene = true;
         if (gotSword)
-            inputManager.WinBattle();
+            FindObjectOfType<HUDManager>().WinBattleAnimation();
         Material[] materials = face.materials;
         materials[1].mainTexture = faceEyesOpen;
         face.materials = materials;
@@ -100,7 +98,7 @@ public class Cutscene1Manager : CutsceneManager
     private IEnumerator GetSwordAndShow()
     {
         //animatorManager.animator.CrossFade("Get Sword", 0.05f);
-        inputManager.StartBattle();
+        FindObjectOfType<HUDManager>().StartBattleAnimation();
         yield return new WaitForSeconds(2f);
         dialogue.gameObject.SetActive(true);
     }

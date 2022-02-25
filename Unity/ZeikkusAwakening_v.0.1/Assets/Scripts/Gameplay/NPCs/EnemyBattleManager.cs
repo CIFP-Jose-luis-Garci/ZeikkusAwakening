@@ -160,7 +160,7 @@ public class EnemyBattleManager : MonoBehaviour
             {
                 GameManager.winning = true;
                 GameManager.inPause = true;
-                FindObjectOfType<GameManager>().ToWinBattle();
+                FindObjectOfType<HUDManager>().ToWinBattle();
             } 
         }
         Destroy(gameObject);

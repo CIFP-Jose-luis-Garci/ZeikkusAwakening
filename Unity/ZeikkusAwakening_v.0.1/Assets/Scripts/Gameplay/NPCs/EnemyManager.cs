@@ -12,7 +12,6 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemyToSpawn;
     
     private Animator animator;
-    private GameManager gameManager;
     private NavMeshAgent agente;
     private AudioSource source;
     public bool isWalking;
@@ -30,7 +29,6 @@ public class EnemyManager : MonoBehaviour
     {
         detectado = false;
         animator = GetComponent<Animator>();
-        gameManager = FindObjectOfType<GameManager>();
         agente = GetComponent<NavMeshAgent>();
         source = GetComponent<AudioSource>();
         ClipLength();
@@ -188,7 +186,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            gameManager.StartBattle(gameObject, false, 1);
+            FindObjectOfType<HUDManager>().StartBattle(gameObject, false, 1);
         }
     }
 

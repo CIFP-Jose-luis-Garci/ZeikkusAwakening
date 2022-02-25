@@ -7,7 +7,6 @@ public class EnemyHitboxManager : MonoBehaviour
 {
     public EnemyBattleManager enemy;
     public EnemyManager enemyWorld;
-    private GameManager gameManager;
     private Animator animator;
     private AudioSource source;
     private bool isAttacking;
@@ -17,7 +16,6 @@ public class EnemyHitboxManager : MonoBehaviour
         if (enemyWorld)
         {
             animator = enemyWorld.GetComponent<Animator>();
-            gameManager = FindObjectOfType<GameManager>();
         }
 
         if (enemy)
@@ -46,7 +44,7 @@ public class EnemyHitboxManager : MonoBehaviour
 
             if (enemyWorld && other.gameObject.CompareTag("Player"))
             {
-                gameManager.StartBattle(enemyWorld.gameObject, false, 0);
+                FindObjectOfType<HUDManager>().StartBattle(enemyWorld.gameObject, false, 0);
             }
         }
     }

@@ -28,19 +28,7 @@ public class GameManager : MonoBehaviour
     [Header("Transiciones")]
     public bool inWorld;
     public static bool winning;
-    public HUDManager hudManager;
     public PantallaPausaManager pause;
-    public GameObject resultScreen;
-    public FlashManager flash;
-    public EscenaBatallaManager escenaBatalla;
-    public CinemachineFreeLook cmfl;
-    public float cameraXAngle;
-    
-    [Header("Audio")]
-    public AudioClip worldMusic;
-    public AudioClip battleMusic;
-    public AudioClip bossMusic;
-    public AudioClip fanfare;
     
     [Header("Datos de juego")]
     public static int maru = 1000;
@@ -171,105 +159,7 @@ public class GameManager : MonoBehaviour
         
         return level;
     }
-
-    public void StartBattle(GameObject worldEnemy, bool isBoss, int enemyAdvantage = 1)
-    {
-        if (inPause) return;
-        inPause = true;
-        winning = false;
-        ToBattle(worldEnemy, isBoss, enemyAdvantage);
-    }
-
-    public void ToBattle(GameObject spawn, bool boss, int enemyAdvantage)
-    {
-        StartCoroutine(LoadBattle(spawn, boss, enemyAdvantage));
-    }
-
-    private IEnumerator LoadBattle(GameObject worldEnemy, bool boss, int enemyAdvantage)
-    {
-        flash.gameObject.SetActive(true);
-        switch (enemyAdvantage)
-        {
-            case 0:
-                BattleAdvantageText("¡Asalto enemigo!", new Color(0.75f, 0.066f, 0.066f));
-                break;
-            case 1:
-                BattleAdvantageText("¡Adelante!", Color.white);
-                break;
-            case 2:
-                BattleAdvantageText("¡Emboscada!", new Color(0.09f, 0.82f, 0.31f));
-                break;
-        }
-        flash.AnimateStart();
-        
-        cameraXAngle = cmfl.m_XAxis.Value;
-        yield return CrossFadeMusic(hudManager.mixer, 1, true);
-        if (boss)
-            ChangeMusic(bossMusic);
-        else 
-            ChangeMusic(battleMusic);
-        escenaBatalla.enemyToSpawn = worldEnemy.GetComponent<EnemyManager>().enemyToSpawn;
-        escenaBatalla.enemyAdvantage = enemyAdvantage;
-        escenaBatalla.gameObject.SetActive(true);
-        Destroy(worldEnemy);
-        personajes[0].GetComponent<InputManager>().StartBattle();
-        yield return CrossFadeMusic(hudManager.mixer, 1, false);
-        escenaBatalla.EnemiesStart();
-        inPause = false;
-        winning = false;
-    }
-
-    private void BattleAdvantageText(string text, Color color)
-    {
-        Text textoCarga = flash.GetComponentInChildren<Text>();
-        textoCarga.text = text;
-        textoCarga.color = color;
-    }
-
-    public void ToWinBattle()
-    {
-        StartCoroutine(WinBattle());
-    }
-
-    private IEnumerator WinBattle()
-    {
-        personajes[0].GetComponent<InputManager>().WinBattle();
-        ChangeMusic(fanfare, false);
-        yield return new WaitForSeconds(1.2f);
-        CameraManager cameraManager = cmfl.GetComponent<CameraManager>();
-        cameraManager.ChangeTarget(personajes[0].transform);
-        cameraManager.ResetRadius();
-        resultScreen.SetActive(true);
-    }
     
-    public void ToFadeBattle(Image blackFade, EscenaBatallaManager escenaBatallaManager)
-    {
-        StartCoroutine(FadeOutBattle(blackFade, escenaBatallaManager));
-    }
-
-    private IEnumerator FadeOutBattle(Image blackFade, EscenaBatallaManager escenaBatallaManager)
-    {
-        // press a, goto transition fade in black
-        blackFade.CrossFadeAlpha(1, 1, true);
-        yield return CrossFadeMusic(hudManager.mixer, 1, true);
-        cmfl.m_XAxis.Value = cameraXAngle;
-        ChangeMusic(worldMusic);
-        escenaBatallaManager.ResetPlayer();
-        yield return CrossFadeMusic(hudManager.mixer, 1, false);
-        escenaBatallaManager.gameObject.SetActive(false);
-        inPause = false;
-        winning = false;
-        blackFade.CrossFadeAlpha(0, 1, true);
-    }
-
-    private void ChangeMusic(AudioClip clip, bool isLooping = true)
-    {
-        AudioSource musicSource = hudManager.GetComponent<AudioSource>();
-        musicSource.Stop();
-        musicSource.clip = clip;
-        musicSource.Play();
-        musicSource.loop = isLooping;
-    }
     
     public static void SpawnTutorial(GameObject container, GameObject tutorialToSpawn, GameObject caller)
     {

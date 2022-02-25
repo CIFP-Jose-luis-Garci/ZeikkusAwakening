@@ -7,7 +7,6 @@ public class ZagrantController : MonoBehaviour
 {
 
     private Animator animator;
-    private GameManager gameManager;
     private AudioSource source;
     public bool isAttacking;
     public bool onFire;
@@ -17,7 +16,6 @@ public class ZagrantController : MonoBehaviour
     void Start()
     {
         animator = FindObjectOfType<AnimatorManager>().animator;
-        gameManager = FindObjectOfType<GameManager>();
         source = GetComponent<AudioSource>();
     }
 
@@ -39,11 +37,11 @@ public class ZagrantController : MonoBehaviour
             }
             if (other.gameObject.CompareTag("EnemigoWorld"))
             {
-                gameManager.StartBattle(other.gameObject, false, 2);
+                FindObjectOfType<HUDManager>().StartBattle(other.gameObject, false, 2);
             }
             if (other.gameObject.CompareTag("Boss"))
             {
-                gameManager.StartBattle(other.gameObject, true, 2);
+                FindObjectOfType<HUDManager>().StartBattle(other.gameObject, true, 2);
             }
         }
     }

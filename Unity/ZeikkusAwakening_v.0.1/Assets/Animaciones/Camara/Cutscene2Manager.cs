@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class Cutscene2Manager : CutsceneManager
 {
     private AnimatorManager animatorManager;
-    private InputManager inputManager;
     public GameObject triggerCutScene;
 
     int CameraChanges = 4;
@@ -18,8 +17,7 @@ public class Cutscene2Manager : CutsceneManager
     void Start()
     {
         animatorManager = FindObjectOfType<AnimatorManager>();
-        inputManager = animatorManager.GetComponent<InputManager>();
-        
+
     }
 
 
@@ -73,7 +71,7 @@ public class Cutscene2Manager : CutsceneManager
     private IEnumerator GetSwordAndShow()
     {
         
-        inputManager.StartBattle();
+        FindObjectOfType<HUDManager>().StartBattleAnimation();
         yield return new WaitForSeconds(2f);
        
     }
