@@ -221,7 +221,6 @@ public class GameManager : MonoBehaviour
         textoCarga.text = text;
         textoCarga.color = color;
     }
-    
 
     public void ToWinBattle()
     {

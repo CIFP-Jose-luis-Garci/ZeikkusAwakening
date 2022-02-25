@@ -1,152 +1,12 @@
 fileFormatVersion: 2
-guid: 3b1cb6aec9690cf40987bd13502cb9dc
+guid: 43d0b8b84b85c7b49a60ab33a8b42e5b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -203655887218126122
-    second: mixamo.com
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: obj_ChaquetaSG1
-    second: {fileID: 2100000, guid: bd0d5676d658b89488d7d54831a07c03, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: obj_CuerpoSG1
-    second: {fileID: 2100000, guid: dd203c4a5fec4644aa366f9d684f7c3b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: obj_CuerpoSG3
-    second: {fileID: 2100000, guid: e683197e272c70440918a0735bd3db2e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: obj_CuerpoSG5
-    second: {fileID: 2100000, guid: 08435b82662e1c24d8de4003bb25fb9f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: obj_CuerpoSG7
-    second: {fileID: 2100000, guid: e70729fbdb783b44e947554b52723af8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: obj_CuerpoSG9
-    second: {fileID: 2100000, guid: dd23652e0eb4a4f44b489624b58045c3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: phong1
-    second: {fileID: 2100000, guid: 30ecde8fd0045354e9026a3d2d88f4d4, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_ChaquetaSG1_AlbedoTransparency.1001
-    second: {fileID: 2800000, guid: 1bcc3b903549b5540a38d211046d1ef0, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_ChaquetaSG1_Normal.1001
-    second: {fileID: 2800000, guid: ab23a6863232a2e4093abb11984fa642, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_ChaquetaSG1_SpecularSmoothness.1001
-    second: {fileID: 2800000, guid: a037dc05d5d36164986a6000d5ecab47, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: "fbx_obj_Cintur\xF3nSG1_AlbedoTransparency.1001"
-    second: {fileID: 2800000, guid: c40368ab3f7e1aa47aa366e35d308ae6, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: "fbx_obj_Cintur\xF3nSG1_Normal.1001"
-    second: {fileID: 2800000, guid: 2a029019bb43d6d48b8e12e3e21e4c61, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: "fbx_obj_Cintur\xF3nSG1_SpecularSmoothness.1001"
-    second: {fileID: 2800000, guid: 042d909aef5d67249aedc888d76e501c, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG1_AlbedoTransparency.1001
-    second: {fileID: 2800000, guid: abfa5c528bad3ad4ba7c4edee250f90f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG1_Normal.1001
-    second: {fileID: 2800000, guid: 662421ff3be766841bb63b0c35731a81, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG1_SpecularSmoothness.1001
-    second: {fileID: 2800000, guid: dfeed0768552fd342be76a26b2aebcb3, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG3_AlbedoTransparency.1001
-    second: {fileID: 2800000, guid: 8cc4fdb550b5a3b4cae720b5838ff642, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG3_Normal.1001
-    second: {fileID: 2800000, guid: bfc1adad3f1b8454188bcfc1378cf10b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG3_SpecularSmoothness.1001
-    second: {fileID: 2800000, guid: 0af9d40bc37f4b74096f11dc5f84d5b7, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG5_AlbedoTransparency.1001
-    second: {fileID: 2800000, guid: 4b4f64b2f3dad614ab3c7a3100098b8d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG5_Normal.1001
-    second: {fileID: 2800000, guid: 912e0f8b6d8f53a4aba42ad3fdc9d80a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG5_SpecularSmoothness.1001
-    second: {fileID: 2800000, guid: 13fcb3b2ca54eac4591f9867a003723b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG7_AlbedoTransparency.1001
-    second: {fileID: 2800000, guid: ed40eb4bc760ff648ade94b95d7001c7, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG7_Normal.1001
-    second: {fileID: 2800000, guid: df0f58feb77f0024b98d94c3ca50c62e, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG7_SpecularSmoothness.1001
-    second: {fileID: 2800000, guid: 2aa6a2e9d4684dd4dba5ffe36e365ab0, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG9_AlbedoTransparency.1001
-    second: {fileID: 2800000, guid: 905cedc993329cf42888203d2c62484b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG9_Normal.1001
-    second: {fileID: 2800000, guid: 67976ded604180b4bbf65e48e7a5bcc4, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fbx_obj_CuerpoSG9_SpecularSmoothness.1001
-    second: {fileID: 2800000, guid: 799e3331a057985448675bfc3df66f82, type: 3}
+      74: 1827226128182048838
+    second: Idle
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -159,7 +19,11 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'mixamorig:LeftLeg'
+      : position error = 17.843338 mm\n\t'mixamorig:LeftFoot' : position error =
+      17.843355 mm\n\t'mixamorig:RightLeg' : position error = 45.413246 mm\n\t'mixamorig:RightFoot'
+      : position error = 18.651873 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -175,11 +39,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
-      takeName: mixamo.com
+      name: Idle
+      takeName: Take 001
       internalID: 0
-      firstFrame: 0
-      lastFrame: 1
+      firstFrame: 1
+      lastFrame: 240
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -189,12 +53,12 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -202,7 +66,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 0.59999996
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -245,7 +109,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human:
@@ -1033,11 +897,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 3b1cb6aec9690cf40987bd13502cb9dc, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 

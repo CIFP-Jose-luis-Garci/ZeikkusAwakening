@@ -28,6 +28,7 @@ public class SelectionManager : MonoBehaviour
         continuee.interactable = false;
         options.onClick.AddListener(() =>
         {
+            GetComponentInParent<TitleScreenManager>().zeikkuInstatiated.SetActive(false);
             opciones.SetActive(true);
             opciones.GetComponentInChildren<Slider>().Select();
             pantallaInicial.SetActive(false);

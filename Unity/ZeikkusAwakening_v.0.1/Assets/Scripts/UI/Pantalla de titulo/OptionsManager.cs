@@ -7,45 +7,52 @@ using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour
 {
-    public Slider bgmSlider, sfxSlider;
-    public Button exit;
+    public Slider bgmSlider, sfxSlider, voiceSlider, cameraSensitivityXSlider, cameraSensitivityYSlider;
     public Toggle invertCameraX, invertCameraY;
+    public Button exit;
     public AudioMixer mixer;
     public GameObject selecciones, gameLogo;
 
     private void OnEnable()
     {
         bgmSlider.Select();
-        bgmSlider.onValueChanged.AddListener(delegate { SetSound("BGMVolume", bgmSlider.value); });
-        sfxSlider.onValueChanged.AddListener(delegate { SetSound("SFXVolume", sfxSlider.value); });
-        exit.onClick.AddListener(() =>
-        {
-            gameObject.SetActive(false);    
-            selecciones.SetActive(true);
-            gameLogo.SetActive(true);
-            selecciones.GetComponentInChildren<Button>().Select();
-        });
+        
+        // BGM, Sound and Voices
         bgmSlider.value = GameManager.BGMVolume;
         sfxSlider.value = GameManager.SFXVolume;
+        voiceSlider.value = GameManager.voiceVolume;
+        bgmSlider.onValueChanged.AddListener((value) => SetSound("BGMVolume", value));
+        sfxSlider.onValueChanged.AddListener( (value) => SetSound("SFXVolume", value));
+        voiceSlider.onValueChanged.AddListener( (value) => SetSound("VoiceVolume", value));
+        
         // Camera
-        GameManager.invertCameraX = invertCameraX.isOn;
-        GameManager.invertCameraY = invertCameraY.isOn;
+        invertCameraX.isOn = GameManager.invertCameraX;
+        invertCameraY.isOn = GameManager.invertCameraY;
+        cameraSensitivityXSlider.value = GameManager.cameraSensitivityX;
+        cameraSensitivityYSlider.value = GameManager.cameraSensitivityY;
         invertCameraX.onValueChanged.AddListener((value) => GameManager.invertCameraX = value);
         invertCameraY.onValueChanged.AddListener((value) => GameManager.invertCameraY = value);
+        cameraSensitivityXSlider.onValueChanged.AddListener((value) => GameManager.cameraSensitivityX = (int) value);
+        cameraSensitivityYSlider.onValueChanged.AddListener((value) => GameManager.cameraSensitivityY = (int) value);
+        
+        exit.onClick.AddListener(() =>
+        {
+            gameObject.SetActive(false);
+        });
     }
 
     private void OnDisable()
     {
-        invertCameraX.isOn = GameManager.invertCameraX;
-        invertCameraY.isOn = GameManager.invertCameraY;
-        mixer.GetFloat("BGMVolume", out GameManager.BGMVolume);
-        mixer.GetFloat("SFXVolume", out GameManager.SFXVolume);
-        CameraManager cameraManager = FindObjectOfType<CameraManager>();
-        if (cameraManager != null)
-            cameraManager.ChangeCameraInvert();
+        GameManager.BGMVolume = bgmSlider.value;
+        GameManager.SFXVolume = sfxSlider.value;
+        GameManager.voiceVolume = voiceSlider.value;
+        GetComponentInParent<TitleScreenManager>().zeikkuInstatiated.SetActive(true);
+        selecciones.SetActive(true);
+        gameLogo.SetActive(true);
+        selecciones.GetComponentInChildren<Button>().Select();
     }
 
-    public void SetSound(string param, float soundLevel)
+    private void SetSound(string param, float soundLevel)
     {
         mixer.SetFloat(param, soundLevel);
     }

@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class TitleScreenManager : MonoBehaviour
 {
-    public Image logobg, logo, titlebg, titlelogo, titlepress, blackBackground;
-    public GameObject selecciones;
+    public Image logobg, logo, titlebg, titlelogo, titlepress;
+    public GameObject selecciones, zeikkuPrefab, zeikkuInstatiated;
 
     private InputManager iMgr;
     private AudioSource musicaTitulo;
@@ -20,7 +20,6 @@ public class TitleScreenManager : MonoBehaviour
         logo.CrossFadeAlpha(0, 0, true);
         titlebg.CrossFadeAlpha(0, 0, true);
         titlelogo.CrossFadeAlpha(0, 0, true);
-        blackBackground.CrossFadeAlpha(0,0,true);
         StartCoroutine(AnimateTitleScreen());
         musicaTitulo = GetComponent<AudioSource>();
     }
@@ -44,6 +43,7 @@ public class TitleScreenManager : MonoBehaviour
         pressAnyButton.onClick.AddListener(() =>
         {
             selecciones.SetActive(true);
+            zeikkuInstatiated = Instantiate(zeikkuPrefab);
             selecciones.GetComponentInChildren<Button>().Select();
             Destroy(pressAnyButton.gameObject);
         });
