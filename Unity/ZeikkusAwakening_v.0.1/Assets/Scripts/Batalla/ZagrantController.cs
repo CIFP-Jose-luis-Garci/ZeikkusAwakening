@@ -10,7 +10,6 @@ public class ZagrantController : MonoBehaviour
     private AudioSource source;
     public bool isAttacking;
     public bool onFire;
-    private bool canStartBattle;
 
     // Start is called before the first frame update
     void Start()

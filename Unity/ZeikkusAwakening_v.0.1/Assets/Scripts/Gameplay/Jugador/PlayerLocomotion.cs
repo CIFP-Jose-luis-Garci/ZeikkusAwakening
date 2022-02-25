@@ -41,6 +41,7 @@ public class PlayerLocomotion : MonoBehaviour
     private Transform enemyObject;
 
     [Header("Battle")]
+    private bool striking;
     private bool invincible;
     public int[] magicSlots;
     private Transform lookInBetween;
@@ -234,7 +235,9 @@ public class PlayerLocomotion : MonoBehaviour
         if (playerManager.isInteracting) yield break;
         ResetRigidbody();
         animatorManager.PlayTargetAnimation("FirstStrikeDraw", true, true);
+        striking = true;
         yield return new WaitForSeconds(1.2f);
+        striking = false;
         zagrant.SetActive(false);
     }
 
@@ -278,6 +281,15 @@ public class PlayerLocomotion : MonoBehaviour
                 body.materials[1].mainTexture = faceEyesOpen;
             }
             yield return new WaitForSeconds(Random.Range(2f, 5f));
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (striking) return;
+        if (collision.gameObject.CompareTag("EnemigoWorld"))
+        {
+            FindObjectOfType<HUDManager>().StartBattle(collision.gameObject, false);
         }
     }
 }

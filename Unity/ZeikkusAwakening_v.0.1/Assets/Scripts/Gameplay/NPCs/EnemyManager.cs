@@ -182,12 +182,4 @@ public class EnemyManager : MonoBehaviour
         return direccion;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            FindObjectOfType<HUDManager>().StartBattle(gameObject, false, 1);
-        }
-    }
-
 }
