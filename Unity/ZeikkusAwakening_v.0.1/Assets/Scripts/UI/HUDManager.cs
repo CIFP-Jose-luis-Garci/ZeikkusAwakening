@@ -92,6 +92,8 @@ public class HUDManager : MonoBehaviour
         
         cameraXAngle = cmfl.m_XAxis.Value;
         yield return GameManager.CrossFadeMusic(mixer, 1, true);
+        cmfl.m_XAxis.Value = -160;
+        cmfl.m_YAxis.Value = 0.6f;
         if (boss)
             ChangeMusic(bossMusic);
         else 

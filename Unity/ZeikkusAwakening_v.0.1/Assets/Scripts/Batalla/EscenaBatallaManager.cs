@@ -30,6 +30,7 @@ public class EscenaBatallaManager : MonoBehaviour
         playerTransform = FindObjectOfType<PlayerManager>().transform;
         playerOrigin = playerTransform.position;
         playerTransform.position = playerSpawn.position;
+        playerTransform.rotation = Quaternion.Euler(0,180, 0);
         
         for (int i = 0; i < Random.Range(1, 4); i++)
         {

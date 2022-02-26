@@ -8,12 +8,15 @@ public class FlashManager : MonoBehaviour
 {
     private Text text;
     private Image background;
+    private AudioSource source;
+    public AudioClip enterBattleClip;
     public GameObject container, tutorialToSpawn;
 
     private void Awake()
     {
         background = GetComponent<Image>();
         text = GetComponentInChildren<Text>();
+        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
         GameManager.SpawnTutorial(container, tutorialToSpawn, null);
     }
 
@@ -25,6 +28,7 @@ public class FlashManager : MonoBehaviour
 
     IEnumerator Animate()
     {
+        source.PlayOneShot(enterBattleClip);
         background.CrossFadeAlpha(1,0.3f,true);
         yield return new WaitForSeconds(0.2f);
         text.CrossFadeAlpha(1, 0.2f, true);

@@ -204,6 +204,7 @@ public class EnemyBattleManager : MonoBehaviour
                     hit2Length = clip.length;
                     break;
                 case "Die":
+                    Debug.Log(clip.length);
                     dieLength = clip.length;
                     break;
             }
