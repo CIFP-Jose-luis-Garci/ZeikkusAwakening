@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,16 @@ using UnityEngine;
 public class Pocion : Item
 {
     public float healingPercent;
+    public AudioClip sonidoCuracion;
+    private AudioSource source;
 
     private bool someoneIsHealed;
+
+    private void Start()
+    {
+        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+    }
+
     public override bool UseItem()
     {
         // play sound
@@ -25,6 +34,9 @@ public class Pocion : Item
 
         FindObjectOfType<PantallaPausaManager>().UpdateValues();
         FindObjectOfType<VidaSliderManager>().UpdateSliderValues();
+
+        if (someoneIsHealed)
+            source.PlayOneShot(sonidoCuracion);
         
         return someoneIsHealed;
     }

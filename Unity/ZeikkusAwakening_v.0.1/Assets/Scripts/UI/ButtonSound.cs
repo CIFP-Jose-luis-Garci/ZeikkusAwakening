@@ -22,6 +22,6 @@ public class ButtonSound : MonoBehaviour, IDeselectHandler, ISelectHandler
 
     public void OnDeselect(BaseEventData eventData)
     {
-        throw new NotImplementedException();
+        
     }
 }

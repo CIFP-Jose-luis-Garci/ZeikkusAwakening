@@ -10,6 +10,8 @@ public class ItemPopupManager : MonoBehaviour
 
     public Button usar, tirar, salir;
     [NonSerialized] public GameObject botonesBolsa, botonesItem;
+    public AudioClip sonidoNo, sonidoPopUp, sonidoCerrarPopUp;
+    private AudioSource source;
     private Item selectedItem;
 
     private InputManager inputManager;
@@ -17,6 +19,8 @@ public class ItemPopupManager : MonoBehaviour
     void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
+        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+        source.PlayOneShot(sonidoPopUp);
         usar.onClick.AddListener(() =>
         {
             if (selectedItem.usable)
@@ -28,8 +32,12 @@ public class ItemPopupManager : MonoBehaviour
                 }
                 else
                 {
-                    // TODO: play sound
+                    source.PlayOneShot(sonidoNo);
                 }
+            }
+            else
+            {
+                source.PlayOneShot(sonidoNo);
             }
         });
         tirar.onClick.AddListener(() =>
@@ -39,9 +47,17 @@ public class ItemPopupManager : MonoBehaviour
                 TossItem();
                 Exit();
             }
+            else
+            {
+                source.PlayOneShot(sonidoNo);
+            }
         });
 
-        salir.onClick.AddListener(() => Exit());
+        salir.onClick.AddListener(() =>
+        {
+            source.PlayOneShot(sonidoCerrarPopUp);
+            Exit();
+        });
     }
 
     private void Exit()

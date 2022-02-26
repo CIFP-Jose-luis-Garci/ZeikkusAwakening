@@ -3104,6 +3104,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 16697543, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
+      propertyPath: sonidoCuracion
+      value: 
+      objectReference: {fileID: 8300000, guid: 71c3ec5f1366eb54fbb980b1cc618597, type: 3}
+    - target: {fileID: 1167201599, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
+      propertyPath: sonidoCuracion
+      value: 
+      objectReference: {fileID: 8300000, guid: 71c3ec5f1366eb54fbb980b1cc618597, type: 3}
     - target: {fileID: 57573777346377931, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
       propertyPath: video
       value: 
@@ -3629,6 +3637,7 @@ MonoBehaviour:
   usable: 1
   tossable: 1
   healingPercent: 0.25
+  sonidoCuracion: {fileID: 8300000, guid: 71c3ec5f1366eb54fbb980b1cc618597, type: 3}
 --- !u!1001 &612537888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6483,6 +6492,7 @@ MonoBehaviour:
   usable: 1
   tossable: 1
   healingPercent: 0.25
+  sonidoCuracion: {fileID: 8300000, guid: 71c3ec5f1366eb54fbb980b1cc618597, type: 3}
 --- !u!1001 &1042288138
 PrefabInstance:
   m_ObjectHideFlags: 0
