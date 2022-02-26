@@ -27,18 +27,18 @@ public class SceneChangeManager : MonoBehaviour
         blackFade.CrossFadeAlpha(1, 0.3f, true);
         yield return new WaitForSeconds(0.3f);
         video.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        video.gameObject.SetActive(false);
         if (nivel1.activeSelf){
             nivel2.SetActive(true);
             nivel1.SetActive(false);
-            player.transform.position = new Vector3(7.44f, 22.28f, -48.19f);
+            player.transform.position = new Vector3(7.62f, 22.438f, -48.07f);
         } else if (nivel2.activeSelf)
         {
             nivel2.SetActive(false);
             nivel1.SetActive(true);
             player.transform.position = new Vector3(2.75f, 0, -43.5f);
         }
+        yield return new WaitForSeconds(2f);
+        video.gameObject.SetActive(false);
         blackFade.CrossFadeAlpha(0, 1, true);
     }
 }
