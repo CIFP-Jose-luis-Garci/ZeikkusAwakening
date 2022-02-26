@@ -10,6 +10,7 @@ public class PantallaResultadosManager : MonoBehaviour
     public GameObject subesDeNivelContainer, subesDeNivelPrefab;
 
     private EscenaBatallaManager escenaBatallaManager;
+    private SubesDeNivelManager sdnm;
     private Stats[] enemies;
     public Estadistica[][] levelUps;
     private int levelUpCount = 0;
@@ -31,7 +32,7 @@ public class PantallaResultadosManager : MonoBehaviour
     private bool LevelUpEvent(){
         if (levelUps[levelUpCount] != null)
         {
-            SubesDeNivelManager sdnm = subesDeNivelContainer.GetComponentInChildren<SubesDeNivelManager>();
+            sdnm = subesDeNivelContainer.GetComponentInChildren<SubesDeNivelManager>();
             if (sdnm)
                 sdnm.Retract();
             sdnm = Instantiate(subesDeNivelPrefab, subesDeNivelContainer.transform).GetComponent<SubesDeNivelManager>();
@@ -52,6 +53,7 @@ public class PantallaResultadosManager : MonoBehaviour
     public void End()
     {
         if (LevelUpEvent()) return;
+        Destroy(sdnm.gameObject);
         FindObjectOfType<HUDManager>().ToFadeBattle(blackFade, escenaBatallaManager);
         gameObject.SetActive(false);
     }

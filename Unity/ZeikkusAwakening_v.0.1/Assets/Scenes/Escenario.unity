@@ -7018,6 +7018,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2079246369808946005, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: experience
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079246369808946005, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: nextLevelExperience
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4927773376940549154, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_Name
       value: Zeikku
@@ -11111,6 +11119,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5075835121002782940, guid: 4b214a73477046d4a841619428783ded, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835121135058122, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835121135058122, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835121198721705, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075835121198721705, guid: 4b214a73477046d4a841619428783ded, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
