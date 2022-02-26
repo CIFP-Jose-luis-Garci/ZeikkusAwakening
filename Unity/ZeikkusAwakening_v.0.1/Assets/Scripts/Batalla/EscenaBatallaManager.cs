@@ -38,10 +38,10 @@ public class EscenaBatallaManager : MonoBehaviour
         }
         enemies = GetComponentsInChildren<Stats>();
 
-        int teamlevel = GameManager.GetTeamLevel();
+        //int teamlevel = GameManager.GetTeamLevel();
         foreach (Stats enemy in enemies)
         {
-            int newLevel = Random.Range(teamlevel - 3, teamlevel + 2);
+            int newLevel = Random.Range(1, 4);
             enemy.SetLevel(newLevel);
             switch (enemyAdvantage)
             {

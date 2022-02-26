@@ -20,6 +20,7 @@ public class PantallaResultadosManager : MonoBehaviour
     private void OnEnable()
     {
         levelUps = new Estadistica[3][];
+        levelUpCount = 0;
         escenaBatallaManager = FindObjectOfType<EscenaBatallaManager>();
         enemies = escenaBatallaManager.enemies;
         exp.text = GameManager.CalcExp(enemies, this);
@@ -53,7 +54,8 @@ public class PantallaResultadosManager : MonoBehaviour
     public void End()
     {
         if (LevelUpEvent()) return;
-        Destroy(sdnm.gameObject);
+        if (sdnm)
+            Destroy(sdnm.gameObject);
         FindObjectOfType<HUDManager>().ToFadeBattle(blackFade, escenaBatallaManager);
         gameObject.SetActive(false);
     }

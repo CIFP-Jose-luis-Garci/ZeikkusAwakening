@@ -123,7 +123,6 @@ public class GameManager : MonoBehaviour
             float total = baseExp * (aCorrector / bCorrector) + 1;
             resultado += (int) total;
         }
-        
         GameObject[] characters = FindObjectOfType<GameManager>().personajes;
         int countLevels = 0;
         foreach (GameObject character in characters)
