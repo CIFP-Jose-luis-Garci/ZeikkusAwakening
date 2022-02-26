@@ -67,14 +67,14 @@ public class Stats : MonoBehaviour
         experience -= nextLevelExperience;
         values[0].PutValues(level, 1);
         nextLevelExperience = (int) Mathf.Pow(values[0].newValue, 3);
-        values[1].PutValues(hp, 10 + ( level / 10 * ( (100 * 2) ) ));
+        values[1].PutValues(hp, Mathf.FloorToInt(Mathf.Sqrt(100 * level)));
         maxHP = values[1].newValue;
-        values[2].PutValues(mp, 10 + ( level / 10 * ( (80 * 2) ) ));
+        values[2].PutValues(mp, Mathf.FloorToInt(Mathf.Sqrt(80 * level)));
         maxMP = values[2].newValue;
-        values[3].PutValues(strength, Random.Range(2, 6));
-        values[4].PutValues(defense, Random.Range(2, 4));
-        values[5].PutValues(magicPower, Random.Range(2, 5));
-        values[6].PutValues(resistance, Random.Range(2, 4));
+        values[3].PutValues(strength, 10 + ( level / 100 * ( (120 * 2) ) ));
+        values[4].PutValues(defense, 10 + ( level / 100 * ( (90 * 2) ) ));
+        values[5].PutValues(magicPower, 10 + ( level / 100 * ( (100 * 2) ) ));
+        values[6].PutValues(resistance, 10 + ( level / 100 * ( (95 * 2) ) ));
     }
 
     public void SetLevel(int level)

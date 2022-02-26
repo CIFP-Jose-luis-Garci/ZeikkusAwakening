@@ -24,8 +24,8 @@ public class SubesDeNivelManager : MonoBehaviour
         for (int i = 0; i < nuevosValores.Length; i++)
         {
             Estadistica estadistica = estadisticas[i];
-            nuevosValores[i].text = estadistica.difference.ToString();
-            textos[i].text = "+" + estadistica.newValue;
+            nuevosValores[i].text = "+" + estadistica.difference;
+            textos[i].text = estadistica.newValue.ToString();
         }
     }
 
