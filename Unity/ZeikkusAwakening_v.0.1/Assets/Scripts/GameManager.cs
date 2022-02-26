@@ -116,12 +116,8 @@ public class GameManager : MonoBehaviour
         int resultado = 0;
         foreach (EnemyStats current in enemies)
         {
-            float baseExp = current.expBase * current.level;
-            baseExp /= 5;
-            float aCorrector = Mathf.Pow(2 * current.level, 2.5f);
-            float bCorrector = (current.level * GetTeamLevel() + 10);
-            float total = baseExp * (aCorrector / bCorrector) + 1;
-            resultado += (int) total;
+            float exp = ((float)current.level / GetTeamLevel()) * current.expBase;
+            resultado += (int) exp;
         }
         GameObject[] characters = FindObjectOfType<GameManager>().personajes;
         int countLevels = 0;
@@ -145,7 +141,7 @@ public class GameManager : MonoBehaviour
         return totalMaru.ToString();
     }
 
-    public static int GetTeamLevel()
+    private static int GetTeamLevel()
     {
         GameObject[] characters = FindObjectOfType<GameManager>().personajes;
         int level = 0;

@@ -56,9 +56,10 @@ public class Stats : MonoBehaviour
 
     protected void CalcValues(Estadistica[] values)
     {
-        experience -= nextLevelExperience;
+        int oldExp = experience;
+        experience = 0;
+        nextLevelExperience = (int) Mathf.Pow(oldExp, 1.001f);
         values[0].PutValues(level, 1);
-        nextLevelExperience = (int) Mathf.Pow(values[0].newValue, 3);
         values[1].PutValues(hp, Mathf.FloorToInt(Mathf.Sqrt(100 * level)));
         maxHP = values[1].newValue;
         values[2].PutValues(mp, Mathf.FloorToInt(Mathf.Sqrt(80 * level)));
