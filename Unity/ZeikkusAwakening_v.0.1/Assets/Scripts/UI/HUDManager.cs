@@ -39,7 +39,7 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        time += Time.unscaledDeltaTime;
         if (tiempo.gameObject.activeInHierarchy)
             tiempo.text = TiempoActual();
     }

@@ -124,6 +124,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical, bool forceCrit = false)
     {
+        if (GameManager.inPause) return;
         recoiled = true;
         int resultado;
         if (isPhysical)

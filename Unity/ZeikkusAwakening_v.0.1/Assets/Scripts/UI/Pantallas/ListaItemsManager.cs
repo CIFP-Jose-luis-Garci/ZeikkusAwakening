@@ -16,6 +16,7 @@ public class ListaItemsManager : MonoBehaviour
     private Item[] currentItems;
     private InputManager inputManager;
     private AudioSource source;
+    public AudioClip sonidoCategoria, sonidoPagina;
 
     private int currentPage;
     private int maxPages;
@@ -33,6 +34,7 @@ public class ListaItemsManager : MonoBehaviour
     public Text itemName, itemCategory, itemDescription;
     public Image itemSprite;
     public Sprite noItemSprite;
+
     private void Awake()
     {
         bag = FindObjectOfType<PlayerBagManager>();
@@ -115,6 +117,7 @@ public class ListaItemsManager : MonoBehaviour
     private void _ChangeCategory()
     {
         selectedCategory.rectTransform.position = categories[currentCategory].rectTransform.position;
+        source.PlayOneShot(sonidoCategoria);
         ReloadList();
         string category = "";
         switch (currentCategory)
@@ -151,6 +154,8 @@ public class ListaItemsManager : MonoBehaviour
         if (x != 0)
         {
             if (pageChanged) return;
+            if (maxPages == 1) return;
+            source.PlayOneShot(sonidoPagina);
             if (x > 0)
             {
                 currentPage++;
@@ -205,7 +210,6 @@ public class ListaItemsManager : MonoBehaviour
             itemName.text = currentItem.itemName;
         }
         items[0].GetComponent<Button>().Select();
-        source.PlayOneShot(source.clip);
     }
 
     private void SetPages()

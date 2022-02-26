@@ -1128,7 +1128,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.4
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0.85, z: 0}
@@ -1147,6 +1147,7 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   results: {fileID: 0}
   zagrantController: {fileID: 2067915419}
+  aInput: 0
   inDialogue: 0
   cutsceneManager: {fileID: 0}
   minimap: {fileID: 0}

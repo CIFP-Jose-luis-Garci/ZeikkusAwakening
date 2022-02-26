@@ -10,11 +10,15 @@ public class ItemSlotManager : MonoBehaviour, ISelectHandler
     public Item item;
     public GameObject popup;
     public GameObject botonesBolsa, botonesItem;
+    private AudioSource source;
+    public AudioClip sonidoSeleccionar;
 
     private void Start()
     {
+        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
         gameObject.GetComponent<Button>().onClick.AddListener(() =>
         {
+            source.PlayOneShot(sonidoSeleccionar);
             transform.parent.parent.gameObject.GetComponent<ListaItemsManager>().itemSelected = true;
             GameObject instantiatedPopup = Instantiate(popup, transform.position, transform.rotation, GameObject.FindGameObjectWithTag("UI").transform);
             RectTransform rectTransform = instantiatedPopup.GetComponent<RectTransform>();

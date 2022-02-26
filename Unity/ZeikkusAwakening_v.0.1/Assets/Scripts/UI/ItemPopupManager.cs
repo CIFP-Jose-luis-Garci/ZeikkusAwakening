@@ -82,6 +82,7 @@ public class ItemPopupManager : MonoBehaviour
         if (inputManager.bInput)
         {
             inputManager.bInput = false;
+            source.PlayOneShot(sonidoCerrarPopUp);
             Exit();
         }
     }

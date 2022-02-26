@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
     [NonSerialized] public float horizontalInput;
 
     [NonSerialized] public bool bInput;
-    [NonSerialized] public bool aInput;
+    public bool aInput;
     [NonSerialized] public bool yInput;
     [NonSerialized] public bool xInput;
     [NonSerialized] public bool start;
