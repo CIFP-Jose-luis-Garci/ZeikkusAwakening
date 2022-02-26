@@ -37,29 +37,44 @@ public class Stats : MonoBehaviour
         experience += exp;
         if (experience > nextLevelExperience)
         {
-            experience -= nextLevelExperience;
-            experience
+            
             Estadistica[] values = new Estadistica[7];
             for (int i = 0; i < values.Length; i++)
             {
                 values[i] = new Estadistica();
             }
-            level = values[0].PutValues(level, 1);
-            experience = 0;
-            nextLevelExperience = (int) (nextLevelExperience * 1.2f);
-            
-            hp = values[1].PutValues(hp, (int) (maxHP * 1.2f));
-            maxHP = values[1].newValue;
-            mp = values[2].PutValues(mp, (int) (maxMP * 1.2f));
-            maxMP = values[2].newValue;
-            strength = values[3].PutValues(strength, Random.Range(2, 6));
-            defense = values[4].PutValues(defense, Random.Range(2, 4));
-            magicPower = values[5].PutValues(magicPower, Random.Range(2, 5));
-            resistance = values[6].PutValues(resistance, Random.Range(2, 4));
+
+            do
+            {
+                CalcAndAdd(values);
+            } while (experience > nextLevelExperience);
+
+            level = values[0].newValue;
+            hp = values[1].newValue;
+            mp = values[2].newValue;
+            strength = values[3].newValue;
+            defense = values[4].newValue;
+            magicPower = values[5].newValue;
+            resistance = values[6].newValue;
             
             return values;
         }
         return null;
+    }
+
+    private void CalcAndAdd(Estadistica[] values)
+    {
+        experience -= nextLevelExperience;
+        nextLevelExperience = (int) (nextLevelExperience * 1.2f);
+        values[0].PutValues(level, 1);
+        values[1].PutValues(hp, (int) (maxHP * 1.2f));
+        maxHP = values[1].newValue;
+        values[2].PutValues(mp, (int) (maxMP * 1.2f));
+        maxMP = values[2].newValue;
+        values[3].PutValues(strength, Random.Range(2, 6));
+        values[4].PutValues(defense, Random.Range(2, 4));
+        values[5].PutValues(magicPower, Random.Range(2, 5));
+        values[6].PutValues(resistance, Random.Range(2, 4));
     }
 
     public void SetLevel(int level)

@@ -10,14 +10,15 @@ public class Estadistica
 
     public Estadistica()
     {
-        
+        oldValue = 0;
+        difference = 0;
+        newValue = 0;
     }
 
-    public int PutValues(int oldValue, int difference)
+    public void PutValues(int oldValue, int difference)
     {
         this.oldValue = oldValue;
-        this.difference = difference;
+        this.difference += difference;
         newValue = oldValue + difference;
-        return newValue;
     }
 }
