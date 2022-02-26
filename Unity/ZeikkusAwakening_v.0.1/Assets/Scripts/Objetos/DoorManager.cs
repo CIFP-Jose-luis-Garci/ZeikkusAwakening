@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class DoorManager : MonoBehaviour
 {
-    private bool doorOpen;
-    public Transform player;
+    public bool doorOpen;
     private PlayerBagManager bag;
+    private AudioSource source;
+    public AudioClip abrirPuerta;
+    public AudioClip llaves;
 
     void Awake()
     {
         bag = FindObjectOfType<PlayerBagManager>();
+        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
     }
     
     void Start()
@@ -21,16 +24,15 @@ public class DoorManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && !doorOpen)
+        if(other.CompareTag("Player") && !doorOpen)
         {
-            foreach( Item item in bag.GetBagContents(5))
+            foreach(Item item in bag.GetBagContents(5))
             {
-                //print(item.itemName);
                 if(item.itemName == "Llave pequeña")
                 {
+                    source.PlayOneShot(llaves);
                     bag.RemoveItem(bag.ItemSlot(item));
-                    //print(item.itemName);
-                    StartCoroutine("liftDoor");
+                    StartCoroutine(LiftDoor());
                     doorOpen = true;
                     break;
                 }
@@ -38,14 +40,15 @@ public class DoorManager : MonoBehaviour
         }
     }
 
-    IEnumerator liftDoor()
+    IEnumerator LiftDoor()
     {
-        while(transform.position.y < 2.3f)
+        source.PlayOneShot(abrirPuerta);
+        Debug.Log(transform.position);
+        while(transform.localPosition.y < 2.3f)
         {
-            transform.position += Vector3.up * 2.3f * Time.deltaTime;
-            //print("habrir puerta");
-            yield return null ;
+            transform.localPosition += Vector3.up * 2f * Time.deltaTime;
+            Debug.Log("hi");
+            yield return null;
         }
-        //print("abierto");
     }
 }

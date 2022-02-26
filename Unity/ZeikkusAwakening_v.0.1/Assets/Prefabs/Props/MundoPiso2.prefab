@@ -781,7 +781,7 @@ GameObject:
   - component: {fileID: 1161445965849927904}
   - component: {fileID: 57573778597055362}
   m_Layer: 3
-  m_Name: escalerasp_2
+  m_Name: Escaleras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1587,8 +1587,9 @@ GameObject:
   - component: {fileID: 8285584866226437529}
   - component: {fileID: 3427285884485113439}
   - component: {fileID: 3995474572144412172}
+  - component: {fileID: 3925911864643803736}
   m_Layer: 3
-  m_Name: laberintop2_techo
+  m_Name: Techo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1657,6 +1658,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3925911864643803736
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5044100040666503677}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 43.7722, y: 0.06167841, z: 88.29155}
+  m_Center: {x: -5.716634, y: 6.3084297, z: 32.47644}
 --- !u!65 &3315158977218254371
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1743,7 +1757,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58864a601ca81c498e2fefd14d77ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  doorOpen: 0
+  abrirPuerta: {fileID: 8300000, guid: bfa8ccbda5de0b1419514b321a266043, type: 3}
+  llaves: {fileID: 8300000, guid: 2386d39a4b82c9040a0ea34baa01ef5e, type: 3}
 --- !u!1 &5264695574175701709
 GameObject:
   m_ObjectHideFlags: 3
@@ -2737,7 +2753,7 @@ PrefabInstance:
     - target: {fileID: 1149135728330667664, guid: 7f28a9ba4bba716429d0035993e76ebf, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: 290b7a79b10b54f418ddddb4039bb5a3, type: 2}
     - target: {fileID: 5933897830930740816, guid: 7f28a9ba4bba716429d0035993e76ebf, type: 3}
       propertyPath: m_Name
       value: BadZ
@@ -3468,14 +3484,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 18f63ff904099034daf971dac5b32582, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
---- !u!1 &21561567296166052 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
-  m_PrefabInstance: {fileID: 21561567296134660}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &21561567295997060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
+  m_PrefabInstance: {fileID: 21561567296134660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &21561567296166052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
   m_PrefabInstance: {fileID: 21561567296134660}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &57573776996980199
@@ -6370,14 +6386,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 18f63ff904099034daf971dac5b32582, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
---- !u!1 &5122941086666052054 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
-  m_PrefabInstance: {fileID: 5122941086665955190}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5122941086666083830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
+  m_PrefabInstance: {fileID: 5122941086665955190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5122941086666052054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
   m_PrefabInstance: {fileID: 5122941086665955190}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5379557366085860430

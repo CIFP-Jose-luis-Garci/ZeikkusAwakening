@@ -24,8 +24,8 @@ public class SceneChangeManager : MonoBehaviour
 
     private IEnumerator LoadLevel()
     {
-        blackFade.CrossFadeAlpha(1, 1, true);
-        yield return new WaitForSeconds(1f);
+        blackFade.CrossFadeAlpha(1, 0.3f, true);
+        yield return new WaitForSeconds(0.3f);
         video.gameObject.SetActive(true);
         yield return new WaitForSeconds(2f);
         video.gameObject.SetActive(false);

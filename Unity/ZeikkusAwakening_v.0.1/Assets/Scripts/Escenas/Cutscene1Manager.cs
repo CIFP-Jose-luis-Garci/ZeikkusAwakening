@@ -106,7 +106,7 @@ public class Cutscene1Manager : CutsceneManager
     {
         blackFade.CrossFadeAlpha(1,1,true);
         yield return new WaitForSeconds(1f);
-        animatorManager.PlayTargetAnimation("Empty", false);
+        animatorManager.PlayTargetAnimation("World", false);
         cameras[3].SetActive(false);
         cameras[4].SetActive(true);
         hudManager.GetCamera();
