@@ -151,7 +151,7 @@ public class InputManager : MonoBehaviour
             if (gameManager.inWorld)
             {
                 if (GameManager.winning)
-                    results.Animate();
+                    results.End();
                 else
                 {
                     if (GameManager.inPause) return;

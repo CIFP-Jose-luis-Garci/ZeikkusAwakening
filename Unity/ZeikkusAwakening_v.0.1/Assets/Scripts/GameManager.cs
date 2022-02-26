@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         return (int) resultado;
     }
 
-    public static string CalcExp(Stats[] enemies)
+    public static string CalcExp(Stats[] enemies, PantallaResultadosManager resultados)
     {
         int resultado = 0;
         foreach (Stats current in enemies)
@@ -125,9 +125,11 @@ public class GameManager : MonoBehaviour
         }
         
         GameObject[] characters = FindObjectOfType<GameManager>().personajes;
+        int countLevels = 0;
         foreach (GameObject character in characters)
         {
-            character.GetComponent<Stats>().AddExp(resultado);
+            resultados.levelUps[countLevels] = character.GetComponent<Stats>().AddExp(resultado);
+            countLevels++;
         }
         return resultado.ToString();
     }
