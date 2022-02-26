@@ -837,11 +837,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1623286634115488296, guid: ec9e89bda6f4573489bb6e5e92dd30b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0024
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1623286634115488296, guid: ec9e89bda6f4573489bb6e5e92dd30b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0008
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1623286634115488296, guid: ec9e89bda6f4573489bb6e5e92dd30b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -878,6 +878,26 @@ PrefabInstance:
     - target: {fileID: 5668446071692104140, guid: ec9e89bda6f4573489bb6e5e92dd30b1, type: 3}
       propertyPath: m_Name
       value: vfx_SwordTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190971470072041850, guid: ec9e89bda6f4573489bb6e5e92dd30b1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190971470072041850, guid: ec9e89bda6f4573489bb6e5e92dd30b1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190971470072041850, guid: ec9e89bda6f4573489bb6e5e92dd30b1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190971470072041850, guid: ec9e89bda6f4573489bb6e5e92dd30b1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190971470072041850, guid: ec9e89bda6f4573489bb6e5e92dd30b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec9e89bda6f4573489bb6e5e92dd30b1, type: 3}

@@ -7004,6 +7004,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4109492196288582282, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4927773376940549154, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: m_Name
       value: Zeikku
@@ -12425,7 +12429,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -3945037016760222071, guid: 3b6ead1dd46ce924d931c78b2db5eebd, type: 3}
+  m_Mesh: {fileID: -3945037016760222071, guid: c5dde27b35f2f954b8cffde14fdb3972, type: 3}
 --- !u!1 &1827287552318001471
 GameObject:
   m_ObjectHideFlags: 0

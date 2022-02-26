@@ -4,19 +4,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonSound : MonoBehaviour, IDeselectHandler
+public class ButtonSound : MonoBehaviour, IDeselectHandler, ISelectHandler
 {
     public AudioClip sonidoSeleccionado;
-    private AudioSource gameManagerAudio;
+    private static AudioSource gameManagerAudio;
 
     private void Start()
     {
-        gameManagerAudio = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+        if (!gameManagerAudio)
+            gameManagerAudio = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        gameManagerAudio.PlayOneShot(sonidoSeleccionado);
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
-        gameManagerAudio.clip = sonidoSeleccionado;
-        gameManagerAudio.Play();
+        throw new NotImplementedException();
     }
 }

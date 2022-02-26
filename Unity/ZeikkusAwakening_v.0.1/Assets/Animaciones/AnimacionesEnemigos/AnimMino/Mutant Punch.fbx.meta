@@ -39,7 +39,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 66
+      lastFrame: 69
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -51,7 +51,7 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 1
@@ -59,29 +59,29 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.22270742
+      - time: 0.43899718
+        functionName: CrySound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4782985
         functionName: IsAttackingSet
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.4078988
-        functionName: IsAttackingSet
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.24454148
+      - time: 0.50013256
         functionName: AttackSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.18340611
-        functionName: CrySound
+      - time: 0.6634899
+        functionName: IsAttackingSet
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
