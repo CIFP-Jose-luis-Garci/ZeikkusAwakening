@@ -123,7 +123,7 @@ public class HUDManager : MonoBehaviour
     {
         WinBattleAnimation();
         ChangeMusic(fanfare, false);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
         CameraManager cameraManager = cmfl.GetComponent<CameraManager>();
         cameraManager.ChangeTarget(animatorManager.transform);
         cameraManager.ResetRadius();

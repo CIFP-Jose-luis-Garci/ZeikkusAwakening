@@ -117,6 +117,7 @@ public class EnemyBattleManager : MonoBehaviour
     private void Recoil()
     {
         animator.SetTrigger("daño");
+        animator.SetBool("isAttacking", false);
         waitTime = 0;
         recoiled = false;
     }

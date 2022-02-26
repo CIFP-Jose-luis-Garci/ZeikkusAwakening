@@ -53,6 +53,7 @@ public class PantallaResultadosManager : MonoBehaviour
 
     public void End()
     {
+        if (!gameObject.activeSelf) return;
         if (LevelUpEvent()) return;
         if (sdnm)
             Destroy(sdnm.gameObject);

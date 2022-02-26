@@ -31,7 +31,7 @@ public class PlayerBagManager : MonoBehaviour
     public Item[] GetBagContents(int category)
     {
         object[] objects = bag.ToArray();
-        Item[] items = Array.ConvertAll(objects, new Converter<object, Item>(ObjectToItem));
+        Item[] items = Array.ConvertAll(objects, ObjectToItem);
         if (category != 0)
         {
             ArrayList filteredList = new ArrayList();
@@ -42,7 +42,7 @@ public class PlayerBagManager : MonoBehaviour
                     filteredList.Add(item);
                 }
             }
-            Item[] filteredItems = Array.ConvertAll(filteredList.ToArray(), new Converter<object, Item>(ObjectToItem));
+            Item[] filteredItems = Array.ConvertAll(filteredList.ToArray(), ObjectToItem);
             return filteredItems;
         }
         return items;

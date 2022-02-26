@@ -140,8 +140,6 @@ public class ListaItemsManager : MonoBehaviour
             case 6:
                 category = "Tesoros";
                 break;
-            default:
-                break;
         }
         categoryText.text = "Inventario: " + category;
     }
@@ -201,7 +199,7 @@ public class ListaItemsManager : MonoBehaviour
         {
             if (i >= currentItems.Length) break;
             Item currentItem = currentItems[i];
-            currentItem.slot = i;
+            currentItem.slot = bag.ItemSlot(currentItem);
             items[i - startPoint].GetComponent<ItemSlotManager>().item = currentItem;
             Text itemName = items[i - startPoint].GetComponentInChildren<Text>();
             itemName.text = currentItem.itemName;
