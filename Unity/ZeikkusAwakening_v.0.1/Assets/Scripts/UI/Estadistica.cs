@@ -19,6 +19,9 @@ public class Estadistica
     {
         this.oldValue = oldValue;
         this.difference += difference;
-        newValue = oldValue + difference;
+        if (newValue == 0)
+            newValue = oldValue + difference;
+        else
+            newValue += difference;
     }
 }

@@ -13,17 +13,16 @@ public class PantallaResultadosManager : MonoBehaviour
     private Stats[] enemies;
     public Estadistica[][] levelUps;
     private int levelUpCount = 0;
-    public bool animated;
     public Image blackFade;
     
     // Start is called before the first frame update
     private void OnEnable()
     {
+        levelUps = new Estadistica[3][];
         escenaBatallaManager = FindObjectOfType<EscenaBatallaManager>();
         enemies = escenaBatallaManager.enemies;
         exp.text = GameManager.CalcExp(enemies, this);
         maru.text = GameManager.CalcMaru(enemies);
-        animated = false;
         danoTotal.text = escenaBatallaManager.danoTotal.ToString();
         tiempoBatalla.text = escenaBatallaManager.TiempoBatalla();
         LevelUpEvent();
