@@ -32,22 +32,22 @@ public class Stats : MonoBehaviour
         maxMP = mp;
     }
 
-    public Estadística[] AddExp(int exp)
+    public Estadistica[] AddExp(int exp)
     {
         experience += exp;
         if (experience > nextLevelExperience)
         {
-            Estadística[] values = new Estadística[7];
-            values[0] = new Estadística(level, 1);
+            Estadistica[] values = new Estadistica[7];
+            values[0] = new Estadistica(level, 1);
             level = values[0].GetNewValue();
             experience = 0;
             nextLevelExperience = (int) (nextLevelExperience * 1.2f);
-            values[1] = new Estadística(hp, (int) (maxHP * 1.2f));
-            values[2] = new Estadística(mp, (int) (maxMP * 1.2f));
-            values[3] = new Estadística(strength, Random.Range(2, 6));
-            values[4] = new Estadística(defense, Random.Range(2, 4));
-            values[5] = new Estadística(magicPower, Random.Range(2, 5));
-            values[6] = new Estadística(resistance, Random.Range(2, 4));
+            values[1] = new Estadistica(hp, (int) (maxHP * 1.2f));
+            values[2] = new Estadistica(mp, (int) (maxMP * 1.2f));
+            values[3] = new Estadistica(strength, Random.Range(2, 6));
+            values[4] = new Estadistica(defense, Random.Range(2, 4));
+            values[5] = new Estadistica(magicPower, Random.Range(2, 5));
+            values[6] = new Estadistica(resistance, Random.Range(2, 4));
             hp = values[1].GetNewValue();
             maxHP = values[1].GetNewValue();
             mp = values[2].GetNewValue();

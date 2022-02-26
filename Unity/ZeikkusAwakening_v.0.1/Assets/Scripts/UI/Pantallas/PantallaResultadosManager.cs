@@ -11,7 +11,7 @@ public class PantallaResultadosManager : MonoBehaviour
 
     private EscenaBatallaManager escenaBatallaManager;
     private Stats[] enemies;
-    public Estadística[][] levelUps;
+    public Estadistica[][] levelUps;
     private int levelUpCount = 0;
     public bool animated;
     public Image blackFade;
@@ -32,11 +32,12 @@ public class PantallaResultadosManager : MonoBehaviour
     private bool LevelUpEvent(){
         if (levelUps[levelUpCount] != null)
         {
-            levelUpCount++;
             SubesDeNivelManager sdnm = subesDeNivelContainer.GetComponentInChildren<SubesDeNivelManager>();
             if (sdnm)
                 sdnm.Retract();
-            Instantiate(subesDeNivelPrefab, subesDeNivelContainer.transform);
+            sdnm = Instantiate(subesDeNivelPrefab, subesDeNivelContainer.transform).GetComponent<SubesDeNivelManager>();
+            sdnm.SetEstadísticas(levelUps[levelUpCount]);
+            levelUpCount++;
             if (levelUps[levelUpCount] == null)
             {
                 opcion.text = "Fin";

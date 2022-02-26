@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Estadística
+public class Estadistica
 {
     public int oldValue;
     public int newValue;
     public int difference;
 
-    public Estadística(int oldValue, int difference)
+    public Estadistica(int oldValue, int difference)
     {
         this.oldValue = oldValue;
         this.difference = difference;
@@ -18,5 +18,15 @@ public class Estadística
     public int GetNewValue()
     {
         return newValue;
+    }
+
+    public int GetOldValue()
+    {
+        return oldValue;
+    }
+
+    public int GetDifference()
+    {
+        return difference;
     }
 }
