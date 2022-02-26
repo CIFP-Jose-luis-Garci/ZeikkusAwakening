@@ -60,10 +60,10 @@ public class Stats : MonoBehaviour
         experience = 0;
         nextLevelExperience = (int) Mathf.Pow(oldExp, 1.001f);
         values[0].PutValues(level, 1);
-        values[1].PutValues(hp, Mathf.FloorToInt(Mathf.Sqrt(100 * level)));
-        maxHP = values[1].newValue;
-        values[2].PutValues(mp, Mathf.FloorToInt(Mathf.Sqrt(80 * level)));
-        maxMP = values[2].newValue;
+        values[1].PutValues(maxHP, Mathf.FloorToInt(Mathf.Sqrt(100 * level)));
+        hp = values[1].newValue;
+        values[2].PutValues(maxMP, Mathf.FloorToInt(Mathf.Sqrt(80 * level)));
+        mp = values[2].newValue;
         values[3].PutValues(strength, 10 + ( level / 100 * ( (120 * 2) ) ));
         values[4].PutValues(defense, 10 + ( level / 100 * ( (90 * 2) ) ));
         values[5].PutValues(magicPower, 10 + ( level / 100 * ( (100 * 2) ) ));
