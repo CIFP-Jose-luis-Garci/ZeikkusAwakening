@@ -37,25 +37,26 @@ public class Stats : MonoBehaviour
         experience += exp;
         if (experience > nextLevelExperience)
         {
+            experience -= nextLevelExperience;
+            experience
             Estadistica[] values = new Estadistica[7];
-            values[0] = new Estadistica(level, 1);
-            level = values[0].GetNewValue();
+            for (int i = 0; i < values.Length; i++)
+            {
+                values[i] = new Estadistica();
+            }
+            level = values[0].PutValues(level, 1);
             experience = 0;
             nextLevelExperience = (int) (nextLevelExperience * 1.2f);
-            values[1] = new Estadistica(hp, (int) (maxHP * 1.2f));
-            values[2] = new Estadistica(mp, (int) (maxMP * 1.2f));
-            values[3] = new Estadistica(strength, Random.Range(2, 6));
-            values[4] = new Estadistica(defense, Random.Range(2, 4));
-            values[5] = new Estadistica(magicPower, Random.Range(2, 5));
-            values[6] = new Estadistica(resistance, Random.Range(2, 4));
-            hp = values[1].GetNewValue();
-            maxHP = values[1].GetNewValue();
-            mp = values[2].GetNewValue();
-            maxMP = values[2].GetNewValue();
-            strength = values[3].GetNewValue();
-            defense = values[4].GetNewValue();
-            magicPower = values[5].GetNewValue();
-            resistance = values[6].GetNewValue();
+            
+            hp = values[1].PutValues(hp, (int) (maxHP * 1.2f));
+            maxHP = values[1].newValue;
+            mp = values[2].PutValues(mp, (int) (maxMP * 1.2f));
+            maxMP = values[2].newValue;
+            strength = values[3].PutValues(strength, Random.Range(2, 6));
+            defense = values[4].PutValues(defense, Random.Range(2, 4));
+            magicPower = values[5].PutValues(magicPower, Random.Range(2, 5));
+            resistance = values[6].PutValues(resistance, Random.Range(2, 4));
+            
             return values;
         }
         return null;

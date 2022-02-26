@@ -8,20 +8,25 @@ public class SubesDeNivelManager : MonoBehaviour
     private Animator animator;
     private Estadistica[] estadisticas;
     public Text[] textos;
+    public Text[] nuevosValores;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         for (int i = 0; i < estadisticas.Length; i++)
         {
-            textos[i].text = estadisticas[i].GetOldValue().ToString();;
+            textos[i].text = estadisticas[i].oldValue.ToString();;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void PopUpValuesEvent()
     {
-        
+        for (int i = 0; i < nuevosValores.Length; i++)
+        {
+            Estadistica estadistica = estadisticas[i];
+            nuevosValores[i].text = estadistica.difference.ToString();
+            textos[i].text = estadistica.difference.ToString();
+        }
     }
 
     public void Retract()
