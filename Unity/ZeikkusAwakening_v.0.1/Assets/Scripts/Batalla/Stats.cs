@@ -73,8 +73,8 @@ public class Stats : MonoBehaviour
     protected void AddValues(Estadistica[] values)
     {
         level = values[0].newValue;
-        hp = values[1].newValue;
-        mp = values[2].newValue;
+        maxHP = values[1].newValue;
+        maxMP = values[2].newValue;
         strength = values[3].newValue;
         defense = values[4].newValue;
         magicPower = values[5].newValue;
