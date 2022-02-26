@@ -10,7 +10,7 @@ public class EscenaBatallaManager : MonoBehaviour
     public Transform playerSpawn;
     [NonSerialized] public GameObject enemyToSpawn;
     [NonSerialized] public Vector3 playerOrigin;
-    [NonSerialized] public Stats[] enemies;
+    [NonSerialized] public EnemyStats[] enemyStats;
     private bool battling;
     private Transform playerTransform;
 
@@ -36,13 +36,14 @@ public class EscenaBatallaManager : MonoBehaviour
             Transform spawner = spawners[i].transform;
             Instantiate(enemyToSpawn, spawner.position, spawner.rotation, spawner);
         }
-        enemies = GetComponentsInChildren<Stats>();
+        enemyStats = GetComponentsInChildren<EnemyStats>();
 
         //int teamlevel = GameManager.GetTeamLevel();
-        foreach (Stats enemy in enemies)
+        foreach (EnemyStats enemy in enemyStats)
         {
             int newLevel = Random.Range(1, 4);
             enemy.SetLevel(newLevel);
+            
             switch (enemyAdvantage)
             {
                 case 0:

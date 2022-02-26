@@ -11,7 +11,7 @@ public class PantallaResultadosManager : MonoBehaviour
 
     private EscenaBatallaManager escenaBatallaManager;
     private SubesDeNivelManager sdnm;
-    private Stats[] enemies;
+    private EnemyStats[] enemies;
     public Estadistica[][] levelUps;
     private int levelUpCount = 0;
     public Image blackFade;
@@ -22,7 +22,7 @@ public class PantallaResultadosManager : MonoBehaviour
         levelUps = new Estadistica[3][];
         levelUpCount = 0;
         escenaBatallaManager = FindObjectOfType<EscenaBatallaManager>();
-        enemies = escenaBatallaManager.enemies;
+        enemies = escenaBatallaManager.enemyStats;
         exp.text = GameManager.CalcExp(enemies, this);
         maru.text = GameManager.CalcMaru(enemies);
         danoTotal.text = escenaBatallaManager.danoTotal.ToString();

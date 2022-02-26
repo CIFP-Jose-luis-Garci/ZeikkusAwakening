@@ -22,8 +22,6 @@ public class Stats : MonoBehaviour
     public int experience;
     public int nextLevelExperience;
     public int turnPoints;
-    public int expBase;
-    public int marubase;
     public bool alive;
 
     private void Awake()
@@ -46,23 +44,17 @@ public class Stats : MonoBehaviour
 
             do
             {
-                CalcAndAdd(values);
+                CalcValues(values);
             } while (experience > nextLevelExperience);
-
-            level = values[0].newValue;
-            hp = values[1].newValue;
-            mp = values[2].newValue;
-            strength = values[3].newValue;
-            defense = values[4].newValue;
-            magicPower = values[5].newValue;
-            resistance = values[6].newValue;
+            
+            AddValues(values);
             
             return values;
         }
         return null;
     }
 
-    private void CalcAndAdd(Estadistica[] values)
+    protected void CalcValues(Estadistica[] values)
     {
         experience -= nextLevelExperience;
         values[0].PutValues(level, 1);
@@ -77,12 +69,14 @@ public class Stats : MonoBehaviour
         values[6].PutValues(resistance, 10 + ( level / 100 * ( (95 * 2) ) ));
     }
 
-    public void SetLevel(int level)
+    protected void AddValues(Estadistica[] values)
     {
-        if (level < 1)
-        {
-            level = 1;
-        }
-        this.level = level;
+        level = values[0].newValue;
+        hp = values[1].newValue;
+        mp = values[2].newValue;
+        strength = values[3].newValue;
+        defense = values[4].newValue;
+        magicPower = values[5].newValue;
+        resistance = values[6].newValue;
     }
 }

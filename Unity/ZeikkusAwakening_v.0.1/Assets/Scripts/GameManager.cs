@@ -111,10 +111,10 @@ public class GameManager : MonoBehaviour
         return (int) resultado;
     }
 
-    public static string CalcExp(Stats[] enemies, PantallaResultadosManager resultados)
+    public static string CalcExp(EnemyStats[] enemies, PantallaResultadosManager resultados)
     {
         int resultado = 0;
-        foreach (Stats current in enemies)
+        foreach (EnemyStats current in enemies)
         {
             float baseExp = current.expBase * current.level;
             baseExp /= 5;
@@ -133,10 +133,10 @@ public class GameManager : MonoBehaviour
         return resultado.ToString();
     }
 
-    public static string CalcMaru(Stats[] enemies)
+    public static string CalcMaru(EnemyStats[] enemies)
     {
         int totalMaru = 0;
-        foreach (Stats current in enemies)
+        foreach (EnemyStats current in enemies)
         {
             totalMaru += (int)(current.marubase * Random.Range(0.85f, 1.1f));
         }
