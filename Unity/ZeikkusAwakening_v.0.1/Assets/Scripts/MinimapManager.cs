@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MinimapManager : MonoBehaviour
 {
-    public Transform player;
+    public Transform player, camera;
     
     // Start is called before the first frame update
     void LateUpdate()
@@ -12,7 +12,7 @@ public class MinimapManager : MonoBehaviour
         Vector3 newPosition = player.position;
         newPosition.y = transform.position.y;
         transform.position = newPosition;
-        transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Euler(90f, camera.eulerAngles.y, 0);
     }
 
     // Update is called once per frame
