@@ -7,9 +7,14 @@ public class SlotEnemigoManager : MonoBehaviour
 {
     [SerializeField] private Text nombre, nivel;
 
-    public void SetNameAndLevel(string nombre, string nivel)
+    public void SetNameAndLevel(EnemyStats enemyStats)
     {
-        this.nombre.text = nombre;
-        this.nivel.text = nivel;
+        if (!enemyStats)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        nombre.text = enemyStats.actorName;
+        nivel.text = enemyStats.level.ToString();
     }
 }

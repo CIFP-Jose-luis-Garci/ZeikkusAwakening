@@ -24,7 +24,7 @@ public class EscenaBatallaManager : MonoBehaviour
         tiempoDeCombate += Time.deltaTime;
     }
 
-    public void ControlScene(InterfazBatallaManager interfazBatalla)
+    public void ControlScene(SlotEnemigoManager[] slotsEnemigos)
     {
         battling = true;
         playerTransform = FindObjectOfType<PlayerManager>().transform;
@@ -58,6 +58,13 @@ public class EscenaBatallaManager : MonoBehaviour
 
             Debug.Log(newLevel);
         }
+        
+        for (int i = 0; i < slotsEnemigos.Length; i++)
+        {
+            SlotEnemigoManager slot = slotsEnemigos[i];
+            slot.SetNameAndLevel(i >= enemyStats.Length ? null : enemyStats[i]);
+        }
+        
         danoTotal = 0;
         tiempoDeCombate = 0;
     }

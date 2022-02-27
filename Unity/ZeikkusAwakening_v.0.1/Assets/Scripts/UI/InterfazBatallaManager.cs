@@ -6,7 +6,7 @@ public class InterfazBatallaManager : MonoBehaviour
 {
     private Animator animator;
 
-    public SlotEnemigoManager enemigo1, enemigo2, enemigo3;
+    public SlotEnemigoManager[] slotsEnemigos;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +17,14 @@ public class InterfazBatallaManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ActivateSlots()
+    {
+        foreach (SlotEnemigoManager slotEnemigo in slotsEnemigos)
+        {
+            slotEnemigo.gameObject.SetActive(true);
+        }
     }
 
     public void Retract()

@@ -102,7 +102,8 @@ public class HUDManager : MonoBehaviour
             ChangeMusic(battleMusic);
         escenaBatalla.enemyToSpawn = worldEnemy.GetComponent<EnemyManager>().enemyToSpawn;
         escenaBatalla.enemyAdvantage = enemyAdvantage;
-        escenaBatalla.ControlScene(interfazBatalla);
+        interfazBatalla.ActivateSlots();
+        escenaBatalla.ControlScene(interfazBatalla.slotsEnemigos);
         Destroy(worldEnemy);
         StartBattleAnimation();
         yield return GameManager.CrossFadeMusic(mixer, 1, false);
