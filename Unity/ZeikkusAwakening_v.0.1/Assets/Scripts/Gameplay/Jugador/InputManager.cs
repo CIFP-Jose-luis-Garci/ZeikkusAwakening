@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour
     [NonSerialized] public float horizontalInput;
 
     [NonSerialized] public bool bInput;
-    public bool aInput;
+    [NonSerialized] public bool aInput;
     [NonSerialized] public bool yInput;
     [NonSerialized] public bool xInput;
     [NonSerialized] public bool start;
@@ -35,6 +35,7 @@ public class InputManager : MonoBehaviour
     [NonSerialized] public bool rTrigger;
     [NonSerialized] public bool rBump;
     [NonSerialized] public bool lBump;
+    [NonSerialized] public bool anyButtonPressed;
 
     public bool inDialogue;
     public CutsceneManager cutsceneManager;
@@ -100,6 +101,25 @@ public class InputManager : MonoBehaviour
         HandleSelectInput();
         HandleLeftBump();
         HandleRightBump();
+        AnyActionsPressed();
+    }
+
+    private void AnyActionsPressed()
+    {
+        var movement = playerControls.PlayerMovement;
+        var actions = playerControls.PlayerActions;
+
+        anyButtonPressed = movement.Movement.WasPerformedThisFrame() ||
+                           actions.A.WasPressedThisFrame() ||
+                           actions.B.WasPressedThisFrame() ||
+                           actions.X.WasPressedThisFrame() ||
+                           actions.Y.WasPressedThisFrame() ||
+                           actions.RBump.WasPressedThisFrame() ||
+                           actions.LBump.WasPressedThisFrame() ||
+                           actions.RTrigger.WasPressedThisFrame() ||
+                           actions.LTrigger.WasPressedThisFrame() ||
+                           actions.Start.WasPressedThisFrame() ||
+                           actions.Select.WasPressedThisFrame();
     }
 
     private void HandleMovementInput()
