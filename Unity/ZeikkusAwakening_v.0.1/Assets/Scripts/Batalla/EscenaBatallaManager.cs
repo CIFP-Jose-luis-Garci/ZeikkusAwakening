@@ -24,7 +24,7 @@ public class EscenaBatallaManager : MonoBehaviour
         tiempoDeCombate += Time.deltaTime;
     }
 
-    public void ControlScene()
+    public void ControlScene(InterfazBatallaManager interfazBatalla)
     {
         battling = true;
         playerTransform = FindObjectOfType<PlayerManager>().transform;
