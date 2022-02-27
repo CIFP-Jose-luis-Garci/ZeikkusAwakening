@@ -13,6 +13,7 @@ public class PantallaOpcionesManager : MonoBehaviour
     public AudioMixer mixer;
     public GameObject pantallaPausa;
     private InputManager inputManager;
+    public AudioClip sonidoCerrarPopUp;
     
     private void OnEnable()
     {
@@ -39,6 +40,7 @@ public class PantallaOpcionesManager : MonoBehaviour
         
         exit.onClick.AddListener(() =>
         {
+            FindObjectOfType<GameManager>().source.PlayOneShot(sonidoCerrarPopUp);
             gameObject.SetActive(false);
             pantallaPausa.SetActive(true);
             pantallaPausa.GetComponentInChildren<Button>().Select();

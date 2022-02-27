@@ -52,6 +52,7 @@ MonoBehaviour:
   usable: 1
   tossable: 1
   healingPercent: 0.25
+  sonidoCuracion: {fileID: 8300000, guid: 71c3ec5f1366eb54fbb980b1cc618597, type: 3}
 --- !u!1 &1084599366
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +156,7 @@ MonoBehaviour:
   usable: 1
   tossable: 1
   healingPercent: 0.5
+  sonidoCuracion: {fileID: 8300000, guid: 71c3ec5f1366eb54fbb980b1cc618597, type: 3}
 --- !u!65 &2345038534597122829
 BoxCollider:
   m_ObjectHideFlags: 0

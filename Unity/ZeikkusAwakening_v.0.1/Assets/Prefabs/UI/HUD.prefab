@@ -624,6 +624,8 @@ MonoBehaviour:
   - {fileID: 7898381392084355094}
   - {fileID: 5873336267716986457}
   paginas: {fileID: 7057750966461214006}
+  sonidoCategoria: {fileID: 8300000, guid: 4656964652ec5a846bc498f6b1562ba6, type: 3}
+  sonidoPagina: {fileID: 8300000, guid: c41a253b2d43a124fa8c24438afa6f81, type: 3}
   categories:
   - {fileID: 1235640339869403260}
   - {fileID: 6934106566719003629}
@@ -650,7 +652,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8940737863194162622, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
-  m_audioClip: {fileID: 8300000, guid: c41a253b2d43a124fa8c24438afa6f81, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1725,6 +1727,7 @@ MonoBehaviour:
   popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
   botonesBolsa: {fileID: 6756601827830050937}
   botonesItem: {fileID: 7763764450795326636}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!114 &691860320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1737,7 +1740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &735699194849893810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,7 +2277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &951854436237345700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2826,6 +2829,7 @@ MonoBehaviour:
   popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
   botonesBolsa: {fileID: 6756601827830050937}
   botonesItem: {fileID: 7763764450795326636}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!114 &1997063735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2838,7 +2842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &1116680135030493005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3575,6 +3579,7 @@ MonoBehaviour:
   popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
   botonesBolsa: {fileID: 6756601827830050937}
   botonesItem: {fileID: 7763764450795326636}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!114 &26251729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3587,7 +3592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &1294484592478535779
 GameObject:
   m_ObjectHideFlags: 0
@@ -5548,7 +5553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &2116774269175683649
 GameObject:
   m_ObjectHideFlags: 0
@@ -6777,6 +6782,7 @@ MonoBehaviour:
   popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
   botonesBolsa: {fileID: 6756601827830050937}
   botonesItem: {fileID: 7763764450795326636}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!114 &455520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6789,7 +6795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &2714549181385397571
 GameObject:
   m_ObjectHideFlags: 0
@@ -8180,6 +8186,7 @@ MonoBehaviour:
   popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
   botonesBolsa: {fileID: 6756601827830050937}
   botonesItem: {fileID: 7763764450795326636}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!114 &1531245270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8192,7 +8199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &3477804039040435361
 GameObject:
   m_ObjectHideFlags: 0
@@ -8560,7 +8567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &3715474469428468615
 GameObject:
   m_ObjectHideFlags: 0
@@ -8869,7 +8876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &3803689437121922996
 GameObject:
   m_ObjectHideFlags: 0
@@ -10708,6 +10715,7 @@ MonoBehaviour:
   popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
   botonesBolsa: {fileID: 6756601827830050937}
   botonesItem: {fileID: 7763764450795326636}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!114 &577651186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10720,7 +10728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &4824725426910972047
 GameObject:
   m_ObjectHideFlags: 0
@@ -13865,6 +13873,7 @@ MonoBehaviour:
   popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
   botonesBolsa: {fileID: 6756601827830050937}
   botonesItem: {fileID: 7763764450795326636}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!114 &1071701750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13877,7 +13886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &5876509465692402284
 GameObject:
   m_ObjectHideFlags: 0
@@ -14232,6 +14241,7 @@ MonoBehaviour:
   popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
   botonesBolsa: {fileID: 6756601827830050937}
   botonesItem: {fileID: 7763764450795326636}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!114 &1213498741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14244,7 +14254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &6176230404461967148
 GameObject:
   m_ObjectHideFlags: 0
@@ -16306,7 +16316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &7317381122749051872
 GameObject:
   m_ObjectHideFlags: 0
@@ -17158,6 +17168,7 @@ MonoBehaviour:
   exit: {fileID: 1075377686216651863}
   mixer: {fileID: 24100000, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
   pantallaPausa: {fileID: 8255810256127292182}
+  sonidoCerrarPopUp: {fileID: 8300000, guid: 712591e1a6506a14ea57488eb15d0857, type: 3}
 --- !u!1 &7823096708433436736
 GameObject:
   m_ObjectHideFlags: 0
@@ -17417,6 +17428,7 @@ MonoBehaviour:
   popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
   botonesBolsa: {fileID: 6756601827830050937}
   botonesItem: {fileID: 7763764450795326636}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!114 &1126429140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17429,7 +17441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &7951131241631639216
 GameObject:
   m_ObjectHideFlags: 0
@@ -18150,12 +18162,18 @@ MonoBehaviour:
   flash: {fileID: 8303442669313546358}
   blackFade: {fileID: 7302383872842397048}
   inventario: {fileID: 799857486347070908}
+  magia: {fileID: 4544096650850551824}
+  equipamiento: {fileID: 6552499108702427847}
   estado: {fileID: 4632349207259231887}
   opciones: {fileID: 3442117194833645251}
   maru: {fileID: 3127557967429345495}
   zeikkuVida: {fileID: 309374644139309527}
   zeikkuMagia: {fileID: 3716702334545430058}
   mixer: {fileID: 24100000, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
+  sonidoAbirMenu: {fileID: 8300000, guid: fcb6ee676ffae4e45b49fc057693bfea, type: 3}
+  sonidoCerrarMenu: {fileID: 8300000, guid: bf8249b284cc83c46b3f54fa25fcaee4, type: 3}
+  sonidoClickMenu: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
+  sonidoNoPosible: {fileID: 8300000, guid: bcbabe3cef3d1274cb4968bd7e638026, type: 3}
 --- !u!95 &7640992423221621280
 Animator:
   serializedVersion: 3
@@ -19069,6 +19087,7 @@ MonoBehaviour:
   popup: {fileID: 4185080557994996509, guid: 13b9f7a0c3674314e8ef19cdf7846e53, type: 3}
   botonesBolsa: {fileID: 6756601827830050937}
   botonesItem: {fileID: 7763764450795326636}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!114 &1020855790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19081,7 +19100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!1 &8712940666718159370
 GameObject:
   m_ObjectHideFlags: 0
@@ -20463,6 +20482,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7772951442453913799}
     m_Modifications:
+    - target: {fileID: 294305362853563255, guid: c5924395ebe15b249a63af5c5a2e8890, type: 3}
+      propertyPath: sonidoSeleccionado
+      value: 
+      objectReference: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
+    - target: {fileID: 1702250089798463097, guid: c5924395ebe15b249a63af5c5a2e8890, type: 3}
+      propertyPath: sonidoSeleccionado
+      value: 
+      objectReference: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
+    - target: {fileID: 3178217273276519307, guid: c5924395ebe15b249a63af5c5a2e8890, type: 3}
+      propertyPath: sonidoSeleccionado
+      value: 
+      objectReference: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
+    - target: {fileID: 3905112119586398106, guid: c5924395ebe15b249a63af5c5a2e8890, type: 3}
+      propertyPath: sonidoSeleccionado
+      value: 
+      objectReference: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
+    - target: {fileID: 4804138356843946354, guid: c5924395ebe15b249a63af5c5a2e8890, type: 3}
+      propertyPath: sonidoSeleccionado
+      value: 
+      objectReference: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
+    - target: {fileID: 5186047893168208061, guid: c5924395ebe15b249a63af5c5a2e8890, type: 3}
+      propertyPath: sonidoSeleccionado
+      value: 
+      objectReference: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
+    - target: {fileID: 5240163186785323249, guid: c5924395ebe15b249a63af5c5a2e8890, type: 3}
+      propertyPath: sonidoSeleccionado
+      value: 
+      objectReference: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
+    - target: {fileID: 5417598573429815499, guid: c5924395ebe15b249a63af5c5a2e8890, type: 3}
+      propertyPath: sonidoSeleccionado
+      value: 
+      objectReference: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
     - target: {fileID: 8277551100940423108, guid: c5924395ebe15b249a63af5c5a2e8890, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

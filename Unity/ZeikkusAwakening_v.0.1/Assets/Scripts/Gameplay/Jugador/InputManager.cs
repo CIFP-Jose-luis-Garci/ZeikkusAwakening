@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     public DialogueManager dialogue;
     public PantallaResultadosManager results;
     public ZagrantController zagrantController;
+    public AudioClip sonidoCerrarPopUp;
     
 
     private Vector2 movementInput;
@@ -319,6 +320,7 @@ public class InputManager : MonoBehaviour
     {
         if (bInput)
         {
+            gameManager.source.PlayOneShot(sonidoCerrarPopUp);
             toDisable.SetActive(false);
             pantallaPausa.SetActive(true);
             pantallaPausa.GetComponentInChildren<Button>().Select();

@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    public AudioSource source;
+    
     [Header("Dialogos")]
     public static int currentEvent = 0;
     public static int currentDialogue = 0;

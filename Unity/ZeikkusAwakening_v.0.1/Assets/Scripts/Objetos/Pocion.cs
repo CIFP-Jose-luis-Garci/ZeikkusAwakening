@@ -19,7 +19,7 @@ public class Pocion : Item
     public override bool UseItem()
     {
         // play sound
-        GameObject[] party = FindObjectOfType<GameManager>().personajes;
+        GameObject[] party = source.GetComponent<GameManager>().personajes;
         foreach (GameObject partyMember in party)
         {
             if (partyMember == null) continue;
