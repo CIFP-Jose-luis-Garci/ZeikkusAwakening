@@ -24,7 +24,7 @@ public class PlayerLocomotion : MonoBehaviour
     private float jumpForce = 50;
 
     [Header("Movement")]
-    private float runningSpeed = 7;
+    public float runningSpeed = 7;
     private float rotationSpeed = 15;
 
     [Header("Textures")] 

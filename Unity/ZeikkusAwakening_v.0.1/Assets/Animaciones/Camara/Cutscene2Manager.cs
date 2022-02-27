@@ -9,6 +9,7 @@ public class Cutscene2Manager : CutsceneManager
 {
     private AnimatorManager animatorManager;
     public GameObject triggerCutScene;
+    PlayerLocomotion playerLocomotion;
 
     int CameraChanges = 4;
 
@@ -17,7 +18,9 @@ public class Cutscene2Manager : CutsceneManager
     void Start()
     {
         animatorManager = FindObjectOfType<AnimatorManager>();
-
+        playerLocomotion = FindObjectOfType<PlayerLocomotion>();
+        playerLocomotion.runningSpeed = 0f;
+        
     }
 
 
@@ -58,6 +61,7 @@ public class Cutscene2Manager : CutsceneManager
         }
 
         triggerCutScene.SetActive(false);
+        playerLocomotion.runningSpeed = 7f;
     }
 
     private IEnumerator ChangeCamera()
