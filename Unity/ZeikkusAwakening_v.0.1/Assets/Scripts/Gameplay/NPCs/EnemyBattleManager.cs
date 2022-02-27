@@ -19,7 +19,7 @@ public class EnemyBattleManager : MonoBehaviour
     private Animator animator;
     private NavMeshAgent agente;
     private AudioSource source;
-    private Stats stats;
+    private EnemyStats stats;
     private EscenaBatallaManager escenaBatalla;
     private bool isAttacking;
     private float waitTime;
@@ -40,7 +40,7 @@ public class EnemyBattleManager : MonoBehaviour
         player = FindObjectOfType<PlayerManager>().transform;
         agente = GetComponent<NavMeshAgent>();
         source = GetComponent<AudioSource>();
-        stats = GetComponent<Stats>();
+        stats = GetComponent<EnemyStats>();
         escenaBatalla = FindObjectOfType<EscenaBatallaManager>();
         lifebar.minValue = 0;
         lifebar.maxValue = stats.maxHP;
@@ -152,6 +152,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void CheckAlive()
     {
+        stats.slotEnemigo.Retract();
         anyoneAlive = false;
         foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
         {

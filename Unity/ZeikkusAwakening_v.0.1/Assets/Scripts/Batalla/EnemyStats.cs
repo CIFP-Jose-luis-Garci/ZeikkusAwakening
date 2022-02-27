@@ -9,6 +9,7 @@ public class EnemyStats : Stats
 {
     public int expBase;
     public int marubase;
+    public SlotEnemigoManager slotEnemigo;
 
     public void SetLevel(int level)
     {

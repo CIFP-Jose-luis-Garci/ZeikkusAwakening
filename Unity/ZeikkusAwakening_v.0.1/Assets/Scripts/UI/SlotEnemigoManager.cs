@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,13 @@ using UnityEngine.UI;
 
 public class SlotEnemigoManager : MonoBehaviour
 {
-    [SerializeField] private Text nombre, nivel;
+    [SerializeField] private Text nombre, nivel; 
+    public Animator animator;
+
+    public void Retract()
+    {
+        animator.enabled = true;
+    }
 
     public void SetNameAndLevel(EnemyStats enemyStats)
     {
@@ -14,7 +21,9 @@ public class SlotEnemigoManager : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
+
+        enemyStats.slotEnemigo = this;
         nombre.text = enemyStats.actorName;
-        nivel.text = enemyStats.level.ToString();
+        nivel.text = "Nv. " + enemyStats.level;
     }
 }

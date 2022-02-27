@@ -24,6 +24,7 @@ public class InterfazBatallaManager : MonoBehaviour
         foreach (SlotEnemigoManager slotEnemigo in slotsEnemigos)
         {
             slotEnemigo.gameObject.SetActive(true);
+            slotEnemigo.animator.enabled = false;
         }
     }
 

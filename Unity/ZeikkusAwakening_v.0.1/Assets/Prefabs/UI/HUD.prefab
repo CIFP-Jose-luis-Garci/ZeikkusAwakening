@@ -3757,6 +3757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: {fileID: 4303257129463344409}
   nivel: {fileID: 3766116468204711457}
+  animator: {fileID: 5932449078319328593}
 --- !u!1 &1283775310566397804
 GameObject:
   m_ObjectHideFlags: 0
@@ -10894,6 +10895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: {fileID: 6321452147478262484}
   nivel: {fileID: 3837477125613853654}
+  animator: {fileID: 8890987022687000056}
 --- !u!1 &4188359073224992473
 GameObject:
   m_ObjectHideFlags: 0
@@ -18140,6 +18142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: {fileID: 7114128395283474771}
   nivel: {fileID: 5183311439101885241}
+  animator: {fileID: 5400636062618984988}
 --- !u!1 &7162397937472800579
 GameObject:
   m_ObjectHideFlags: 0
@@ -21248,9 +21251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd5b5eb3da7bef48a33ac727466ab7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemigo1: {fileID: 8589306896870844080}
-  enemigo2: {fileID: 1850564018322328423}
-  enemigo3: {fileID: 8047529618336666607}
+  slotsEnemigos:
+  - {fileID: 8589306896870844080}
+  - {fileID: 1850564018322328423}
+  - {fileID: 8047529618336666607}
 --- !u!1 &8322838209251242657
 GameObject:
   m_ObjectHideFlags: 0
