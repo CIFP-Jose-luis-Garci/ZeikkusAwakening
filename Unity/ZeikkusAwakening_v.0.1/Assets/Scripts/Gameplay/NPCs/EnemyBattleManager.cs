@@ -28,6 +28,7 @@ public class EnemyBattleManager : MonoBehaviour
     private float dieLength;
     private float randomAttack;
     private float time;
+    private bool anyoneAlive;
 
     public AudioClip[] stepSounds;
     public AudioClip[] crySounds;
@@ -53,9 +54,11 @@ public class EnemyBattleManager : MonoBehaviour
         {
             if (!stats.alive)
             {
+                if (time <= 0)
+                    CheckAlive();
                 time += Time.deltaTime;
                 if (time > dieLength)
-                    CheckAlive();
+                    CheckWinning();
                 return;
             }
             animator.SetBool("alcance", false);
@@ -149,24 +152,25 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void CheckAlive()
     {
-        if (!GameManager.winning)
+        anyoneAlive = false;
+        foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
         {
-            bool anyoneAlive = false;
-            foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
+            if (enemy.stats.alive)
             {
-                if (enemy.stats.alive)
-                {
-                    anyoneAlive = true;
-                }
-                
+                anyoneAlive = true;
             }
+                
+        }
 
-            if (!anyoneAlive)
-            {
-                GameManager.winning = true;
-                GameManager.inPause = true;
-                FindObjectOfType<HUDManager>().ToWinBattle();
-            } 
+        if (anyoneAlive) return;
+        GameManager.winning = true;
+        GameManager.inPause = true;
+    }
+    private void CheckWinning()
+    {
+        if (!anyoneAlive)
+        {
+            FindObjectOfType<HUDManager>().ToWinBattle();
         }
         Destroy(gameObject);
     }

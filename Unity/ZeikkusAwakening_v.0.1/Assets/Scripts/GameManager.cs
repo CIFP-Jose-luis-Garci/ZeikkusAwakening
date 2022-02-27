@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     public bool Pause()
     {
-        if (!pause.HasChildrenActive())
+        if (!pause.HasChildrenActive() && !winning)
         {
             inPause = !inPause;
             pause.gameObject.SetActive(inPause);
