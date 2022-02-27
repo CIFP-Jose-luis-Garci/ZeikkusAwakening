@@ -19,7 +19,7 @@ public class PantallaResultadosManager : MonoBehaviour
     // Start is called before the first frame update
     private void OnEnable()
     {
-        levelUps = new Estadistica[3][];
+        levelUps = new Estadistica[4][]; // uno de mas para asegurar
         levelUpCount = 0;
         escenaBatallaManager = FindObjectOfType<EscenaBatallaManager>();
         enemies = escenaBatallaManager.enemyStats;
@@ -42,7 +42,7 @@ public class PantallaResultadosManager : MonoBehaviour
             if (levelUps[levelUpCount] == null)
             {
                 opcion.text = "Fin";
-                return false;
+                return true;
             }
             opcion.text = "Siguiente";
             return true;
