@@ -40,8 +40,7 @@ public class GameManager : MonoBehaviour
 
     public bool Pause()
     {
-        Debug.Log(!pause.HasChildrenActive() && !transitioning);
-        if (!pause.HasChildrenActive() && !transitioning)
+        if (!pause.HasChildrenActive() && !transitioning && !viewingMinimap)
         {
             inPause = !inPause;
             pause.gameObject.SetActive(inPause);
