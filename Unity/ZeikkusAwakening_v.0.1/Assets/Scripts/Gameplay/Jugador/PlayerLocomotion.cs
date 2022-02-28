@@ -11,37 +11,33 @@ public class PlayerLocomotion : MonoBehaviour
     private InputManager inputManager;
     private AnimatorManager animatorManager;
     private GameManager gameManager;
-    
+
     private Vector3 moveDirection;
     private Transform cameraObject;
     private Rigidbody rb;
-    
-    [Header("Falling and Landing")]
-    [NonSerialized] public bool isGrounded;
+
+    [Header("Falling and Landing")] [NonSerialized]
+    public bool isGrounded;
+
     public LayerMask groundLayer;
     private float raycastHeightOffset = 0.5f;
-    [NonSerialized] public bool isJumping;
+    public bool isJumping;
     private float jumpForce = 50;
 
-    [Header("Movement")]
-    public float runningSpeed = 7;
+    [Header("Movement")] public float runningSpeed = 7;
     private float rotationSpeed = 15;
 
-    [Header("Textures")] 
-    public SkinnedMeshRenderer body;
+    [Header("Textures")] public SkinnedMeshRenderer body;
     public Texture faceEyesOpen;
     public Texture faceEyesClosed;
-    
-    [Header("Attacking")]
-    private string[] animaciones;
+
+    [Header("Attacking")] private string[] animaciones;
     private Coroutine coroutine;
 
-    [Header("Z targeting")] 
-    public bool isZTargeting;
+    [Header("Z targeting")] public bool isZTargeting;
     internal Transform enemyObject;
 
-    [Header("Battle")]
-    private bool striking;
+    [Header("Battle")] private bool striking;
     private bool invincible;
     public int[] magicSlots;
     private Transform lookInBetween;
@@ -85,7 +81,7 @@ public class PlayerLocomotion : MonoBehaviour
         moveDirection = cameraObject.forward * inputManager.verticalInput;
         moveDirection += cameraObject.right * inputManager.horizontalInput;
         moveDirection.Normalize();
-        
+
         moveDirection *= runningSpeed * inputManager.moveAmount;
         moveDirection.y = rb.velocity.y;
         Vector3 movementVelocity = moveDirection;
@@ -102,36 +98,33 @@ public class PlayerLocomotion : MonoBehaviour
 
         if (targetDirection == Vector3.zero)
             targetDirection = transform.forward;
-        
+
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        Quaternion playerRotation =
+            Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         transform.rotation = playerRotation;
     }
 
     private void HandleFallingAndLanding()
     {
-        RaycastHit hit;
-        Vector3 raycastOrigin = transform.position;
-        raycastOrigin.y += raycastHeightOffset;
-        if (!isGrounded && !isJumping)
-            if (!playerManager.isInteracting)
-                animatorManager.PlayTargetAnimation("Falling", true);
-
-        if (Physics.SphereCast(raycastOrigin, 0.2f, -Vector3.up, out hit, 1f, groundLayer))
+        if (rb.velocity.y <= 0)
         {
-            if (!isGrounded )
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit, 10f, groundLayer);
+            if ((hit.distance < 0.5f || rb.velocity.y == 0) && !isJumping && !isGrounded)
             {
+                Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.yellow);
+                Debug.Log(hit.distance);
                 Vector3 fix = rb.velocity;
                 fix.x = 0;
                 fix.z = 0;
                 rb.velocity = fix;
                 animatorManager.PlayTargetAnimation("Land", true);
+                isGrounded = true;
             }
-            isGrounded = true;
         }
-        else
-            isGrounded = false;
+
     }
 
     public void HandleJumping()
@@ -139,7 +132,9 @@ public class PlayerLocomotion : MonoBehaviour
         if (isGrounded && !playerManager.isInteracting)
         {
             animatorManager.PlayTargetAnimation("Jump", true);
+            isJumping = true;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
         }
     }
 
@@ -197,6 +192,7 @@ public class PlayerLocomotion : MonoBehaviour
             enemyObject = null;
             cameraManager.ChangeTarget(transform);
         }
+
         this.isZTargeting = isZTargeting;
     }
 
@@ -230,7 +226,7 @@ public class PlayerLocomotion : MonoBehaviour
             animatorManager.animator.SetBool("blocking", true);
         }
     }
-    
+
     public IEnumerator HandleFirstStrike(GameObject zagrant)
     {
         if (playerManager.isInteracting) yield break;
@@ -254,7 +250,7 @@ public class PlayerLocomotion : MonoBehaviour
             resultado = GameManager.CalcSpecDamage(playerStats, stats, power, forceCrit);
         if (blocking)
             resultado -= (int) (resultado * 0.5f);
-        
+
         stats.hp -= resultado;
         lifebar.value = stats.hp;
         Vector3 damageLocation = new Vector3(transform.position.x, 1.75f, transform.position.z);
@@ -282,6 +278,7 @@ public class PlayerLocomotion : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
                 body.materials[1].mainTexture = faceEyesOpen;
             }
+
             yield return new WaitForSeconds(Random.Range(2f, 5f));
         }
     }
