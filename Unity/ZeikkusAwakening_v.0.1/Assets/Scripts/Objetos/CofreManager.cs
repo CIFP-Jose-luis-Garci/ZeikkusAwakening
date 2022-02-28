@@ -8,6 +8,8 @@ public class CofreManager : MonoBehaviour
 {
     public Item containedItem;
     public Image openChest;
+    public SpriteRenderer minimapSprite;
+    public Sprite chestOpenSprite;
     public GameObject dialogue;
     private InputManager inputManager;
     private PlayerManager playerManager;
@@ -40,6 +42,7 @@ public class CofreManager : MonoBehaviour
             {
                 if (GameManager.inPause || playerManager.isInteracting) return;
                 source.Play();
+                minimapSprite.sprite = chestOpenSprite;
                 animator.enabled = true;
                 GameManager.inPause = true;
             }

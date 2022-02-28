@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class DoorManager : MonoBehaviour
 {
-    public bool doorOpen;
+    private bool doorOpen;
     private PlayerBagManager bag;
     private AudioSource source;
+    public SpriteRenderer minimapSprite; 
     public AudioClip abrirPuerta;
     public AudioClip llaves;
 
@@ -31,6 +32,7 @@ public class DoorManager : MonoBehaviour
                 if(item.itemName == "Llave pequeña")
                 {
                     source.PlayOneShot(llaves);
+                    minimapSprite.gameObject.SetActive(false);
                     bag.RemoveItem(bag.ItemSlot(item));
                     StartCoroutine(LiftDoor());
                     doorOpen = true;
