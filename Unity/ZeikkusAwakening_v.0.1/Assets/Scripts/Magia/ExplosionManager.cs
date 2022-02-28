@@ -13,7 +13,7 @@ public class ExplosionManager : Magic
     // Start is called before the first frame update
     void Start()
     {
-        player = transform.parent;
+        player = FindObjectOfType<PlayerManager>().transform;
         enemyLockedOn = player.GetComponent<PlayerLocomotion>().enemyObject;
         if (enemyLockedOn)
         {

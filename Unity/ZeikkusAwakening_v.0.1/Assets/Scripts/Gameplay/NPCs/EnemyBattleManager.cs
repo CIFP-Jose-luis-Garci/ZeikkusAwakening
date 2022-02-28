@@ -30,7 +30,7 @@ public class EnemyBattleManager : MonoBehaviour
     private float recoilLength;
     private float randomAttack;
     private float time;
-    private bool anyoneAlive;
+    private bool anyoneAlive = true;
 
     public AudioClip[] stepSounds;
     public AudioClip[] crySounds;
@@ -161,6 +161,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void CheckAlive()
     {
+        if (GameManager.transitioning) return;
         stats.slotEnemigo.Retract();
         agente.SetDestination(transform.position);
         anyoneAlive = false;

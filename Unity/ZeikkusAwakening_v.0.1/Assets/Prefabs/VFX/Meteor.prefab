@@ -14746,7 +14746,7 @@ SphereCollider:
   m_GameObject: {fileID: 8755966844123130295}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
@@ -14786,6 +14786,8 @@ MonoBehaviour:
   fire: {fileID: 7683171688486918992}
   meteorExplosion: {fileID: 4645304525658040661}
   smoke: {fileID: 8875720676265867829}
+  cry: {fileID: 8300000, guid: cfd79a1704d395346a10ae066269943b, type: 3}
+  woosh: {fileID: 8300000, guid: b014b1f0ad84664479cf33d35502a692, type: 3}
   speed: 15
   forward: 0
 --- !u!1001 &7498368483172514842

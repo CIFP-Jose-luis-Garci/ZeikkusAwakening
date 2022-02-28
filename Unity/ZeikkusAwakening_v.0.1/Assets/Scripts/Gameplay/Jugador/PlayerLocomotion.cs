@@ -153,10 +153,10 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleMagic(int slot)
     {
-        if (playerManager.isInteracting) return;
-        LookAtEnemy();
+        if (playerManager.isInteracting || stats.mp <= 0) return;
         ResetRigidbody();
-        GetComponent<PlayerMagic>().MagicAttackLookupTable(magicSlots[slot]);
+        if (GetComponent<PlayerMagic>().MagicAttackLookupTable(magicSlots[slot]))
+            LookAtEnemy();
     }
 
     private void LookAtEnemy()

@@ -12,7 +12,7 @@ public class SwordFireManager : Magic
     private ZagrantController zagrantController;
     void Start()
     {
-        animatorManager = transform.parent.GetComponent<AnimatorManager>();
+        animatorManager = FindObjectOfType<AnimatorManager>();
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager.inWorld)
             animatorManager.PlayTargetAnimation("magicSelected firecast", true, true);

@@ -9,13 +9,15 @@ public class MeteorManager : Magic
     private Animator animator;
     private Transform player;
     public GameObject fire, meteorExplosion, smoke;
+    public AudioClip cry, woosh;
     public float speed;
     public bool forward;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = transform.root;
+        player = FindObjectOfType<PlayerManager>().transform;
+        transform.rotation = player.rotation;
         Vector3 pos = player.position;
         pos.y += 1;
         Vector3 zPos = (-0.6f * player.forward);
@@ -44,11 +46,18 @@ public class MeteorManager : Magic
         }
     }
 
+    public void MagicSound()
+    {
+        gameManager.source.PlayOneShot(cry);
+        gameManager.source.PlayOneShot(woosh);
+    }
+    
     public void FireAndSmokeEvent()
     {
         fire.SetActive(true);
         smoke.SetActive(true);
         forward = true;
+        GetComponent<SphereCollider>().enabled = true;
         GetComponent<Animator>().enabled = false;
     }
 
