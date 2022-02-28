@@ -27,7 +27,7 @@ public class SwordFireManager : Magic
             zagrantController = FindObjectOfType<ZagrantController>();
         if (gameManager.inWorld && time > 1.5f)
         {
-            if (GameManager.winning) return;
+            if (GameManager.transitioning) return;
             DestroyParticle dp = zagrantController.GetComponentInChildren<DestroyParticle>();
             zagrantController.onFire = false;
             if (dp)

@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         gameManager = FindObjectOfType<GameManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
+        GameManager.checkpoint = transform.position;
     }
 
     private void Update()

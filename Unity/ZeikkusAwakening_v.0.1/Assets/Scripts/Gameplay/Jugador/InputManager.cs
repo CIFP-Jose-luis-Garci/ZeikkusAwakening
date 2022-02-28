@@ -140,7 +140,7 @@ public class InputManager : MonoBehaviour
         animatorManager.UpdateAnimatorValues(0, moveAmount);
     }
 
-    internal void HandleAInput()
+    private void HandleAInput()
     {
         if (aInput)
         {
@@ -170,7 +170,7 @@ public class InputManager : MonoBehaviour
 
             if (gameManager.inWorld)
             {
-                if (GameManager.winning)
+                if (GameManager.transitioning)
                     results.End();
                 else
                 {
@@ -180,8 +180,7 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                if (GameManager.winning) return;
-                if (GameManager.inPause) return;
+                if (GameManager.transitioning || GameManager.inPause) return;
                 showedButtonTutorial = ShowTutorial(buttonTutorial, showedButtonTutorial);
                 playerLocomotion.HandleMagic(0);
             }
@@ -192,7 +191,7 @@ public class InputManager : MonoBehaviour
         if (yInput)
         {
             yInput = false;
-            if (inDialogue || GameManager.inPause) return;
+            if (AnyInteraction()) return;
             if (!gameManager.inWorld)
                 showedButtonTutorial = ShowTutorial(buttonTutorial, showedButtonTutorial);
             else
@@ -204,7 +203,7 @@ public class InputManager : MonoBehaviour
     {
         if (xInput)
         {
-            if (inDialogue || GameManager.inPause) return;
+            if (AnyInteraction()) return;
             if (!gameManager.inWorld)
             {
                 xInput = false;
@@ -221,7 +220,7 @@ public class InputManager : MonoBehaviour
             if (inDialogue) return;
             if (GameManager.inPause)
             {
-                if (GameManager.winning) return;
+                if (GameManager.transitioning) return;
                 if (gameManager.Pause())
                 {
                     bInput = false;
@@ -231,6 +230,7 @@ public class InputManager : MonoBehaviour
             bInput = false;
             if (!gameManager.inWorld)
             {
+                if (GameManager.transitioning) return;
                 showedButtonTutorial = ShowTutorial(buttonTutorial, showedButtonTutorial);
                 playerLocomotion.HandleAttack();
             }
@@ -264,6 +264,7 @@ public class InputManager : MonoBehaviour
         if (select)
         {
             select = false;
+            if (AnyInteraction()) return;
             bool activeSelf = minimap.gameObject.activeSelf;
             minimap.gameObject.SetActive(!activeSelf);
         }
@@ -273,7 +274,7 @@ public class InputManager : MonoBehaviour
     {
         if (rBump)
         {
-            if (inDialogue || GameManager.inPause) return;
+            if (AnyInteraction()) return;
             if (!gameManager.inWorld)
             {
                 rBump = false;
@@ -285,7 +286,7 @@ public class InputManager : MonoBehaviour
 
     private void HandleLeftBump()
     {
-        if (inDialogue || GameManager.inPause) return;
+        if (AnyInteraction()) return;
         if (!freeLook)
             freeLook = FindObjectOfType<CinemachineFreeLook>();
         if (lBump)
@@ -313,7 +314,7 @@ public class InputManager : MonoBehaviour
 
     private void HandleLeftTrigger()
     {
-        if (inDialogue || GameManager.inPause) return;
+        if (AnyInteraction()) return;
         if (gameManager.inWorld) return;
         if (lTrigger)
         {
@@ -333,6 +334,11 @@ public class InputManager : MonoBehaviour
             
             if (inDialogue || GameManager.inPause) return;
         }
+    }
+
+    private bool AnyInteraction()
+    {
+        return inDialogue || GameManager.inPause || GameManager.transitioning;
     }
     
     public void GoBack(GameObject toDisable, GameObject pantallaPausa)

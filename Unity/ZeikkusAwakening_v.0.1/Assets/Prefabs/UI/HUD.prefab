@@ -4176,7 +4176,6 @@ MonoBehaviour:
   opcion: {fileID: 8398420303769979165}
   subesDeNivelContainer: {fileID: 2096427151985253873}
   subesDeNivelPrefab: {fileID: 3593097919889911801, guid: cdecb567e5b8b4f43a0ca87210349052, type: 3}
-  blackFade: {fileID: 7302383872842397048}
 --- !u!95 &7043173202828483292
 Animator:
   serializedVersion: 3
@@ -13003,12 +13002,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiempo: {fileID: 8650189779957975506}
-  blackBackground: {fileID: 7302383872842397048}
+  blackFade: {fileID: 7302383872842397048}
   mixer: {fileID: 24100000, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
   resultScreen: {fileID: 1328228690629047628}
   minimap: {fileID: 7919562396373285248}
   checkpointPopup: {fileID: 4795870197354357618, guid: 75c80736ec7bba844a67706f8beaad7c, type: 3}
-  hudPersonajes: {fileID: 6454343909403842407}
   flash: {fileID: 2843456162006760587}
   interfazBatalla: {fileID: 2792369237351116471}
   worldMusic: {fileID: 8300000, guid: f987126ff9120ab40a3a436f17dc31bb, type: 3}
@@ -16907,7 +16905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5144111570676482354
 RectTransform:
   m_ObjectHideFlags: 0

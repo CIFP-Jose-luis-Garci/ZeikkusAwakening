@@ -174,7 +174,7 @@ public class EnemyBattleManager : MonoBehaviour
         }
 
         if (anyoneAlive) return;
-        GameManager.winning = true;
+        GameManager.transitioning = true;
         GameManager.inPause = true;
     }
     private void CheckWinning()

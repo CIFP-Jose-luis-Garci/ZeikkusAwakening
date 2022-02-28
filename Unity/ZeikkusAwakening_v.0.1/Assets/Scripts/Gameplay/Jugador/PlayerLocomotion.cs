@@ -20,7 +20,6 @@ public class PlayerLocomotion : MonoBehaviour
     public bool isGrounded;
 
     public LayerMask groundLayer;
-    private float raycastHeightOffset = 0.5f;
     public bool isJumping;
     private float jumpForce = 50;
 
@@ -45,7 +44,8 @@ public class PlayerLocomotion : MonoBehaviour
     public bool blocking;
     private Stats stats;
     public Slider lifebar;
-    public GameObject damage;
+    public GameObject damage, deathVolume; 
+    public AudioClip playerDeath;
 
 
     private void Awake()
@@ -198,7 +198,6 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleEvade()
     {
-        if (GameManager.winning) return;
         if (!invincible)
         {
             rotationSpeed = 1000;
@@ -218,7 +217,6 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleBlock()
     {
-        if (GameManager.winning) return;
         blocking = animatorManager.animator.GetBool("blocking");
         if (!blocking)
         {
@@ -240,8 +238,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical, bool forceCrit = false)
     {
-        if (GameManager.inPause) return;
-        if (invincible) return;
+        if (GameManager.inPause || invincible || !stats.alive) return;
         if (!playerManager.isInteracting) animatorManager.PlayTargetAnimation("recoil", true);
         int resultado;
         if (isPhysical)
@@ -259,6 +256,14 @@ public class PlayerLocomotion : MonoBehaviour
         if (stats.hp < 0)
         {
             stats.alive = false;
+            animatorManager.PlayTargetAnimation("Die", true, true);
+            HUDManager hudManager = FindObjectOfType<HUDManager>();
+            hudManager.GetComponent<Canvas>().enabled = false;
+            Time.timeScale = 0.5f;
+            deathVolume.SetActive(true);
+            gameManager.source.PlayOneShot(playerDeath);
+            GameManager.transitioning = true;
+            hudManager.ToDieInBattle(transform, stats);
         }
     }
 

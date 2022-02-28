@@ -14,7 +14,6 @@ public class PantallaResultadosManager : MonoBehaviour
     private EnemyStats[] enemies;
     public Estadistica[][] levelUps;
     private int levelUpCount = 0;
-    public Image blackFade;
     
     // Start is called before the first frame update
     private void OnEnable()
@@ -57,7 +56,7 @@ public class PantallaResultadosManager : MonoBehaviour
         if (LevelUpEvent()) return;
         if (sdnm)
             Destroy(sdnm.gameObject);
-        FindObjectOfType<HUDManager>().ToFadeBattle(blackFade, escenaBatallaManager);
+        FindObjectOfType<HUDManager>().ToFadeBattle(escenaBatallaManager);
         gameObject.SetActive(false);
     }
 }

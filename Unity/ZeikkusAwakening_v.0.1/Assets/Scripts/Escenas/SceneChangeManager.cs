@@ -39,7 +39,7 @@ public class SceneChangeManager : MonoBehaviour
             nivel1.SetActive(true);
             player.transform.position = new Vector3(2.75f, 0, -43.5f);
         }
-        Debug.Log("Hola");
+        GameManager.checkpoint = player.transform.position;
         video.gameObject.SetActive(false);
         blackFade.CrossFadeAlpha(0, 1, true);
     }

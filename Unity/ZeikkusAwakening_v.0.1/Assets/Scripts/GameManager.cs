@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Transiciones")]
     public bool inWorld;
-    public static bool winning;
+    public static bool transitioning;
     public PantallaPausaManager pause;
     
     [Header("Datos de juego")]
@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
 
     public bool Pause()
     {
-        Debug.Log(!pause.HasChildrenActive() && !winning);
-        if (!pause.HasChildrenActive() && !winning)
+        Debug.Log(!pause.HasChildrenActive() && !transitioning);
+        if (!pause.HasChildrenActive() && !transitioning)
         {
             inPause = !inPause;
             pause.gameObject.SetActive(inPause);

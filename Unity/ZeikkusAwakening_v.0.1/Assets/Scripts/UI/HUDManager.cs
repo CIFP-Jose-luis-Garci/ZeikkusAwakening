@@ -10,7 +10,7 @@ public class HUDManager : MonoBehaviour
 {
     private float time;
     public Text tiempo;
-    public Image blackBackground;
+    public Image blackFade;
 
     [Header("Transitions")] 
     private AnimatorManager animatorManager;
@@ -34,7 +34,7 @@ public class HUDManager : MonoBehaviour
         animatorManager = FindObjectOfType<AnimatorManager>();
         escenaBatalla = FindObjectOfType<EscenaBatallaManager>();
         StartCoroutine(GameManager.CrossFadeMusic(mixer, 2, false));
-        blackBackground.CrossFadeAlpha(0,2,true);
+        blackFade.CrossFadeAlpha(0,2,true);
     }
 
     // Update is called once per frame
@@ -66,7 +66,7 @@ public class HUDManager : MonoBehaviour
         if (inBattle) return;
         inBattle = true;
         GameManager.inPause = true;
-        GameManager.winning = true;
+        GameManager.transitioning = true;
         ToBattle(worldEnemy, isBoss, enemyAdvantage);
     }
 
@@ -111,7 +111,7 @@ public class HUDManager : MonoBehaviour
         interfazBatalla.gameObject.SetActive(true);
         escenaBatalla.EnemiesStart();
         GameManager.inPause = false;
-        GameManager.winning = false;
+        GameManager.transitioning = false;
     }
 
     private void BattleAdvantageText(string text, Color color)
@@ -138,12 +138,12 @@ public class HUDManager : MonoBehaviour
         resultScreen.SetActive(true);
     }
     
-    public void ToFadeBattle(Image blackFade, EscenaBatallaManager escenaBatallaManager)
+    public void ToFadeBattle(EscenaBatallaManager escenaBatallaManager)
     {
-        StartCoroutine(FadeOutBattle(blackFade, escenaBatallaManager));
+        StartCoroutine(FadeOutBattle(escenaBatallaManager));
     }
 
-    private IEnumerator FadeOutBattle(Image blackFade, EscenaBatallaManager escenaBatallaManager)
+    private IEnumerator FadeOutBattle(EscenaBatallaManager escenaBatallaManager)
     {
         // press a, goto transition fade in black
         blackFade.CrossFadeAlpha(1, 1, true);
@@ -154,7 +154,7 @@ public class HUDManager : MonoBehaviour
         escenaBatallaManager.ResetPlayer();
         yield return GameManager.CrossFadeMusic(mixer, 1, false);
         GameManager.inPause = false;
-        GameManager.winning = false;
+        GameManager.transitioning = false;
         inBattle = false;
         blackFade.CrossFadeAlpha(0, 1, true);
     }
@@ -183,5 +183,26 @@ public class HUDManager : MonoBehaviour
     public void ShowCheckpointArrived()
     {
         Destroy(Instantiate(checkpointPopup, transform), 2f);
+    }
+
+    public void ToDieInBattle(Transform player, Stats stats)
+    {
+        StartCoroutine(DieInBattle(player, stats));
+    }
+
+    private IEnumerator DieInBattle(Transform player, Stats stats)
+    {
+        yield return GameManager.CrossFadeMusic(mixer, 1, true);
+        blackFade.CrossFadeAlpha(1, 0.5f, false);
+        yield return new WaitForSeconds(2f);
+        player.position = GameManager.checkpoint;
+        Time.timeScale = 1;
+        player.GetComponent<AnimatorManager>().PlayTargetAnimation("Stand Up", true);
+        stats.hp = stats.maxHP;
+        blackFade.CrossFadeAlpha(0, 1, false);
+        yield return new WaitForSeconds(1.5f);
+        GetComponent<Canvas>().enabled = true;
+        GameManager.transitioning = false;
+
     }
 }
