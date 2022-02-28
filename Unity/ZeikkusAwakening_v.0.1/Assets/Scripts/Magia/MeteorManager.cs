@@ -6,21 +6,29 @@ public class MeteorManager : Magic
 {
     private AnimatorManager animatorManager;
     private GameManager gameManager;
+    private Animator animator;
+    private Transform player;
     public GameObject fire, meteorExplosion, smoke;
     public float speed;
     public bool forward;
 
-    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        animatorManager = transform.parent.GetComponent<AnimatorManager>();
+        player = transform.root;
+        Vector3 pos = player.position;
+        pos.y += 1;
+        Vector3 zPos = (-0.6f * player.forward);
+        pos.x -= zPos.x;
+        pos.z -= zPos.z;
+        transform.position = pos;
+        animatorManager = player.GetComponent<AnimatorManager>();
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager.inWorld)
             animatorManager.PlayTargetAnimation("magicSelected fireball", true);
         else
             animatorManager.PlayTargetAnimation("magic fireball", true);
-        animator = FindObjectOfType<AnimatorManager>().animator;
+        animator = animatorManager.animator;
         fire.SetActive(false);
         meteorExplosion.SetActive(false);
         smoke.SetActive(false);
@@ -51,7 +59,7 @@ public class MeteorManager : Magic
         if (other.gameObject.CompareTag("Enemigo"))
         {
             EnemyBattleManager enemyBattleManager = other.gameObject.GetComponent<EnemyBattleManager>();
-            Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
+            Stats zeikkuStats = player.GetComponent<Stats>();
             enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat("damage"), false);
             Animate();
         }

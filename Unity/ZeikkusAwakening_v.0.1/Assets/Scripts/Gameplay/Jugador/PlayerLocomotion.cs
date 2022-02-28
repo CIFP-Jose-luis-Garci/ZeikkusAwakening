@@ -38,7 +38,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     [Header("Z targeting")] 
     public bool isZTargeting;
-    private Transform enemyObject;
+    internal Transform enemyObject;
 
     [Header("Battle")]
     private bool striking;
@@ -194,6 +194,7 @@ public class PlayerLocomotion : MonoBehaviour
         }
         else
         {
+            enemyObject = null;
             cameraManager.ChangeTarget(transform);
         }
         this.isZTargeting = isZTargeting;

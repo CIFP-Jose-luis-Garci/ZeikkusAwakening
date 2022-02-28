@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4124140950087991823}
-  - component: {fileID: 9027530331697655738}
+  - component: {fileID: 1235161599515884347}
+  - component: {fileID: 3636838409630478294}
+  - component: {fileID: 424011908050559645}
   m_Layer: 0
   m_Name: MeteorExplosion
   m_TagString: Untagged
@@ -32,7 +34,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9027530331697655738
+--- !u!54 &1235161599515884347
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714309921858321775}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!135 &3636838409630478294
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714309921858321775}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &424011908050559645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +72,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 714309921858321775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 620d17caf16c201478768bced00c7b42, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c9182057b60b1945a321dbe895bbc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsToDestruction: 1
+  magicName: "Explosi\xF3n"
+  mpCost: 10
 --- !u!1 &2983093384341855846
 GameObject:
   m_ObjectHideFlags: 0
