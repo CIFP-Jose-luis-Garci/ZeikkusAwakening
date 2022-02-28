@@ -22,6 +22,7 @@ public class HUDManager : MonoBehaviour
     public GameObject resultScreen;
     public FlashManager flash;
     public InterfazBatallaManager interfazBatalla;
+    public GameObject minimap;
     
     [Header("Audio")]
     public AudioClip worldMusic;
@@ -105,6 +106,7 @@ public class HUDManager : MonoBehaviour
         interfazBatalla.ActivateSlots();
         escenaBatalla.ControlScene(interfazBatalla.slotsEnemigos);
         Destroy(worldEnemy);
+        minimap.SetActive(false);
         StartBattleAnimation();
         yield return GameManager.CrossFadeMusic(mixer, 1, false);
         interfazBatalla.gameObject.SetActive(true);
@@ -149,6 +151,7 @@ public class HUDManager : MonoBehaviour
         yield return GameManager.CrossFadeMusic(mixer, 1, true);
         cmfl.m_XAxis.Value = cameraXAngle;
         ChangeMusic(worldMusic);
+        minimap.SetActive(true);
         escenaBatallaManager.ResetPlayer();
         yield return GameManager.CrossFadeMusic(mixer, 1, false);
         GameManager.inPause = false;
