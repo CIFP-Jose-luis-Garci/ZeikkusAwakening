@@ -257,13 +257,11 @@ public class PlayerLocomotion : MonoBehaviour
         {
             stats.alive = false;
             animatorManager.PlayTargetAnimation("Die", true, true);
-            HUDManager hudManager = FindObjectOfType<HUDManager>();
-            hudManager.GetComponent<Canvas>().enabled = false;
             Time.timeScale = 0.5f;
             deathVolume.SetActive(true);
             gameManager.source.PlayOneShot(playerDeath);
             GameManager.transitioning = true;
-            hudManager.ToDieInBattle(transform, stats);
+            FindObjectOfType<HUDManager>().ToDieInBattle(transform, stats, deathVolume);
         }
     }
 

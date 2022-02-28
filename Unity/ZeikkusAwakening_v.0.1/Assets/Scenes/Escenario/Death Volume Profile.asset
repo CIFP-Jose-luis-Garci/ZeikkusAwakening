@@ -18,8 +18,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   contrast:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 35
     min: -100
     max: 100
   colorFilter:
@@ -34,8 +34,8 @@ MonoBehaviour:
     min: -180
     max: 180
   saturation:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -100
     min: -100
     max: 100
 --- !u!114 &11400000
@@ -50,4 +50,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
   m_Name: Death Volume Profile
   m_EditorClassIdentifier: 
-  components: []
+  components:
+  - {fileID: -7209198500463186084}

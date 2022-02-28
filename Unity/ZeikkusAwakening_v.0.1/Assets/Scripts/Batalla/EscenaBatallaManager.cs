@@ -91,4 +91,14 @@ public class EscenaBatallaManager : MonoBehaviour
     
         return minutos + ":" + segundos + ";" + milis;
     }
+
+    public void Purge()
+    {
+        foreach (GameObject spawner in spawners)
+        {
+            EnemyBattleManager enemy = spawner.GetComponentInChildren<EnemyBattleManager>();
+            if (enemy)
+                Destroy(enemy.gameObject);
+        }
+    }
 }

@@ -19,9 +19,10 @@ public class HUDManager : MonoBehaviour
     private float cameraXAngle;
     private bool inBattle;
     public AudioMixer mixer;
-    public GameObject resultScreen, minimap, checkpointPopup;
+    public GameObject resultScreen, minimap, checkpointPopup, hudPersonajes;
     public FlashManager flash;
     public InterfazBatallaManager interfazBatalla;
+    public InterfazMundoManager interfazMundo;
     
     [Header("Audio")]
     public AudioClip worldMusic;
@@ -185,24 +186,41 @@ public class HUDManager : MonoBehaviour
         Destroy(Instantiate(checkpointPopup, transform), 2f);
     }
 
-    public void ToDieInBattle(Transform player, Stats stats)
+    public void ToDieInBattle(Transform player, Stats stats, GameObject deathVolume)
     {
-        StartCoroutine(DieInBattle(player, stats));
+        StartCoroutine(DieInBattle(player, stats, deathVolume));
     }
 
-    private IEnumerator DieInBattle(Transform player, Stats stats)
+    private IEnumerator DieInBattle(Transform player, Stats stats, GameObject deathVolume)
     {
+        DisableHUD();
         yield return GameManager.CrossFadeMusic(mixer, 1, true);
-        blackFade.CrossFadeAlpha(1, 1f, true);
-        yield return new WaitForSeconds(2f);
+        blackFade.CrossFadeAlpha(1, 2f, true);
+        yield return new WaitForSeconds(3f);
+        deathVolume.SetActive(false);
         player.position = GameManager.checkpoint;
         Time.timeScale = 1;
-        player.GetComponent<AnimatorManager>().PlayTargetAnimation("Stand Up", true);
+        animatorManager.PlayTargetAnimation("Stand Up", true);
+        animatorManager.ChangeWorld(true);
+        escenaBatalla.Purge();
+        ChangeMusic(worldMusic);
         stats.hp = stats.maxHP;
-        blackFade.CrossFadeAlpha(0, 1, true);
-        yield return new WaitForSeconds(1.5f);
-        GetComponent<Canvas>().enabled = true;
+        stats.alive = true;
+        blackFade.CrossFadeAlpha(0, 2, true);
+        yield return GameManager.CrossFadeMusic(mixer, 2, false);
+        yield return new WaitForSeconds(1f);
+        interfazMundo.gameObject.SetActive(true);
+        hudPersonajes.SetActive(true);
+        minimap.SetActive(true);
         GameManager.transitioning = false;
+        inBattle = false;
 
+    }
+
+    private void DisableHUD()
+    {
+        interfazBatalla.gameObject.SetActive(false);
+        interfazMundo.gameObject.SetActive(false);
+        hudPersonajes.SetActive(false);
     }
 }
