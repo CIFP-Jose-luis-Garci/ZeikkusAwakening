@@ -22,10 +22,12 @@ public class EnemyBattleManager : MonoBehaviour
     private EnemyStats stats;
     private EscenaBatallaManager escenaBatalla;
     private bool isAttacking;
+    private bool isRecoiling;
     private float waitTime;
     private float hit1Length;
     private float hit2Length;
     private float dieLength;
+    private float recoilLength;
     private float randomAttack;
     private float time;
     private bool anyoneAlive;
@@ -68,9 +70,12 @@ public class EnemyBattleManager : MonoBehaviour
             agente.SetDestination(transform.position);
             return;
         }
+
         if (recoiled)
-            Recoil();
-        else
+        {
+            if (!isRecoiling)
+                StartCoroutine(Recoil());
+        } else
             Run();
     }
 
@@ -117,11 +122,15 @@ public class EnemyBattleManager : MonoBehaviour
         }
     }
 
-    private void Recoil()
+    private IEnumerator Recoil()
     {
+        isRecoiling = true;
         animator.SetTrigger("daño");
         animator.SetBool("isAttacking", false);
+        agente.SetDestination(transform.position);
         waitTime = 0;
+        yield return new WaitForSeconds(recoilLength);
+        isRecoiling = false;
         recoiled = false;
     }
 
@@ -153,6 +162,7 @@ public class EnemyBattleManager : MonoBehaviour
     private void CheckAlive()
     {
         stats.slotEnemigo.Retract();
+        agente.SetDestination(transform.position);
         anyoneAlive = false;
         foreach (EnemyBattleManager enemy in FindObjectsOfType<EnemyBattleManager>())
         {
@@ -208,6 +218,9 @@ public class EnemyBattleManager : MonoBehaviour
                     break;
                 case "Attack2":
                     hit2Length = clip.length;
+                    break;
+                case "Recoil":
+                    recoilLength = clip.length;
                     break;
                 case "Die":
                     Debug.Log(clip.length);

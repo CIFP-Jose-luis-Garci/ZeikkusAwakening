@@ -7032,6 +7032,10 @@ PrefabInstance:
       propertyPath: cameraManager
       value: 
       objectReference: {fileID: 1874620797}
+    - target: {fileID: 5234201012602325531, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
+      propertyPath: magicSlots.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5234201012602325535, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: results
       value: 
@@ -7099,7 +7103,7 @@ PrefabInstance:
     - target: {fileID: 8408669999867570857, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
       propertyPath: magics.Array.data[2]
       value: 
-      objectReference: {fileID: 4533313861010879522, guid: 336cda0eb0ab1454a98774d23fb59c64, type: 3}
+      objectReference: {fileID: 714309921858321775, guid: a873219e1cbfeb9458873387bd8689b3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e60607cdcab4f2f44a3fba41cdceafda, type: 3}
 --- !u!1 &1113694394
