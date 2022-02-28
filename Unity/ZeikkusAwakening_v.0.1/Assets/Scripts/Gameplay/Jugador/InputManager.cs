@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour
 
     public bool inDialogue;
     public CutsceneManager cutsceneManager;
-    public Image minimap;
+    public GameObject minimap;
     public GameObject container, magicTutorial, buttonTutorial, lockOnTutorial, evadeBlockTutorial;
     private bool showedMagicTutorial, showedButtonTutorial, showedLockOnTutorial, showedEvadeBlockTutorial;
 
@@ -149,11 +149,9 @@ public class InputManager : MonoBehaviour
             {
                 if (dialogue.currentEvent == GameManager.currentEvent || dialogue.showingPhrase)
                 {
-                    if (dialogue.NextDialogue())
-                    {
-                        cutsceneManager.dialogueCount++;
-                        cutsceneManager.DoStuff();
-                    }
+                    if (!dialogue.NextDialogue()) return;
+                    cutsceneManager.dialogueCount++;
+                    cutsceneManager.DoStuff();
                 }
                 else
                 {
@@ -164,7 +162,6 @@ public class InputManager : MonoBehaviour
                     }
                     dialogue.gameObject.SetActive(false);
                 }
-
                 return;
             }
 
@@ -174,7 +171,7 @@ public class InputManager : MonoBehaviour
                     results.End();
                 else
                 {
-                    if (GameManager.inPause) return;
+                    if (GameManager.inPause || GameManager.viewingMinimap) return;
                     playerLocomotion.HandleJumping();
                 }
             }
@@ -220,7 +217,6 @@ public class InputManager : MonoBehaviour
             if (inDialogue) return;
             if (GameManager.inPause)
             {
-                if (GameManager.transitioning) return;
                 if (gameManager.Pause())
                 {
                     bInput = false;
@@ -235,7 +231,10 @@ public class InputManager : MonoBehaviour
                 playerLocomotion.HandleAttack();
             }
             else
+            {
+                if (GameManager.viewingMinimap) return;
                 StartCoroutine(playerLocomotion.HandleFirstStrike(zagrantController.gameObject));
+            }
         }
     }
 
@@ -263,10 +262,9 @@ public class InputManager : MonoBehaviour
     {
         if (select)
         {
+            if (AnyInteraction() || !gameManager.inWorld) return;
             select = false;
-            if (AnyInteraction()) return;
-            bool activeSelf = minimap.gameObject.activeSelf;
-            minimap.gameObject.SetActive(!activeSelf);
+            minimap.gameObject.SetActive(true);
         }
     }
 
@@ -338,7 +336,7 @@ public class InputManager : MonoBehaviour
 
     private bool AnyInteraction()
     {
-        return inDialogue || GameManager.inPause || GameManager.transitioning;
+        return inDialogue || GameManager.inPause || GameManager.transitioning || GameManager.viewingMinimap;
     }
     
     public void GoBack(GameObject toDisable, GameObject pantallaPausa)

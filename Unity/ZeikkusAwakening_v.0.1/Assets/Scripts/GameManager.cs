@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [Header("Transiciones")]
     public bool inWorld;
     public static bool transitioning;
+    public static bool viewingMinimap;
     public PantallaPausaManager pause;
     
     [Header("Datos de juego")]
