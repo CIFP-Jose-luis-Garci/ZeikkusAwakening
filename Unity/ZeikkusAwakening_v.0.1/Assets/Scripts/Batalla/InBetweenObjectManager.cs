@@ -36,15 +36,15 @@ public class InBetweenObjectManager : MonoBehaviour
         if (isZTargeting && !enemyFound)
         {
             Transform tMin = null;
-            float minDist = Mathf.Infinity;
+            float minDist = 10;
             Vector3 currentPos = transform.position;
             enemyFound = false;
             foreach (GameObject t in GameObject.FindGameObjectsWithTag("Enemigo"))
             {
-                enemyFound = true;
                 float dist = Vector3.Distance(t.transform.position, currentPos);
                 if (dist < minDist)
                 {
+                    enemyFound = true;
                     tMin = t.transform;
                     minDist = dist;
                 }
