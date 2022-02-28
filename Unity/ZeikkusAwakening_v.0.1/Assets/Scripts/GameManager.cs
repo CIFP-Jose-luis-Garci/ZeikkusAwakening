@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     [Header("Datos de juego")]
     public static int maru = 1000;
     public GameObject[] personajes;
+    public static Vector3 checkpoint;
 
     public bool Pause()
     {

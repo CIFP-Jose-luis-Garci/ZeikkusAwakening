@@ -19,10 +19,9 @@ public class HUDManager : MonoBehaviour
     private float cameraXAngle;
     private bool inBattle;
     public AudioMixer mixer;
-    public GameObject resultScreen;
+    public GameObject resultScreen, minimap, checkpointPopup;
     public FlashManager flash;
     public InterfazBatallaManager interfazBatalla;
-    public GameObject minimap;
     
     [Header("Audio")]
     public AudioClip worldMusic;
@@ -179,5 +178,10 @@ public class HUDManager : MonoBehaviour
     {
         animatorManager.PlayTargetAnimation("WinBattle", true);
         animatorManager.ChangeWorld(true);
+    }
+
+    public void ShowCheckpointArrived()
+    {
+        Destroy(Instantiate(checkpointPopup, transform), 2f);
     }
 }

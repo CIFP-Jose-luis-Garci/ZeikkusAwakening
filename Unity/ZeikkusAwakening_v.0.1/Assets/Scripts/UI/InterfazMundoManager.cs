@@ -21,10 +21,9 @@ public class InterfazMundoManager : MonoBehaviour
     {
         if (inputManager.anyButtonPressed || inputManager.inDialogue || !gameManager.inWorld || GameManager.inPause)
         {
-            
+            timeToShow = 2;
             if (showing)
             {
-                timeToShow = 2;
                 animator.SetBool("showed", false);
                 showing = false;
             }

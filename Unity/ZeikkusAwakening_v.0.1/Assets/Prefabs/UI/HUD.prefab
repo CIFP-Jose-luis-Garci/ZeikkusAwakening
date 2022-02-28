@@ -13006,9 +13006,11 @@ MonoBehaviour:
   blackBackground: {fileID: 7302383872842397048}
   mixer: {fileID: 24100000, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
   resultScreen: {fileID: 1328228690629047628}
+  minimap: {fileID: 7919562396373285248}
+  checkpointPopup: {fileID: 4795870197354357618, guid: 75c80736ec7bba844a67706f8beaad7c, type: 3}
+  hudPersonajes: {fileID: 6454343909403842407}
   flash: {fileID: 2843456162006760587}
   interfazBatalla: {fileID: 2792369237351116471}
-  minimap: {fileID: 7919562396373285248}
   worldMusic: {fileID: 8300000, guid: f987126ff9120ab40a3a436f17dc31bb, type: 3}
   battleMusic: {fileID: 8300000, guid: 39a006a41a2c88040abf2b5a819f35be, type: 3}
   bossMusic: {fileID: 8300000, guid: 4b75d7fba9df5194aa244ffdc5e37a78, type: 3}
@@ -16905,7 +16907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5144111570676482354
 RectTransform:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3291738256188780690}
   - component: {fileID: 3291738256188780689}
   - component: {fileID: 996978522}
+  - component: {fileID: 1523778967}
   m_Layer: 0
   m_Name: SaveField
   m_TagString: Untagged
@@ -112,4 +113,17 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 7ddf73cd13aa25447b72818467fca8a3, type: 2}
+  sharedProfile: {fileID: 0}
+--- !u!114 &1523778967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3291738256188780688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1fbbe68a7b92640b206609ca23a199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudManager: {fileID: 0}

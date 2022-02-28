@@ -106,10 +106,9 @@ public class InputManager : MonoBehaviour
 
     private void AnyActionsPressed()
     {
-        var movement = playerControls.PlayerMovement;
         var actions = playerControls.PlayerActions;
 
-        anyButtonPressed = movement.Movement.WasPerformedThisFrame() ||
+        anyButtonPressed = verticalInput != 0 || horizontalInput != 0 ||
                            actions.A.WasPressedThisFrame() ||
                            actions.B.WasPressedThisFrame() ||
                            actions.X.WasPressedThisFrame() ||
