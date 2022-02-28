@@ -21,7 +21,7 @@ public class InBetweenObjectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyFound)
+        if (enemyFound && enemy)
         {
             distance = Vector3.Distance(player.position, enemy.position);
             if (distance < 10)

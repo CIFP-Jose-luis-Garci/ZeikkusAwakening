@@ -314,7 +314,7 @@ public class InputManager : MonoBehaviour
 
     private void HandleLeftTrigger()
     {
-        if (AnyInteraction()) return;
+        if (inDialogue || GameManager.inPause) return;
         if (gameManager.inWorld) return;
         if (lTrigger)
         {

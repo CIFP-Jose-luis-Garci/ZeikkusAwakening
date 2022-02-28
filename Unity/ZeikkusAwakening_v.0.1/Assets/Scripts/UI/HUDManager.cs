@@ -197,6 +197,9 @@ public class HUDManager : MonoBehaviour
         yield return GameManager.CrossFadeMusic(mixer, 1, true);
         blackFade.CrossFadeAlpha(1, 2f, true);
         yield return new WaitForSeconds(3f);
+        CameraManager cameraManager = cmfl.GetComponent<CameraManager>();
+        cameraManager.ChangeTarget(animatorManager.transform);
+        cameraManager.ResetRadius();
         deathVolume.SetActive(false);
         player.position = GameManager.checkpoint;
         Time.timeScale = 1;
@@ -207,8 +210,8 @@ public class HUDManager : MonoBehaviour
         stats.hp = stats.maxHP;
         stats.alive = true;
         blackFade.CrossFadeAlpha(0, 2, true);
+        yield return new WaitForSeconds(8f);
         yield return GameManager.CrossFadeMusic(mixer, 2, false);
-        yield return new WaitForSeconds(1f);
         interfazMundo.gameObject.SetActive(true);
         hudPersonajes.SetActive(true);
         minimap.SetActive(true);
