@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public bool Pause()
     {
+        Debug.Log(!pause.HasChildrenActive() && !winning);
         if (!pause.HasChildrenActive() && !winning)
         {
             inPause = !inPause;

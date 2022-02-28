@@ -66,7 +66,7 @@ public class HUDManager : MonoBehaviour
         if (inBattle) return;
         inBattle = true;
         GameManager.inPause = true;
-        GameManager.winning = false;
+        GameManager.winning = true;
         ToBattle(worldEnemy, isBoss, enemyAdvantage);
     }
 

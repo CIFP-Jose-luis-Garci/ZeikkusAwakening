@@ -1259,7 +1259,7 @@ MonoBehaviour:
   faceEyesOpen: {fileID: 2800000, guid: 9544a1fc36d3f964cb687491eedeab94, type: 3}
   faceEyesClosed: {fileID: 2800000, guid: c092a20764c8aec4db9f2b2fcf3974db, type: 3}
   isZTargeting: 0
-  magicSlots: 000000000100000000000000
+  magicSlots: 000000000100000002000000
   cameraManager: {fileID: 0}
   blocking: 0
   lifebar: {fileID: 0}
@@ -1371,6 +1371,7 @@ MonoBehaviour:
   magics:
   - {fileID: 8755966844123130295, guid: 945ec140f401a3540866ba26c162e337, type: 3}
   - {fileID: 4533313861010879522, guid: 336cda0eb0ab1454a98774d23fb59c64, type: 3}
+  - {fileID: 714309921858321775, guid: a873219e1cbfeb9458873387bd8689b3, type: 3}
 --- !u!82 &5205658801009420469
 AudioSource:
   m_ObjectHideFlags: 0
