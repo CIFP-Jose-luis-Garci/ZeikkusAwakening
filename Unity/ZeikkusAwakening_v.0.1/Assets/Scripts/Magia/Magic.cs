@@ -4,5 +4,6 @@ using UnityEngine;
 
 public abstract class Magic : MonoBehaviour
 {
+    public string magicName;
     public int mpCost;
 }

@@ -115,7 +115,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &1413775792
 Animator:
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb9ed1296ab02f49a9743cf6a8a4c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magicName: Bola de fuego
   mpCost: 10
   fire: {fileID: 7683171688486918992}
   meteorExplosion: {fileID: 4645304525658040661}

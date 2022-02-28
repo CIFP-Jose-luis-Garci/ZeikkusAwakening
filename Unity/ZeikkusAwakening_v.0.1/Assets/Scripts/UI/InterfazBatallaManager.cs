@@ -1,22 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InterfazBatallaManager : MonoBehaviour
 {
     private Animator animator;
-
+    private PlayerLocomotion playerLocomotion;
+    private GameObject[] magics;
     public SlotEnemigoManager[] slotsEnemigos;
-    // Start is called before the first frame update
-    void Start()
+    public Text magiaA, magiaX, magiaY;
+
+    private void Awake()
     {
+        playerLocomotion = FindObjectOfType<PlayerLocomotion>();
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        magics = playerLocomotion.GetComponent<PlayerMagic>().magics;
+        magiaA.text = magics[playerLocomotion.magicSlots[0]].GetComponent<Magic>().magicName;
+        magiaY.text = magics[playerLocomotion.magicSlots[1]].GetComponent<Magic>().magicName;
+        magiaX.text = magics[playerLocomotion.magicSlots[2]].GetComponent<Magic>().magicName;
     }
 
     public void ActivateSlots()
