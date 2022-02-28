@@ -193,13 +193,13 @@ public class HUDManager : MonoBehaviour
     private IEnumerator DieInBattle(Transform player, Stats stats)
     {
         yield return GameManager.CrossFadeMusic(mixer, 1, true);
-        blackFade.CrossFadeAlpha(1, 0.5f, false);
+        blackFade.CrossFadeAlpha(1, 1f, true);
         yield return new WaitForSeconds(2f);
         player.position = GameManager.checkpoint;
         Time.timeScale = 1;
         player.GetComponent<AnimatorManager>().PlayTargetAnimation("Stand Up", true);
         stats.hp = stats.maxHP;
-        blackFade.CrossFadeAlpha(0, 1, false);
+        blackFade.CrossFadeAlpha(0, 1, true);
         yield return new WaitForSeconds(1.5f);
         GetComponent<Canvas>().enabled = true;
         GameManager.transitioning = false;
