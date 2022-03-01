@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ public class Cutscene1Manager : CutsceneManager
     public Image blackFade;
     public Texture faceEyesOpen;
     public SkinnedMeshRenderer face;
+    public CinemachineBrain brain;
     public AudioSource musicSource;
     public AudioMixer mixer;
     public GameObject tutorial;
@@ -43,6 +45,9 @@ public class Cutscene1Manager : CutsceneManager
                 Material[] materials = face.materials;
                 materials[1].mainTexture = faceEyesOpen;
                 break;
+            case 3:
+                animatorManager.PlayTargetAnimation("Get Up Short", false);
+                break;
             case 5:
                 StartCoroutine(ChangeCameraAndGetUp());
                 break;
@@ -50,15 +55,31 @@ public class Cutscene1Manager : CutsceneManager
                 cameras[1].SetActive(false);
                 cameras[2].SetActive(true);
                 break;
+            case 10:
+                animatorManager.PlayTargetAnimation("Idle Zinnia", false);
+                break;
             case 12:
                 cameras[2].SetActive(false);
+                animatorManager.PlayTargetAnimation("Idle To Draw Zagrant", false);
                 cameras[3].SetActive(true);
                 break;
             case 13:
                 StartCoroutine(GetSwordAndShow());
                 gotSword = true;
                 break;
+            case 14:
+                brain.m_DefaultBlend.m_Time = 0;
+                cameras[3].SetActive(false);
+                cameras[4].SetActive(true);
+                break;
+            case 15:
+                cameras[4].SetActive(false);
+                cameras[5].SetActive(true);
+                // camara por nivel
+                break;
             case 16:
+                cameras[5].SetActive(false);
+                cameras[3].SetActive(true);
                 FindObjectOfType<HUDManager>().WinBattleAnimation();
                 gotSword = false;
                 break;
@@ -105,11 +126,12 @@ public class Cutscene1Manager : CutsceneManager
 
     private IEnumerator FadeToBlack()
     {
+        brain.m_DefaultBlend.m_Time = 2;
         blackFade.CrossFadeAlpha(1,1,true);
         yield return new WaitForSeconds(1f);
         animatorManager.PlayTargetAnimation("World", false);
-        cameras[3].SetActive(false);
-        cameras[4].SetActive(true);
+        cameras[5].SetActive(false);
+        cameras[6].SetActive(true);
         hudManager.GetCamera();
         yield return new WaitForSeconds(1f);
         minimapa.SetActive(true);

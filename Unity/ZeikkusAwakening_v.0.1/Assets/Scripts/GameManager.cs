@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     public AudioSource source;
     
     [Header("Dialogos")]
-    public static int currentEvent = 0;
-    public static int currentDialogue = 0;
+    public static int currentEvent = 1;
+    public static int currentDialogue = 2;
     public static string talking;
     private static int nextScene = 0;
     

@@ -15,6 +15,7 @@ public class DialogueLookupTable
                 GameManager.currentEvent = 1;
                 return "Es el momento. Padre ya no puede protegerte. Y él está dormido. A través de tí, conseguiré mis deseos, Zeikku. Gracias a este poder que recibí... es hora de llevar a cabo mi venganza.";
             case 2:
+                GameManager.talking = "???";
                 return "Zeikku...  Zeikku, ¡despierta! ¡Despierta de tu sueño!";
             case 3:
                 GameManager.talking = "Zeikku";

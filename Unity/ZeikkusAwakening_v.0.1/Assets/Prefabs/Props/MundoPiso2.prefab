@@ -2815,7 +2815,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db3e4ee46f4b2a845b55130da80d124f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameras: []
+  cameras:
+  - {fileID: 7201185479520844741}
+  - {fileID: 57573778078170260}
   dialogue: {fileID: 0}
   dialogueCount: 0
   endingCutscene: 0
