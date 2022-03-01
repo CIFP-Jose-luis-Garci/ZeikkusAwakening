@@ -9,10 +9,12 @@ public class ButtonSound : MonoBehaviour, IDeselectHandler, ISelectHandler
     public AudioClip sonidoSeleccionado;
     private static AudioSource gameManagerAudio;
 
-    private void Start()
+    private void Awake()
     {
         if (!gameManagerAudio)
-            gameManagerAudio = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+            gameManagerAudio = FindObjectOfType<GameManager>().source;
+        if (!gameManagerAudio)
+            gameManagerAudio = FindObjectOfType<AudioSource>();
     }
 
     public void OnSelect(BaseEventData eventData)

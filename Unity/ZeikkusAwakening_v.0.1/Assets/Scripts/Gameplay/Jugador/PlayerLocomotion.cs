@@ -239,6 +239,7 @@ public class PlayerLocomotion : MonoBehaviour
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical, bool forceCrit = false)
     {
         if (GameManager.inPause || invincible || !stats.alive) return;
+        ResetRigidbody();
         if (!playerManager.isInteracting) animatorManager.PlayTargetAnimation("recoil", true);
         int resultado;
         if (isPhysical)

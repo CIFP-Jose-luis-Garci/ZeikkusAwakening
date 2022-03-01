@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
     public DialogueManager dialogue;
     public PantallaResultadosManager results;
     public ZagrantController zagrantController;
-    public AudioClip sonidoCerrarPopUp;
+    public AudioClip sonidoCerrarPopUp, sonidoPasarDialogo;
     
 
     private Vector2 movementInput;
@@ -152,6 +152,7 @@ public class InputManager : MonoBehaviour
                     if (!dialogue.NextDialogue()) return;
                     cutsceneManager.dialogueCount++;
                     cutsceneManager.DoStuff();
+                    gameManager.source.PlayOneShot(sonidoPasarDialogo);
                 }
                 else
                 {
@@ -159,6 +160,7 @@ public class InputManager : MonoBehaviour
                     {
                         cutsceneManager.dialogueCount++;
                         cutsceneManager.DoStuff();
+                        gameManager.source.PlayOneShot(sonidoPasarDialogo);
                     }
                     dialogue.gameObject.SetActive(false);
                 }

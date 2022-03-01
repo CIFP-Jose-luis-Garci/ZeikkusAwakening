@@ -9,6 +9,7 @@ public class MemoryInputManager : MonoBehaviour
 {
     private PlayerControls playerControls;
     public DialogueManager dialogue;
+    public AudioSource source;
 
     public bool aInput;
 
@@ -43,12 +44,14 @@ public class MemoryInputManager : MonoBehaviour
             if (!dialogue.gameObject.activeSelf) return;
             if (dialogue.currentEvent == GameManager.currentEvent || dialogue.showingPhrase)
             {
-                dialogue.NextDialogue();
+                if (dialogue.NextDialogue())
+                    source.PlayOneShot(source.clip);;
             }
             else
             {
                 dialogue.gameObject.SetActive(false);
                 StartCoroutine(GetComponent<MemorySceneManager>().FadeOutFlash(2));
+                source.PlayOneShot(source.clip);
             }
         }
     }

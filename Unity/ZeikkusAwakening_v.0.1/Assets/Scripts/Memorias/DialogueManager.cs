@@ -38,7 +38,6 @@ public class DialogueManager : MonoBehaviour
         aButton.SetActive(false);
         voice.clip = voiceOvers[GameManager.currentDialogue];
         voice.Play();
-        voice.PlayOneShot(sonidoPasarDialogo);
         string dialogue = DialogueLookupTable.DialogueLookup(GameManager.currentDialogue);
         dialogueName.text = GameManager.talking;
         coroutine = StartCoroutine(LetraALetra(dialogue));

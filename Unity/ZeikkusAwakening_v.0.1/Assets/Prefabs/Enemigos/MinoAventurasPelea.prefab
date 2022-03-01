@@ -286,9 +286,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3996069490875888490}
-  - component: {fileID: 5907525907144532371}
   - component: {fileID: 8663844005960927990}
   - component: {fileID: 8598656891214676654}
+  - component: {fileID: 7039611614052773675}
   m_Layer: 0
   m_Name: mixamorig:RightHand
   m_TagString: Untagged
@@ -315,19 +315,6 @@ Transform:
   m_Father: {fileID: 959854017094449418}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5907525907144532371
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 823852569904488867}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.07
-  m_Center: {x: 0, y: 0.07, z: 0}
 --- !u!114 &8663844005960927990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +425,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &7039611614052773675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823852569904488867}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.13770244, y: 0.32119596, z: 0.13671966}
+  m_Center: {x: 0.004079609, y: -0.025598045, z: -0.010622952}
 --- !u!1 &869678518768592787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,6 +1350,7 @@ MonoBehaviour:
   alive: 1
   expBase: 75
   marubase: 200
+  slotEnemigo: {fileID: 0}
 --- !u!114 &-5326428243457186870
 MonoBehaviour:
   m_ObjectHideFlags: 0

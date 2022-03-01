@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.inPause) return;
+        if (GameManager.inPause || GameManager.transitioning) return;
         playerLocomotion.HandleAllMovement();
     }
 
