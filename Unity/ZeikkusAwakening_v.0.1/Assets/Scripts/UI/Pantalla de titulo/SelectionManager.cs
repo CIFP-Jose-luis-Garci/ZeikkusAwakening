@@ -13,13 +13,16 @@ public class SelectionManager : MonoBehaviour
     public Image background, loading;
     private Animator animator;
     private GameObject zeikku;
+    private AudioSource source;
     public AudioMixer mixer;
+    public AudioClip sonidoSeleccionar;
 
     private bool started;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        source = transform.root.GetComponent<AudioSource>();
         zeikku = GetComponentInParent<TitleScreenManager>().zeikkuInstatiated;
         newFile.onClick.AddListener(() =>
         {
@@ -27,6 +30,7 @@ public class SelectionManager : MonoBehaviour
             {
                 started = true;
                 StartCoroutine(StartGame());
+                source.PlayOneShot(sonidoSeleccionar);
             }
         });
         continuee.interactable = false;
@@ -36,9 +40,14 @@ public class SelectionManager : MonoBehaviour
             opciones.SetActive(true);
             opciones.GetComponentInChildren<Slider>().Select();
             logo.SetActive(false);
+            source.PlayOneShot(sonidoSeleccionar);
             gameObject.SetActive(false);
         });
-        exit.onClick.AddListener(() => Application.Quit(0));
+        exit.onClick.AddListener(() =>
+        {
+            source.PlayOneShot(sonidoSeleccionar);
+            Application.Quit(0);
+        });
     }
     
     IEnumerator StartGame()

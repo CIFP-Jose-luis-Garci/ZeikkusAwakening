@@ -17,6 +17,7 @@ public class Cutscene1Manager : CutsceneManager
     public AudioSource musicSource;
     public AudioMixer mixer;
     public GameObject tutorial;
+    public GameObject minimapa;
 
     // Start is called before the first frame update
     void Start()
@@ -111,6 +112,7 @@ public class Cutscene1Manager : CutsceneManager
         cameras[4].SetActive(true);
         hudManager.GetCamera();
         yield return new WaitForSeconds(1f);
+        minimapa.SetActive(true);
         inputManager.inDialogue = false;
         mixer.SetFloat("EnemiesSFXVolume", 0);
         mixer.SetFloat("EnvironmentSFXVolume", 0);

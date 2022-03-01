@@ -377,6 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
@@ -1088,6 +1089,7 @@ MonoBehaviour:
   selecciones: {fileID: 557428271}
   zeikkuPrefab: {fileID: 7830262859014122784, guid: a2a6ab760f1ae0e42b6a33af4d61b7ce, type: 3}
   zeikkuInstatiated: {fileID: 0}
+  clipLogo: {fileID: 8300000, guid: 8cbce4cde8f493848a3aa754e9ea71c8, type: 3}
 --- !u!114 &1735821423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1655,18 +1657,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88512261bc03c1642b5b99083d541e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 0}
   inWorld: 1
-  hudManager: {fileID: 0}
   pause: {fileID: 0}
-  resultScreen: {fileID: 0}
-  flash: {fileID: 0}
-  escenaBatalla: {fileID: 0}
-  cmfl: {fileID: 0}
-  cameraXAngle: 0
-  worldMusic: {fileID: 0}
-  battleMusic: {fileID: 0}
-  bossMusic: {fileID: 0}
-  fanfare: {fileID: 0}
   personajes:
   - {fileID: 0}
   - {fileID: 0}

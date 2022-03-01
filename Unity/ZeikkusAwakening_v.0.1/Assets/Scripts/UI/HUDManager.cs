@@ -226,4 +226,9 @@ public class HUDManager : MonoBehaviour
         interfazMundo.gameObject.SetActive(false);
         hudPersonajes.SetActive(false);
     }
+
+    public void ChangeZoneName(string zoneName)
+    {
+        interfazMundo.ChangeZoneName(zoneName);
+    }
 }

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InterfazMundoManager : MonoBehaviour
 {
     private Animator animator;
     private GameManager gameManager;
     private InputManager inputManager;
+    public Text nombreZona;
     private float timeToShow = 2;
     private bool showing;
     
@@ -39,5 +41,10 @@ public class InterfazMundoManager : MonoBehaviour
                 animator.SetBool("showed", true);
             }
         }
+    }
+
+    public void ChangeZoneName(string zoneName)
+    {
+        nombreZona.text = zoneName;
     }
 }

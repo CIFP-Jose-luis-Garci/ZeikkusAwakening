@@ -13,6 +13,7 @@ public class TitleScreenManager : MonoBehaviour
 
     private InputManager iMgr;
     private AudioSource musicaTitulo;
+    public AudioClip clipLogo;
 
     private void Start()
     {
@@ -29,7 +30,9 @@ public class TitleScreenManager : MonoBehaviour
         logobg.CrossFadeAlpha(1, 1, true);
         yield return new WaitForSeconds(1f);
         logo.CrossFadeAlpha(1, 1, true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        musicaTitulo.PlayOneShot(clipLogo);
+        yield return new WaitForSeconds(1f);
         logo.CrossFadeAlpha(0, 1, true);
         yield return new WaitForSeconds(1f);
         musicaTitulo.Play();

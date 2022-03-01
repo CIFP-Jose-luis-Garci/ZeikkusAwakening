@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!225 &7595608602829777605
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!225 &3862346020079334204
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!225 &1407656300865835139
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd21ba16e781c4f8efae3acd525a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoSeleccionado: {fileID: 8300000, guid: ebec4710d35e25b4ba8558b97d9a96fa, type: 3}
+  sonidoSeleccionado: {fileID: 8300000, guid: 1398d9775335b794c9aee468fb0101c8, type: 3}
 --- !u!225 &732101756955752006
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -972,6 +972,7 @@ MonoBehaviour:
   background: {fileID: 0}
   loading: {fileID: 0}
   mixer: {fileID: 24100000, guid: 4b3836252b240504bae7fa1679b094af, type: 2}
+  sonidoSeleccionar: {fileID: 8300000, guid: 23f34df0b555ac144af0bc9664d22f06, type: 3}
 --- !u!95 &8643565136723343304
 Animator:
   serializedVersion: 3
