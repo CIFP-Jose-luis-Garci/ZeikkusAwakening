@@ -39,6 +39,8 @@ public class DialogueManager : MonoBehaviour
         voice.clip = voiceOvers[GameManager.currentDialogue];
         voice.Play();
         string dialogue = DialogueLookupTable.DialogueLookup(GameManager.currentDialogue);
+        GameManager.currentDialogue++;
+        Debug.Log(GameManager.currentDialogue);
         dialogueName.text = GameManager.talking;
         coroutine = StartCoroutine(LetraALetra(dialogue));
         return true;
@@ -48,7 +50,6 @@ public class DialogueManager : MonoBehaviour
     {
         showingPhrase = true;
         currentPhrase = phrase;
-        GameManager.currentDialogue++;
         dialogueText.text = "";
         // reproducir audio de doblaje
         string currentText = "";

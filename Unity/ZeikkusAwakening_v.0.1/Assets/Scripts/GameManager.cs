@@ -175,9 +175,17 @@ public class GameManager : MonoBehaviour
 
     public static IEnumerator LoadScene(float timeToLoad, bool isMemory = false)
     {
-        nextScene++;
         yield return new WaitForSeconds(timeToLoad);
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(isMemory ? 1 : nextScene--);
+        AsyncOperation asyncOperation;
+        if (isMemory)
+        {
+            asyncOperation = SceneManager.LoadSceneAsync(1);
+        }
+        else
+        {
+            nextScene++;
+            asyncOperation = SceneManager.LoadSceneAsync(nextScene);
+        }
         while (!asyncOperation.isDone)
             yield return null;
     }
