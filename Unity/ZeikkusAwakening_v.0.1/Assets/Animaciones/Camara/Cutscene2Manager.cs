@@ -34,30 +34,17 @@ public class Cutscene2Manager : CutsceneManager
 
         DoStuff();
         yield return new WaitForSeconds(2f);
-        StartCoroutine(GetSwordAndShow());
-
-        yield return new WaitForSeconds(2f);
+        
         EndCutScene();
         yield return new WaitForSeconds(2f);
-        StopCoroutine("SceneBoss");
+        yield break;
     }
     public override void DoStuff()
     {
-        
-        
-        
-            
-                cameras[0].SetActive(false);
-                cameras[1].SetActive(true);
-              
-                
-            
-            /*case 16:
-                inputManager.WinBattle();
-                break;*/
-            
-            
-        
+ 
+        cameras[0].SetActive(false);
+        cameras[1].SetActive(true);
+ 
     }
 
     public override void EndCutScene()
@@ -73,12 +60,5 @@ public class Cutscene2Manager : CutsceneManager
     }
 
 
-    private IEnumerator GetSwordAndShow()
-    {
-        
-        FindObjectOfType<HUDManager>().StartBattleAnimation();
-        yield return new WaitForSeconds(2f);
-       
-    }
 
 }
