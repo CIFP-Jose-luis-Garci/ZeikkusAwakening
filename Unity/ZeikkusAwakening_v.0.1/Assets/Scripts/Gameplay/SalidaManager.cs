@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class SalidaManager : MonoBehaviour
 {
+    public AudioClip sonidoPortal;
+
     private void OnTriggerEnter(Collider other)
     {
+        FindObjectOfType<GameManager>().source.PlayOneShot(sonidoPortal);
         FindObjectOfType<HUDManager>().FinishLevel();
     }
 }
