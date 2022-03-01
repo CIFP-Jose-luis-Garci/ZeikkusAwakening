@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class ZagrantController : MonoBehaviour
 {
@@ -41,6 +42,12 @@ public class ZagrantController : MonoBehaviour
             if (other.gameObject.CompareTag("Boss"))
             {
                 FindObjectOfType<HUDManager>().StartBattle(other.gameObject, true, 2);
+            }
+            if (other.gameObject.CompareTag("Trigger"))
+            {
+                other.gameObject.GetComponentInChildren<VisualEffect>().enabled = true;
+                other.gameObject.GetComponentInChildren<Light>().enabled = true;
+                FindObjectOfType<TorchDoor>().doorTrigger();
             }
         }
     }

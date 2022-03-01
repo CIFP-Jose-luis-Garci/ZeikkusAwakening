@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DoorManager : MonoBehaviour
 {
-    private bool doorOpen;
+    private bool doorOpen1;
     private PlayerBagManager bag;
     private AudioSource source;
     public SpriteRenderer minimapSprite; 
@@ -20,12 +20,12 @@ public class DoorManager : MonoBehaviour
     
     void Start()
     {
-        doorOpen = false;
+        doorOpen1 = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && !doorOpen)
+        if(other.CompareTag("Player") && !doorOpen1)
         {
             foreach(Item item in bag.GetBagContents(5))
             {
@@ -35,7 +35,7 @@ public class DoorManager : MonoBehaviour
                     minimapSprite.gameObject.SetActive(false);
                     bag.RemoveItem(bag.ItemSlot(item));
                     StartCoroutine(LiftDoor());
-                    doorOpen = true;
+                    doorOpen1 = true;
                     break;
                 }
             }
