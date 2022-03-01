@@ -31,9 +31,9 @@ public class Cutscene2Manager : CutsceneManager
 
     IEnumerator SceneBoss()
     {
-
+        
         DoStuff();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         
         EndCutScene();
         yield return new WaitForSeconds(2f);
