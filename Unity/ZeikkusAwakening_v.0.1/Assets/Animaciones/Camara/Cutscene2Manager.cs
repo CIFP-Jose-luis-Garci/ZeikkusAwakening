@@ -10,8 +10,9 @@ public class Cutscene2Manager : CutsceneManager
     private AnimatorManager animatorManager;
     public GameObject triggerCutScene;
     PlayerLocomotion playerLocomotion;
+    [SerializeField] GameObject CameraArray;
 
-    int CameraChanges = 4;
+    
 
 
     // Start is called before the first frame update
@@ -20,36 +21,43 @@ public class Cutscene2Manager : CutsceneManager
         animatorManager = FindObjectOfType<AnimatorManager>();
         playerLocomotion = FindObjectOfType<PlayerLocomotion>();
         playerLocomotion.runningSpeed = 0f;
-        
+
+        //Camaras estado inicial
+        cameras[0].SetActive(true);
+        cameras[1].SetActive(false);
+
+        StartCoroutine("SceneBoss");
     }
 
+    IEnumerator SceneBoss()
+    {
 
+        DoStuff();
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(GetSwordAndShow());
+
+        yield return new WaitForSeconds(2f);
+        EndCutScene();
+        yield return new WaitForSeconds(2f);
+        StopCoroutine("SceneBoss");
+    }
     public override void DoStuff()
     {
         
-        switch (CameraChanges)
-        {
-            case 1:
-                cameras[0].SetActive(true);
-                cameras[1].SetActive(false);
-                break;
-            case 2:
-                StartCoroutine(ChangeCamera());
-                break;
-            case 3:
-                StartCoroutine(GetSwordAndShow());
-                break;
-            case 4:
-                EndCutScene();
-                break;
+        
+        
+            
+                cameras[0].SetActive(false);
+                cameras[1].SetActive(true);
+              
+                
             
             /*case 16:
                 inputManager.WinBattle();
                 break;*/
             
-            default:
-                break;
-        }
+            
+        
     }
 
     public override void EndCutScene()
@@ -64,13 +72,6 @@ public class Cutscene2Manager : CutsceneManager
         playerLocomotion.runningSpeed = 7f;
     }
 
-    private IEnumerator ChangeCamera()
-    {
-        cameras[0].SetActive(false);
-        cameras[1].SetActive(true);
-        yield return new WaitForSeconds(1f);
-        
-    }
 
     private IEnumerator GetSwordAndShow()
     {
