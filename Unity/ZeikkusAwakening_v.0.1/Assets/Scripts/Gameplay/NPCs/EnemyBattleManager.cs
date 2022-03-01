@@ -132,6 +132,9 @@ public class EnemyBattleManager : MonoBehaviour
         yield return new WaitForSeconds(recoilLength);
         isRecoiling = false;
         recoiled = false;
+        isAttacking = false;
+        agente.SetDestination(player.position);
+        agente.speed = 4;
     }
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical, bool forceCrit = false)
