@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     private float time;
+
     public Text tiempo;
     public Image blackFade;
 
@@ -20,7 +21,7 @@ public class HUDManager : MonoBehaviour
     private float cameraXAngle;
     private bool inBattle;
     public AudioMixer mixer;
-    public GameObject resultScreen, minimap, checkpointPopup, hudPersonajes;
+    public GameObject resultScreen, minimap, checkpointPopup, hudPersonajes, loading;
     public FlashManager flash;
     public InterfazBatallaManager interfazBatalla;
     public InterfazMundoManager interfazMundo;
@@ -219,6 +220,14 @@ public class HUDManager : MonoBehaviour
         GameManager.transitioning = false;
         inBattle = false;
 
+    }
+
+    public void FinishLevel()
+    {
+        GameManager.transitioning = true;
+        blackFade.CrossFadeAlpha(1, 0.3f, true);
+        loading.SetActive(true);
+        StartCoroutine(GameManager.LoadScene(1, true));
     }
 
     private void DisableHUD()
