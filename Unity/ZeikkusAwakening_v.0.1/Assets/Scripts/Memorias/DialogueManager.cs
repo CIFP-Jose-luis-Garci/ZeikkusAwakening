@@ -40,7 +40,6 @@ public class DialogueManager : MonoBehaviour
         voice.Play();
         string dialogue = DialogueLookupTable.DialogueLookup(GameManager.currentDialogue);
         GameManager.currentDialogue++;
-        Debug.Log(GameManager.currentDialogue);
         dialogueName.text = GameManager.talking;
         coroutine = StartCoroutine(LetraALetra(dialogue));
         return true;

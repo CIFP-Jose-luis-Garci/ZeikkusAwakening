@@ -1,42 +1,73 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class TorchDoor : MonoBehaviour
 {
-    int triggerCount;
+    private static int triggerCount;
     private AudioSource source;
-    public SpriteRenderer minimapSprite;
+    private VisualEffect fuego;
+    private Light luz;
+    private SpriteRenderer minimapSprite;
+    private CinemachineFreeLook playerCmfl;
+    private CinemachineBrain brain;
+    public CinemachineVirtualCamera doorVcam;
+    public GameObject door;
     public AudioClip abrirPuerta;
 
     private void Awake()
     {
+        fuego = GetComponentInChildren<VisualEffect>();
+        luz = GetComponentInChildren<Light>();
+        brain = FindObjectOfType<CinemachineBrain>();
+        playerCmfl = FindObjectOfType<CinemachineFreeLook>();
         source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
     }
-    void Start()
-    {
 
-    }
-    public void doorTrigger()
+    private void OnTriggerEnter(Collider other)
     {
-        if(triggerCount < 2)
+        if (fuego.enabled) return;
+        if (other.gameObject.CompareTag("Zagrant"))
         {
-            triggerCount++;
+            if (!other.GetComponent<ZagrantController>().onFire) return;
+            fuego.enabled = true;
+            luz.enabled = true;
+            Debug.Log(triggerCount);
+            if (triggerCount < 2)
+            {
+                triggerCount++;
+            }
+            else
+            {
+                brain.m_DefaultBlend.m_Time = 0.5f;
+                playerCmfl.gameObject.SetActive(false);
+                doorVcam.gameObject.SetActive(true);
+                GameManager.inPause = true;
+                GameManager.transitioning = true;
+                StartCoroutine(LiftDoor());
+                Invoke(nameof(DisableCamera), 2f);
+            }
         }
-        else if(triggerCount >= 2)
-        {
-            StartCoroutine("LiftDoor");
-        }
+    }
+
+    private void DisableCamera()
+    {
+        playerCmfl.gameObject.SetActive(true);
+        doorVcam.gameObject.SetActive(false);
+        brain.m_DefaultBlend.m_Time = 2f;
+        GameManager.inPause = false;
+        GameManager.transitioning = false;
     }
 
     IEnumerator LiftDoor()
     {
         source.PlayOneShot(abrirPuerta);
-        Debug.Log(transform.position);
-        while (transform.localPosition.y < 2.3f)
+        while (door.transform.localPosition.y < 2.3f)
         {
-            transform.localPosition += Vector3.up * 2f * Time.deltaTime;
-            Debug.Log("hi");
+            door.transform.localPosition += Vector3.up * 2f * Time.deltaTime;
             yield return null;
         }
     }

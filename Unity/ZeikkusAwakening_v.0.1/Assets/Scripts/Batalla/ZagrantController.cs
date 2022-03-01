@@ -11,6 +11,8 @@ public class ZagrantController : MonoBehaviour
     private AudioSource source;
     public bool isAttacking;
     public bool onFire;
+    private static readonly int Damage = Animator.StringToHash("damage");
+    private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
 
     // Start is called before the first frame update
     void Start()
@@ -21,33 +23,28 @@ public class ZagrantController : MonoBehaviour
 
     private void Update()
     {
-        isAttacking = animator.GetBool("isAttacking");
+        isAttacking = animator.GetBool(IsAttacking);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (isAttacking)
         {
-            if (other.gameObject.CompareTag("Enemigo"))
+            GameObject otherObject = other.gameObject;
+            if (otherObject.CompareTag("Enemigo"))
             {
-                EnemyBattleManager enemyBattleManager = other.gameObject.GetComponent<EnemyBattleManager>();
-                Stats zeikkuStats = FindObjectOfType<PlayerLocomotion>().gameObject.GetComponent<Stats>();
-                enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat("damage"), true, onFire);
+                EnemyBattleManager enemyBattleManager = otherObject.GetComponent<EnemyBattleManager>();
+                Stats zeikkuStats = FindObjectOfType<PlayerManager>().GetComponent<Stats>();
+                enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat(Damage), true, onFire);
                 source.PlayOneShot(source.clip);
             }
-            if (other.gameObject.CompareTag("EnemigoWorld"))
+            if (otherObject.CompareTag("EnemigoWorld"))
             {
-                FindObjectOfType<HUDManager>().StartBattle(other.gameObject, false, 2);
+                FindObjectOfType<HUDManager>().StartBattle(otherObject, false, 2);
             }
-            if (other.gameObject.CompareTag("Boss"))
+            if (otherObject.CompareTag("Boss"))
             {
-                FindObjectOfType<HUDManager>().StartBattle(other.gameObject, true, 2);
-            }
-            if (other.gameObject.CompareTag("Trigger"))
-            {
-                other.gameObject.GetComponentInChildren<VisualEffect>().enabled = true;
-                other.gameObject.GetComponentInChildren<Light>().enabled = true;
-                FindObjectOfType<TorchDoor>().doorTrigger();
+                FindObjectOfType<HUDManager>().StartBattle(otherObject, true, 2);
             }
         }
     }

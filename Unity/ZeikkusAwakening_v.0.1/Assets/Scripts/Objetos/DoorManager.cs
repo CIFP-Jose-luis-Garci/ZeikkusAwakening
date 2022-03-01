@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class DoorManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class DoorManager : MonoBehaviour
     private bool doorOpen1;
     private PlayerBagManager bag;
     private AudioSource source;
-    public SpriteRenderer minimapSprite; 
+    public SpriteRenderer minimapSprite;
     public AudioClip abrirPuerta;
     public AudioClip llaves;
 
@@ -45,11 +46,9 @@ public class DoorManager : MonoBehaviour
     IEnumerator LiftDoor()
     {
         source.PlayOneShot(abrirPuerta);
-        Debug.Log(transform.position);
         while(transform.localPosition.y < 2.3f)
         {
             transform.localPosition += Vector3.up * 2f * Time.deltaTime;
-            Debug.Log("hi");
             yield return null;
         }
     }
