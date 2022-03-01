@@ -32,10 +32,12 @@ public class SceneChangeManager : MonoBehaviour
         {
             yield return ChangeLevels(nivel2,new Vector3(7.62f, 22.438f, -48.07f));
             nivel1.SetActive(false);
+            GameManager.dungeonLevel = 1;
         } else if (nivel2.activeSelf)
         {
             yield return ChangeLevels(nivel1,new Vector3(2.75f, 0, -43.5f));
             nivel2.SetActive(false);
+            GameManager.dungeonLevel = 0;
         }
         GameManager.checkpoint = player.transform.position;
         video.gameObject.SetActive(false);

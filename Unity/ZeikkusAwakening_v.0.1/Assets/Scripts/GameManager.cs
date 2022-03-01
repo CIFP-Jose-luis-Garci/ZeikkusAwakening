@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public static int maru = 1000;
     public GameObject[] personajes;
     public static Vector3 checkpoint;
+    public static int dungeonLevel;
 
     public bool Pause()
     {

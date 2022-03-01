@@ -9697,7 +9697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4059824165798906875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15530,7 +15530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5818167926205075821
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15564,6 +15564,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimapa: {fileID: 4437500474992279980}
+  minimapZones:
+  - {fileID: 3540374964751582527}
+  - {fileID: 6390257223740850607}
 --- !u!1 &5744158667102248717
 GameObject:
   m_ObjectHideFlags: 0
@@ -16899,7 +16902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6847568860911429380
 RectTransform:
   m_ObjectHideFlags: 0

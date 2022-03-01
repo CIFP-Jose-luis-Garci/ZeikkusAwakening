@@ -23,20 +23,25 @@ public class PlayerLocomotion : MonoBehaviour
     public bool isJumping;
     private float jumpForce = 50;
 
-    [Header("Movement")] public float runningSpeed = 7;
+    [Header("Movement")] 
+    public float runningSpeed = 7;
     private float rotationSpeed = 15;
 
-    [Header("Textures")] public SkinnedMeshRenderer body;
+    [Header("Textures")] 
+    public SkinnedMeshRenderer body;
     public Texture faceEyesOpen;
     public Texture faceEyesClosed;
 
-    [Header("Attacking")] private string[] animaciones;
+    [Header("Attacking")] 
+    private string[] animaciones;
     private Coroutine coroutine;
 
-    [Header("Z targeting")] public bool isZTargeting;
+    [Header("Z targeting")] 
+    public bool isZTargeting;
     internal Transform enemyObject;
 
-    [Header("Battle")] private bool striking;
+    [Header("Battle")] 
+    private bool striking;
     private bool invincible;
     public int[] magicSlots;
     private Transform lookInBetween;
@@ -46,6 +51,7 @@ public class PlayerLocomotion : MonoBehaviour
     public Slider lifebar;
     public GameObject damage, deathVolume; 
     public AudioClip playerDeath;
+    private static readonly int Blocking = Animator.StringToHash("blocking");
 
 
     private void Awake()
@@ -222,11 +228,11 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleBlock()
     {
-        blocking = animatorManager.animator.GetBool("blocking");
+        blocking = animatorManager.animator.GetBool(Blocking);
         if (!blocking)
         {
             animatorManager.PlayTargetAnimation("block", true);
-            animatorManager.animator.SetBool("blocking", true);
+            animatorManager.animator.SetBool(Blocking, true);
         }
     }
 
@@ -283,9 +289,10 @@ public class PlayerLocomotion : MonoBehaviour
         {
             if (!inputManager.inDialogue)
             {
-                body.materials[1].mainTexture = faceEyesClosed;
+                Material material = body.materials[1];
+                material.mainTexture = faceEyesClosed;
                 yield return new WaitForSeconds(0.1f);
-                body.materials[1].mainTexture = faceEyesOpen;
+                material.mainTexture = faceEyesOpen;
             }
 
             yield return new WaitForSeconds(Random.Range(2f, 5f));

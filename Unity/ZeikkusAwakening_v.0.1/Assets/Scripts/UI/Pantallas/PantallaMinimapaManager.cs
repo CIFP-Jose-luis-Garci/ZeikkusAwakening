@@ -9,11 +9,12 @@ public class PantallaMinimapaManager : MonoBehaviour
     private InputManager inputManager;
     private PlayerLocomotion playerLocomotion;
     private float scrollSpeed;
+    private int currentDungeonlevel = -1;
     public RectTransform minimapa;
+    public GameObject[] minimapZones;
 
     private void Awake()
     {
-        spritesConBillboard = FindObjectsOfType<BillboardSprites>();
         inputManager = FindObjectOfType<InputManager>();
         playerLocomotion = inputManager.GetComponent<PlayerLocomotion>();
         scrollSpeed = 800;
@@ -21,11 +22,18 @@ public class PantallaMinimapaManager : MonoBehaviour
 
     void OnEnable()
     {
+        if (currentDungeonlevel != GameManager.dungeonLevel)
+        {
+            spritesConBillboard = FindObjectsOfType<BillboardSprites>();
+            currentDungeonlevel = GameManager.dungeonLevel;
+        }
         foreach (BillboardSprites sprite in spritesConBillboard)
         {
             sprite.GetComponent<BillboardSprites>().enabled = false;
             sprite.transform.rotation = Quaternion.Euler(90, 0,0);
         }
+
+        minimapZones ? [GameManager.dungeonLevel].SetActive(true);
 
         GameManager.inPause = true;
         GameManager.viewingMinimap = true;
@@ -68,6 +76,8 @@ public class PantallaMinimapaManager : MonoBehaviour
         {
             sprite.GetComponent<BillboardSprites>().enabled = true;
         }
+        
+        minimapZones ? [GameManager.dungeonLevel].SetActive(false);
         
         GameManager.inPause = false;
         GameManager.viewingMinimap = false;
