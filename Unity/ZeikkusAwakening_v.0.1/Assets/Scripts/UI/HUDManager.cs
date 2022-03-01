@@ -14,6 +14,7 @@ public class HUDManager : MonoBehaviour
 
     [Header("Transitions")] 
     private AnimatorManager animatorManager;
+    private PlayerLocomotion playerLocomotion;
     private EscenaBatallaManager escenaBatalla;
     private CinemachineFreeLook cmfl;
     private float cameraXAngle;
@@ -33,6 +34,7 @@ public class HUDManager : MonoBehaviour
     private void Start()
     {
         animatorManager = FindObjectOfType<AnimatorManager>();
+        playerLocomotion = animatorManager.GetComponent<PlayerLocomotion>();
         escenaBatalla = FindObjectOfType<EscenaBatallaManager>();
         StartCoroutine(GameManager.CrossFadeMusic(mixer, 2, false));
         blackFade.CrossFadeAlpha(0,2,true);
@@ -63,8 +65,7 @@ public class HUDManager : MonoBehaviour
     
     public void StartBattle(GameObject worldEnemy, bool isBoss, int enemyAdvantage = 1)
     {
-        if (GameManager.inPause) return;
-        if (inBattle) return;
+        if (GameManager.inPause || inBattle || !playerLocomotion.isGrounded) return;
         inBattle = true;
         GameManager.inPause = true;
         GameManager.transitioning = true;

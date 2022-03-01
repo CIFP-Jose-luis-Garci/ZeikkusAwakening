@@ -265,6 +265,7 @@ public class InputManager : MonoBehaviour
         if (select)
         {
             if (AnyInteraction() || !gameManager.inWorld) return;
+            playerLocomotion.GravitySet(false);
             select = false;
             minimap.gameObject.SetActive(true);
         }

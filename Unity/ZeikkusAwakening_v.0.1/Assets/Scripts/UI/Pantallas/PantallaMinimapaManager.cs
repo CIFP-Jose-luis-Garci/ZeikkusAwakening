@@ -7,6 +7,7 @@ public class PantallaMinimapaManager : MonoBehaviour
 {
     private BillboardSprites[] spritesConBillboard;
     private InputManager inputManager;
+    private PlayerLocomotion playerLocomotion;
     private float scrollSpeed;
     public RectTransform minimapa;
 
@@ -14,6 +15,7 @@ public class PantallaMinimapaManager : MonoBehaviour
     {
         spritesConBillboard = FindObjectsOfType<BillboardSprites>();
         inputManager = FindObjectOfType<InputManager>();
+        playerLocomotion = inputManager.GetComponent<PlayerLocomotion>();
         scrollSpeed = 800;
     }
 
@@ -53,6 +55,7 @@ public class PantallaMinimapaManager : MonoBehaviour
     {
         if (inputManager.select)
         {
+            playerLocomotion.GravitySet(true);
             inputManager.select = false;
             gameObject.SetActive(false);
         }

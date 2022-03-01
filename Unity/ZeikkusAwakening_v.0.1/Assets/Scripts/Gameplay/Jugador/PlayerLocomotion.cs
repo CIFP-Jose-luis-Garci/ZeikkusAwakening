@@ -16,7 +16,7 @@ public class PlayerLocomotion : MonoBehaviour
     private Transform cameraObject;
     private Rigidbody rb;
 
-    [Header("Falling and Landing")] [NonSerialized]
+    [Header("Falling and Landing")]
     public bool isGrounded;
 
     public LayerMask groundLayer;
@@ -65,6 +65,11 @@ public class PlayerLocomotion : MonoBehaviour
         animaciones[2] = "second_slash";
         animaciones[3] = "basic_slash";
         StartCoroutine(Blink());
+    }
+
+    internal void GravitySet(bool set)
+    {
+        rb.useGravity = set;
     }
 
     public void HandleAllMovement()

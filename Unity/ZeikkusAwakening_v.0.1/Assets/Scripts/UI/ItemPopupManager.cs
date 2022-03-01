@@ -23,7 +23,7 @@ public class ItemPopupManager : MonoBehaviour
         source.PlayOneShot(sonidoPopUp);
         usar.onClick.AddListener(() =>
         {
-            if (selectedItem.usable)
+            if (selectedItem && selectedItem.usable)
             {
                 if (selectedItem.UseItem())
                 {
@@ -42,7 +42,7 @@ public class ItemPopupManager : MonoBehaviour
         });
         tirar.onClick.AddListener(() =>
         {
-            if (selectedItem.tossable)
+            if (selectedItem && selectedItem.tossable)
             {
                 TossItem();
                 Exit();
