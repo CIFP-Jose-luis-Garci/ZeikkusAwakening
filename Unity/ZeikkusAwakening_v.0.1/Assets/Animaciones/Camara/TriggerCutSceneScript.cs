@@ -8,5 +8,6 @@ public class TriggerCutSceneScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         cameraChanger.SetActive(true);
+        cameraChanger.GetComponent<Cutscene2Manager>().player = other.transform;
     }
 }

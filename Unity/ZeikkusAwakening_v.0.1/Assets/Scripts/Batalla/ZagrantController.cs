@@ -7,7 +7,7 @@ using UnityEngine.VFX;
 public class ZagrantController : MonoBehaviour
 {
 
-    private Animator animator;
+    public Animator animator;
     private AudioSource source;
     public bool isAttacking;
     public bool onFire;
@@ -17,7 +17,6 @@ public class ZagrantController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = FindObjectOfType<AnimatorManager>().animator;
         source = GetComponent<AudioSource>();
     }
 

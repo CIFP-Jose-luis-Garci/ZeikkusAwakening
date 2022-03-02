@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class Cutscene1Manager : CutsceneManager
 {
-    private AnimatorManager animatorManager;
+    public AnimatorManager animatorManager;
     private InputManager inputManager;
     private HUDManager hudManager;
     private bool gotSword;
@@ -26,7 +26,6 @@ public class Cutscene1Manager : CutsceneManager
     void Start()
     {
         saltarEscena.SetActive(true);
-        animatorManager = FindObjectOfType<AnimatorManager>();
         inputManager = animatorManager.GetComponent<InputManager>();
         hudManager = FindObjectOfType<HUDManager>();
         dialogue.gameObject.SetActive(true);

@@ -2,25 +2,28 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class Cutscene2Manager : CutsceneManager
 {
+    public Transform badZ;
+    [NonSerialized] public Transform player;
     private AnimatorManager animatorManager;
+    private NavMeshAgent agente;
+    private int count = 0;
     public GameObject triggerCutScene;
-    PlayerLocomotion playerLocomotion;
-    [SerializeField] GameObject CameraArray;
 
-    
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        animatorManager = FindObjectOfType<AnimatorManager>();
-        playerLocomotion = FindObjectOfType<PlayerLocomotion>();
-        playerLocomotion.runningSpeed = 0f;
+        animatorManager = badZ.GetComponent<AnimatorManager>();
+        agente = badZ.GetComponent<NavMeshAgent>();
+        GameManager.transitioning = true;
 
         //Camaras estado inicial
         cameras[0].SetActive(true);
@@ -33,18 +36,29 @@ public class Cutscene2Manager : CutsceneManager
     {
         
         DoStuff();
-        yield return new WaitForSeconds(4f);
-        
-        EndCutScene();
         yield return new WaitForSeconds(2f);
-        yield break;
+        DoStuff();
+        yield return new WaitForSeconds(2f);
+        DoStuff();
+        EndCutScene();
     }
     public override void DoStuff()
     {
- 
-        cameras[0].SetActive(false);
-        cameras[1].SetActive(true);
- 
+        switch (count)
+        {
+            case 0:
+                cameras[0].SetActive(false);
+                cameras[1].SetActive(true);
+                break;
+            case 1:
+                animatorManager.PlayTargetAnimation("Get Sword", true);
+                break;
+            case 2:
+                animatorManager.PlayTargetAnimation("Run", false);
+                agente.SetDestination(player.position);
+                break;
+        }
+        count++;
     }
 
     public override void EndCutScene()
@@ -56,7 +70,6 @@ public class Cutscene2Manager : CutsceneManager
         }
 
         triggerCutScene.SetActive(false);
-        playerLocomotion.runningSpeed = 7f;
     }
 
 

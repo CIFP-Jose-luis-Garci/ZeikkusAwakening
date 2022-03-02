@@ -35,7 +35,7 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
-        animatorManager = FindObjectOfType<AnimatorManager>();
+        animatorManager = FindObjectOfType<PlayerManager>().GetComponent<AnimatorManager>();
         playerLocomotion = animatorManager.GetComponent<PlayerLocomotion>();
         inputManager = animatorManager.GetComponent<InputManager>();
         escenaBatalla = FindObjectOfType<EscenaBatallaManager>();
