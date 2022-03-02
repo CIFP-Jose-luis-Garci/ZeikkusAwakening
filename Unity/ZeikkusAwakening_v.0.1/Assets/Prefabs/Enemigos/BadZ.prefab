@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 2232293251399754921}
   - component: {fileID: 5859478526020324935}
   - component: {fileID: 6513266522806184017}
+  - component: {fileID: 1774137953018645820}
   m_Layer: 0
   m_Name: BadZ
   m_TagString: Boss
@@ -554,6 +555,25 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0b3870a3e2db0c04f82a68b175f8bb27, type: 3}
   - {fileID: 8300000, guid: 73122071f905e8949a2ce52ddd68f779, type: 3}
   jumpSounds: []
+--- !u!114 &1774137953018645820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343887144699652158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688ab09cce640be47aa205b205ae788b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectado: 0
+  enemyToSpawn: {fileID: 0}
+  isWalking: 0
+  isRunning: 0
+  stepSounds: []
+  crySounds: []
+  attackSounds: []
 --- !u!1 &1404982591089443574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,6 +2724,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4925670507600593068}
     m_Modifications:
+    - target: {fileID: 3347601271663768271, guid: 1014f35802e933e4fac5025c6f42e1b1, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 5696365530592897278}
     - target: {fileID: 7015542746318920765, guid: 1014f35802e933e4fac5025c6f42e1b1, type: 3}
       propertyPath: m_RootOrder
       value: 5

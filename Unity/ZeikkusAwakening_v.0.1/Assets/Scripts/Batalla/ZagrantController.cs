@@ -41,10 +41,6 @@ public class ZagrantController : MonoBehaviour
             {
                 FindObjectOfType<HUDManager>().StartBattle(otherObject, false, 2);
             }
-            if (otherObject.CompareTag("Boss"))
-            {
-                FindObjectOfType<HUDManager>().StartBattle(otherObject, true, 2);
-            }
         }
     }
 }
