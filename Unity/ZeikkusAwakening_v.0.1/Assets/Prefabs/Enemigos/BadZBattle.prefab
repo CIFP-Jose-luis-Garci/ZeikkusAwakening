@@ -2384,10 +2384,10 @@ GameObject:
   - component: {fileID: 8153685941552552713}
   - component: {fileID: 2866430101026488691}
   - component: {fileID: 507015750159447835}
-  - component: {fileID: 8516489805612191012}
   - component: {fileID: 4150937960572233674}
   - component: {fileID: 3650679721615770076}
-  - component: {fileID: 8094399716983841969}
+  - component: {fileID: 5572581711796830809}
+  - component: {fileID: 8516489805612191012}
   m_Layer: 0
   m_Name: BadZBattle
   m_TagString: Boss
@@ -2444,6 +2444,111 @@ CapsuleCollider:
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!195 &4150937960572233674
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821538493523444147}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3650679721615770076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821538493523444147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8512427efdc4514492d9701e5adaf75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zagrant: {fileID: 8821538492719739714}
+  appearParticles: {fileID: 3894657611886684325, guid: d865a61cfc56eb74d8e5d2b9721911e1, type: 3}
+  disappearParticles: {fileID: 4844050071154103096, guid: b82b532f39d23244d932fbfe5026a9bb, type: 3}
+  source: {fileID: 8516489805612191012}
+  stepSounds:
+  - {fileID: 8300000, guid: c57e62ba73ba0694ca5ef4d57e792a14, type: 3}
+  - {fileID: 8300000, guid: 4678228d92b88af44b090d6643be2041, type: 3}
+  - {fileID: 8300000, guid: b122a8e2d13fcff418ac9af241b22dda, type: 3}
+  - {fileID: 8300000, guid: 9b06bc9f8964e6448817eca2bbeaff02, type: 3}
+  - {fileID: 8300000, guid: 2654e0e129c476743b7fa6f3c25602e4, type: 3}
+  - {fileID: 8300000, guid: 57fc63d84c7709a41a66f7924163a700, type: 3}
+  - {fileID: 8300000, guid: 3d308c82ff3f3cd48ab0e06872c1e7f1, type: 3}
+  - {fileID: 8300000, guid: 1dc6dc7872c068e49ac371ff1f72ff67, type: 3}
+  - {fileID: 8300000, guid: 294136279ae79f641bc52197d8919d04, type: 3}
+  - {fileID: 8300000, guid: c47ed1caa57f5db45a5daa0f948a4388, type: 3}
+  swordSounds:
+  - {fileID: 8300000, guid: 9ebc58365b7aa374d822a5e960abac88, type: 3}
+  - {fileID: 8300000, guid: 4c9b76084e2d3a4479280ca4094ca8ac, type: 3}
+  - {fileID: 8300000, guid: 567eb66c99c48f64a9f2a0c1ef766da2, type: 3}
+  - {fileID: 8300000, guid: 81160a889aeed4843b219899fe5206eb, type: 3}
+  - {fileID: 8300000, guid: 1768acf053c365441b420df64f13b8ef, type: 3}
+  - {fileID: 8300000, guid: 44bdd8b112dd21d45946b80fc7f920e8, type: 3}
+  - {fileID: 8300000, guid: 868b7f93a319f90419c77e3559db8d21, type: 3}
+  magicSounds:
+  - {fileID: 8300000, guid: b3dd4736af252644d92e9b04b827e5bc, type: 3}
+  - {fileID: 8300000, guid: b014b1f0ad84664479cf33d35502a692, type: 3}
+  - {fileID: 8300000, guid: e89081ffb26ced14eb4dc8d89ad149a2, type: 3}
+  zeikkuSounds:
+  - {fileID: 8300000, guid: 538a97bd2775a8c46a8c6066757889a6, type: 3}
+  - {fileID: 8300000, guid: 344e2422071b9a24f8f754d8a9dc9e45, type: 3}
+  - {fileID: 8300000, guid: d36da0cca58f12b43ba8fbb5db438084, type: 3}
+  - {fileID: 8300000, guid: 9c99fded4b861e84189ffbf3cf4b0a39, type: 3}
+  - {fileID: 8300000, guid: 24ebc4ad096e18c48a47d4d67e4376da, type: 3}
+  - {fileID: 8300000, guid: 2440f455bef90ef45a812a537cee6f05, type: 3}
+  - {fileID: 8300000, guid: cfd79a1704d395346a10ae066269943b, type: 3}
+  - {fileID: 8300000, guid: 54974baed583a844490e53880aeb2c52, type: 3}
+  - {fileID: 8300000, guid: 7c9c1a7dd0f9aaf40a3d0a8c370f36f7, type: 3}
+  - {fileID: 8300000, guid: 0b3870a3e2db0c04f82a68b175f8bb27, type: 3}
+  - {fileID: 8300000, guid: 73122071f905e8949a2ce52ddd68f779, type: 3}
+  jumpSounds: []
+--- !u!114 &5572581711796830809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821538493523444147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe8261693194c94e86a1fec7a0ad2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: Zeikku Oscuro
+  title: 
+  sprite: {fileID: 0}
+  level: 1
+  hp: 900
+  maxHP: 0
+  mp: 150
+  maxMP: 0
+  strength: 25
+  defense: 20
+  magicPower: 24
+  resistance: 35
+  experience: 0
+  nextLevelExperience: 0
+  turnPoints: 4
+  alive: 1
+  expBase: 150
+  marubase: 300
+  slotEnemigo: {fileID: 0}
 --- !u!82 &8516489805612191012
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2540,99 +2645,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!195 &4150937960572233674
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8821538493523444147}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &3650679721615770076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8821538493523444147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8512427efdc4514492d9701e5adaf75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zagrant: {fileID: 8821538492719739714}
-  appearParticles: {fileID: 3894657611886684325, guid: d865a61cfc56eb74d8e5d2b9721911e1, type: 3}
-  disappearParticles: {fileID: 4844050071154103096, guid: b82b532f39d23244d932fbfe5026a9bb, type: 3}
-  source: {fileID: 8516489805612191012}
-  stepSounds:
-  - {fileID: 8300000, guid: c57e62ba73ba0694ca5ef4d57e792a14, type: 3}
-  - {fileID: 8300000, guid: 4678228d92b88af44b090d6643be2041, type: 3}
-  - {fileID: 8300000, guid: b122a8e2d13fcff418ac9af241b22dda, type: 3}
-  - {fileID: 8300000, guid: 9b06bc9f8964e6448817eca2bbeaff02, type: 3}
-  - {fileID: 8300000, guid: 2654e0e129c476743b7fa6f3c25602e4, type: 3}
-  - {fileID: 8300000, guid: 57fc63d84c7709a41a66f7924163a700, type: 3}
-  - {fileID: 8300000, guid: 3d308c82ff3f3cd48ab0e06872c1e7f1, type: 3}
-  - {fileID: 8300000, guid: 1dc6dc7872c068e49ac371ff1f72ff67, type: 3}
-  - {fileID: 8300000, guid: 294136279ae79f641bc52197d8919d04, type: 3}
-  - {fileID: 8300000, guid: c47ed1caa57f5db45a5daa0f948a4388, type: 3}
-  swordSounds:
-  - {fileID: 8300000, guid: 9ebc58365b7aa374d822a5e960abac88, type: 3}
-  - {fileID: 8300000, guid: 4c9b76084e2d3a4479280ca4094ca8ac, type: 3}
-  - {fileID: 8300000, guid: 567eb66c99c48f64a9f2a0c1ef766da2, type: 3}
-  - {fileID: 8300000, guid: 81160a889aeed4843b219899fe5206eb, type: 3}
-  - {fileID: 8300000, guid: 1768acf053c365441b420df64f13b8ef, type: 3}
-  - {fileID: 8300000, guid: 44bdd8b112dd21d45946b80fc7f920e8, type: 3}
-  - {fileID: 8300000, guid: 868b7f93a319f90419c77e3559db8d21, type: 3}
-  magicSounds:
-  - {fileID: 8300000, guid: b3dd4736af252644d92e9b04b827e5bc, type: 3}
-  - {fileID: 8300000, guid: b014b1f0ad84664479cf33d35502a692, type: 3}
-  - {fileID: 8300000, guid: e89081ffb26ced14eb4dc8d89ad149a2, type: 3}
-  zeikkuSounds:
-  - {fileID: 8300000, guid: 538a97bd2775a8c46a8c6066757889a6, type: 3}
-  - {fileID: 8300000, guid: 344e2422071b9a24f8f754d8a9dc9e45, type: 3}
-  - {fileID: 8300000, guid: d36da0cca58f12b43ba8fbb5db438084, type: 3}
-  - {fileID: 8300000, guid: 9c99fded4b861e84189ffbf3cf4b0a39, type: 3}
-  - {fileID: 8300000, guid: 24ebc4ad096e18c48a47d4d67e4376da, type: 3}
-  - {fileID: 8300000, guid: 2440f455bef90ef45a812a537cee6f05, type: 3}
-  - {fileID: 8300000, guid: cfd79a1704d395346a10ae066269943b, type: 3}
-  - {fileID: 8300000, guid: 54974baed583a844490e53880aeb2c52, type: 3}
-  - {fileID: 8300000, guid: 7c9c1a7dd0f9aaf40a3d0a8c370f36f7, type: 3}
-  - {fileID: 8300000, guid: 0b3870a3e2db0c04f82a68b175f8bb27, type: 3}
-  - {fileID: 8300000, guid: 73122071f905e8949a2ce52ddd68f779, type: 3}
-  jumpSounds: []
---- !u!114 &8094399716983841969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8821538493523444147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688ab09cce640be47aa205b205ae788b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectado: 0
-  enemyToSpawn: {fileID: 0}
-  isWalking: 0
-  isRunning: 0
-  stepSounds: []
-  crySounds: []
-  attackSounds: []
 --- !u!1 &8914194317368732539
 GameObject:
   m_ObjectHideFlags: 0
