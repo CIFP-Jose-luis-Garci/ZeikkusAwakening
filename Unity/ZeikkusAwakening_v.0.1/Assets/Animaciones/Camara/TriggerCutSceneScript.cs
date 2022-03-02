@@ -9,5 +9,6 @@ public class TriggerCutSceneScript : MonoBehaviour
     {
         cameraChanger.SetActive(true);
         cameraChanger.GetComponent<Cutscene2Manager>().player = other.transform;
+        Destroy(gameObject);
     }
 }

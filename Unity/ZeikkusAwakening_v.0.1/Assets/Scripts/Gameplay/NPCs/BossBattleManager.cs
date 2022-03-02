@@ -28,8 +28,8 @@ public class BossBattleManager : EnemyBattleManager
         agente = GetComponent<NavMeshAgent>();
         magic = GetComponent<PlayerMagic>();
         escenaBatalla = FindObjectOfType<EscenaBatallaManager>();
-        lifebar.maxValue = stats.maxHP;
-        lifebar.value = stats.maxHP;
+        lifebar.maxValue = stats.hp;
+        lifebar.value = stats.hp;
         chances = new Chance[4];
         chances[0] = new Chance("Atacar");
         chances[1] = new Chance("Evadir");

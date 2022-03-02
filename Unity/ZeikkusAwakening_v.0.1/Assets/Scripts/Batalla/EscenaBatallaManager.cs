@@ -9,6 +9,8 @@ public class EscenaBatallaManager : MonoBehaviour
     public GameObject[] spawners;
     public Transform playerSpawn;
     [NonSerialized] public GameObject enemyToSpawn;
+    [NonSerialized] public GameObject worldEnemy;
+    [NonSerialized] public Vector3 worldEnemyPosition;
     [NonSerialized] public Vector3 playerOrigin;
     [NonSerialized] public EnemyStats[] enemyStats;
     private bool battling;
@@ -39,7 +41,7 @@ public class EscenaBatallaManager : MonoBehaviour
             if (isBoss) break;
         }
         enemyStats = GetComponentsInChildren<EnemyStats>();
-
+        worldEnemy = enemyStats[0].GetComponent<EnemyBattleManager>().worldEnemy;
         //int teamlevel = GameManager.GetTeamLevel();
         foreach (EnemyStats enemy in enemyStats)
         {

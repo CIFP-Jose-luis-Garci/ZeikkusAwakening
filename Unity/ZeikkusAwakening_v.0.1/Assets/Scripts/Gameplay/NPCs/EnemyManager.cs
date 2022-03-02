@@ -10,9 +10,9 @@ public class EnemyManager : MonoBehaviour
     [NonSerialized] public Transform player;
     [NonSerialized] public bool detectado;
     public GameObject enemyToSpawn;
-    
-    private Animator animator;
-    private NavMeshAgent agente;
+
+    protected Animator animator;
+    protected NavMeshAgent agente;
     private AudioSource source;
     [NonSerialized] public bool isWalking;
     [NonSerialized] public bool isRunning;

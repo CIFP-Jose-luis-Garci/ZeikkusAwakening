@@ -105,11 +105,12 @@ public class HUDManager : MonoBehaviour
             ChangeMusic(bossMusic);
         else 
             ChangeMusic(battleMusic);
+        escenaBatalla.worldEnemyPosition = worldEnemy.transform.position;
         escenaBatalla.enemyToSpawn = worldEnemy.GetComponent<EnemyManager>().enemyToSpawn;
         escenaBatalla.enemyAdvantage = enemyAdvantage;
         interfazBatalla.ActivateSlots();
         escenaBatalla.ControlScene(interfazBatalla.slotsEnemigos, boss);
-        Destroy(worldEnemy);
+        Destroy(worldEnemy); 
         minimap.SetActive(false);
         StartBattleAnimation();
         yield return GameManager.CrossFadeMusic(mixer, 1, false);
@@ -187,6 +188,9 @@ public class HUDManager : MonoBehaviour
 
     public void ShowCheckpointArrived()
     {
+        Stats playerStats = animatorManager.GetComponent<Stats>();
+        playerStats.hp = playerStats.maxHP;
+        playerStats.mp = playerStats.maxMP;
         Destroy(Instantiate(checkpointPopup, transform), 2f);
     }
 
@@ -207,6 +211,7 @@ public class HUDManager : MonoBehaviour
         deathVolume.SetActive(false);
         player.position = GameManager.checkpoint;
         Time.timeScale = 1;
+        Instantiate(escenaBatalla.worldEnemy, escenaBatalla.worldEnemyPosition, Quaternion.Euler(0, 90,0));
         animatorManager.PlayTargetAnimation("Stand Up", true);
         animatorManager.ChangeWorld(true);
         escenaBatalla.Purge();

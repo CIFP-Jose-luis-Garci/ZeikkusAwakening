@@ -43,7 +43,6 @@ public class Cutscene2Manager : CutsceneManager
         DoStuff();
         yield return new WaitForSeconds(2f);
         DoStuff();
-        yield return new WaitForSeconds(1f);
         EndCutScene();
         yield return new WaitForSeconds(2f);
         GameManager.inCutscene = false;

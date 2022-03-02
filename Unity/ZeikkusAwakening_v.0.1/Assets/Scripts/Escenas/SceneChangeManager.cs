@@ -30,7 +30,7 @@ public class SceneChangeManager : MonoBehaviour
         video.gameObject.SetActive(true);
         if (nivel1.activeSelf)
         {
-            yield return ChangeLevels(nivel2,new Vector3(7.62f, 22.438f, -48.07f));
+            yield return ChangeLevels(nivel2,new Vector3(9.783685f, 22.45268f, -48.07f));
             nivel1.SetActive(false);
             GameManager.dungeonLevel = 1;
         } else if (nivel2.activeSelf)
