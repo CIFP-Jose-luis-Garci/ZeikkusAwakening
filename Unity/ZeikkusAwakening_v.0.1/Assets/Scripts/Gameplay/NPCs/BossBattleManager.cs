@@ -10,19 +10,24 @@ public class BossBattleManager : MonoBehaviour
     [NonSerialized] public Transform player;
     private bool isNearPlayer, isAttacking, isEvading, isBlocking, isUsingMagic;
     private Chance[] chances;
+    private string[] combo;
     private AnimatorManager animatorManager;
     private NavMeshAgent agente;
     private EnemyStats stats;
+    private int currentAtack = 0;
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         animatorManager = GetComponent<AnimatorManager>();
+        stats = GetComponent<EnemyStats>();
         agente = GetComponent<NavMeshAgent>();
         chances = new Chance[4];
         chances[0] = new Chance("Atacar");
         chances[1] = new Chance("Evadir");
         chances[2] = new Chance("Bloquear");
         chances[3] = new Chance("Usar magia");
+        combo = new string[] {"basic_slash", "second_slash", "hard_slash", "final_slash" };
     }
 
     private void Update()
@@ -35,11 +40,10 @@ public class BossBattleManager : MonoBehaviour
             }
             else
             {
+                currentAtack = 0;
                 agente.SetDestination(player.position);
-                if (Vector3.Distance(player.position, transform.position) < 1)
-                {
-                    isNearPlayer = true;
-                }
+                print("holas");
+                SetNearPlayer();
             }
 
         }
@@ -60,6 +64,7 @@ public class BossBattleManager : MonoBehaviour
             if (chance < currentChance.chance)
             {
                 DoAction(currentChance.name);
+                return;
             }
         }
 
@@ -71,7 +76,11 @@ public class BossBattleManager : MonoBehaviour
         {
             case "Atacar":
                 // parar enemigo
+                agente.SetDestination(transform.position);
                 // hacer animacion de ataque
+                animatorManager.PlayTargetAnimation(combo[currentAtack], true, true);
+                currentAtack++;
+                SetNearPlayer();
                 // sigo con combo?
                 break;
             case "Evadir":
@@ -106,6 +115,11 @@ public class BossBattleManager : MonoBehaviour
             // activar flama
         }
 
+    }
+
+    private void SetNearPlayer()
+    {
+        isNearPlayer = Vector3.Distance(player.position, transform.position) < 1;
     }
 
     private void SetChances(float attackChance, float evadeChance, float blockChance, float useMagicChance)

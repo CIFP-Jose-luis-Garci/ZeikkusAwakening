@@ -105,7 +105,6 @@ public class PlayerLocomotion : MonoBehaviour
         targetDirection = cameraObject.forward * inputManager.verticalInput;
         targetDirection += cameraObject.right * inputManager.horizontalInput;
         targetDirection.Normalize();
-        Debug.Log(targetDirection);
         targetDirection.y = 0;
 
         if (targetDirection == Vector3.zero)
