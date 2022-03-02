@@ -15,10 +15,9 @@ public class BossBattleManager : MonoBehaviour
     private NavMeshAgent agente;
     private EnemyStats stats;
     
-    [Header("Ataques")]
+    [Header("Attacks")]
     private int currentAtack = 0;
     private bool cooldown;
-    private bool completelyRandom;
     private float waitTime;
     private static readonly int IsInteracting = Animator.StringToHash("isInteracting");
 
@@ -46,17 +45,22 @@ public class BossBattleManager : MonoBehaviour
                 waitTime = 0;
                 return;
             }
+            SetNearPlayer();
 
             if (cooldown)
             {
                 if (waitTime > 0.15f)
+                {
                     cooldown = false;
+                    if (!isNearPlayer) isAttacking = false;
+                    isEvading = false;
+                    isBlocking = false;
+                }
                 waitTime += Time.deltaTime; 
                 return;
             }
             if (isNearPlayer)
             {
-                LookAtPlayer();
                 DecideAction();
             }
             else
@@ -64,9 +68,7 @@ public class BossBattleManager : MonoBehaviour
                 currentAtack = 0;
                 agente.speed = 5;
                 agente.SetDestination(player.position);
-                print("holas");
             }
-            SetNearPlayer();
 
         }
     }
@@ -95,17 +97,14 @@ public class BossBattleManager : MonoBehaviour
     private void SelectAction()
     {
         float chance;
-        if (completelyRandom)
-        {
-            chance = Random.Range(0, chances.Length);
-            DoAction(chances[(int) chance].name);
-        }
+        if (WereYouAttacking()) return;
         chance = Random.Range(0f, 1f);
         for (int i = 0; i < chances.Length; i++)
         {
-            Chance currentChance = chances[0];
+            Chance currentChance = chances[i];
             if (chance < currentChance.chance)
             {
+                Debug.Log(chance + " es menor que " + currentChance.chance + " de " + currentChance.name);
                 DoAction(currentChance.name);
                 return;
             }
@@ -113,32 +112,40 @@ public class BossBattleManager : MonoBehaviour
 
     }
 
+    private bool WereYouAttacking()
+    {
+        if (isAttacking)
+        {
+            DoAction("Atacar");
+        }
+        
+        return isAttacking;
+    }
+
     private void DoAction(string name)
     {
         switch (name)
         {
             case "Atacar":
-                // parar enemigo
-                agente.speed = 0;
-                agente.SetDestination(transform.position);
-                // hacer animacion de ataque
-                animatorManager.PlayTargetAnimation(combo[currentAtack], true);
+                LookAtPlayer();
+                StopAIandAnimate(combo[currentAtack]);
                 currentAtack++;
                 if (currentAtack >= combo.Length)
                     currentAtack = 0;
-                // sigo con combo?
+                isAttacking = true;
                 break;
             case "Evadir":
-                // parar enemigo
-                // hacer animacion de evasion
-                // marcar invencibilidad
+                StopAIandAnimate("evade", true);
+                isEvading = true;
                 break;
             case "Bloquear":
-                // parar enemigo
-                // hacer animacion de bloqueo
-                // marcar reduccion de dano
+                LookAtPlayer();
+                StopAIandAnimate("block", true);
+                isBlocking = true;
                 break;
             case "Usar magia":
+                LookAtPlayer();
+                StopAIandAnimate("magic fireball");
                 // parar enemigo
                 // que magia hago?
                 // hacer animacion de magia
@@ -146,19 +153,23 @@ public class BossBattleManager : MonoBehaviour
         }
     }
 
+    private void StopAIandAnimate(string targetAnimation, bool useRootMotion = false)
+    {
+        agente.speed = 0;
+        agente.SetDestination(transform.position);
+        animatorManager.PlayTargetAnimation(targetAnimation, true, useRootMotion);
+    }
+
     private void CheckStatus()
     {
         if (stats.hp < stats.maxHP * 0.2f)
             SetChances(0.15f, 0.3f, 0.3f, 0.25f);
-        else
-            SetChances(0f,0f,0f,0f, true);
-        
-        
-        
-        if (stats.hp < stats.maxHP / 2)
-        {
-            // activar flama
-        }
+        else if (stats.hp < stats.maxHP * 0.5f)
+            SetChances(0.5f, 0.15f, 0.2f, 0.15f);
+        else if (stats.hp < stats.maxHP * 0.8f)
+            SetChances(0.6f, 0.15f, 0f, 0.25f);
+        else 
+            SetChances(0.7f, 0f, 0f, 0.3f);
 
     }
 
@@ -167,14 +178,27 @@ public class BossBattleManager : MonoBehaviour
         isNearPlayer = Vector3.Distance(player.position, transform.position) < 1f;
     }
 
-    private void SetChances(float attackChance, float evadeChance, float blockChance, float useMagicChance, bool completelyRandom = false)
+    private void SetChances(float attackChance, float evadeChance, float blockChance, float useMagicChance)
     {
-        if (completelyRandom)
-            this.completelyRandom = completelyRandom;
-        chances[0].chance = attackChance;
-        chances[1].chance = evadeChance;
-        chances[2].chance = blockChance;
-        chances[3].chance = useMagicChance;
+        for (int i = 0; i < chances.Length; i++)
+        {
+            switch (chances[i].name)
+            {
+                case "Atacar":
+                    chances[i].chance = attackChance;
+                    break;
+                case "Evadir":
+                    chances[i].chance = evadeChance;
+                    break;
+                case "Bloquear":
+                    chances[i].chance = blockChance;
+                    break;
+                case "Usar magia":
+                    chances[i].chance = useMagicChance;
+                    break;
+            }
+        }
         Array.Sort(chances);
+
     }
 }
