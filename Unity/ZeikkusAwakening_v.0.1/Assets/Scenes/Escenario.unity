@@ -3278,10 +3278,6 @@ PrefabInstance:
       propertyPath: openChest
       value: 
       objectReference: {fileID: 247066093}
-    - target: {fileID: 2939306226134762137, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
-      propertyPath: m_Name
-      value: Suelo
-      objectReference: {fileID: 0}
     - target: {fileID: 4202659361305629238, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3401,10 +3397,6 @@ PrefabInstance:
     - target: {fileID: 4223905205725769538, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894303028855232466, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
-      propertyPath: m_Name
-      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 6047549818491775855, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
       propertyPath: m_Follow
@@ -3414,18 +3406,6 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1138676105}
-    - target: {fileID: 6918939018519220260, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
-      propertyPath: m_Name
-      value: Collider
-      objectReference: {fileID: 0}
-    - target: {fileID: 7951328902857045216, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
-      propertyPath: m_Name
-      value: Pared
-      objectReference: {fileID: 0}
-    - target: {fileID: 9090661779538878643, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
-      propertyPath: sonidoPortal
-      value: 
-      objectReference: {fileID: 8300000, guid: e6a7455d007f2bd47bd093ce6da853a9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96c66c6570eac2f41948b1161aca3043, type: 3}
 --- !u!1 &551679800
@@ -12566,10 +12546,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1764608037709279830, guid: 4b214a73477046d4a841619428783ded, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5075835121002782928, guid: 4b214a73477046d4a841619428783ded, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -12656,22 +12632,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5075835121002782940, guid: 4b214a73477046d4a841619428783ded, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5075835121135058122, guid: 4b214a73477046d4a841619428783ded, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5075835121135058122, guid: 4b214a73477046d4a841619428783ded, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5075835121198721705, guid: 4b214a73477046d4a841619428783ded, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5075835121198721705, guid: 4b214a73477046d4a841619428783ded, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

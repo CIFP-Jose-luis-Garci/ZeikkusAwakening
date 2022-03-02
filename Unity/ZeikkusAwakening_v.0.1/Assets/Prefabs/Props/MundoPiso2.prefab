@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 8342467745170778361}
   - component: {fileID: 1514336611824437339}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Suelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54386,7 +54386,7 @@ GameObject:
   - component: {fileID: 3055299480915094494}
   - component: {fileID: 374114567189203460}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: Pared
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54587,7 +54587,7 @@ GameObject:
   - component: {fileID: 574684643713674440}
   - component: {fileID: 9090661779538878643}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54632,6 +54632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38579b5127c7b9439db09184e95535a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sonidoPortal: {fileID: 8300000, guid: e6a7455d007f2bd47bd093ce6da853a9, type: 3}
 --- !u!1 &7075667540903103169
 GameObject:
   m_ObjectHideFlags: 0
@@ -55420,7 +55421,7 @@ GameObject:
   - component: {fileID: 8201809370167755303}
   - component: {fileID: 6952718296029306031}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Pared
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
