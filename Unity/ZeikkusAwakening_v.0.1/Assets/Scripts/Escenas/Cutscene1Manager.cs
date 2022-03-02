@@ -20,10 +20,12 @@ public class Cutscene1Manager : CutsceneManager
     public AudioMixer mixer;
     public GameObject tutorial;
     public GameObject minimapa;
+    public GameObject saltarEscena;
 
     // Start is called before the first frame update
     void Start()
     {
+        saltarEscena.SetActive(true);
         animatorManager = FindObjectOfType<AnimatorManager>();
         inputManager = animatorManager.GetComponent<InputManager>();
         hudManager = FindObjectOfType<HUDManager>();
@@ -127,6 +129,7 @@ public class Cutscene1Manager : CutsceneManager
     private IEnumerator FadeToBlack()
     {
         brain.m_DefaultBlend.m_Time = 2;
+        saltarEscena.SetActive(false);
         blackFade.CrossFadeAlpha(1,1,true);
         yield return new WaitForSeconds(1f);
         animatorManager.PlayTargetAnimation("World", false);

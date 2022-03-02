@@ -7,6 +7,7 @@ public class PantallaMinimapaManager : MonoBehaviour
 {
     private BillboardSprites[] spritesConBillboard;
     private InputManager inputManager;
+    private Animator animator;
     private PlayerLocomotion playerLocomotion;
     private float scrollSpeed;
     private int currentDungeonlevel = -1;
@@ -16,12 +17,14 @@ public class PantallaMinimapaManager : MonoBehaviour
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
+        animator = GetComponent<Animator>();
         playerLocomotion = inputManager.GetComponent<PlayerLocomotion>();
         scrollSpeed = 800;
     }
 
     void OnEnable()
     {
+        animator.SetBool("retract", false);
         if (currentDungeonlevel != GameManager.dungeonLevel)
         {
             spritesConBillboard = FindObjectsOfType<BillboardSprites>();
@@ -30,7 +33,7 @@ public class PantallaMinimapaManager : MonoBehaviour
         foreach (BillboardSprites sprite in spritesConBillboard)
         {
             sprite.GetComponent<BillboardSprites>().enabled = false;
-            sprite.transform.rotation = Quaternion.Euler(90, 0,0);
+            sprite.transform.rotation = Quaternion.Euler(90, -180,0);
         }
 
         minimapZones ? [GameManager.dungeonLevel].SetActive(true);
@@ -65,8 +68,15 @@ public class PantallaMinimapaManager : MonoBehaviour
         {
             playerLocomotion.GravitySet(true);
             inputManager.select = false;
-            gameObject.SetActive(false);
+            StartCoroutine(Retract());
         }
+    }
+
+    private IEnumerator Retract()
+    {
+        animator.SetBool("retract", true);
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(false);
     }
 
     private void OnDisable()
