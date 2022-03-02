@@ -6,7 +6,8 @@ public class BossManager : EnemyManager
 {
     private void Update()
     {
-        
+        // override method to block movement
+        return;
     }
     private void OnTriggerEnter(Collider other)
     {

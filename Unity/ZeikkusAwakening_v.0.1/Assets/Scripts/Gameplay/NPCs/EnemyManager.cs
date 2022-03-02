@@ -7,15 +7,15 @@ using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
-    [NonSerialized]public Transform player;
-    public bool detectado;
+    [NonSerialized] public Transform player;
+    [NonSerialized] public bool detectado;
     public GameObject enemyToSpawn;
     
     private Animator animator;
     private NavMeshAgent agente;
     private AudioSource source;
-    public bool isWalking;
-    public bool isRunning;
+    [NonSerialized] public bool isWalking;
+    [NonSerialized] public bool isRunning;
     private bool isAttacking;
     private float waitTime;
     private float hitLength;
