@@ -14,8 +14,12 @@ public class BossBattleManager : MonoBehaviour
     private AnimatorManager animatorManager;
     private NavMeshAgent agente;
     private EnemyStats stats;
+    
+    [Header("Ataques")]
     private int currentAtack = 0;
+    private bool cooldown;
     private bool completelyRandom;
+    private float waitTime;
     private static readonly int IsInteracting = Animator.StringToHash("isInteracting");
 
     private void Awake()
@@ -36,7 +40,20 @@ public class BossBattleManager : MonoBehaviour
     {
         if (stats.alive)
         {
-            if (isInteracting) return;
+            if (isInteracting)
+            {
+                cooldown = true;
+                waitTime = 0;
+                return;
+            }
+
+            if (cooldown)
+            {
+                if (waitTime > 0.15f)
+                    cooldown = false;
+                waitTime += Time.deltaTime; 
+                return;
+            }
             if (isNearPlayer)
             {
                 LookAtPlayer();
@@ -48,8 +65,8 @@ public class BossBattleManager : MonoBehaviour
                 agente.speed = 5;
                 agente.SetDestination(player.position);
                 print("holas");
-                SetNearPlayer();
             }
+            SetNearPlayer();
 
         }
     }
@@ -105,11 +122,10 @@ public class BossBattleManager : MonoBehaviour
                 agente.speed = 0;
                 agente.SetDestination(transform.position);
                 // hacer animacion de ataque
-                animatorManager.PlayTargetAnimation(combo[currentAtack], true, true);
+                animatorManager.PlayTargetAnimation(combo[currentAtack], true);
                 currentAtack++;
                 if (currentAtack >= combo.Length)
                     currentAtack = 0;
-                SetNearPlayer();
                 // sigo con combo?
                 break;
             case "Evadir":
@@ -148,7 +164,7 @@ public class BossBattleManager : MonoBehaviour
 
     private void SetNearPlayer()
     {
-        isNearPlayer = Vector3.Distance(player.position, transform.position) < 2f;
+        isNearPlayer = Vector3.Distance(player.position, transform.position) < 1f;
     }
 
     private void SetChances(float attackChance, float evadeChance, float blockChance, float useMagicChance, bool completelyRandom = false)
