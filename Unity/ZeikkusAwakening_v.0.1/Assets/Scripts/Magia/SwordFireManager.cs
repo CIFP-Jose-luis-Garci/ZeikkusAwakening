@@ -10,6 +10,7 @@ public class SwordFireManager : Magic
     private GameManager gameManager;
     private float time;
     private ZagrantController zagrantController;
+    public bool destroy;
     void Start()
     {
         animatorManager = FindObjectOfType<PlayerManager>().GetComponent<AnimatorManager>();
@@ -28,10 +29,8 @@ public class SwordFireManager : Magic
         if (gameManager.inWorld && time > 1.5f)
         {
             if (GameManager.transitioning) return;
-            DestroyParticle dp = zagrantController.GetComponentInChildren<DestroyParticle>();
-            zagrantController.onFire = false;
-            if (dp)
-                Destroy(dp.gameObject);
+            destroy = true;
+            Destroy();
             zagrantController.gameObject.SetActive(false);
             Destroy(gameObject);
         }
@@ -40,5 +39,13 @@ public class SwordFireManager : Magic
             zagrantController.onFire = false;
             Destroy(gameObject);
         }
+    }
+
+    public void Destroy()
+    {
+        DestroyParticle dp = zagrantController.GetComponentInChildren<DestroyParticle>();
+        zagrantController.onFire = false;
+        if (dp)
+            Destroy(dp.gameObject);
     }
 }

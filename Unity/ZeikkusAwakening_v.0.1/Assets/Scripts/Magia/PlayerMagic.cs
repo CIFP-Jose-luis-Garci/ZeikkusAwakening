@@ -11,7 +11,7 @@ public class PlayerMagic : MonoBehaviour
         {
             Stats playerStats = GetComponent<Stats>();
             int mpCost = magics[selected].GetComponent<Magic>().mpCost;
-            if (playerStats.mp < mpCost) return false;
+            if (playerStats.mp <= 0 || playerStats.mp < mpCost) return false;
             playerStats.mp -= mpCost;
         }
         Instantiate(magics[selected]);

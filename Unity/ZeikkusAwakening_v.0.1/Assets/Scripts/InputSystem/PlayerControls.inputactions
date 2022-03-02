@@ -11,7 +11,8 @@
                     "id": "2da53bdf-0342-457b-bc38-bd1d613154e2",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Camera",
@@ -19,7 +20,8 @@
                     "id": "3b689f83-311d-4149-a4fc-c13c3fc1e901",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -79,59 +81,15 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Left Stick",
-                    "id": "40bccb8d-5fe4-462b-b8eb-c9f1fbf27b06",
-                    "path": "2DVector(mode=2)",
+                    "name": "",
+                    "id": "c0d01a3e-0ea2-4f99-b7e6-8dc5f58bfbd6",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Movement",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "7573a30d-f6ba-4123-b748-5189421436fa",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "9df361ab-6156-4c5a-924f-42314a1a14ad",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "bc0de574-32b3-459d-83dc-f630d3236a9e",
-                    "path": "<Gamepad>/leftStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "7c998d1b-72f5-41a1-977f-a1cd50d5a7a0",
-                    "path": "<Gamepad>/leftStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "Right Stick",
@@ -200,7 +158,8 @@
                     "id": "c2a1e068-7655-4c1f-a8bf-1f5fe8461ff9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Jump",
@@ -208,7 +167,8 @@
                     "id": "33734746-7eea-4ec1-b159-2a94f3fd0f07",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "A",
@@ -216,7 +176,8 @@
                     "id": "b6da6e13-6713-400e-a01e-1c72b61c434c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Y",
@@ -224,7 +185,8 @@
                     "id": "689e5e20-8ac3-4777-8ce0-e6e83761e201",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "X",
@@ -232,7 +194,8 @@
                     "id": "63c17f0b-6757-445b-8586-9344e10d88f1",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Start",
@@ -240,7 +203,8 @@
                     "id": "fc8adb33-b1d1-470c-b569-92de388cb18e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Select",
@@ -248,7 +212,8 @@
                     "id": "87c68b2d-d8c8-4e68-b7f1-f9011c6ccc31",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "L Trigger",
@@ -256,7 +221,8 @@
                     "id": "ad9dee02-df15-45c2-a5a9-e47762df15a3",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "R Trigger",
@@ -264,7 +230,8 @@
                     "id": "8c3e0dea-9fb5-4847-8df9-d37a8c5ec7cf",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "R Bump",
@@ -272,7 +239,8 @@
                     "id": "890d853c-0019-4b40-88ed-890d840a3f2e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "L Bump",
@@ -280,7 +248,8 @@
                     "id": "ff92b1e9-41b1-40e3-8ac6-361d9e4c8bdb",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [

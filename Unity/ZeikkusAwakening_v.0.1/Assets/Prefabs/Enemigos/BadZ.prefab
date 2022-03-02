@@ -395,8 +395,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 5
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -471,10 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688ab09cce640be47aa205b205ae788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectado: 0
   enemyToSpawn: {fileID: 8821538493523444147, guid: 2347f6118cf722447886dc24a167db42, type: 3}
-  isWalking: 0
-  isRunning: 0
   stepSounds: []
   crySounds: []
   attackSounds: []

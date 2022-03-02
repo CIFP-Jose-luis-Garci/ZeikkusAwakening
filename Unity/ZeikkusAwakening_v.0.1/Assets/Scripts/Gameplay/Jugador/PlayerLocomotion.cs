@@ -105,6 +105,7 @@ public class PlayerLocomotion : MonoBehaviour
         targetDirection = cameraObject.forward * inputManager.verticalInput;
         targetDirection += cameraObject.right * inputManager.horizontalInput;
         targetDirection.Normalize();
+        Debug.Log(targetDirection);
         targetDirection.y = 0;
 
         if (targetDirection == Vector3.zero)
@@ -164,7 +165,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleMagic(int slot)
     {
-        if (playerManager.isInteracting || stats.mp <= 0) return;
+        if (playerManager.isInteracting) return;
         ResetRigidbody();
         if (GetComponent<PlayerMagic>().MagicAttackLookupTable(magicSlots[slot]))
             LookAtEnemy();

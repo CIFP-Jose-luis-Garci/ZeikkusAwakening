@@ -39,6 +39,8 @@ public class ZagrantController : MonoBehaviour
             }
             if (otherObject.CompareTag("EnemigoWorld"))
             {
+                if (onFire)
+                    FindObjectOfType<SwordFireManager>().Destroy();
                 FindObjectOfType<HUDManager>().StartBattle(otherObject, false, 2);
             }
         }

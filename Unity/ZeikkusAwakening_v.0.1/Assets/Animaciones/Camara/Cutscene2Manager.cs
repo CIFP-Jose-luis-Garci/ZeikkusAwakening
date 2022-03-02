@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ public class Cutscene2Manager : CutsceneManager
     {
         animatorManager = badZ.GetComponent<AnimatorManager>();
         agente = badZ.GetComponent<NavMeshAgent>();
+        cameras[0] = FindObjectOfType<CinemachineFreeLook>().gameObject;
         GameManager.transitioning = true;
 
         //Camaras estado inicial
@@ -63,13 +65,8 @@ public class Cutscene2Manager : CutsceneManager
 
     public override void EndCutScene()
     {
-        
-        foreach (GameObject camera in cameras)
-        {
-            camera.SetActive(false);
-        }
-
-        triggerCutScene.SetActive(false);
+        cameras[0].SetActive(true);
+        cameras[1].SetActive(false);
     }
 
 
