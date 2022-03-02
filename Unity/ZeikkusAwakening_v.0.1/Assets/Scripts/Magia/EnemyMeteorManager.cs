@@ -2,35 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorManager : Magic
+public class EnemyMeteorManager : Magic
 {
     private AnimatorManager animatorManager;
     private GameManager gameManager;
     private Animator animator;
-    private Transform player;
+    private Transform user;
     public GameObject fire, meteorExplosion, smoke;
     public AudioClip cry, woosh;
-    public float speed;
-    public bool forward;
+    private float speed = 15;
+    private bool forward;
     private static readonly int Damage = Animator.StringToHash("damage");
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerManager>().transform;
-        transform.rotation = player.rotation;
-        Vector3 pos = player.position;
+        user = FindObjectOfType<EnemyBattleManager>().transform;
+        transform.rotation = user.rotation;
+        Vector3 pos = user.position;
         pos.y += 1;
-        Vector3 zPos = (-0.6f * player.forward);
+        Vector3 zPos = (-0.6f * user.forward);
         pos.x -= zPos.x;
         pos.z -= zPos.z;
         transform.position = pos;
-        animatorManager = player.GetComponent<AnimatorManager>();
+        animatorManager = user.GetComponent<AnimatorManager>();
         gameManager = FindObjectOfType<GameManager>();
-        if (gameManager.inWorld)
-            animatorManager.PlayTargetAnimation("magicSelected fireball", true);
-        else
-            animatorManager.PlayTargetAnimation("magic fireball", true);
         animator = animatorManager.animator;
         fire.SetActive(false);
         meteorExplosion.SetActive(false);
@@ -66,11 +62,11 @@ public class MeteorManager : Magic
     {
         if (!forward) return;
         if (other.gameObject.layer == 3) Animate();
-        if (other.gameObject.CompareTag("Enemigo"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            EnemyBattleManager enemyBattleManager = other.gameObject.GetComponent<EnemyBattleManager>();
-            Stats zeikkuStats = player.GetComponent<Stats>();
-            enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat(Damage), false);
+            BossBattleManager bossBattleManager = user.gameObject.GetComponent<BossBattleManager>();
+            PlayerLocomotion playerLocomotion = other.gameObject.GetComponent<PlayerLocomotion>();
+            playerLocomotion.RecieveDamage(bossBattleManager.GetComponent<Stats>(), animator.GetFloat(Damage), false);
             Animate();
         }
     }

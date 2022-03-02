@@ -5,15 +5,17 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-public class BossBattleManager : MonoBehaviour
+public class BossBattleManager : EnemyBattleManager
 {
-    [NonSerialized] public Transform player;
+    private Transform player;
     private bool isNearPlayer, isAttacking, isEvading, isBlocking, isUsingMagic, isInteracting;
     private Chance[] chances;
     private string[] combo;
     private AnimatorManager animatorManager;
     private NavMeshAgent agente;
     private EnemyStats stats;
+    private PlayerMagic magic;
+    public int[] magicSlots;
     
     [Header("Attacks")]
     private int currentAtack = 0;
@@ -27,6 +29,7 @@ public class BossBattleManager : MonoBehaviour
         animatorManager = GetComponent<AnimatorManager>();
         stats = GetComponent<EnemyStats>();
         agente = GetComponent<NavMeshAgent>();
+        magic = GetComponent<PlayerMagic>();
         chances = new Chance[4];
         chances[0] = new Chance("Atacar");
         chances[1] = new Chance("Evadir");
@@ -39,26 +42,10 @@ public class BossBattleManager : MonoBehaviour
     {
         if (stats.alive)
         {
-            if (isInteracting)
-            {
-                cooldown = true;
-                waitTime = 0;
-                return;
-            }
             SetNearPlayer();
 
-            if (cooldown)
-            {
-                if (waitTime > 0.15f)
-                {
-                    cooldown = false;
-                    if (!isNearPlayer) isAttacking = false;
-                    isEvading = false;
-                    isBlocking = false;
-                }
-                waitTime += Time.deltaTime; 
-                return;
-            }
+            if (Interacting() || CoolingDown()) return;
+            
             if (isNearPlayer)
             {
                 DecideAction();
@@ -73,19 +60,39 @@ public class BossBattleManager : MonoBehaviour
         }
     }
 
-    private void LookAtPlayer()
-    {
-        transform.LookAt(player.position);
-        Quaternion fix = transform.rotation;
-        fix.x = 0;
-        fix.z = 0;
-        transform.rotation = fix;
-
-    }
-
     private void LateUpdate()
     {
         isInteracting = animatorManager.animator.GetBool(IsInteracting);
+    }
+
+    private bool CoolingDown()
+    {
+        if (cooldown)
+        {
+            if (waitTime > 0.15f)
+            {
+                cooldown = false;
+                if (!isNearPlayer) isAttacking = false;
+                isEvading = false;
+                isBlocking = false;
+                return false;
+            }
+            waitTime += Time.deltaTime; 
+            return true;
+        }
+        return false;
+    }
+
+    private bool Interacting()
+    {
+        if (isInteracting)
+        {
+            cooldown = true;
+            waitTime = 0;
+            return true;
+        }
+
+        return false;
     }
 
     private void DecideAction()
@@ -146,11 +153,22 @@ public class BossBattleManager : MonoBehaviour
             case "Usar magia":
                 LookAtPlayer();
                 StopAIandAnimate("magic fireball");
-                // parar enemigo
+                if (magic.MagicAttackLookupTable(magicSlots[Random.Range(0, magicSlots.Length)]))
+                    LookAtPlayer();
                 // que magia hago?
                 // hacer animacion de magia
                 break;
         }
+    }
+
+    private void LookAtPlayer()
+    {
+        transform.LookAt(player.position);
+        Quaternion fix = transform.rotation;
+        fix.x = 0;
+        fix.z = 0;
+        transform.rotation = fix;
+
     }
 
     private void StopAIandAnimate(string targetAnimation, bool useRootMotion = false)

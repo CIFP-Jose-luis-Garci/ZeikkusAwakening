@@ -9,10 +9,10 @@ using Random = UnityEngine.Random;
 public class EnemyBattleManager : MonoBehaviour
 {
     public GameObject sprite;
-    public bool recoiled;
+    private bool recoiled;
     public bool battleStarted;
-    public Slider lifebar;
-    public GameObject damage;
+    [SerializeField] private Slider lifebar;
+    [SerializeField] private GameObject damage;
     public bool isRunning;
     
     private Transform player;
