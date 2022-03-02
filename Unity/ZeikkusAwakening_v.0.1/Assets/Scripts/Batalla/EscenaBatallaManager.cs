@@ -24,7 +24,7 @@ public class EscenaBatallaManager : MonoBehaviour
         tiempoDeCombate += Time.deltaTime;
     }
 
-    public void ControlScene(SlotEnemigoManager[] slotsEnemigos)
+    public void ControlScene(SlotEnemigoManager[] slotsEnemigos, bool isBoss)
     {
         battling = true;
         playerTransform = FindObjectOfType<PlayerManager>().transform;
@@ -36,6 +36,7 @@ public class EscenaBatallaManager : MonoBehaviour
         {
             Transform spawner = spawners[i].transform;
             Instantiate(enemyToSpawn, spawner.position, spawner.rotation, spawner);
+            if (isBoss) break;
         }
         enemyStats = GetComponentsInChildren<EnemyStats>();
 

@@ -8,13 +8,15 @@ using Random = UnityEngine.Random;
 public class BossBattleManager : MonoBehaviour
 {
     [NonSerialized] public Transform player;
-    private bool isNearPlayer, isAttacking, isEvading, isBlocking, isUsingMagic;
+    private bool isNearPlayer, isAttacking, isEvading, isBlocking, isUsingMagic, isInteracting;
     private Chance[] chances;
     private string[] combo;
     private AnimatorManager animatorManager;
     private NavMeshAgent agente;
     private EnemyStats stats;
     private int currentAtack = 0;
+    private bool completelyRandom;
+    private static readonly int IsInteracting = Animator.StringToHash("isInteracting");
 
     private void Awake()
     {
@@ -27,26 +29,44 @@ public class BossBattleManager : MonoBehaviour
         chances[1] = new Chance("Evadir");
         chances[2] = new Chance("Bloquear");
         chances[3] = new Chance("Usar magia");
-        combo = new string[] {"basic_slash", "second_slash", "hard_slash", "final_slash" };
+        combo = new [] {"basic_slash", "second_slash", "hard_slash", "final_slash" };
     }
 
     private void Update()
     {
         if (stats.alive)
         {
+            if (isInteracting) return;
             if (isNearPlayer)
             {
+                LookAtPlayer();
                 DecideAction();
             }
             else
             {
                 currentAtack = 0;
+                agente.speed = 5;
                 agente.SetDestination(player.position);
                 print("holas");
                 SetNearPlayer();
             }
 
         }
+    }
+
+    private void LookAtPlayer()
+    {
+        transform.LookAt(player.position);
+        Quaternion fix = transform.rotation;
+        fix.x = 0;
+        fix.z = 0;
+        transform.rotation = fix;
+
+    }
+
+    private void LateUpdate()
+    {
+        isInteracting = animatorManager.animator.GetBool(IsInteracting);
     }
 
     private void DecideAction()
@@ -57,7 +77,13 @@ public class BossBattleManager : MonoBehaviour
 
     private void SelectAction()
     {
-        float chance = Random.Range(0f, 1f);
+        float chance;
+        if (completelyRandom)
+        {
+            chance = Random.Range(0, chances.Length);
+            DoAction(chances[(int) chance].name);
+        }
+        chance = Random.Range(0f, 1f);
         for (int i = 0; i < chances.Length; i++)
         {
             Chance currentChance = chances[0];
@@ -76,22 +102,25 @@ public class BossBattleManager : MonoBehaviour
         {
             case "Atacar":
                 // parar enemigo
+                agente.speed = 0;
                 agente.SetDestination(transform.position);
                 // hacer animacion de ataque
                 animatorManager.PlayTargetAnimation(combo[currentAtack], true, true);
                 currentAtack++;
+                if (currentAtack >= combo.Length)
+                    currentAtack = 0;
                 SetNearPlayer();
                 // sigo con combo?
                 break;
             case "Evadir":
                 // parar enemigo
-                // hacer animacion de evasión
+                // hacer animacion de evasion
                 // marcar invencibilidad
                 break;
             case "Bloquear":
                 // parar enemigo
                 // hacer animacion de bloqueo
-                // marcar reducción de daño
+                // marcar reduccion de dano
                 break;
             case "Usar magia":
                 // parar enemigo
@@ -104,9 +133,9 @@ public class BossBattleManager : MonoBehaviour
     private void CheckStatus()
     {
         if (stats.hp < stats.maxHP * 0.2f)
-        {
             SetChances(0.15f, 0.3f, 0.3f, 0.25f);
-        }
+        else
+            SetChances(0f,0f,0f,0f, true);
         
         
         
@@ -119,11 +148,13 @@ public class BossBattleManager : MonoBehaviour
 
     private void SetNearPlayer()
     {
-        isNearPlayer = Vector3.Distance(player.position, transform.position) < 1;
+        isNearPlayer = Vector3.Distance(player.position, transform.position) < 2f;
     }
 
-    private void SetChances(float attackChance, float evadeChance, float blockChance, float useMagicChance)
+    private void SetChances(float attackChance, float evadeChance, float blockChance, float useMagicChance, bool completelyRandom = false)
     {
+        if (completelyRandom)
+            this.completelyRandom = completelyRandom;
         chances[0].chance = attackChance;
         chances[1].chance = evadeChance;
         chances[2].chance = blockChance;

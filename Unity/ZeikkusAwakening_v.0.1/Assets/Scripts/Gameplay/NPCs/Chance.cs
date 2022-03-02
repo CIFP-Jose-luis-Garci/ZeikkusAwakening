@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chance : IComparer<Chance>
+public class Chance : IComparable<Chance>
 {
     public string name;
     public float chance;
@@ -13,13 +14,8 @@ public class Chance : IComparer<Chance>
         chance = 0;
     }
 
-    public int Compare(Chance x, Chance y)
+    public int CompareTo(Chance other)
     {
-        if (x.chance > y.chance)
-            return 1;
-        else if (x.chance < y.chance)
-            return -1;
-        else 
-            return 0;
+        return chance.CompareTo(other.chance);
     }
 }

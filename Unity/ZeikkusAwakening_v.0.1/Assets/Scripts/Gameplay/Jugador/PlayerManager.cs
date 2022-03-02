@@ -13,7 +13,10 @@ public class PlayerManager : MonoBehaviour
     private GameManager gameManager;
     public bool isInteracting;
     public bool isUsingRootMotion;
-    
+    private static readonly int IsInteracting = Animator.StringToHash("isInteracting");
+    private static readonly int IsJumping = Animator.StringToHash("isJumping");
+    private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -36,12 +39,12 @@ public class PlayerManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        isInteracting = animator.GetBool("isInteracting");
+        isInteracting = animator.GetBool(IsInteracting);
         //isUsingRootMotion = animator.GetBool("isUsingRootMotion");
         if (gameManager.inWorld)
         {
-            playerLocomotion.isJumping = animator.GetBool("isJumping");
-            animator.SetBool("isGrounded", playerLocomotion.isGrounded);
+            playerLocomotion.isJumping = animator.GetBool(IsJumping);
+            animator.SetBool(IsGrounded, playerLocomotion.isGrounded);
         } 
     }
 }

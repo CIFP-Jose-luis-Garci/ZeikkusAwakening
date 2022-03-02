@@ -108,7 +108,7 @@ public class HUDManager : MonoBehaviour
         escenaBatalla.enemyToSpawn = worldEnemy.GetComponent<EnemyManager>().enemyToSpawn;
         escenaBatalla.enemyAdvantage = enemyAdvantage;
         interfazBatalla.ActivateSlots();
-        escenaBatalla.ControlScene(interfazBatalla.slotsEnemigos);
+        escenaBatalla.ControlScene(interfazBatalla.slotsEnemigos, boss);
         Destroy(worldEnemy);
         minimap.SetActive(false);
         StartBattleAnimation();
