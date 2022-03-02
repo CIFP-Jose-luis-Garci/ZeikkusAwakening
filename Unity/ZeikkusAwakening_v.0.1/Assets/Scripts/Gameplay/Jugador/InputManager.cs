@@ -129,7 +129,7 @@ public class InputManager : MonoBehaviour
         horizontalInput = movementInput.x;
         
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-        if (GameManager.inPause)
+        if (GameManager.inPause || GameManager.inCutscene)
         {
             moveAmount = 0; 
             animatorManager.UpdateAnimatorValues(0, 0);
@@ -145,6 +145,7 @@ public class InputManager : MonoBehaviour
         if (aInput)
         {
             aInput = false;
+            if (GameManager.inCutscene) return;
             if (inDialogue)
             {
                 if (dialogue.currentEvent == GameManager.currentEvent || dialogue.showingPhrase)
@@ -216,6 +217,7 @@ public class InputManager : MonoBehaviour
     {
         if (bInput)
         {
+            if (GameManager.inCutscene) return;
             if (inDialogue) return;
             if (GameManager.inPause)
             {
@@ -339,7 +341,7 @@ public class InputManager : MonoBehaviour
 
     private bool AnyInteraction()
     {
-        return inDialogue || GameManager.inPause || GameManager.transitioning || GameManager.viewingMinimap;
+        return inDialogue || GameManager.inPause || GameManager.transitioning || GameManager.viewingMinimap || GameManager.inCutscene;
     }
     
     public void GoBack(GameObject toDisable, GameObject pantallaPausa)

@@ -25,6 +25,7 @@ public class Cutscene2Manager : CutsceneManager
         animatorManager = badZ.GetComponent<AnimatorManager>();
         agente = badZ.GetComponent<NavMeshAgent>();
         cameras[0] = FindObjectOfType<CinemachineFreeLook>().gameObject;
+        GameManager.inCutscene = true;
         GameManager.transitioning = true;
 
         //Camaras estado inicial
@@ -42,7 +43,10 @@ public class Cutscene2Manager : CutsceneManager
         DoStuff();
         yield return new WaitForSeconds(2f);
         DoStuff();
+        yield return new WaitForSeconds(1f);
         EndCutScene();
+        yield return new WaitForSeconds(2f);
+        GameManager.inCutscene = false;
     }
     public override void DoStuff()
     {

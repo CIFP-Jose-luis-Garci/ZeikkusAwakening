@@ -14,7 +14,6 @@ public class DialogueManager : MonoBehaviour
     public GameObject aButton;
     private Coroutine coroutine;
     private string currentPhrase;
-    public AudioClip sonidoPasarDialogo;
 
     private void OnEnable()
     {

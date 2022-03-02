@@ -59,20 +59,6 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.45851532
-        functionName: IsAttackingSet
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
-        messageOptions: 0
-      - time: 0.5327511
-        functionName: IsAttackingSet
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.20960699
         functionName: StepSound
         data: 
@@ -80,8 +66,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.47598252
-        functionName: StepSound
+      - time: 0.23806801
+        functionName: IsAttackingSet
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.37300667
+        functionName: IsAttackingSet
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.40611354
+        functionName: CrySound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -94,8 +94,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.40611354
-        functionName: CrySound
+      - time: 0.47598252
+        functionName: StepSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

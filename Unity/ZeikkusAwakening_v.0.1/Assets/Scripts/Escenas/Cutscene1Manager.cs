@@ -104,7 +104,7 @@ public class Cutscene1Manager : CutsceneManager
             camera.SetActive(false);
         }
 
-        GameManager.currentDialogue = 18;
+        GameManager.currentDialogue = 19;
         GameManager.currentEvent = 3;
         dialogue.gameObject.SetActive(false);
         StartCoroutine(FadeToBlack());

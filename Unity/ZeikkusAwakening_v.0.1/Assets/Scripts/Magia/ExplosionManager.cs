@@ -45,7 +45,7 @@ public class ExplosionManager : Magic
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemigo"))
+        if (other.gameObject.CompareTag("Enemigo") || other.gameObject.CompareTag("Boss"))
         {
             EnemyBattleManager enemyBattleManager = other.gameObject.GetComponent<EnemyBattleManager>();
             Stats zeikkuStats = player.GetComponent<Stats>();

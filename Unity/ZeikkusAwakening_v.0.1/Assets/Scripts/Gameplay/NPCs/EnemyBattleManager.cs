@@ -11,25 +11,25 @@ public class EnemyBattleManager : MonoBehaviour
     public GameObject sprite;
     protected bool recoiled;
     public bool battleStarted;
-    [SerializeField] private Slider lifebar;
+    [SerializeField] protected Slider lifebar;
     [SerializeField] private GameObject damage;
     public bool isRunning;
-    
-    private Transform player;
+
+    protected Transform player;
     protected Animator animator;
-    private NavMeshAgent agente;
+    protected NavMeshAgent agente;
     private AudioSource source;
     protected EnemyStats stats;
     protected EscenaBatallaManager escenaBatalla;
     private bool isAttacking;
     protected bool isRecoiling;
-    private float waitTime;
+    protected float waitTime;
     private float hit1Length;
     private float hit2Length;
     protected float dieLength;
     protected float recoilLength;
     private float randomAttack;
-    private float time;
+    protected float time;
     private bool anyoneAlive = true;
 
     public AudioClip[] stepSounds;
@@ -164,7 +164,7 @@ public class EnemyBattleManager : MonoBehaviour
         }
     }
 
-    private void CheckAlive()
+    protected void CheckAlive()
     {
         if (GameManager.transitioning) return;
         stats.slotEnemigo.Retract();
@@ -183,7 +183,7 @@ public class EnemyBattleManager : MonoBehaviour
         GameManager.transitioning = true;
         GameManager.inPause = true;
     }
-    private void CheckWinning()
+    protected void CheckWinning()
     {
         if (!anyoneAlive)
         {

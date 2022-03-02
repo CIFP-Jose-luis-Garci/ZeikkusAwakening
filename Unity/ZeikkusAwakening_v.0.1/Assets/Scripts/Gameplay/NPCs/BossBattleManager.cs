@@ -7,19 +7,16 @@ using Random = UnityEngine.Random;
 
 public class BossBattleManager : EnemyBattleManager
 {
-    private Transform player;
     private bool isNearPlayer, isAttacking, isEvading, isBlocking, isUsingMagic, isInteracting;
     private Chance[] chances;
     private string[] combo;
     private AnimatorManager animatorManager;
-    private NavMeshAgent agente;
     private PlayerMagic magic;
     public int[] magicSlots;
-    
-    [Header("Attacks")]
+
+    [Header("Attacks")] 
     private int currentAtack = 0;
     private bool cooldown;
-    private float waitTime;
     private static readonly int IsInteracting = Animator.StringToHash("isInteracting");
     private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
 
@@ -31,12 +28,14 @@ public class BossBattleManager : EnemyBattleManager
         agente = GetComponent<NavMeshAgent>();
         magic = GetComponent<PlayerMagic>();
         escenaBatalla = FindObjectOfType<EscenaBatallaManager>();
+        lifebar.maxValue = stats.maxHP;
+        lifebar.value = stats.maxHP;
         chances = new Chance[4];
         chances[0] = new Chance("Atacar");
         chances[1] = new Chance("Evadir");
         chances[2] = new Chance("Bloquear");
         chances[3] = new Chance("Usar magia");
-        combo = new [] {"basic_slash", "second_slash", "hard_slash", "final_slash" };
+        combo = new[] {"basic_slash", "second_slash", "hard_slash", "final_slash"};
     }
 
     void Start()
@@ -47,11 +46,21 @@ public class BossBattleManager : EnemyBattleManager
 
     private void Update()
     {
-        if (GameManager.inPause || !stats.alive || !battleStarted) return;
+        if (GameManager.inPause || !stats.alive || !battleStarted)
+        {
+            if (stats.alive) return;
+            if (time <= 0)
+                CheckAlive();
+            time += Time.deltaTime;
+            if (time > dieLength)
+                CheckWinning();
+            return;
+        }
+
         SetNearPlayer();
 
         if (Recoiling() || Interacting() || CoolingDown()) return;
-            
+
         if (isNearPlayer)
         {
             DecideAction();
@@ -73,7 +82,7 @@ public class BossBattleManager : EnemyBattleManager
     {
         if (cooldown)
         {
-            if (waitTime > 0.15f)
+            if (waitTime > 0.35f)
             {
                 cooldown = false;
                 if (!isNearPlayer) isAttacking = false;
@@ -81,9 +90,11 @@ public class BossBattleManager : EnemyBattleManager
                 isBlocking = false;
                 return false;
             }
-            waitTime += Time.deltaTime; 
+
+            waitTime += Time.deltaTime;
             return true;
         }
+
         return false;
     }
 
@@ -103,16 +114,17 @@ public class BossBattleManager : EnemyBattleManager
     {
         if (recoiled)
         {
-            recoiled = false;
+            if (isRecoiling) return false;
+            isRecoiling = true;
             StartCoroutine(Recoil());
             return true;
         }
+
         return false;
     }
 
     private IEnumerator Recoil()
     {
-        
         isRecoiling = true;
         animatorManager.PlayTargetAnimation("recoil", true);
         animator.SetBool(IsAttacking, false);
@@ -146,7 +158,6 @@ public class BossBattleManager : EnemyBattleManager
                 return;
             }
         }
-
     }
 
     private bool WereYouAttacking()
@@ -155,7 +166,7 @@ public class BossBattleManager : EnemyBattleManager
         {
             DoAction("Atacar");
         }
-        
+
         return isAttacking;
     }
 
@@ -198,7 +209,6 @@ public class BossBattleManager : EnemyBattleManager
         fix.x = 0;
         fix.z = 0;
         transform.rotation = fix;
-
     }
 
     private void StopAIandAnimate(string targetAnimation, bool useRootMotion = false)
@@ -216,9 +226,8 @@ public class BossBattleManager : EnemyBattleManager
             SetChances(0.5f, 0.15f, 0.2f, 0.15f);
         else if (stats.hp < stats.maxHP * 0.8f)
             SetChances(0.6f, 0.15f, 0f, 0.25f);
-        else 
+        else
             SetChances(0.7f, 0f, 0f, 0.3f);
-
     }
 
     private void SetNearPlayer()
@@ -246,7 +255,7 @@ public class BossBattleManager : EnemyBattleManager
                     break;
             }
         }
-        Array.Sort(chances);
 
+        Array.Sort(chances);
     }
 }
