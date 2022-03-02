@@ -45,6 +45,7 @@ public class EscenaBatallaManager : MonoBehaviour
         //int teamlevel = GameManager.GetTeamLevel();
         foreach (EnemyStats enemy in enemyStats)
         {
+            if (isBoss) break;
             int newLevel = Random.Range(1, 4);
             enemy.SetLevel(newLevel);
             
@@ -58,8 +59,6 @@ public class EscenaBatallaManager : MonoBehaviour
                     enemy.hp -= (int) (enemy.hp * 0.2);
                     break;
             }
-
-            Debug.Log(newLevel);
         }
         
         for (int i = 0; i < slotsEnemigos.Length; i++)
