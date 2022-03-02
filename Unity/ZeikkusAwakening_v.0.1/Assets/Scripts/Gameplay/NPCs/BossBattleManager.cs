@@ -13,7 +13,6 @@ public class BossBattleManager : EnemyBattleManager
     private string[] combo;
     private AnimatorManager animatorManager;
     private NavMeshAgent agente;
-    private EnemyStats stats;
     private PlayerMagic magic;
     public int[] magicSlots;
     
@@ -22,6 +21,7 @@ public class BossBattleManager : EnemyBattleManager
     private bool cooldown;
     private float waitTime;
     private static readonly int IsInteracting = Animator.StringToHash("isInteracting");
+    private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
 
     private void Awake()
     {
@@ -30,6 +30,7 @@ public class BossBattleManager : EnemyBattleManager
         stats = GetComponent<EnemyStats>();
         agente = GetComponent<NavMeshAgent>();
         magic = GetComponent<PlayerMagic>();
+        escenaBatalla = FindObjectOfType<EscenaBatallaManager>();
         chances = new Chance[4];
         chances[0] = new Chance("Atacar");
         chances[1] = new Chance("Evadir");
@@ -38,25 +39,27 @@ public class BossBattleManager : EnemyBattleManager
         combo = new [] {"basic_slash", "second_slash", "hard_slash", "final_slash" };
     }
 
+    void Start()
+    {
+        ClipLength();
+    }
+
     private void Update()
     {
-        if (stats.alive)
-        {
-            SetNearPlayer();
+        if (GameManager.inPause || !stats.alive || !battleStarted) return;
+        SetNearPlayer();
 
-            if (Interacting() || CoolingDown()) return;
+        if (Interacting() || CoolingDown()) return;
             
-            if (isNearPlayer)
-            {
-                DecideAction();
-            }
-            else
-            {
-                currentAtack = 0;
-                agente.speed = 5;
-                agente.SetDestination(player.position);
-            }
-
+        if (isNearPlayer)
+        {
+            DecideAction();
+        }
+        else
+        {
+            currentAtack = 0;
+            agente.speed = 5;
+            agente.SetDestination(player.position);
         }
     }
 
@@ -95,6 +98,38 @@ public class BossBattleManager : EnemyBattleManager
         return false;
     }
 
+    private IEnumerator Recoil()
+    {
+        isRecoiling = true;
+        animatorManager.PlayTargetAnimation("recoil", true);
+        animatorManager.animator.SetBool(IsAttacking, false);
+        agente.SetDestination(transform.position);
+        waitTime = 0;
+        yield return new WaitForSeconds(recoilLength);
+        isRecoiling = false;
+        isAttacking = false;
+        agente.SetDestination(player.position);
+        agente.speed = 5;
+    }
+
+    private void ClipLength()
+    {
+        
+        AnimationClip[] clips = animatorManager.animator.runtimeAnimatorController.animationClips;
+        foreach(AnimationClip clip in clips)
+        {
+            switch(clip.name)
+            {
+                case "Recoil":
+                    recoilLength = clip.length;
+                    break;
+                case "Die":
+                    dieLength = clip.length;
+                    break;
+            }
+        }
+    }
+
     private void DecideAction()
     {
         CheckStatus();
@@ -111,7 +146,6 @@ public class BossBattleManager : EnemyBattleManager
             Chance currentChance = chances[i];
             if (chance < currentChance.chance)
             {
-                Debug.Log(chance + " es menor que " + currentChance.chance + " de " + currentChance.name);
                 DoAction(currentChance.name);
                 return;
             }

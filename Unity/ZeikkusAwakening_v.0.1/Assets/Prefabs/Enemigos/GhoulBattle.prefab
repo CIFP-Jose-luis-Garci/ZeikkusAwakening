@@ -743,7 +743,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1443597770934799560}
-  recoiled: 0
   battleStarted: 0
   lifebar: {fileID: 3267294148948976625}
   damage: {fileID: 5256623395504277334, guid: 2ce27a2a2d66230418db0746ab5f57a9, type: 3}
@@ -795,6 +794,7 @@ MonoBehaviour:
   alive: 1
   expBase: 60
   marubase: 150
+  slotEnemigo: {fileID: 0}
 --- !u!82 &4685519230375103582
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3332,8 +3332,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 5.49, y: 0}
-  m_SizeDelta: {x: -19.35, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6407156291416748195
 GameObject:
@@ -3369,8 +3369,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.84, y: 0}
-  m_SizeDelta: {x: 19.67, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &687787860274618896
 CanvasRenderer:
@@ -3425,7 +3425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8232701905266968198
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3532,7 +3532,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 600
   m_WholeNumbers: 0
-  m_Value: 521
+  m_Value: 600
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

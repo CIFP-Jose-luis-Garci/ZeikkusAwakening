@@ -43,6 +43,21 @@ public class ZagrantController : MonoBehaviour
                     FindObjectOfType<SwordFireManager>().Destroy();
                 FindObjectOfType<HUDManager>().StartBattle(otherObject, false, 2);
             }
+
+            if (otherObject.CompareTag("Boss"))
+            {
+                BossBattleManager bossBattleManager = otherObject.GetComponent<BossBattleManager>();
+                Stats zeikkuStats = FindObjectOfType<PlayerManager>().GetComponent<Stats>();
+                bossBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat(Damage), true, onFire);
+                source.PlayOneShot(source.clip);
+            }
+
+            if (otherObject.CompareTag("Player"))
+            {
+                BossBattleManager bossBattleManager = FindObjectOfType<BossBattleManager>();
+                PlayerLocomotion playerLocomotion = otherObject.GetComponent<PlayerLocomotion>();
+                playerLocomotion.RecieveDamage(bossBattleManager.GetComponent<Stats>(), animator.GetFloat(Damage), false);
+            }
         }
     }
 }
