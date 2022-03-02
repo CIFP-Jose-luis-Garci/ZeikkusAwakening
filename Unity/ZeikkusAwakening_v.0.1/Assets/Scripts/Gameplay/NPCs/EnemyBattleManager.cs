@@ -9,14 +9,14 @@ using Random = UnityEngine.Random;
 public class EnemyBattleManager : MonoBehaviour
 {
     public GameObject sprite;
-    private bool recoiled;
+    protected bool recoiled;
     public bool battleStarted;
     [SerializeField] private Slider lifebar;
     [SerializeField] private GameObject damage;
     public bool isRunning;
     
     private Transform player;
-    private Animator animator;
+    protected Animator animator;
     private NavMeshAgent agente;
     private AudioSource source;
     protected EnemyStats stats;
@@ -35,6 +35,8 @@ public class EnemyBattleManager : MonoBehaviour
     public AudioClip[] stepSounds;
     public AudioClip[] crySounds;
     public AudioClip[] attackSounds;
+    private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
+    private static readonly int Muerte = Animator.StringToHash("muerte");
 
     private void Start()
     {
@@ -156,7 +158,7 @@ public class EnemyBattleManager : MonoBehaviour
             stats.alive = false;
             isAttacking = false;
             animator.applyRootMotion = true;
-            animator.SetTrigger("muerte");
+            animator.SetTrigger(Muerte);
             GetComponent<Collider>().enabled = false;
             ImTarget(false);
         }
@@ -207,10 +209,10 @@ public class EnemyBattleManager : MonoBehaviour
 
     public void IsAttackingSet(AnimationEvent animationEvent)
     {
-        animator.SetBool("isAttacking", animationEvent.intParameter == 1);
+        animator.SetBool(IsAttacking, animationEvent.intParameter == 1);
     }
-    
-    private void ClipLength()
+
+    protected void ClipLength()
     {
         AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
         foreach(AnimationClip clip in clips)

@@ -39,7 +39,7 @@ public class InBetweenObjectManager : MonoBehaviour
             float minDist = 10;
             Vector3 currentPos = transform.position;
             enemyFound = false;
-            foreach (GameObject t in GameObject.FindGameObjectsWithTag("Enemigo"))
+            foreach (EnemyBattleManager t in FindObjectsOfType<EnemyBattleManager>())
             {
                 float dist = Vector3.Distance(t.transform.position, currentPos);
                 if (dist < minDist)

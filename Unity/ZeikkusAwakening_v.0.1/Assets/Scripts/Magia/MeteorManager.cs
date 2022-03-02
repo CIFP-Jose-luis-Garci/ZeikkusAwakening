@@ -66,7 +66,7 @@ public class MeteorManager : Magic
     {
         if (!forward) return;
         if (other.gameObject.layer == 3) Animate();
-        if (other.gameObject.CompareTag("Enemigo"))
+        if (other.gameObject.CompareTag("Enemigo") || other.gameObject.CompareTag("Boss"))
         {
             EnemyBattleManager enemyBattleManager = other.gameObject.GetComponent<EnemyBattleManager>();
             Stats zeikkuStats = player.GetComponent<Stats>();

@@ -41,6 +41,7 @@ public class BossBattleManager : EnemyBattleManager
 
     void Start()
     {
+        animator = animatorManager.animator;
         ClipLength();
     }
 
@@ -49,7 +50,7 @@ public class BossBattleManager : EnemyBattleManager
         if (GameManager.inPause || !stats.alive || !battleStarted) return;
         SetNearPlayer();
 
-        if (Interacting() || CoolingDown()) return;
+        if (Recoiling() || Interacting() || CoolingDown()) return;
             
         if (isNearPlayer)
         {
@@ -65,7 +66,7 @@ public class BossBattleManager : EnemyBattleManager
 
     private void LateUpdate()
     {
-        isInteracting = animatorManager.animator.GetBool(IsInteracting);
+        isInteracting = animator.GetBool(IsInteracting);
     }
 
     private bool CoolingDown()
@@ -98,36 +99,31 @@ public class BossBattleManager : EnemyBattleManager
         return false;
     }
 
+    private bool Recoiling()
+    {
+        if (recoiled)
+        {
+            recoiled = false;
+            StartCoroutine(Recoil());
+            return true;
+        }
+        return false;
+    }
+
     private IEnumerator Recoil()
     {
+        
         isRecoiling = true;
         animatorManager.PlayTargetAnimation("recoil", true);
-        animatorManager.animator.SetBool(IsAttacking, false);
+        animator.SetBool(IsAttacking, false);
         agente.SetDestination(transform.position);
         waitTime = 0;
         yield return new WaitForSeconds(recoilLength);
         isRecoiling = false;
+        recoiled = false;
         isAttacking = false;
         agente.SetDestination(player.position);
         agente.speed = 5;
-    }
-
-    private void ClipLength()
-    {
-        
-        AnimationClip[] clips = animatorManager.animator.runtimeAnimatorController.animationClips;
-        foreach(AnimationClip clip in clips)
-        {
-            switch(clip.name)
-            {
-                case "Recoil":
-                    recoilLength = clip.length;
-                    break;
-                case "Die":
-                    dieLength = clip.length;
-                    break;
-            }
-        }
     }
 
     private void DecideAction()
