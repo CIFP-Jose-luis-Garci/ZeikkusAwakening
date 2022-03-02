@@ -53,57 +53,6 @@ MonoBehaviour:
   tossable: 1
   healingPercent: 0.25
   sonidoCuracion: {fileID: 8300000, guid: 71c3ec5f1366eb54fbb980b1cc618597, type: 3}
---- !u!1 &1084599366
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1084599367}
-  - component: {fileID: 1084599368}
-  m_Layer: 0
-  m_Name: Llave
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1084599367
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084599366}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5425452554628083144}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1084599368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084599366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097a4af3cfb97504ba53b430dc93ea8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: "Llave peque\xF1a"
-  category: Llave
-  type: 5
-  itemSprite: {fileID: 21300000, guid: fbe12a2d44660b34e9148a7f07eab1c9, type: 3}
-  description: "Llave de un s\xF3lo uso que sirve para abrir puertas bloqueadas en
-    esta mazmorra."
-  usable: 1
-  tossable: 0
 --- !u!1 &1167201597
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +99,7 @@ MonoBehaviour:
   itemName: "Poci\xF3n media"
   category: Objeto curativo
   type: 4
-  itemSprite: {fileID: 21300000, guid: 7d6085514d53c4e498d66a1dafed8d3c, type: 3}
+  itemSprite: {fileID: 21300000, guid: bb7bbe1c59ce1de428cd04cd53ce7f7e, type: 3}
   description: "Recupera un 50% de la vida del equipo. \xDAtil en momentos de urgencia
     para una cura r\xE1pida"
   usable: 1
@@ -515,6 +464,7 @@ Transform:
   - {fileID: 7036941505428522377}
   - {fileID: 2895791767297679403}
   - {fileID: 8667637298975178507}
+  - {fileID: 4653407912713717580}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -886,6 +836,59 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1400722621537560834, guid: 36c4fed540132094daf609da1c1be333, type: 3}
+--- !u!1 &1816926700537944932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4749637969527999634}
+  - component: {fileID: 5722318560369379233}
+  m_Layer: 0
+  m_Name: "Pocion M\xE1gica"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4749637969527999634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816926700537944932}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 6.325194, y: -2.245268, z: 6.658602}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5425452554628083144}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5722318560369379233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816926700537944932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694e2382bb78c1f449146020209dde01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: "Poci\xF3n m\xE1gica"
+  category: Objeto curativo
+  type: 4
+  itemSprite: {fileID: 21300000, guid: cd359bba23711ff48b119b92c9deb8a6, type: 3}
+  description: "Recupera un 25% de los puntos de magia del equipo. \xDAtil en momentos
+    de urgencia para batallas importantes."
+  usable: 1
+  tossable: 1
+  healingPercent: 0.25
+  sonidoCuracion: {fileID: 8300000, guid: 71c3ec5f1366eb54fbb980b1cc618597, type: 3}
 --- !u!1 &2063719846401522222
 GameObject:
   m_ObjectHideFlags: 0
@@ -56271,6 +56274,116 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1201953097420908178, guid: 36c4fed540132094daf609da1c1be333, type: 3}
+--- !u!1 &8293185247548459984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4653407912713717580}
+  - component: {fileID: 5266265175654086399}
+  - component: {fileID: 2190124161811998645}
+  - component: {fileID: 2557763741065261772}
+  - component: {fileID: 3543903075304747527}
+  m_Layer: 0
+  m_Name: Cartel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4653407912713717580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293185247548459984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.28, y: 6.27, z: 18.125}
+  m_LocalScale: {x: 1.1003345, y: 0.55466, z: 0.12838016}
+  m_Children: []
+  m_Father: {fileID: 524161891691801945}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5266265175654086399
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293185247548459984}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2190124161811998645
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293185247548459984}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: bcd694b2003db4c4682322c4fd5c84c3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2557763741065261772
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293185247548459984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.584487, y: 4.4190035, z: 11.332313}
+  m_Center: {x: -0.07119452, y: -0.1913276, z: -5.166157}
+--- !u!114 &3543903075304747527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293185247548459984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c82771e38c4094492ed10e16aa3254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 0}
+  popupAcertijo: {fileID: 4603771096883316093, guid: 3f540dc8a835d2042af5fdf1b15c314a, type: 3}
 --- !u!1 &8713465011732564254
 GameObject:
   m_ObjectHideFlags: 0
@@ -57096,7 +57209,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2594756076185776685, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2841788046295548226, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
       propertyPath: openChest
@@ -57105,7 +57218,7 @@ PrefabInstance:
     - target: {fileID: 2841788046295548226, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
       propertyPath: containedItem
       value: 
-      objectReference: {fileID: 1084599368}
+      objectReference: {fileID: 0}
     - target: {fileID: 4611902581490335492, guid: 363741ede8b662e4d9823d324484d1ff, type: 3}
       propertyPath: m_Name
       value: Cofre
@@ -57308,14 +57421,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 18f63ff904099034daf971dac5b32582, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
---- !u!4 &21561567295997060 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
-  m_PrefabInstance: {fileID: 21561567296134660}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &21561567296166052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
+  m_PrefabInstance: {fileID: 21561567296134660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &21561567295997060 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
   m_PrefabInstance: {fileID: 21561567296134660}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &57573777430409932
