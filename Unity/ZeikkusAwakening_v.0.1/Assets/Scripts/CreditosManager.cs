@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class CreditosManager : MonoBehaviour
 {
     public Titulo[] creditos;
-    public GameObject container, titulo, subtitulo;
+    public GameObject container, titulo, subtitulo, datosJugador;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(MostrarCreditos());
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        
     }
 
     private IEnumerator MostrarCreditos()
@@ -28,7 +30,7 @@ public class CreditosManager : MonoBehaviour
                 GameObject subtituloInstance = Instantiate(subtitulo, container.transform);
                 subtituloInstance.GetComponent<Text>().text = credito.subtitulos[j];
                 Destroy(subtituloInstance, 20f);
-                yield return new WaitForSeconds(1.25f);
+                yield return new WaitForSeconds(1f);
             }
             Destroy(credito.gameObject);
             yield return new WaitForSeconds(1.5f);
