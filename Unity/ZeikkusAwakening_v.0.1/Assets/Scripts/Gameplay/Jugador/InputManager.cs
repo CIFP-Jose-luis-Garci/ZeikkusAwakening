@@ -309,8 +309,7 @@ public class InputManager : MonoBehaviour
                 animatorManager.animator.SetBool("blocking", false);
                 playerLocomotion.blocking = false;
             }
-            else
-                freeLook.m_RecenterToTargetHeading.m_enabled = false;
+            freeLook.m_RecenterToTargetHeading.m_enabled = false;
         }
 
     }

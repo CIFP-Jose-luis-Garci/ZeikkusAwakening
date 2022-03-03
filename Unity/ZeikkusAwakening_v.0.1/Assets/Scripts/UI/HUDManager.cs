@@ -112,7 +112,7 @@ public class HUDManager : MonoBehaviour
                 break;
         }
         flash.AnimateStart();
-        
+
         cameraXAngle = cmfl.m_XAxis.Value;
         yield return GameManager.Instance.CrossFadeMusic(mixer, 1, true);
         cmfl.m_XAxis.Value = -160;
