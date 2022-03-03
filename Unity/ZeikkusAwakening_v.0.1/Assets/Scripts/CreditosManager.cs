@@ -12,7 +12,23 @@ public class CreditosManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(MostrarCreditos());
-        
+        Titulo datosJugadorCredito = datosJugador.GetComponent<Titulo>();
+        datosJugadorCredito.subtitulos[0] += TiempoActual();
+        datosJugadorCredito.subtitulos[1] += GameManager.Instance.totalDamage  + " puntos de vida";
+        datosJugadorCredito.subtitulos[2] += GameManager.Instance.bossDefeated ? "SI" : "NO";
+        if (GameManager.Instance.bossDefeated)
+            datosJugadorCredito.subtitulos[3] += "¡Enhorabuena! Sí, se puede saltar el jefe.";
+            
+    }
+    
+    private string TiempoActual()
+    {
+        float time = GameManager.Instance.playtime;
+        string horas = Mathf.Floor((time / 60) / 24).ToString("00");
+        string minutos = Mathf.Floor(time / 60).ToString("00");
+        string segundos = Mathf.Floor(time % 60).ToString("00");
+    
+        return horas + ":" + minutos + ":" + segundos;
     }
 
     private IEnumerator MostrarCreditos()

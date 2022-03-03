@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
-    private float time;
     private GameManager gameManager;
 
     public Text tiempo;
@@ -64,7 +63,7 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.unscaledDeltaTime;
+        gameManager.playtime += Time.unscaledDeltaTime;
         if (tiempo.gameObject.activeInHierarchy)
             tiempo.text = TiempoActual();
     }
@@ -72,9 +71,9 @@ public class HUDManager : MonoBehaviour
     private string TiempoActual()
     {
     
-        string horas = Mathf.Floor((time / 60) / 24).ToString("00");
-        string minutos = Mathf.Floor(time / 60).ToString("00");
-        string segundos = Mathf.Floor(time % 60).ToString("00");
+        string horas = Mathf.Floor((gameManager.playtime / 60) / 24).ToString("00");
+        string minutos = Mathf.Floor(gameManager.playtime / 60).ToString("00");
+        string segundos = Mathf.Floor(gameManager.playtime % 60).ToString("00");
     
         return horas + ":" + minutos + ":" + segundos;
     }
@@ -159,6 +158,7 @@ public class HUDManager : MonoBehaviour
         CameraManager cameraManager = cmfl.GetComponent<CameraManager>();
         cameraManager.ChangeTarget(animatorManager.transform);
         cameraManager.ResetRadius();
+        gameManager.totalDamage += escenaBatalla.danoTotal;
         resultScreen.SetActive(true);
     }
     

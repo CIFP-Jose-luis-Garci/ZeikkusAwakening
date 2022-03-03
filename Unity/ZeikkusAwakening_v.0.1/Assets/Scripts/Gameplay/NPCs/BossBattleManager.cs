@@ -23,7 +23,7 @@ public class BossBattleManager : EnemyBattleManager
     private void Awake()
     {
         gameManager = GameManager.Instance;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = InputManager.Instance.transform;
         animatorManager = GetComponent<AnimatorManager>();
         stats = GetComponent<EnemyStats>();
         agente = GetComponent<NavMeshAgent>();
@@ -50,6 +50,7 @@ public class BossBattleManager : EnemyBattleManager
         if (GameManager.Instance.inPause || !stats.alive || !battleStarted)
         {
             if (stats.alive) return;
+            gameManager.bossDefeated = true;
             agente.speed = 0;
             agente.SetDestination(transform.position);
             if (time <= 0)
