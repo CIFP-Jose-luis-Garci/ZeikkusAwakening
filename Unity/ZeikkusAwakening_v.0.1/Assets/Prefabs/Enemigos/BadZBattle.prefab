@@ -3281,15 +3281,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4894568005355111694}
   - component: {fileID: 8537240317916823982}
-  - component: {fileID: 1992544113622352223}
   - component: {fileID: 6875285928245610605}
+  - component: {fileID: 2266527227366749446}
   m_Layer: 0
   m_Name: LockOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4894568005355111694
 Transform:
   m_ObjectHideFlags: 0
@@ -3355,25 +3355,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1992544113622352223
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9088848157909750166}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1d0c00195872fc94b8cc2ee20c951e54, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &6875285928245610605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3386,6 +3367,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ecbfa69dacf4b4bacbff5258125af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2266527227366749446
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088848157909750166}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 187ef07d36a421e449ca047221eb686a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1187684613026657733
 PrefabInstance:
   m_ObjectHideFlags: 0

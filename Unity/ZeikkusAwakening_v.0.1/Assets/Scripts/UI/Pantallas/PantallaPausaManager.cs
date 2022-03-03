@@ -36,6 +36,7 @@ public class PantallaPausaManager : MonoBehaviour
         mixer.SetFloat("BGMVolume", GameManager.BGMVolume - 5);
         mixer.SetFloat("EnemiesSFXVolume", -80);
         mixer.SetFloat("EnvironmentSFXVolume", -80);
+        mixer.SetFloat("BossSFXVolume", -80);
     }
 
     private void OnDisable()
@@ -48,6 +49,7 @@ public class PantallaPausaManager : MonoBehaviour
         mixer.SetFloat("BGMVolume", GameManager.BGMVolume);
         mixer.SetFloat("EnemiesSFXVolume", 0);
         mixer.SetFloat("EnvironmentSFXVolume", 0);
+        mixer.SetFloat("BossSFXVolume", 0);
     }
 
     private void Start()

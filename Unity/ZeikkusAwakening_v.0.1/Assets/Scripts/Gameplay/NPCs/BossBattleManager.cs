@@ -49,6 +49,8 @@ public class BossBattleManager : EnemyBattleManager
         if (GameManager.inPause || !stats.alive || !battleStarted)
         {
             if (stats.alive) return;
+            agente.speed = 0;
+            agente.SetDestination(transform.position);
             if (time <= 0)
                 CheckAlive();
             time += Time.deltaTime;

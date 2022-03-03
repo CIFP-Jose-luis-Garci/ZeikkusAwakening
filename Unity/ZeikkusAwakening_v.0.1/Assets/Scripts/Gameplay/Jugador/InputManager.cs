@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
     public DialogueManager dialogue;
     public PantallaResultadosManager results;
     public ZagrantController zagrantController;
-    public AudioClip sonidoCerrarPopUp, sonidoPasarDialogo;
+    public AudioClip sonidoCerrarPopUp, sonidoPasarDialogo, sonidoMapa;
     
 
     private Vector2 movementInput;
@@ -42,7 +42,6 @@ public class InputManager : MonoBehaviour
     public GameObject minimap;
     public GameObject container, magicTutorial, buttonTutorial, lockOnTutorial, evadeBlockTutorial;
     private bool showedMagicTutorial, showedButtonTutorial, showedLockOnTutorial, showedEvadeBlockTutorial;
-
 
     private void Awake()
     {
@@ -270,6 +269,7 @@ public class InputManager : MonoBehaviour
             playerLocomotion.GravitySet(false);
             select = false;
             minimap.gameObject.SetActive(true);
+            gameManager.source.PlayOneShot(sonidoMapa);
         }
     }
 

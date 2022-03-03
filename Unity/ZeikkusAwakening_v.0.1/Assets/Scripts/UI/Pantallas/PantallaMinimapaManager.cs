@@ -7,16 +7,19 @@ public class PantallaMinimapaManager : MonoBehaviour
 {
     private BillboardSprites[] spritesConBillboard;
     private InputManager inputManager;
+    private GameManager gameManager;
     private Animator animator;
     private PlayerLocomotion playerLocomotion;
     private float scrollSpeed;
     private int currentDungeonlevel = -1;
     public RectTransform minimapa;
     public GameObject[] minimapZones;
+    public AudioClip sonidoMapa;
 
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
+        gameManager = FindObjectOfType<GameManager>();
         animator = GetComponent<Animator>();
         playerLocomotion = inputManager.GetComponent<PlayerLocomotion>();
         scrollSpeed = 800;
@@ -88,7 +91,7 @@ public class PantallaMinimapaManager : MonoBehaviour
         }
         
         minimapZones ? [GameManager.dungeonLevel].SetActive(false);
-        
+        gameManager.source.PlayOneShot(sonidoMapa);
         GameManager.inPause = false;
         GameManager.viewingMinimap = false;
     }
