@@ -18,7 +18,7 @@ public class PantallaOpcionesManager : MonoBehaviour
     
     private void OnEnable()
     {
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = InputManager.Instance;
         gameManager = GameManager.Instance;
         bgmSlider.Select();
         

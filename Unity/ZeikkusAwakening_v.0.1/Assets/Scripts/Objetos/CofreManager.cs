@@ -20,7 +20,7 @@ public class CofreManager : MonoBehaviour
 
     private void Start()
     {
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = InputManager.Instance;
         playerManager = inputManager.GetComponent<PlayerManager>();
         animator = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
@@ -55,8 +55,8 @@ public class CofreManager : MonoBehaviour
         
         openChest.CrossFadeAlpha(0, 0.5f, false);
         
-        FindObjectOfType<PlayerBagManager>().AddItem(containedItem);
-        GameObject currentDialogue = Instantiate(dialogue, FindObjectOfType<Canvas>().transform);
+        GameManager.Instance.bag.AddItem(containedItem);
+        GameObject currentDialogue = Instantiate(dialogue, HUDManager.Instance.transform);
         ItemDialogueBoxController idbc = currentDialogue.GetComponent<ItemDialogueBoxController>();
         idbc.description.text = containedItem.description;
         idbc.itemName.text = containedItem.itemName;

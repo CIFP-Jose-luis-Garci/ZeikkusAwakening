@@ -17,7 +17,7 @@ public class MeteorManager : Magic
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerManager>().transform;
+        player = InputManager.Instance.transform;
         gameManager = GameManager.Instance;
         transform.rotation = player.rotation;
         Vector3 pos = player.position;

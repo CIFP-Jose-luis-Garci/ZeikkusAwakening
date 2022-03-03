@@ -14,7 +14,7 @@ public class InterfazBatallaManager : MonoBehaviour
 
     private void Awake()
     {
-        playerLocomotion = FindObjectOfType<PlayerLocomotion>();
+        playerLocomotion = InputManager.Instance.GetComponent<PlayerLocomotion>();
         animator = GetComponent<Animator>();
     }
 

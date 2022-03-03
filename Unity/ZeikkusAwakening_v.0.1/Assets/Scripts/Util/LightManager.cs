@@ -11,7 +11,7 @@ public class LightManager : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerManager>().gameObject;
+        player = InputManager.Instance.gameObject;
         lights = GetComponentsInChildren<Light>();
         antorchas = new GameObject[lights.Length];
         for (int i = 0; i < lights.Length; i++)

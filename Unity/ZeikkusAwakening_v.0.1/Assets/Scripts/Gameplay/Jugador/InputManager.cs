@@ -42,13 +42,24 @@ public class InputManager : MonoBehaviour
     public GameObject minimap;
     public GameObject container, magicTutorial, buttonTutorial, lockOnTutorial, evadeBlockTutorial;
     private bool showedMagicTutorial, showedButtonTutorial, showedLockOnTutorial, showedEvadeBlockTutorial;
+    
+    public static InputManager Instance { get; private set; }
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+            // You could also log a warning.
+        }
         animatorManager = GetComponent<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
         gameManager = GameManager.Instance;
-        freeLook = FindObjectOfType<CinemachineFreeLook>();
+        freeLook = HUDManager.Instance.cmfl;
     }
 
     private void OnEnable()
@@ -291,7 +302,7 @@ public class InputManager : MonoBehaviour
     {
         if (AnyInteraction()) return;
         if (!freeLook)
-            freeLook = FindObjectOfType<CinemachineFreeLook>();
+            freeLook = HUDManager.Instance.cmfl;
         if (lBump)
         {
             if (gameManager.inWorld)

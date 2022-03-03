@@ -13,7 +13,7 @@ public class SwordFireManager : Magic
     
     void Start()
     {
-        animatorManager = FindObjectOfType<PlayerManager>().GetComponent<AnimatorManager>();
+        animatorManager = InputManager.Instance.GetComponent<AnimatorManager>();
         gameManager = GameManager.Instance;
         if (gameManager.inWorld)
             animatorManager.PlayTargetAnimation("magicSelected firecast", true, true);

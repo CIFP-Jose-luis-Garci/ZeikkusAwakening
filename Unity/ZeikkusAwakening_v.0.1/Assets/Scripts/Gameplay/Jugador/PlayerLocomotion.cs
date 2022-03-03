@@ -57,7 +57,6 @@ public class PlayerLocomotion : MonoBehaviour
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager>();
-        inputManager = GetComponent<InputManager>();
         animatorManager = GetComponent<AnimatorManager>();
         rb = GetComponent<Rigidbody>();
         gameManager = GameManager.Instance;
@@ -71,6 +70,11 @@ public class PlayerLocomotion : MonoBehaviour
         animaciones[2] = "second_slash";
         animaciones[3] = "basic_slash";
         StartCoroutine(Blink());
+    }
+
+    private void Start()
+    {
+        inputManager = InputManager.Instance;
     }
 
     internal void GravitySet(bool set)

@@ -12,9 +12,9 @@ public class Cutscene2Manager : CutsceneManager
     public Transform badZ;
     [NonSerialized] public Transform player;
     private AnimatorManager animatorManager;
+    private GameManager gameManager;
     private NavMeshAgent agente;
     private int count = 0;
-    public GameObject triggerCutScene;
 
 
 
@@ -23,10 +23,11 @@ public class Cutscene2Manager : CutsceneManager
     void Start()
     {
         animatorManager = badZ.GetComponent<AnimatorManager>();
+        gameManager = GameManager.Instance;
         agente = badZ.GetComponent<NavMeshAgent>();
         cameras[0] = FindObjectOfType<CinemachineFreeLook>().gameObject;
-        GameManager.Instance.inCutscene = true;
-        GameManager.Instance.transitioning = true;
+        gameManager.inCutscene = true;
+        gameManager.transitioning = true;
 
         //Camaras estado inicial
         cameras[0].SetActive(true);
@@ -45,7 +46,7 @@ public class Cutscene2Manager : CutsceneManager
         DoStuff();
         EndCutScene();
         yield return new WaitForSeconds(2f);
-        GameManager.Instance.inCutscene = false;
+        gameManager.inCutscene = false;
     }
     public override void DoStuff()
     {

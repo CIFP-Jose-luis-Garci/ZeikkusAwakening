@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
     public AudioSource source;
+    public PlayerBagManager bag;
     
     [Header("Dialogos")]
     public int currentEvent = 0;

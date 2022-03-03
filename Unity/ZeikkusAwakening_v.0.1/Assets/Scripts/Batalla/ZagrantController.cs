@@ -24,7 +24,10 @@ public class ZagrantController : MonoBehaviour
 
     private void Update()
     {
-        isAttacking = stats.alive && animator.GetBool(IsAttacking);
+        if (stats)
+            isAttacking = stats.alive && animator.GetBool(IsAttacking);
+        else
+            isAttacking = animator.GetBool(IsAttacking);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,8 +38,7 @@ public class ZagrantController : MonoBehaviour
             if (otherObject.CompareTag("Enemigo"))
             {
                 EnemyBattleManager enemyBattleManager = otherObject.GetComponent<EnemyBattleManager>();
-                Stats zeikkuStats = FindObjectOfType<PlayerManager>().GetComponent<Stats>();
-                enemyBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat(Damage), true, onFire);
+                enemyBattleManager.RecieveDamage(stats, animator.GetFloat(Damage), true, onFire);
                 source.PlayOneShot(source.clip);
             }
             if (otherObject.CompareTag("EnemigoWorld"))
@@ -49,16 +51,14 @@ public class ZagrantController : MonoBehaviour
             if (otherObject.CompareTag("Boss"))
             {
                 BossBattleManager bossBattleManager = otherObject.GetComponent<BossBattleManager>();
-                Stats zeikkuStats = FindObjectOfType<PlayerManager>().GetComponent<Stats>();
-                bossBattleManager.RecieveDamage(zeikkuStats, animator.GetFloat(Damage), true, onFire);
+                bossBattleManager.RecieveDamage(stats, animator.GetFloat(Damage), true, onFire);
                 source.PlayOneShot(source.clip);
             }
 
             if (otherObject.CompareTag("Player"))
             {
-                BossBattleManager bossBattleManager = FindObjectOfType<BossBattleManager>();
                 PlayerLocomotion playerLocomotion = otherObject.GetComponent<PlayerLocomotion>();
-                playerLocomotion.RecieveDamage(bossBattleManager.GetComponent<Stats>(), animator.GetFloat(Damage), false);
+                playerLocomotion.RecieveDamage(stats, animator.GetFloat(Damage), false);
             }
         }
     }

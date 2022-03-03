@@ -19,10 +19,14 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        inputManager = GetComponent<InputManager>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = GameManager.Instance;
         playerLocomotion = GetComponent<PlayerLocomotion>();
-        GameManager.Instance.checkpoint = transform.position;
+        gameManager.checkpoint = transform.position;
+    }
+
+    private void Start()
+    {
+        inputManager = InputManager.Instance;
     }
 
     private void Update()
@@ -32,7 +36,7 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.Instance.inPause || GameManager.Instance.transitioning || GameManager.Instance.inCutscene) return;
+        if (gameManager.inPause || gameManager.transitioning || gameManager.inCutscene) return;
         playerLocomotion.HandleAllMovement();
     }
 

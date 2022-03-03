@@ -15,7 +15,7 @@ public class SceneChangeManager : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerManager>().gameObject;
+        player = InputManager.Instance.gameObject;
         gameManager = GameManager.Instance;
     }
 

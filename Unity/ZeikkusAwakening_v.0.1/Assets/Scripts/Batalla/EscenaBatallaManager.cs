@@ -29,7 +29,7 @@ public class EscenaBatallaManager : MonoBehaviour
     public void ControlScene(SlotEnemigoManager[] slotsEnemigos, bool isBoss)
     {
         battling = true;
-        playerTransform = FindObjectOfType<PlayerManager>().transform;
+        playerTransform = InputManager.Instance.transform;
         playerOrigin = playerTransform.position;
         playerTransform.position = playerSpawn.position;
         playerTransform.rotation = Quaternion.Euler(0,180, 0);

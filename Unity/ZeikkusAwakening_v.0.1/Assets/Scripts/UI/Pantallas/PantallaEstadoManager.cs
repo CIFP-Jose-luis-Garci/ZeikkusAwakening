@@ -15,7 +15,7 @@ public class PantallaEstadoManager : MonoBehaviour
     public Image imagenPersonaje;
     private void Awake()
     {
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = InputManager.Instance;
         GameManager.Instance.SpawnTutorial(container, tutorialToSpawn, null);
     }
     private void OnEnable()

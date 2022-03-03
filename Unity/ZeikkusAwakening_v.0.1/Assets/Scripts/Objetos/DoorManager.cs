@@ -15,7 +15,7 @@ public class DoorManager : MonoBehaviour
 
     void Awake()
     {
-        bag = FindObjectOfType<PlayerBagManager>();
+        bag = GameManager.Instance.bag;
         source = GameManager.Instance.source;
     }
     

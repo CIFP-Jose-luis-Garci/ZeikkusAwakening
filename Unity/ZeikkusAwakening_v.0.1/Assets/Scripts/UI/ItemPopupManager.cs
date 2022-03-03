@@ -18,7 +18,7 @@ public class ItemPopupManager : MonoBehaviour
 
     void Start()
     {
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = InputManager.Instance;
         source = GameManager.Instance.source;
         source.PlayOneShot(sonidoPopUp);
         usar.onClick.AddListener(() =>
@@ -72,7 +72,7 @@ public class ItemPopupManager : MonoBehaviour
 
     private void TossItem()
     {
-        FindObjectOfType<PlayerBagManager>().RemoveItem(selectedItem.slot);
+        GameManager.Instance.bag.RemoveItem(selectedItem.slot);
     }
 
     // Update is called once per frame

@@ -18,7 +18,7 @@ public class PantallaMinimapaManager : MonoBehaviour
 
     private void Awake()
     {
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = InputManager.Instance;
         gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
         playerLocomotion = inputManager.GetComponent<PlayerLocomotion>();

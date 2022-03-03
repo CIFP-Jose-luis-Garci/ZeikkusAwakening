@@ -37,9 +37,9 @@ public class ListaItemsManager : MonoBehaviour
 
     private void Awake()
     {
-        bag = FindObjectOfType<PlayerBagManager>();
+        bag = GameManager.Instance.bag;
         currentPage = 1;
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = InputManager.Instance;
         source = GetComponent<AudioSource>();
     }
 

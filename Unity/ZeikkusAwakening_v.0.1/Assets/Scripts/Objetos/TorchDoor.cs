@@ -8,6 +8,7 @@ using UnityEngine.VFX;
 public class TorchDoor : MonoBehaviour
 {
     private static int triggerCount;
+    private GameManager gameManager;
     private AudioSource source;
     private VisualEffect fuego;
     private Light luz;
@@ -23,8 +24,9 @@ public class TorchDoor : MonoBehaviour
         fuego = GetComponentInChildren<VisualEffect>();
         luz = GetComponentInChildren<Light>();
         brain = FindObjectOfType<CinemachineBrain>();
-        playerCmfl = FindObjectOfType<CinemachineFreeLook>();
-        source = GameManager.Instance.source;
+        playerCmfl = HUDManager.Instance.cmfl;
+        gameManager = GameManager.Instance;
+        source = gameManager.source;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,8 +47,8 @@ public class TorchDoor : MonoBehaviour
                 brain.m_DefaultBlend.m_Time = 0.5f;
                 playerCmfl.gameObject.SetActive(false);
                 doorVcam.gameObject.SetActive(true);
-                GameManager.Instance.inPause = true;
-                GameManager.Instance.transitioning = true;
+                gameManager.inPause = true;
+                gameManager.transitioning = true;
                 StartCoroutine(LiftDoor());
                 Invoke(nameof(DisableCamera), 2f);
             }
@@ -58,8 +60,8 @@ public class TorchDoor : MonoBehaviour
         playerCmfl.gameObject.SetActive(true);
         doorVcam.gameObject.SetActive(false);
         brain.m_DefaultBlend.m_Time = 2f;
-        GameManager.Instance.inPause = false;
-        GameManager.Instance.transitioning = false;
+        gameManager.inPause = false;
+        gameManager.transitioning = false;
     }
 
     IEnumerator LiftDoor()

@@ -27,7 +27,7 @@ public class ItemDialogueBoxController : MonoBehaviour
             child.CrossFadeAlpha(0, 0, false);
             child.CrossFadeAlpha(1, 0.25f, false);
         }
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = InputManager.Instance;
         inputManager.inDialogue = true;
         inputManager.xInput = false;
         StartCoroutine(BlinkX());

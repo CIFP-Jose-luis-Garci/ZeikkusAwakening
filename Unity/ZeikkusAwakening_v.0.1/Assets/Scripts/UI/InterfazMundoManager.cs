@@ -14,7 +14,7 @@ public class InterfazMundoManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = InputManager.Instance;
     }
 
     void Update()

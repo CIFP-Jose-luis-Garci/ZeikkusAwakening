@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class BillboardSprites : MonoBehaviour
 {
-    private Transform minimapCamera;
+    private static Transform minimapCamera;
 
     private void Start()
     {
-        minimapCamera = FindObjectOfType<MinimapManager>().transform;
+        if (!minimapCamera)
+            minimapCamera = FindObjectOfType<MinimapManager>().transform;
     }
 
     // Update is called once per frame

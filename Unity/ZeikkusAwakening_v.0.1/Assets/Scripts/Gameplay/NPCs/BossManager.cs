@@ -8,7 +8,7 @@ public class BossManager : EnemyManager
     private bool animated;
     private void Awake()
     {
-        player = FindObjectOfType<PlayerManager>().transform;
+        player = InputManager.Instance.transform;
     }
 
     private void Update()

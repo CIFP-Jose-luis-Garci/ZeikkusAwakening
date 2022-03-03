@@ -44,7 +44,7 @@ public class EnemyBattleManager : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
-        player = FindObjectOfType<PlayerManager>().transform;
+        player = InputManager.Instance.transform;
         agente = GetComponent<NavMeshAgent>();
         source = GetComponent<AudioSource>();
         stats = GetComponent<EnemyStats>();

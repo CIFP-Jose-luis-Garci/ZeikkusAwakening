@@ -11,6 +11,7 @@ public class PantallaPausaManager : MonoBehaviour
     private InputManager inputManager;
     private Stats zeikkuStats;
     private AudioSource source;
+    private GameManager gameManager;
     public GameObject pantallaInventario, pantallaEstado, pantallaOpciones, pantallaResultados;
     public GameObject container, tutorialToSpawn;
     public Image flash, blackFade;
@@ -21,19 +22,20 @@ public class PantallaPausaManager : MonoBehaviour
 
     private void Awake()
     {
-        inputManager = FindObjectOfType<InputManager>();
-        source = GameManager.Instance.source;
+        inputManager = InputManager.Instance;
+        gameManager = GameManager.Instance;
+        source = gameManager.source;
     }
 
     private void OnEnable()
     {
-        GameManager.Instance.inPause = true;
+        gameManager.inPause = true;
         source.PlayOneShot(sonidoAbirMenu);
         blackFade.gameObject.SetActive(false);
         flash.gameObject.SetActive(false);
         inventario.Select();
         UpdateValues();
-        mixer.SetFloat("BGMVolume", GameManager.Instance.BGMVolume - 5);
+        mixer.SetFloat("BGMVolume", gameManager.BGMVolume - 5);
         mixer.SetFloat("EnemiesSFXVolume", -80);
         mixer.SetFloat("EnvironmentSFXVolume", -80);
         mixer.SetFloat("BossSFXVolume", -80);
@@ -41,12 +43,12 @@ public class PantallaPausaManager : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.Instance.inPause = false;
+        gameManager.inPause = false;
         source.PlayOneShot(sonidoCerrarMenu);
         blackFade.gameObject.SetActive(true);
         blackFade.CrossFadeAlpha(0, 0, true);
         
-        mixer.SetFloat("BGMVolume", GameManager.Instance.BGMVolume);
+        mixer.SetFloat("BGMVolume", gameManager.BGMVolume);
         mixer.SetFloat("EnemiesSFXVolume", 0);
         mixer.SetFloat("EnvironmentSFXVolume", 0);
         mixer.SetFloat("BossSFXVolume", 0);
@@ -54,7 +56,7 @@ public class PantallaPausaManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.SpawnTutorial(container, tutorialToSpawn, null);
+        gameManager.SpawnTutorial(container, tutorialToSpawn, null);
         inventario.onClick.AddListener(() =>
         {
             source.PlayOneShot(sonidoClickMenu);
@@ -82,7 +84,7 @@ public class PantallaPausaManager : MonoBehaviour
         zeikkuStats = inputManager.gameObject.GetComponent<Stats>();
         zeikkuVida.text = zeikkuStats.hp + "/" + zeikkuStats.maxHP;
         zeikkuMagia.text = zeikkuStats.mp + "/" + zeikkuStats.maxMP;
-        maru.text = GameManager.Instance.maru.ToString();
+        maru.text = gameManager.maru.ToString();
     }
 
     public bool HasChildrenActive()

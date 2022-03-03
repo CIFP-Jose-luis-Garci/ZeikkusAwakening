@@ -35,7 +35,7 @@ public class Cutscene1Manager : CutsceneManager
     void Start()
     {
         saltarEscena.SetActive(true);
-        inputManager = animatorManager.GetComponent<InputManager>();
+        inputManager = InputManager.Instance;
         dialogue.gameObject.SetActive(true);
         animatorManager.transform.rotation = Quaternion.identity;
         animatorManager.animator.CrossFade("Sleeping", 0);
@@ -112,8 +112,8 @@ public class Cutscene1Manager : CutsceneManager
             camera.SetActive(false);
         }
 
-        GameManager.Instance.currentDialogue = 19;
-        GameManager.Instance.currentEvent = 3;
+        gameManager.currentDialogue = 19;
+        gameManager.currentEvent = 3;
         dialogue.gameObject.SetActive(false);
         StartCoroutine(FadeToBlack());
     }

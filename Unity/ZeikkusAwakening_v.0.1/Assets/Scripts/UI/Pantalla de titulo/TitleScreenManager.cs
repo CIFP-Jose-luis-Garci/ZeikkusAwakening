@@ -11,7 +11,6 @@ public class TitleScreenManager : MonoBehaviour
     public Image logobg, logo, titlebg, titlelogo, titlepress;
     public GameObject selecciones, zeikkuPrefab, zeikkuInstatiated;
 
-    private InputManager iMgr;
     private AudioSource musicaTitulo;
     public AudioClip clipLogo;
 
