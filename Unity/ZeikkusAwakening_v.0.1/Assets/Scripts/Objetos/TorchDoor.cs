@@ -24,7 +24,7 @@ public class TorchDoor : MonoBehaviour
         luz = GetComponentInChildren<Light>();
         brain = FindObjectOfType<CinemachineBrain>();
         playerCmfl = FindObjectOfType<CinemachineFreeLook>();
-        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+        source = GameManager.Instance.source;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,8 +45,8 @@ public class TorchDoor : MonoBehaviour
                 brain.m_DefaultBlend.m_Time = 0.5f;
                 playerCmfl.gameObject.SetActive(false);
                 doorVcam.gameObject.SetActive(true);
-                GameManager.inPause = true;
-                GameManager.transitioning = true;
+                GameManager.Instance.inPause = true;
+                GameManager.Instance.transitioning = true;
                 StartCoroutine(LiftDoor());
                 Invoke(nameof(DisableCamera), 2f);
             }
@@ -58,8 +58,8 @@ public class TorchDoor : MonoBehaviour
         playerCmfl.gameObject.SetActive(true);
         doorVcam.gameObject.SetActive(false);
         brain.m_DefaultBlend.m_Time = 2f;
-        GameManager.inPause = false;
-        GameManager.transitioning = false;
+        GameManager.Instance.inPause = false;
+        GameManager.Instance.transitioning = false;
     }
 
     IEnumerator LiftDoor()

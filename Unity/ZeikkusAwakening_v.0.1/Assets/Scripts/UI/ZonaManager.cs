@@ -7,6 +7,6 @@ public class ZonaManager : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<HUDManager>().ChangeZoneName(name);
+        HUDManager.Instance.ChangeZoneName(name);
     }
 }

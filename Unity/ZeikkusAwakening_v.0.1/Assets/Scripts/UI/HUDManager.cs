@@ -26,12 +26,28 @@ public class HUDManager : MonoBehaviour
     public FlashManager flash;
     public InterfazBatallaManager interfazBatalla;
     public InterfazMundoManager interfazMundo;
+    public PantallaPausaManager pantallaPausa;
     
     [Header("Audio")]
     public AudioClip worldMusic;
     public AudioClip battleMusic;
     public AudioClip bossMusic;
     public AudioClip fanfare;
+    
+    public static HUDManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+            // You could also log a warning.
+        }
+    }
 
     private void Start()
     {
@@ -39,7 +55,7 @@ public class HUDManager : MonoBehaviour
         playerLocomotion = animatorManager.GetComponent<PlayerLocomotion>();
         inputManager = animatorManager.GetComponent<InputManager>();
         escenaBatalla = FindObjectOfType<EscenaBatallaManager>();
-        StartCoroutine(GameManager.CrossFadeMusic(mixer, 2, false));
+        StartCoroutine(GameManager.Instance.CrossFadeMusic(mixer, 2, false));
         blackFade.CrossFadeAlpha(0,2,true);
     }
 
@@ -68,10 +84,10 @@ public class HUDManager : MonoBehaviour
     
     public void StartBattle(GameObject worldEnemy, bool isBoss, int enemyAdvantage = 1)
     {
-        if (inBattle || GameManager.inPause || GameManager.transitioning || inputManager.inDialogue || !playerLocomotion.isGrounded) return;
+        if (inBattle || GameManager.Instance.inPause || GameManager.Instance.transitioning || inputManager.inDialogue || !playerLocomotion.isGrounded) return;
         inBattle = true;
-        GameManager.inPause = true;
-        GameManager.transitioning = true;
+        GameManager.Instance.inPause = true;
+        GameManager.Instance.transitioning = true;
         ToBattle(worldEnemy, isBoss, enemyAdvantage);
     }
 
@@ -98,7 +114,7 @@ public class HUDManager : MonoBehaviour
         flash.AnimateStart();
         
         cameraXAngle = cmfl.m_XAxis.Value;
-        yield return GameManager.CrossFadeMusic(mixer, 1, true);
+        yield return GameManager.Instance.CrossFadeMusic(mixer, 1, true);
         cmfl.m_XAxis.Value = -160;
         cmfl.m_YAxis.Value = 0.6f;
         if (boss)
@@ -113,11 +129,11 @@ public class HUDManager : MonoBehaviour
         Destroy(worldEnemy); 
         minimap.SetActive(false);
         StartBattleAnimation();
-        yield return GameManager.CrossFadeMusic(mixer, 1, false);
+        yield return GameManager.Instance.CrossFadeMusic(mixer, 1, false);
         interfazBatalla.gameObject.SetActive(true);
         escenaBatalla.EnemiesStart();
-        GameManager.inPause = false;
-        GameManager.transitioning = false;
+        GameManager.Instance.inPause = false;
+        GameManager.Instance.transitioning = false;
     }
 
     private void BattleAdvantageText(string text, Color color)
@@ -153,14 +169,14 @@ public class HUDManager : MonoBehaviour
     {
         // press a, goto transition fade in black
         blackFade.CrossFadeAlpha(1, 1, true);
-        yield return GameManager.CrossFadeMusic(mixer, 1, true);
+        yield return GameManager.Instance.CrossFadeMusic(mixer, 1, true);
         cmfl.m_XAxis.Value = cameraXAngle;
         ChangeMusic(worldMusic);
         minimap.SetActive(true);
         escenaBatallaManager.ResetPlayer();
-        yield return GameManager.CrossFadeMusic(mixer, 1, false);
-        GameManager.inPause = false;
-        GameManager.transitioning = false;
+        yield return GameManager.Instance.CrossFadeMusic(mixer, 1, false);
+        GameManager.Instance.inPause = false;
+        GameManager.Instance.transitioning = false;
         inBattle = false;
         blackFade.CrossFadeAlpha(0, 1, true);
     }
@@ -202,14 +218,14 @@ public class HUDManager : MonoBehaviour
     private IEnumerator DieInBattle(Transform player, Stats stats, GameObject deathVolume)
     {
         DisableHUD();
-        yield return GameManager.CrossFadeMusic(mixer, 1, true);
+        yield return GameManager.Instance.CrossFadeMusic(mixer, 1, true);
         blackFade.CrossFadeAlpha(1, 2f, true);
         yield return new WaitForSeconds(3f);
         CameraManager cameraManager = cmfl.GetComponent<CameraManager>();
         cameraManager.ChangeTarget(animatorManager.transform);
         cameraManager.ResetRadius();
         deathVolume.SetActive(false);
-        player.position = GameManager.checkpoint;
+        player.position = GameManager.Instance.checkpoint;
         Time.timeScale = 1;
         Instantiate(escenaBatalla.worldEnemy, escenaBatalla.worldEnemyPosition, Quaternion.Euler(0, 90,0));
         animatorManager.PlayTargetAnimation("Stand Up", true);
@@ -220,21 +236,21 @@ public class HUDManager : MonoBehaviour
         stats.alive = true;
         blackFade.CrossFadeAlpha(0, 2, true);
         yield return new WaitForSeconds(8f);
-        yield return GameManager.CrossFadeMusic(mixer, 2, false);
+        yield return GameManager.Instance.CrossFadeMusic(mixer, 2, false);
         interfazMundo.gameObject.SetActive(true);
         hudPersonajes.SetActive(true);
         minimap.SetActive(true);
-        GameManager.transitioning = false;
+        GameManager.Instance.transitioning = false;
         inBattle = false;
 
     }
 
     public void FinishLevel()
     {
-        GameManager.transitioning = true;
+        GameManager.Instance.transitioning = true;
         blackFade.CrossFadeAlpha(1, 0.3f, true);
         loading.SetActive(true);
-        StartCoroutine(GameManager.LoadScene(1, true));
+        StartCoroutine(GameManager.Instance.LoadScene(1, true));
     }
 
     private void DisableHUD()

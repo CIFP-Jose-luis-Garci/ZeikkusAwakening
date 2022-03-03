@@ -19,7 +19,7 @@ public class ItemPopupManager : MonoBehaviour
     void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
-        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+        source = GameManager.Instance.source;
         source.PlayOneShot(sonidoPopUp);
         usar.onClick.AddListener(() =>
         {

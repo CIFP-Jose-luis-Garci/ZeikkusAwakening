@@ -13,7 +13,7 @@ public class PersonajesHUDManager : MonoBehaviour
 
     private void Start()
     {
-        usedCharacterTurnPoints = FindObjectOfType<GameManager>().personajes[0].GetComponent<Stats>();
+        usedCharacterTurnPoints = GameManager.Instance.personajes[0].GetComponent<Stats>();
     }
 
     private void Update()

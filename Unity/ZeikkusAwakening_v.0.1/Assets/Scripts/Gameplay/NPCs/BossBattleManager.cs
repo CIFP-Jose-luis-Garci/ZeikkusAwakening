@@ -22,6 +22,7 @@ public class BossBattleManager : EnemyBattleManager
 
     private void Awake()
     {
+        gameManager = GameManager.Instance;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         animatorManager = GetComponent<AnimatorManager>();
         stats = GetComponent<EnemyStats>();
@@ -46,7 +47,7 @@ public class BossBattleManager : EnemyBattleManager
 
     private void Update()
     {
-        if (GameManager.inPause || !stats.alive || !battleStarted)
+        if (GameManager.Instance.inPause || !stats.alive || !battleStarted)
         {
             if (stats.alive) return;
             agente.speed = 0;

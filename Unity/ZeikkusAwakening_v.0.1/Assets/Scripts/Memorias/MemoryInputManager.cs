@@ -42,7 +42,7 @@ public class MemoryInputManager : MonoBehaviour
         {
             aInput = false;
             if (!dialogue.gameObject.activeSelf) return;
-            if (dialogue.currentEvent == GameManager.currentEvent || dialogue.showingPhrase)
+            if (dialogue.currentEvent == GameManager.Instance.currentEvent || dialogue.showingPhrase)
             {
                 if (dialogue.NextDialogue())
                     source.PlayOneShot(source.clip);;

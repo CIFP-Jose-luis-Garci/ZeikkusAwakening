@@ -22,7 +22,7 @@ public class EscenaBatallaManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.inPause || !battling) return;
+        if (GameManager.Instance.inPause || !battling) return;
         tiempoDeCombate += Time.deltaTime;
     }
 

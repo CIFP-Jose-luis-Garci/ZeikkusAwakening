@@ -22,6 +22,7 @@ public class EnemyBattleManager : MonoBehaviour
     private AudioSource source;
     protected EnemyStats stats;
     protected EscenaBatallaManager escenaBatalla;
+    protected GameManager gameManager;
     private bool isAttacking;
     protected bool isRecoiling;
     protected float waitTime;
@@ -41,6 +42,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerManager>().transform;
         agente = GetComponent<NavMeshAgent>();
@@ -55,7 +57,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.inPause || !stats.alive || !battleStarted)
+        if (gameManager.inPause || !stats.alive || !battleStarted)
         {
             if (!stats.alive)
             {
@@ -131,12 +133,12 @@ public class EnemyBattleManager : MonoBehaviour
         isRecoiling = true;
         animator.SetTrigger("daño");
         animator.SetBool("isAttacking", false);
+        isAttacking = false;
         agente.SetDestination(transform.position);
         waitTime = 0;
         yield return new WaitForSeconds(recoilLength);
         isRecoiling = false;
         recoiled = false;
-        isAttacking = false;
         agente.SetDestination(player.position);
         agente.speed = 4;
     }
@@ -152,13 +154,13 @@ public class EnemyBattleManager : MonoBehaviour
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical, bool forceCrit = false)
     {
-        if (GameManager.inPause) return;
+        if (gameManager.inPause) return;
         recoiled = true;
         int resultado;
         if (isPhysical)
-            resultado = GameManager.CalcPhysDamage(playerStats, stats, power, forceCrit);
+            resultado = gameManager.CalcPhysDamage(playerStats, stats, power, forceCrit);
         else
-            resultado = GameManager.CalcSpecDamage(playerStats, stats, power, forceCrit);
+            resultado = gameManager.CalcSpecDamage(playerStats, stats, power, forceCrit);
         stats.hp -= resultado;
         lifebar.value = stats.hp;
         escenaBatalla.danoTotal += resultado;
@@ -177,7 +179,7 @@ public class EnemyBattleManager : MonoBehaviour
 
     protected void CheckAlive()
     {
-        if (GameManager.transitioning) return;
+        if (gameManager.transitioning) return;
         stats.slotEnemigo.Retract();
         agente.SetDestination(transform.position);
         anyoneAlive = false;
@@ -191,14 +193,14 @@ public class EnemyBattleManager : MonoBehaviour
         }
 
         if (anyoneAlive) return;
-        GameManager.transitioning = true;
-        GameManager.inPause = true;
+        gameManager.transitioning = true;
+        gameManager.inPause = true;
     }
     protected void CheckWinning()
     {
         if (!anyoneAlive)
         {
-            FindObjectOfType<HUDManager>().ToWinBattle();
+            HUDManager.Instance.ToWinBattle();
         }
         Destroy(gameObject);
     }

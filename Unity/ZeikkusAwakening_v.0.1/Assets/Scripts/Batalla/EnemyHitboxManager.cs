@@ -44,7 +44,7 @@ public class EnemyHitboxManager : MonoBehaviour
 
             if (enemyWorld && other.gameObject.CompareTag("Player"))
             {
-                FindObjectOfType<HUDManager>().StartBattle(enemyWorld.gameObject, false, 0);
+                HUDManager.Instance.StartBattle(enemyWorld.gameObject, false, 0);
             }
         }
     }

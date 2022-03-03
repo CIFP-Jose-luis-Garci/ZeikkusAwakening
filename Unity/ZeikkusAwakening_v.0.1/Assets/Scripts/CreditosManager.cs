@@ -12,7 +12,6 @@ public class CreditosManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(MostrarCreditos());
-        GameManager gameManager = FindObjectOfType<GameManager>();
         
     }
 

@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyMeteorManager : Magic
 {
     private AnimatorManager animatorManager;
-    private GameManager gameManager;
     private Animator animator;
     private Transform user;
+    private AudioSource source;
     public GameObject fire, meteorExplosion, smoke;
     public AudioClip cry, woosh;
     private float speed = 15;
@@ -26,7 +26,7 @@ public class EnemyMeteorManager : Magic
         pos.z -= zPos.z;
         transform.position = pos;
         animatorManager = user.GetComponent<AnimatorManager>();
-        gameManager = FindObjectOfType<GameManager>();
+        source = GetComponent<AudioSource>();
         animator = animatorManager.animator;
         fire.SetActive(false);
         meteorExplosion.SetActive(false);
@@ -45,8 +45,8 @@ public class EnemyMeteorManager : Magic
 
     public void MagicSound()
     {
-        gameManager.source.PlayOneShot(cry);
-        gameManager.source.PlayOneShot(woosh);
+        source.PlayOneShot(cry);
+        source.PlayOneShot(woosh);
     }
     
     public void FireAndSmokeEvent()

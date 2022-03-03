@@ -50,7 +50,7 @@ public class ListaItemsManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.SpawnTutorial(container, tutorialToSpawn, null);
+        GameManager.Instance.SpawnTutorial(container, tutorialToSpawn, null);
     }
 
     private void Update()

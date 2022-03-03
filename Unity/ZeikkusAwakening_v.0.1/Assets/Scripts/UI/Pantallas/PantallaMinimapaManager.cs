@@ -19,7 +19,7 @@ public class PantallaMinimapaManager : MonoBehaviour
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
         playerLocomotion = inputManager.GetComponent<PlayerLocomotion>();
         scrollSpeed = 800;
@@ -28,10 +28,10 @@ public class PantallaMinimapaManager : MonoBehaviour
     void OnEnable()
     {
         animator.SetBool("retract", false);
-        if (currentDungeonlevel != GameManager.dungeonLevel)
+        if (currentDungeonlevel != gameManager.dungeonLevel)
         {
             spritesConBillboard = FindObjectsOfType<BillboardSprites>();
-            currentDungeonlevel = GameManager.dungeonLevel;
+            currentDungeonlevel = gameManager.dungeonLevel;
         }
         foreach (BillboardSprites sprite in spritesConBillboard)
         {
@@ -39,10 +39,10 @@ public class PantallaMinimapaManager : MonoBehaviour
             sprite.transform.rotation = Quaternion.Euler(90, -180,0);
         }
 
-        minimapZones ? [GameManager.dungeonLevel].SetActive(true);
+        minimapZones ? [gameManager.dungeonLevel].SetActive(true);
 
-        GameManager.inPause = true;
-        GameManager.viewingMinimap = true;
+        gameManager.inPause = true;
+        gameManager.viewingMinimap = true;
     }
 
     private void Update()
@@ -91,8 +91,8 @@ public class PantallaMinimapaManager : MonoBehaviour
             sprite.GetComponent<BillboardSprites>().enabled = true;
         }
         
-        minimapZones ? [GameManager.dungeonLevel].SetActive(false);
-        GameManager.inPause = false;
-        GameManager.viewingMinimap = false;
+        minimapZones ? [gameManager.dungeonLevel].SetActive(false);
+        gameManager.inPause = false;
+        gameManager.viewingMinimap = false;
     }
 }

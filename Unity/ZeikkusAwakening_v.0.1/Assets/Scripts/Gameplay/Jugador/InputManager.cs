@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
     {
         animatorManager = GetComponent<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = GameManager.Instance;
         freeLook = FindObjectOfType<CinemachineFreeLook>();
     }
 
@@ -128,7 +128,7 @@ public class InputManager : MonoBehaviour
         horizontalInput = movementInput.x;
         
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-        if (GameManager.inPause || GameManager.inCutscene)
+        if (gameManager.inPause || gameManager.inCutscene)
         {
             moveAmount = 0; 
             animatorManager.UpdateAnimatorValues(0, 0);
@@ -144,10 +144,10 @@ public class InputManager : MonoBehaviour
         if (aInput)
         {
             aInput = false;
-            if (GameManager.inCutscene) return;
+            if (gameManager.inCutscene) return;
             if (inDialogue)
             {
-                if (dialogue.currentEvent == GameManager.currentEvent || dialogue.showingPhrase)
+                if (dialogue.currentEvent == gameManager.currentEvent || dialogue.showingPhrase)
                 {
                     if (!dialogue.NextDialogue()) return;
                     cutsceneManager.dialogueCount++;
@@ -169,17 +169,17 @@ public class InputManager : MonoBehaviour
 
             if (gameManager.inWorld)
             {
-                if (GameManager.transitioning)
+                if (gameManager.transitioning)
                     results.End();
                 else
                 {
-                    if (GameManager.inPause || GameManager.viewingMinimap) return;
+                    if (gameManager.inPause || gameManager.viewingMinimap) return;
                     playerLocomotion.HandleJumping();
                 }
             }
             else
             {
-                if (GameManager.transitioning || GameManager.inPause) return;
+                if (gameManager.transitioning || gameManager.inPause) return;
                 showedButtonTutorial = ShowTutorial(buttonTutorial, showedButtonTutorial);
                 playerLocomotion.HandleMagic(0);
             }
@@ -216,9 +216,9 @@ public class InputManager : MonoBehaviour
     {
         if (bInput)
         {
-            if (GameManager.inCutscene) return;
+            if (gameManager.inCutscene) return;
             if (inDialogue) return;
-            if (GameManager.inPause)
+            if (gameManager.inPause)
             {
                 if (gameManager.Pause())
                 {
@@ -229,13 +229,13 @@ public class InputManager : MonoBehaviour
             bInput = false;
             if (!gameManager.inWorld)
             {
-                if (GameManager.transitioning) return;
+                if (gameManager.transitioning) return;
                 showedButtonTutorial = ShowTutorial(buttonTutorial, showedButtonTutorial);
                 playerLocomotion.HandleAttack();
             }
             else
             {
-                if (GameManager.viewingMinimap) return;
+                if (gameManager.viewingMinimap) return;
                 StartCoroutine(playerLocomotion.HandleFirstStrike(zagrantController.gameObject));
             }
         }
@@ -244,7 +244,7 @@ public class InputManager : MonoBehaviour
     private bool ShowTutorial(GameObject tutorial, bool condition)
     {
         if (condition) return true;
-        GameManager.SpawnTutorial(container, tutorial, null);
+        gameManager.SpawnTutorial(container, tutorial, null);
         return true;
     }
     private void HandleStartInput()
@@ -317,7 +317,7 @@ public class InputManager : MonoBehaviour
 
     private void HandleLeftTrigger()
     {
-        if (inDialogue || GameManager.inPause) return;
+        if (inDialogue || gameManager.inPause) return;
         if (gameManager.inWorld) return;
         if (lTrigger)
         {
@@ -335,13 +335,13 @@ public class InputManager : MonoBehaviour
             if (tutorialManager)
                 tutorialManager.ReverseAndDestroy();
             
-            if (inDialogue || GameManager.inPause) return;
+            if (inDialogue || gameManager.inPause) return;
         }
     }
 
     private bool AnyInteraction()
     {
-        return inDialogue || GameManager.inPause || GameManager.transitioning || GameManager.viewingMinimap || GameManager.inCutscene;
+        return inDialogue || gameManager.inPause || gameManager.transitioning || gameManager.viewingMinimap || gameManager.inCutscene;
     }
     
     public void GoBack(GameObject toDisable, GameObject pantallaPausa)

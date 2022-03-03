@@ -56,8 +56,8 @@ public class SelectionManager : MonoBehaviour
         background.CrossFadeAlpha(0, 1, true);
         logo.GetComponent<Image>().CrossFadeAlpha(0, 1, true);
         animator.SetBool("start", true);
-        yield return GameManager.CrossFadeMusic(mixer, 2, true);
+        yield return GameManager.Instance.CrossFadeMusic(mixer, 2, true);
         loading.gameObject.SetActive(true);
-        yield return GameManager.LoadScene(2);
+        yield return GameManager.Instance.LoadScene(2);
     }
 }

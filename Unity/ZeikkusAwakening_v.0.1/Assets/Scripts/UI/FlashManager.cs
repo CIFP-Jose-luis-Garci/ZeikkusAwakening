@@ -16,8 +16,8 @@ public class FlashManager : MonoBehaviour
     {
         background = GetComponent<Image>();
         text = GetComponentInChildren<Text>();
-        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
-        GameManager.SpawnTutorial(container, tutorialToSpawn, null);
+        source = GameManager.Instance.source;
+        GameManager.Instance.SpawnTutorial(container, tutorialToSpawn, null);
     }
 
     private void OnEnable()

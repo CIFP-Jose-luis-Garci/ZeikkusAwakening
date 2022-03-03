@@ -12,9 +12,7 @@ public class ButtonSound : MonoBehaviour, IDeselectHandler, ISelectHandler
     private void Awake()
     {
         if (!gameManagerAudio)
-            gameManagerAudio = FindObjectOfType<GameManager>().source;
-        if (!gameManagerAudio)
-            gameManagerAudio = FindObjectOfType<AudioSource>();
+            gameManagerAudio = GameManager.Instance.source;
     }
 
     public void OnSelect(BaseEventData eventData)

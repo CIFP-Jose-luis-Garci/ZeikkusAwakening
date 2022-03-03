@@ -11,10 +11,12 @@ public class SceneChangeManager : MonoBehaviour
     public VideoPlayer video;
     public Image blackFade;
     private GameObject player;
+    private GameManager gameManager;
 
     private void Start()
     {
         player = FindObjectOfType<PlayerManager>().gameObject;
+        gameManager = GameManager.Instance;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +26,7 @@ public class SceneChangeManager : MonoBehaviour
 
     private IEnumerator LoadLevel()
     {
-        GameManager.transitioning = true;
+        gameManager.transitioning = true;
         blackFade.CrossFadeAlpha(1, 0.3f, true);
         yield return new WaitForSeconds(0.3f);
         video.gameObject.SetActive(true);
@@ -32,17 +34,17 @@ public class SceneChangeManager : MonoBehaviour
         {
             yield return ChangeLevels(nivel2,new Vector3(9.783685f, 22.45268f, -48.07f));
             nivel1.SetActive(false);
-            GameManager.dungeonLevel = 1;
+            gameManager.dungeonLevel = 1;
         } else if (nivel2.activeSelf)
         {
             yield return ChangeLevels(nivel1,new Vector3(2.75f, 0, -43.5f));
             nivel2.SetActive(false);
-            GameManager.dungeonLevel = 0;
+            gameManager.dungeonLevel = 0;
         }
-        GameManager.checkpoint = player.transform.position;
+        gameManager.checkpoint = player.transform.position;
         video.gameObject.SetActive(false);
         blackFade.CrossFadeAlpha(0, 1, true);
-        GameManager.transitioning = false;
+        gameManager.transitioning = false;
     }
 
     private IEnumerator ChangeLevels(GameObject next, Vector3 position)

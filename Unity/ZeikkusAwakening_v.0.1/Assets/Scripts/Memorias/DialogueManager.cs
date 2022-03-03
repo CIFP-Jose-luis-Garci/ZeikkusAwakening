@@ -13,11 +13,17 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText, dialogueName;
     public GameObject aButton;
     private Coroutine coroutine;
+    private GameManager gameManager;
     private string currentPhrase;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
 
     private void OnEnable()
     {
-        currentEvent = GameManager.currentEvent;
+        currentEvent = gameManager.currentEvent;
         NextDialogue();
     }
 
@@ -35,11 +41,11 @@ public class DialogueManager : MonoBehaviour
             }
         }
         aButton.SetActive(false);
-        voice.clip = voiceOvers[GameManager.currentDialogue];
+        voice.clip = voiceOvers[gameManager.currentDialogue];
         voice.Play();
-        string dialogue = DialogueLookupTable.DialogueLookup(GameManager.currentDialogue);
-        GameManager.currentDialogue++;
-        dialogueName.text = GameManager.talking;
+        string dialogue = DialogueLookupTable.DialogueLookup(gameManager.currentDialogue);
+        gameManager.currentDialogue++;
+        dialogueName.text = gameManager.talking;
         coroutine = StartCoroutine(LetraALetra(dialogue));
         return true;
     }

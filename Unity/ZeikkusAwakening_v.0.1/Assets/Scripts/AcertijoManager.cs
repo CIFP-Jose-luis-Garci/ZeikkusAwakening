@@ -11,7 +11,7 @@ public class AcertijoManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.SpawnTutorial(container, popupAcertijo, null);
+            GameManager.Instance.SpawnTutorial(container, popupAcertijo, null);
         }
     }
 }

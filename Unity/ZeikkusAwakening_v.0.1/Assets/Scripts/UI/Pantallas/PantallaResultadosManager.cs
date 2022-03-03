@@ -22,8 +22,8 @@ public class PantallaResultadosManager : MonoBehaviour
         levelUpCount = 0;
         escenaBatallaManager = FindObjectOfType<EscenaBatallaManager>();
         enemies = escenaBatallaManager.enemyStats;
-        exp.text = GameManager.CalcExp(enemies, this);
-        maru.text = GameManager.CalcMaru(enemies);
+        exp.text = GameManager.Instance.CalcExp(enemies, this);
+        maru.text = GameManager.Instance.CalcMaru(enemies);
         danoTotal.text = escenaBatallaManager.danoTotal.ToString();
         tiempoBatalla.text = escenaBatallaManager.TiempoBatalla();
         LevelUpEvent();
@@ -56,7 +56,7 @@ public class PantallaResultadosManager : MonoBehaviour
         if (LevelUpEvent()) return;
         if (sdnm)
             Destroy(sdnm.gameObject);
-        FindObjectOfType<HUDManager>().ToFadeBattle(escenaBatallaManager);
+        HUDManager.Instance.ToFadeBattle(escenaBatallaManager);
         gameObject.SetActive(false);
     }
 }

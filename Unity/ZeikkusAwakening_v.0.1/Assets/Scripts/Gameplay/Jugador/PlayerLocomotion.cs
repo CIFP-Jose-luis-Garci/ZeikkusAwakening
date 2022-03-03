@@ -60,7 +60,7 @@ public class PlayerLocomotion : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         animatorManager = GetComponent<AnimatorManager>();
         rb = GetComponent<Rigidbody>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = GameManager.Instance;
         cameraObject = Camera.main.transform;
         stats = GetComponent<Stats>();
         lookInBetween = FindObjectOfType<InBetweenObjectManager>().transform;
@@ -249,14 +249,14 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical, bool forceCrit = false)
     {
-        if (GameManager.inPause || invincible || !stats.alive) return;
+        if (gameManager.inPause || invincible || !stats.alive) return;
         ResetRigidbody();
         if (!playerManager.isInteracting) animatorManager.PlayTargetAnimation("recoil", true);
         int resultado;
         if (isPhysical)
-            resultado = GameManager.CalcPhysDamage(playerStats, stats, power, forceCrit);
+            resultado = gameManager.CalcPhysDamage(playerStats, stats, power, forceCrit);
         else
-            resultado = GameManager.CalcSpecDamage(playerStats, stats, power, forceCrit);
+            resultado = gameManager.CalcSpecDamage(playerStats, stats, power, forceCrit);
         if (blocking)
             resultado -= (int) (resultado * 0.5f);
 
@@ -272,8 +272,8 @@ public class PlayerLocomotion : MonoBehaviour
             Time.timeScale = 0.5f;
             deathVolume.SetActive(true);
             gameManager.source.PlayOneShot(playerDeath);
-            GameManager.transitioning = true;
-            FindObjectOfType<HUDManager>().ToDieInBattle(transform, stats, deathVolume);
+            GameManager.Instance.transitioning = true;
+            HUDManager.Instance.ToDieInBattle(transform, stats, deathVolume);
         }
     }
 
@@ -304,7 +304,7 @@ public class PlayerLocomotion : MonoBehaviour
         if (striking) return;
         if (collision.gameObject.CompareTag("EnemigoWorld"))
         {
-            FindObjectOfType<HUDManager>().StartBattle(collision.gameObject, false);
+            HUDManager.Instance.StartBattle(collision.gameObject, false);
         }
     }
 }

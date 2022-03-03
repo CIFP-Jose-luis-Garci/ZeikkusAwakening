@@ -1657,13 +1657,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88512261bc03c1642b5b99083d541e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 0}
+  source: {fileID: 8258461700919952435}
+  currentEvent: 0
+  currentDialogue: 0
+  talking: 
+  BGMVolume: -10
+  SFXVolume: -10
+  voiceVolume: -5
+  invertCameraX: 1
+  invertCameraY: 0
+  cameraSensitivityX: 5
+  cameraSensitivityY: 2
+  inPause: 0
   inWorld: 1
+  transitioning: 0
+  viewingMinimap: 0
+  inCutscene: 0
   pause: {fileID: 0}
+  maru: 1000
   personajes:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  checkpoint: {x: 0, y: 0, z: 0}
+  dungeonLevel: 0
+  playtime: 0
+  totalDamage: 0
+  bossDefeated: 0
 --- !u!1 &8258461700919952434
 GameObject:
   m_ObjectHideFlags: 0

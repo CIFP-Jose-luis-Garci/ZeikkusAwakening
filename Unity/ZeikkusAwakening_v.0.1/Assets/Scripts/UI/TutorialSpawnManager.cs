@@ -12,7 +12,7 @@ public class TutorialSpawnManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.SpawnTutorial(container, tutorialToSpawn, gameObject);
+            GameManager.Instance.SpawnTutorial(container, tutorialToSpawn, gameObject);
         }
     }
 }

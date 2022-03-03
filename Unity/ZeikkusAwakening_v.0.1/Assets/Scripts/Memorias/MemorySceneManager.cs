@@ -15,7 +15,7 @@ public class MemorySceneManager : MonoBehaviour
         // sonido de deasaparecer
         yield return new WaitForSeconds(3);
         loading.gameObject.SetActive(true);
-        yield return GameManager.LoadScene(timeToLoad);
+        yield return GameManager.Instance.LoadScene(timeToLoad);
     }
 
     public void ShowDialogue()

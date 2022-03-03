@@ -40,11 +40,11 @@ public class CofreManager : MonoBehaviour
         if (collisionInfo.gameObject.CompareTag("Player"))
             if (containedItem != null && inputManager.xInput)
             {
-                if (GameManager.inPause || playerManager.isInteracting) return;
+                if (GameManager.Instance.inPause || playerManager.isInteracting) return;
                 source.Play();
                 minimapSprite.sprite = chestOpenSprite;
                 animator.enabled = true;
-                GameManager.inPause = true;
+                GameManager.Instance.inPause = true;
             }
             
     }

@@ -10,11 +10,11 @@ public class SwordFireManager : Magic
     private GameManager gameManager;
     private float time;
     private ZagrantController zagrantController;
-    public bool destroy;
+    
     void Start()
     {
         animatorManager = FindObjectOfType<PlayerManager>().GetComponent<AnimatorManager>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = GameManager.Instance;
         if (gameManager.inWorld)
             animatorManager.PlayTargetAnimation("magicSelected firecast", true, true);
         else
@@ -28,8 +28,7 @@ public class SwordFireManager : Magic
             zagrantController = FindObjectOfType<ZagrantController>();
         if (gameManager.inWorld && time > 1.5f)
         {
-            if (GameManager.transitioning) return;
-            destroy = true;
+            if (GameManager.Instance.transitioning) return;
             Destroy();
             zagrantController.gameObject.SetActive(false);
             Destroy(gameObject);

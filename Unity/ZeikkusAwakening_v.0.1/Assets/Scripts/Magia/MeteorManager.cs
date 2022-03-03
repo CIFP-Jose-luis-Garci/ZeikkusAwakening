@@ -18,6 +18,7 @@ public class MeteorManager : Magic
     void Start()
     {
         player = FindObjectOfType<PlayerManager>().transform;
+        gameManager = GameManager.Instance;
         transform.rotation = player.rotation;
         Vector3 pos = player.position;
         pos.y += 1;
@@ -26,7 +27,6 @@ public class MeteorManager : Magic
         pos.z -= zPos.z;
         transform.position = pos;
         animatorManager = player.GetComponent<AnimatorManager>();
-        gameManager = FindObjectOfType<GameManager>();
         if (gameManager.inWorld)
             animatorManager.PlayTargetAnimation("magicSelected fireball", true);
         else

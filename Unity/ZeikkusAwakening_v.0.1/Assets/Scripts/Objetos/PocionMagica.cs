@@ -13,7 +13,7 @@ public class PocionMagica : Item
 
     private void Start()
     {
-        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+        source = GameManager.Instance.source;
     }
 
     public override bool UseItem()
@@ -31,7 +31,7 @@ public class PocionMagica : Item
                 currentStats.mp = currentStats.maxMP;
         }
 
-        FindObjectOfType<PantallaPausaManager>().UpdateValues();
+        GameManager.Instance.pause.UpdateValues();
         FindObjectOfType<MagiaSliderManager>().UpdateSliderValues();
 
         if (someoneIsHealed)

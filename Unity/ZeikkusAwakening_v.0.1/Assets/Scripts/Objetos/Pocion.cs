@@ -13,7 +13,7 @@ public class Pocion : Item
 
     private void Start()
     {
-        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+        source = GameManager.Instance.source;
     }
 
     public override bool UseItem()
@@ -32,7 +32,7 @@ public class Pocion : Item
                 currentStats.hp = currentStats.maxHP;
         }
 
-        FindObjectOfType<PantallaPausaManager>().UpdateValues();
+        GameManager.Instance.pause.UpdateValues();
         FindObjectOfType<VidaSliderManager>().UpdateSliderValues();
 
         if (someoneIsHealed)

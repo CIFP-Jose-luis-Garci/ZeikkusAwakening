@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.inPause)
+        if (GameManager.Instance.inPause)
         {
             agente.SetDestination(transform.position);
             animator.SetBool("detection", false);

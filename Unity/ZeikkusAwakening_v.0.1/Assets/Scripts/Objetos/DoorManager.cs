@@ -16,7 +16,7 @@ public class DoorManager : MonoBehaviour
     void Awake()
     {
         bag = FindObjectOfType<PlayerBagManager>();
-        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+        source = GameManager.Instance.source;
     }
     
     void Start()

@@ -11,8 +11,8 @@ public class ResetBool : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (gameManager == null)
-            gameManager = FindObjectOfType<GameManager>();
+        if (!gameManager)
+            gameManager = GameManager.Instance;
         animator.SetBool(isInteractingBool, interactingStatus);
         animator.applyRootMotion = false;
         if (!gameManager.inWorld) animator.SetBool("isAttacking", false);

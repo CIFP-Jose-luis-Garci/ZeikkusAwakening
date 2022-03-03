@@ -15,7 +15,7 @@ public class ItemSlotManager : MonoBehaviour, ISelectHandler
 
     private void Start()
     {
-        source = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+        source = GameManager.Instance.source;
         gameObject.GetComponent<Button>().onClick.AddListener(() =>
         {
             source.PlayOneShot(sonidoSeleccionar);

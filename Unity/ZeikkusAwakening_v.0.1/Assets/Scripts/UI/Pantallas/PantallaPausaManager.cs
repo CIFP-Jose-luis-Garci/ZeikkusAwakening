@@ -22,18 +22,18 @@ public class PantallaPausaManager : MonoBehaviour
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
-        source = FindObjectOfType<GameManager>().source;
+        source = GameManager.Instance.source;
     }
 
     private void OnEnable()
     {
-        GameManager.inPause = true;
+        GameManager.Instance.inPause = true;
         source.PlayOneShot(sonidoAbirMenu);
         blackFade.gameObject.SetActive(false);
         flash.gameObject.SetActive(false);
         inventario.Select();
         UpdateValues();
-        mixer.SetFloat("BGMVolume", GameManager.BGMVolume - 5);
+        mixer.SetFloat("BGMVolume", GameManager.Instance.BGMVolume - 5);
         mixer.SetFloat("EnemiesSFXVolume", -80);
         mixer.SetFloat("EnvironmentSFXVolume", -80);
         mixer.SetFloat("BossSFXVolume", -80);
@@ -41,12 +41,12 @@ public class PantallaPausaManager : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.inPause = false;
+        GameManager.Instance.inPause = false;
         source.PlayOneShot(sonidoCerrarMenu);
         blackFade.gameObject.SetActive(true);
         blackFade.CrossFadeAlpha(0, 0, true);
         
-        mixer.SetFloat("BGMVolume", GameManager.BGMVolume);
+        mixer.SetFloat("BGMVolume", GameManager.Instance.BGMVolume);
         mixer.SetFloat("EnemiesSFXVolume", 0);
         mixer.SetFloat("EnvironmentSFXVolume", 0);
         mixer.SetFloat("BossSFXVolume", 0);
@@ -54,7 +54,7 @@ public class PantallaPausaManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.SpawnTutorial(container, tutorialToSpawn, null);
+        GameManager.Instance.SpawnTutorial(container, tutorialToSpawn, null);
         inventario.onClick.AddListener(() =>
         {
             source.PlayOneShot(sonidoClickMenu);
@@ -82,7 +82,7 @@ public class PantallaPausaManager : MonoBehaviour
         zeikkuStats = inputManager.gameObject.GetComponent<Stats>();
         zeikkuVida.text = zeikkuStats.hp + "/" + zeikkuStats.maxHP;
         zeikkuMagia.text = zeikkuStats.mp + "/" + zeikkuStats.maxMP;
-        maru.text = GameManager.maru.ToString();
+        maru.text = GameManager.Instance.maru.ToString();
     }
 
     public bool HasChildrenActive()

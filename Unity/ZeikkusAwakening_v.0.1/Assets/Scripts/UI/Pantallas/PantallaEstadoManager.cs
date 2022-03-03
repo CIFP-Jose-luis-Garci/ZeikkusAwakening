@@ -16,7 +16,7 @@ public class PantallaEstadoManager : MonoBehaviour
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
-        GameManager.SpawnTutorial(container, tutorialToSpawn, null);
+        GameManager.Instance.SpawnTutorial(container, tutorialToSpawn, null);
     }
     private void OnEnable()
     {

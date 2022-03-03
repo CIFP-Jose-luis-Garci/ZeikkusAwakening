@@ -12,34 +12,52 @@ public class GameManager : MonoBehaviour
     public AudioSource source;
     
     [Header("Dialogos")]
-    public static int currentEvent = 0;
-    public static int currentDialogue = 0;
-    public static string talking;
-    private static int nextScene = 0;
+    public int currentEvent = 0;
+    public int currentDialogue = 0;
+    public string talking;
+    private int nextScene = 0;
     
     [Header("Configuración")]
-    public static float BGMVolume = -10;
-    public static float SFXVolume = -10;
-    public static float voiceVolume = -5;
-    public static bool invertCameraX = true;
-    public static bool invertCameraY = false;
-    public static int cameraSensitivityX = 5;
-    public static int cameraSensitivityY = 2;
-    public static bool inPause;
+    public float BGMVolume = -10;
+    public float SFXVolume = -10;
+    public float voiceVolume = -5;
+    public bool invertCameraX = true;
+    public bool invertCameraY = false;
+    public int cameraSensitivityX = 5;
+    public int cameraSensitivityY = 2;
+    public bool inPause;
     
     [Header("Transiciones")]
     public bool inWorld;
-    public static bool transitioning;
-    public static bool viewingMinimap;
-    public static bool inCutscene;
+    public bool transitioning;
+    public bool viewingMinimap;
+    public bool inCutscene;
     public PantallaPausaManager pause;
     
     [Header("Datos de juego")]
-    public static int maru = 1000;
+    public int maru = 1000;
     public GameObject[] personajes;
-    public static Vector3 checkpoint;
-    public static int dungeonLevel;
+    public Vector3 checkpoint;
+    public int dungeonLevel;
+    public float playtime;
+    public int totalDamage;
+    public bool bossDefeated;
+    
+    public static GameManager Instance { get; private set; }
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this);
+            // You could also log a warning.
+        }
+    }
     public bool Pause()
     {
         if (!pause.HasChildrenActive() && !transitioning && !viewingMinimap)
@@ -51,7 +69,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public static IEnumerator CrossFadeMusic(AudioMixer mixer, float time, bool muting)
+    public IEnumerator CrossFadeMusic(AudioMixer mixer, float time, bool muting)
     {
         float current;
         float min = -40;
@@ -81,17 +99,17 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public static int CalcPhysDamage(Stats playerStats, Stats enemyStats, float baseDamage, bool forceCrit)
+    public int CalcPhysDamage(Stats playerStats, Stats enemyStats, float baseDamage, bool forceCrit)
     {
         return CalcDamage(playerStats.strength, enemyStats.defense, baseDamage, forceCrit);
     }
 
-    public static int CalcSpecDamage(Stats playerStats, Stats enemyStats, float baseDamage, bool forceCrit)
+    public int CalcSpecDamage(Stats playerStats, Stats enemyStats, float baseDamage, bool forceCrit)
     {
         return CalcDamage(playerStats.magicPower, enemyStats.resistance, baseDamage, forceCrit);
     }
 
-    private static int CalcDamage(int power, int defense, float baseDamage, bool forceCrit)
+    private int CalcDamage(int power, int defense, float baseDamage, bool forceCrit)
     {
         float resultado = 0.2f * 2;
         resultado += 1;
@@ -117,7 +135,7 @@ public class GameManager : MonoBehaviour
         return (int) resultado;
     }
 
-    public static string CalcExp(EnemyStats[] enemies, PantallaResultadosManager resultados)
+    public string CalcExp(EnemyStats[] enemies, PantallaResultadosManager resultados)
     {
         int resultado = 0;
         foreach (EnemyStats current in enemies)
@@ -125,17 +143,20 @@ public class GameManager : MonoBehaviour
             float exp = ((float)current.level / GetTeamLevel()) * current.expBase;
             resultado += (int) exp;
         }
-        GameObject[] characters = FindObjectOfType<GameManager>().personajes;
+        GameObject[] characters = Instance.personajes;
         int countLevels = 0;
         foreach (GameObject character in characters)
         {
-            resultados.levelUps[countLevels] = character.GetComponent<Stats>().AddExp(resultado);
-            countLevels++;
+            if (character)
+            {
+                resultados.levelUps[countLevels] = character.GetComponent<Stats>().AddExp(resultado);
+                countLevels++;
+            }
         }
         return resultado.ToString();
     }
 
-    public static string CalcMaru(EnemyStats[] enemies)
+    public string CalcMaru(EnemyStats[] enemies)
     {
         int totalMaru = 0;
         foreach (EnemyStats current in enemies)
@@ -147,16 +168,21 @@ public class GameManager : MonoBehaviour
         return totalMaru.ToString();
     }
 
-    private static int GetTeamLevel()
+    private int GetTeamLevel()
     {
-        GameObject[] characters = FindObjectOfType<GameManager>().personajes;
+        GameObject[] characters = personajes;
         int level = 0;
+        int count = 0;
         foreach (GameObject character in characters)
         {
-            level = character.GetComponent<Stats>().level;
+            if (character)
+            {
+                level = character.GetComponent<Stats>().level;
+                count++;
+            }
         }
         
-        level /= characters.Length;
+        level /= count;
         if (level < 1)
             level = 1;
         
@@ -164,7 +190,7 @@ public class GameManager : MonoBehaviour
     }
     
     
-    public static void SpawnTutorial(GameObject container, GameObject tutorialToSpawn, GameObject caller)
+    public void SpawnTutorial(GameObject container, GameObject tutorialToSpawn, GameObject caller)
     {
         TutorialManager contained = container.GetComponentInChildren<TutorialManager>();
         if (contained)
@@ -175,7 +201,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public static IEnumerator LoadScene(float timeToLoad, bool isMemory = false)
+    public IEnumerator LoadScene(float timeToLoad, bool isMemory = false)
     {
         yield return new WaitForSeconds(timeToLoad);
         AsyncOperation asyncOperation;

@@ -35,9 +35,9 @@ public class ItemDialogueBoxController : MonoBehaviour
 
     private void Update()
     {
-        if (inputManager.xInput && GameManager.inPause)
+        if (inputManager.xInput && GameManager.Instance.inPause)
         {
-            GameManager.inPause = false;
+            GameManager.Instance.inPause = false;
             foreach (Graphic child in children)
             {
                 if (!child) continue;

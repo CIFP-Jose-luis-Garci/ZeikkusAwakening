@@ -9,6 +9,7 @@ public class ZagrantController : MonoBehaviour
 
     public Animator animator;
     private AudioSource source;
+    private Stats stats;
     public bool isAttacking;
     public bool onFire;
     private static readonly int Damage = Animator.StringToHash("damage");
@@ -18,11 +19,12 @@ public class ZagrantController : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
+        stats = animator.GetComponent<Stats>();
     }
 
     private void Update()
     {
-        isAttacking = animator.GetBool(IsAttacking);
+        isAttacking = stats.alive && animator.GetBool(IsAttacking);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,7 +43,7 @@ public class ZagrantController : MonoBehaviour
             {
                 if (onFire)
                     FindObjectOfType<SwordFireManager>().Destroy();
-                FindObjectOfType<HUDManager>().StartBattle(otherObject, false, 2);
+                HUDManager.Instance.StartBattle(otherObject, false, 2);
             }
 
             if (otherObject.CompareTag("Boss"))

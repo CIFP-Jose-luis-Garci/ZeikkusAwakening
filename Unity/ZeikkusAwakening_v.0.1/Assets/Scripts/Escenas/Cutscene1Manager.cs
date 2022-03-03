@@ -11,6 +11,7 @@ public class Cutscene1Manager : CutsceneManager
     public AnimatorManager animatorManager;
     private InputManager inputManager;
     private HUDManager hudManager;
+    private GameManager gameManager;
     private bool gotSword;
     public Image blackFade;
     public Texture faceEyesOpen;
@@ -22,12 +23,19 @@ public class Cutscene1Manager : CutsceneManager
     public GameObject minimapa;
     public GameObject saltarEscena;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        hudManager = HUDManager.Instance;
+        gameManager = GameManager.Instance;
+        gameManager.personajes = new GameObject[3];
+        gameManager.personajes[0] = animatorManager.gameObject;
+        gameManager.pause = hudManager.pantallaPausa;
+    }
+
     void Start()
     {
         saltarEscena.SetActive(true);
         inputManager = animatorManager.GetComponent<InputManager>();
-        hudManager = FindObjectOfType<HUDManager>();
         dialogue.gameObject.SetActive(true);
         animatorManager.transform.rotation = Quaternion.identity;
         animatorManager.animator.CrossFade("Sleeping", 0);
@@ -81,7 +89,7 @@ public class Cutscene1Manager : CutsceneManager
             case 16:
                 cameras[5].SetActive(false);
                 cameras[3].SetActive(true);
-                FindObjectOfType<HUDManager>().WinBattleAnimation();
+                hudManager.WinBattleAnimation();
                 gotSword = false;
                 break;
             case 17:
@@ -104,8 +112,8 @@ public class Cutscene1Manager : CutsceneManager
             camera.SetActive(false);
         }
 
-        GameManager.currentDialogue = 19;
-        GameManager.currentEvent = 3;
+        GameManager.Instance.currentDialogue = 19;
+        GameManager.Instance.currentEvent = 3;
         dialogue.gameObject.SetActive(false);
         StartCoroutine(FadeToBlack());
     }

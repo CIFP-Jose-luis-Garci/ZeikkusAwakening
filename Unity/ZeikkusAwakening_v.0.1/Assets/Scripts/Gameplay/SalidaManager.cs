@@ -8,7 +8,7 @@ public class SalidaManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<GameManager>().source.PlayOneShot(sonidoPortal);
-        FindObjectOfType<HUDManager>().FinishLevel();
+        GameManager.Instance.source.PlayOneShot(sonidoPortal);
+        HUDManager.Instance.FinishLevel();
     }
 }

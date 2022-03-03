@@ -12,7 +12,6 @@ public class PlayerManager : MonoBehaviour
     
     private GameManager gameManager;
     public bool isInteracting;
-    public bool isUsingRootMotion;
     private static readonly int IsInteracting = Animator.StringToHash("isInteracting");
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
@@ -23,7 +22,7 @@ public class PlayerManager : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         gameManager = FindObjectOfType<GameManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
-        GameManager.checkpoint = transform.position;
+        GameManager.Instance.checkpoint = transform.position;
     }
 
     private void Update()
@@ -33,14 +32,13 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.inPause || GameManager.transitioning || GameManager.inCutscene) return;
+        if (GameManager.Instance.inPause || GameManager.Instance.transitioning || GameManager.Instance.inCutscene) return;
         playerLocomotion.HandleAllMovement();
     }
 
     private void LateUpdate()
     {
         isInteracting = animator.GetBool(IsInteracting);
-        //isUsingRootMotion = animator.GetBool("isUsingRootMotion");
         if (gameManager.inWorld)
         {
             playerLocomotion.isJumping = animator.GetBool(IsJumping);

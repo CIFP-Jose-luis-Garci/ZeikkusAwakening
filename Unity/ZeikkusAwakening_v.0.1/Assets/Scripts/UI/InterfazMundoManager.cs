@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class InterfazMundoManager : MonoBehaviour
 {
     private Animator animator;
-    private GameManager gameManager;
     private InputManager inputManager;
     public Text nombreZona;
     private float timeToShow = 2;
@@ -15,13 +14,12 @@ public class InterfazMundoManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        gameManager = FindObjectOfType<GameManager>();
         inputManager = FindObjectOfType<InputManager>();
     }
 
     void Update()
     {
-        if (inputManager.anyButtonPressed || inputManager.inDialogue || !gameManager.inWorld || GameManager.inPause)
+        if (inputManager.anyButtonPressed || inputManager.inDialogue || !GameManager.Instance.inWorld || GameManager.Instance.inPause)
         {
             timeToShow = 2;
             if (showing)

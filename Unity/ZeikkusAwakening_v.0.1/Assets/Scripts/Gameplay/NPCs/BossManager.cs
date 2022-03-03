@@ -22,8 +22,8 @@ public class BossManager : EnemyManager
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.transitioning = false;
-            FindObjectOfType<HUDManager>().StartBattle(gameObject, true, 1);
+            GameManager.Instance.transitioning = false;
+            HUDManager.Instance.StartBattle(gameObject, true, 1);
         }
     }
 }

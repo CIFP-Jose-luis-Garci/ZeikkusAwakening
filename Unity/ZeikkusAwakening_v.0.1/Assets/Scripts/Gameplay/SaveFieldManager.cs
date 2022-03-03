@@ -5,23 +5,19 @@ using UnityEngine;
 
 public class SaveFieldManager : MonoBehaviour
 {
-    private HUDManager hudManager;
     private bool showedTutorial;
     public GameObject container, tutorialCheckpoint;
 
-    private void Start()
-    {
-        hudManager = FindObjectOfType<HUDManager>();
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.checkpoint = transform.position;
+        GameManager.Instance.checkpoint = transform.position;
         if (!showedTutorial)
         {
             showedTutorial = true;
-            GameManager.SpawnTutorial(container, tutorialCheckpoint, null);
+            GameManager.Instance.SpawnTutorial(container, tutorialCheckpoint, null);
         }
-        hudManager.ShowCheckpointArrived();
+        HUDManager.Instance.ShowCheckpointArrived();
     }
 }

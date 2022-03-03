@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour
     {
         cmfl = GetComponent<CinemachineFreeLook>();
         ibom = FindObjectOfType<InBetweenObjectManager>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = GameManager.Instance;
         originalRadius = cmfl.m_Orbits[1].m_Radius;
         orbit = cmfl.m_Orbits[1];
         ChangeCameraInvert();
@@ -38,14 +38,14 @@ public class CameraManager : MonoBehaviour
 
     public void ChangeCameraInvert()
     {
-        cmfl.m_XAxis.m_InvertInput = GameManager.invertCameraX;
-        cmfl.m_YAxis.m_InvertInput = GameManager.invertCameraY;
+        cmfl.m_XAxis.m_InvertInput = gameManager.invertCameraX;
+        cmfl.m_YAxis.m_InvertInput = gameManager.invertCameraY;
     }
 
     public void ChangeCameraSensitivity()
     {
-        int sensitivityX = 50 + (GameManager.cameraSensitivityX * 50);
-        int sensitivityY = GameManager.cameraSensitivityY;
+        int sensitivityX = 50 + (gameManager.cameraSensitivityX * 50);
+        int sensitivityY = gameManager.cameraSensitivityY;
         cmfl.m_XAxis.m_MaxSpeed = sensitivityX;
         cmfl.m_YAxis.m_MaxSpeed = sensitivityY;
     }

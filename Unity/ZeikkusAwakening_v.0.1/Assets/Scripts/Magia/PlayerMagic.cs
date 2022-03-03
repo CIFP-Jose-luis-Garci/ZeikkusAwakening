@@ -7,7 +7,7 @@ public class PlayerMagic : MonoBehaviour
     public GameObject[] magics;
     public bool MagicAttackLookupTable(int selected)
     {
-        if (!FindObjectOfType<GameManager>().inWorld)
+        if (!GameManager.Instance.inWorld)
         {
             Stats playerStats = GetComponent<Stats>();
             int mpCost = magics[selected].GetComponent<Magic>().mpCost;

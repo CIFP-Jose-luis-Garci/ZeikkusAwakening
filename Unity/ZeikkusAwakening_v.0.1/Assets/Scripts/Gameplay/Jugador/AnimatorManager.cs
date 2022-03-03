@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 public class AnimatorManager : MonoBehaviour
 {
     [NonSerialized] public Animator animator;
-    private GameManager gameManager;
     private int horizontal;
     private int vertical;
     [Header("Zagrant")]
@@ -27,7 +26,6 @@ public class AnimatorManager : MonoBehaviour
         animator = GetComponent<Animator>();
         horizontal = Animator.StringToHash("Horizontal");
         vertical = Animator.StringToHash("Vertical");
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement)
@@ -81,7 +79,7 @@ public class AnimatorManager : MonoBehaviour
 
     public void ChangeWorld(bool value)
     {
-        gameManager.inWorld = value;
+        GameManager.Instance.inWorld = value;
         animator.SetBool("inWorld", value);
     }
     
