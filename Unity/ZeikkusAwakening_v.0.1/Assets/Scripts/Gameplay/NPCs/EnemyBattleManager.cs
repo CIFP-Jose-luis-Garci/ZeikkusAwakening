@@ -91,6 +91,7 @@ public class EnemyBattleManager : MonoBehaviour
             {
                 randomAttack = Random.Range(0f, 1f);
                 animator.SetFloat("tipoAtaque", randomAttack);
+                LookAtPlayer();
                 animator.SetTrigger("alcance");
                 agente.speed = 0;
             }
@@ -138,6 +139,15 @@ public class EnemyBattleManager : MonoBehaviour
         isAttacking = false;
         agente.SetDestination(player.position);
         agente.speed = 4;
+    }
+
+    protected void LookAtPlayer()
+    {
+        transform.LookAt(player.position);
+        Quaternion fix = transform.rotation;
+        fix.x = 0;
+        fix.z = 0;
+        transform.rotation = fix;
     }
 
     public void RecieveDamage(Stats playerStats, float power, bool isPhysical, bool forceCrit = false)

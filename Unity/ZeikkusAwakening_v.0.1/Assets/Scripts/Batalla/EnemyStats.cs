@@ -18,7 +18,6 @@ public class EnemyStats : Stats
             level = 1;
         }
 
-        Debug.Log(level);
         int levelAdded = 1;
         Estadistica[] values = new Estadistica[7];
         for (int i = 0; i < values.Length; i++)
@@ -27,10 +26,11 @@ public class EnemyStats : Stats
         }
         while (levelAdded < level)
         {
+            Debug.Log(level);
             CalcValues(values);
             levelAdded++;
+            if (level > 1)
+                AddValues(values);
         }
-        if (level > 1)
-            AddValues(values);
     }
 }

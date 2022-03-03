@@ -192,23 +192,13 @@ public class BossBattleManager : EnemyBattleManager
                 isBlocking = true;
                 break;
             case "Usar magia":
-                LookAtPlayer();
-                StopAIandAnimate("magic fireball");
                 if (magic.MagicAttackLookupTable(magicSlots[Random.Range(0, magicSlots.Length)]))
+                {
+                    StopAIandAnimate("magic fireball");
                     LookAtPlayer();
-                // que magia hago?
-                // hacer animacion de magia
+                }
                 break;
         }
-    }
-
-    private void LookAtPlayer()
-    {
-        transform.LookAt(player.position);
-        Quaternion fix = transform.rotation;
-        fix.x = 0;
-        fix.z = 0;
-        transform.rotation = fix;
     }
 
     private void StopAIandAnimate(string targetAnimation, bool useRootMotion = false)

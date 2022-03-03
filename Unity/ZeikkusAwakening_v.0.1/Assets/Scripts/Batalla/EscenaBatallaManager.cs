@@ -46,7 +46,8 @@ public class EscenaBatallaManager : MonoBehaviour
         foreach (EnemyStats enemy in enemyStats)
         {
             if (isBoss) break;
-            int newLevel = Random.Range(1, 6);
+            int newLevel = Random.Range(1, 4);
+            Debug.Log(newLevel);
             enemy.SetLevel(newLevel);
             
             switch (enemyAdvantage)
