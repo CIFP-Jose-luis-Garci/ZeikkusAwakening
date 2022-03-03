@@ -71,6 +71,7 @@ public class PantallaMinimapaManager : MonoBehaviour
         {
             playerLocomotion.GravitySet(true);
             inputManager.select = false;
+            gameManager.source.PlayOneShot(sonidoMapa);
             StartCoroutine(Retract());
         }
     }
@@ -91,7 +92,6 @@ public class PantallaMinimapaManager : MonoBehaviour
         }
         
         minimapZones ? [GameManager.dungeonLevel].SetActive(false);
-        gameManager.source.PlayOneShot(sonidoMapa);
         GameManager.inPause = false;
         GameManager.viewingMinimap = false;
     }
