@@ -25,7 +25,7 @@ public class SwordFireManager : Magic
     {
         time += Time.deltaTime;
         if (!zagrantController)
-            zagrantController = FindObjectOfType<ZagrantController>();
+            zagrantController = animatorManager.zagrant.GetComponent<ZagrantController>();
         if (gameManager.inWorld && time > 1.5f)
         {
             if (GameManager.Instance.transitioning) return;

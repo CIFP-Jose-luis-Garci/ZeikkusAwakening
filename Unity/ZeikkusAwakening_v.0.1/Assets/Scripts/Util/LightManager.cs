@@ -9,7 +9,7 @@ public class LightManager : MonoBehaviour
     private Light[] lights;
     private GameObject[] antorchas;
 
-    private void Awake()
+    private void Start()
     {
         player = InputManager.Instance.gameObject;
         lights = GetComponentsInChildren<Light>();

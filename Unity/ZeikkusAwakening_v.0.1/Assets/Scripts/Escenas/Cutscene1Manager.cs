@@ -23,17 +23,14 @@ public class Cutscene1Manager : CutsceneManager
     public GameObject minimapa;
     public GameObject saltarEscena;
 
-    private void Awake()
+
+    void Start()
     {
         hudManager = HUDManager.Instance;
         gameManager = GameManager.Instance;
         gameManager.personajes = new GameObject[3];
         gameManager.personajes[0] = animatorManager.gameObject;
         gameManager.pause = hudManager.pantallaPausa;
-    }
-
-    void Start()
-    {
         saltarEscena.SetActive(true);
         inputManager = InputManager.Instance;
         dialogue.gameObject.SetActive(true);

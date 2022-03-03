@@ -59,7 +59,6 @@ public class InputManager : MonoBehaviour
         animatorManager = GetComponent<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
         gameManager = GameManager.Instance;
-        freeLook = HUDManager.Instance.cmfl;
     }
 
     private void OnEnable()
@@ -320,7 +319,8 @@ public class InputManager : MonoBehaviour
                 animatorManager.animator.SetBool("blocking", false);
                 playerLocomotion.blocking = false;
             }
-            freeLook.m_RecenterToTargetHeading.m_enabled = false;
+            if (freeLook)
+                freeLook.m_RecenterToTargetHeading.m_enabled = false;
         }
 
     }

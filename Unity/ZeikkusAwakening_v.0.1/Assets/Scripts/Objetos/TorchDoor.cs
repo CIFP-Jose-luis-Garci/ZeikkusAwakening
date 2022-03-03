@@ -19,7 +19,7 @@ public class TorchDoor : MonoBehaviour
     public GameObject door;
     public AudioClip abrirPuerta;
 
-    private void Awake()
+    private void Start()
     {
         fuego = GetComponentInChildren<VisualEffect>();
         luz = GetComponentInChildren<Light>();
