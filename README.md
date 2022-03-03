@@ -9,5 +9,5 @@ EQUIPO:
 Jorge Sánchez Sánchez (Programador de Efectos/UI, Concept Art)<br>
 Guillermo Manso Cantalapiedra (Diseño de Niveles)<br>
 Miriam Romero Recio (Artista 3D)<br>
-Alejandro Aguayo Hernandez (Sonido y banda sonora)<br>
+Alejandro Aguayo Hernández (Sonido y banda sonora)<br>
 Ignacio Lledó Milanca (Programador Gameplay/IA)<br>
