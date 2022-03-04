@@ -9,15 +9,15 @@ public class PersonajesHUDManager : MonoBehaviour
     public Sprite[] spritesPuntosDeTurno;
     public Image valorPuntosDeTurno;
 
-    private Stats usedCharacterTurnPoints;
+    private Stats stats;
 
     private void Start()
     {
-        usedCharacterTurnPoints = GameManager.Instance.personajes[0].GetComponent<Stats>();
+        stats = InputManager.Instance.GetComponent<Stats>();
     }
 
     private void Update()
     {
-        valorPuntosDeTurno.sprite = spritesPuntosDeTurno[usedCharacterTurnPoints.turnPoints];
+        valorPuntosDeTurno.sprite = spritesPuntosDeTurno[stats.turnPoints];
     }
 }

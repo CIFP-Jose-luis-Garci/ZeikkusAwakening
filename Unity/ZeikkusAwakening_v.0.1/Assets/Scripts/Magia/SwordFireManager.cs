@@ -23,12 +23,13 @@ public class SwordFireManager : Magic
 
     private void Update()
     {
+        if (!gameManager.inWorld && gameManager.inPause) return;
         time += Time.deltaTime;
         if (!zagrantController)
             zagrantController = animatorManager.zagrant.GetComponent<ZagrantController>();
         if (gameManager.inWorld && time > 1.5f)
         {
-            if (GameManager.Instance.transitioning) return;
+            if (gameManager.transitioning) return;
             Destroy();
             zagrantController.gameObject.SetActive(false);
             Destroy(gameObject);

@@ -49,10 +49,10 @@ public class BossBattleManager : EnemyBattleManager
     {
         if (GameManager.Instance.inPause || !stats.alive || !battleStarted)
         {
-            if (stats.alive) return;
-            gameManager.bossDefeated = true;
             agente.speed = 0;
             agente.SetDestination(transform.position);
+            if (stats.alive) return;
+            gameManager.bossDefeated = true;
             if (time <= 0)
                 CheckAlive();
             time += Time.deltaTime;
