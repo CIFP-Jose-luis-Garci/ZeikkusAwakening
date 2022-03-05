@@ -90,6 +90,7 @@ public class Cutscene1Manager : CutsceneManager
                 gotSword = false;
                 break;
             case 17:
+                endingCutscene = true;
                 StartCoroutine(FadeToBlack());
                 break;
         }
@@ -120,6 +121,7 @@ public class Cutscene1Manager : CutsceneManager
         cameras[0].SetActive(false);
         cameras[1].SetActive(true);
         yield return new WaitForSeconds(1.8f);
+        if (endingCutscene) yield break;
         animatorManager.PlayTargetAnimation("Get Up", false);
     }
 

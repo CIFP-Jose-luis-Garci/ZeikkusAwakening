@@ -15,6 +15,9 @@ public class CameraManager : MonoBehaviour
     private void Awake()
     {
         cmfl = GetComponent<CinemachineFreeLook>();
+        Transform player = InputManager.Instance.transform;
+        cmfl.m_LookAt = player;
+        cmfl.m_Follow = player;
         ibom = FindObjectOfType<InBetweenObjectManager>();
         gameManager = GameManager.Instance;
         originalRadius = cmfl.m_Orbits[1].m_Radius;

@@ -21,11 +21,17 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'mixamorig:LeftLeg'
-      : position error = 17.843338 mm\n\t'mixamorig:LeftFoot' : position error =
-      17.843355 mm\n\t'mixamorig:RightLeg' : position error = 45.413246 mm\n\t'mixamorig:RightFoot'
-      : position error = 18.651873 mm\n"
+      : position error = 78.180649 mm\n\t'mixamorig:LeftFoot' : position error =
+      28.278847 mm\n\t'mixamorig:RightLeg' : position error = 62.207737 mm\n\t'mixamorig:RightFoot'
+      : position error = 2.839658 mm\n"
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'mixamorig:LeftLeg' has translation animation
+      that will be discarded.\n\t'mixamorig:LeftFoot' has translation animation that
+      will be discarded.\n\t'mixamorig:RightLeg' has translation animation that will
+      be discarded.\n\t'mixamorig:RightFoot' has translation animation that will
+      be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -54,7 +60,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
