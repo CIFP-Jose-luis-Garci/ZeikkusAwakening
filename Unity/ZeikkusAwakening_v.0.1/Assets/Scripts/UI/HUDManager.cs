@@ -63,18 +63,21 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameManager.playtime += Time.unscaledDeltaTime;
+        gameManager.playtime += Time.deltaTime;
         if (tiempo.gameObject.activeInHierarchy)
             tiempo.text = TiempoActual();
     }
     
     private string TiempoActual()
     {
-    
-        string horas = Mathf.Floor((gameManager.playtime / 60) / 24).ToString("00");
-        string minutos = Mathf.Floor(gameManager.playtime / 60).ToString("00");
-        string segundos = Mathf.Floor(gameManager.playtime % 60).ToString("00");
-    
+        float time = GameManager.Instance.playtime;
+        int hours = Mathf.FloorToInt(time / 60 / 60);
+        int minutes = Mathf.FloorToInt(time / 60) % 60;
+        int seconds = Mathf.FloorToInt(time % 60);
+        string horas = hours.ToString("00");
+        string minutos = minutes.ToString("00");
+        string segundos = seconds.ToString("00");
+
         return horas + ":" + minutos + ":" + segundos;
     }
 

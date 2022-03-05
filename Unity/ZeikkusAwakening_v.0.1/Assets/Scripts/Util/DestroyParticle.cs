@@ -4,10 +4,4 @@ using UnityEngine;
 
 public class DestroyParticle : MonoBehaviour
 {
-    public float secondsToDestruction;
-
-    public void Start()
-    {
-        Destroy(gameObject, secondsToDestruction);
-    }
 }

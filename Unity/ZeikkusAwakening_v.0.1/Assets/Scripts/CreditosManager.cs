@@ -24,9 +24,12 @@ public class CreditosManager : MonoBehaviour
     private string TiempoActual()
     {
         float time = GameManager.Instance.playtime;
-        string horas = Mathf.Floor((time / 60) / 24).ToString("00");
-        string minutos = Mathf.Floor(time / 60).ToString("00");
-        string segundos = Mathf.Floor(time % 60).ToString("00");
+        int hours = Mathf.FloorToInt(time / 60 / 60);
+        int minutes = Mathf.FloorToInt(time / 60) % 60;
+        int seconds = Mathf.FloorToInt(time % 60);
+        string horas = hours.ToString("00");
+        string minutos = minutes.ToString("00");
+        string segundos = seconds.ToString("00");
     
         return horas + ":" + minutos + ":" + segundos;
     }

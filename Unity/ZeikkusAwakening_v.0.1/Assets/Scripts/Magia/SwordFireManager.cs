@@ -27,17 +27,9 @@ public class SwordFireManager : Magic
         time += Time.deltaTime;
         if (!zagrantController)
             zagrantController = animatorManager.zagrant.GetComponent<ZagrantController>();
-        if (gameManager.inWorld && time > 1.5f)
+        if (gameManager.inWorld && time > 1.5f || !gameManager.inWorld && time > 20)
         {
-            if (gameManager.transitioning) return;
             Destroy();
-            zagrantController.gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
-        if (!gameManager.inWorld && time > 20)
-        {
-            zagrantController.onFire = false;
-            Destroy(gameObject);
         }
     }
 
@@ -47,5 +39,9 @@ public class SwordFireManager : Magic
         zagrantController.onFire = false;
         if (dp)
             Destroy(dp.gameObject);
+        if (gameManager.inWorld && !gameManager.transitioning)
+            zagrantController.gameObject.SetActive(false);
+        Destroy(gameObject);
+        
     }
 }

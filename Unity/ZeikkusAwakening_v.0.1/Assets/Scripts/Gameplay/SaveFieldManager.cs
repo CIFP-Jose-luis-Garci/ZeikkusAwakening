@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SaveFieldManager : MonoBehaviour
 {
-    private bool showedTutorial;
+    private static bool showedTutorial;
     public GameObject container, tutorialCheckpoint;
 
     

@@ -127,6 +127,7 @@ public class Cutscene1Manager : CutsceneManager
     {
         hudManager.StartBattleAnimation();
         yield return new WaitForSeconds(2f);
+        if (endingCutscene) yield break;
         dialogue.gameObject.SetActive(true);
     }
 
