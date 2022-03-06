@@ -44,6 +44,7 @@ public class TorchDoor : MonoBehaviour
             }
             else
             {
+                other.GetComponent<ZagrantController>().gameObject.SetActive(false);
                 brain.m_DefaultBlend.m_Time = 0.5f;
                 playerCmfl.gameObject.SetActive(false);
                 doorVcam.gameObject.SetActive(true);
