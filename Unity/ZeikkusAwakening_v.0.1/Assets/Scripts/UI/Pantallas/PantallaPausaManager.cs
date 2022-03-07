@@ -14,6 +14,8 @@ public class PantallaPausaManager : MonoBehaviour
     private GameManager gameManager;
     public GameObject pantallaInventario, pantallaEstado, pantallaOpciones, pantallaResultados;
     public GameObject container, tutorialToSpawn;
+    public VidaSliderManager sliderVida;
+    public MagiaSliderManager sliderMagia;
     public Image flash, blackFade;
     public Button inventario, magia, equipamiento, estado, opciones;
     public Text maru, zeikkuVida, zeikkuMagia;

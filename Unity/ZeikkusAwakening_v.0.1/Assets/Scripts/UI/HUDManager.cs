@@ -27,6 +27,7 @@ public class HUDManager : MonoBehaviour
     public InterfazBatallaManager interfazBatalla;
     public InterfazMundoManager interfazMundo;
     public PantallaPausaManager pantallaPausa;
+    public GameObject tutorialContainer;
     
     [Header("Audio")]
     public AudioClip worldMusic;

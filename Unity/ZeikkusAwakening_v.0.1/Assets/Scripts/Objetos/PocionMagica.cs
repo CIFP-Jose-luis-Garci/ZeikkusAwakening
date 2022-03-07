@@ -32,7 +32,7 @@ public class PocionMagica : Item
         }
 
         GameManager.Instance.pause.UpdateValues();
-        FindObjectOfType<MagiaSliderManager>().UpdateSliderValues();
+        HUDManager.Instance.pantallaPausa.sliderMagia.UpdateSliderValues();
 
         if (someoneIsHealed)
             source.PlayOneShot(sonidoCuracion);

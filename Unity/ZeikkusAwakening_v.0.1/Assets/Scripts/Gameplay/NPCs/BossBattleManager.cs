@@ -13,6 +13,7 @@ public class BossBattleManager : EnemyBattleManager
     private AnimatorManager animatorManager;
     private PlayerMagic magic;
     public int[] magicSlots;
+    public GameObject pistaJefe;
 
     [Header("Attacks")] 
     private int currentAtack = 0;
@@ -24,6 +25,7 @@ public class BossBattleManager : EnemyBattleManager
     {
         gameManager = GameManager.Instance;
         player = InputManager.Instance.transform;
+        gameManager.SpawnTutorial(HUDManager.Instance.tutorialContainer, pistaJefe, null);
         animatorManager = GetComponent<AnimatorManager>();
         stats = GetComponent<EnemyStats>();
         agente = GetComponent<NavMeshAgent>();

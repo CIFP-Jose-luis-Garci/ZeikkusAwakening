@@ -18,7 +18,6 @@ public class Pocion : Item
 
     public override bool UseItem()
     {
-        // play sound
         GameObject[] party = source.GetComponent<GameManager>().personajes;
         foreach (GameObject partyMember in party)
         {
@@ -33,7 +32,7 @@ public class Pocion : Item
         }
 
         GameManager.Instance.pause.UpdateValues();
-        FindObjectOfType<VidaSliderManager>().UpdateSliderValues();
+        HUDManager.Instance.pantallaPausa.sliderVida.UpdateSliderValues();
 
         if (someoneIsHealed)
             source.PlayOneShot(sonidoCuracion);
